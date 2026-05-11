@@ -11,6 +11,10 @@ import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.j
 
 const MODEL_PATH = '/models/gltf/facecap.glb'
 const FACE_YAW_OFFSET = THREE.MathUtils.degToRad(-30)
+const FACE_CONTAIN_MARGIN = 0.72
+const FACE_ZOOM = 2
+const FACE_HORIZONTAL_OFFSET = -0.12
+const FACE_VERTICAL_OFFSET = 0.56
 
 export default {
   name: 'SceneBackdrop',
@@ -83,8 +87,25 @@ export default {
             }
 
             this.alignFaceByEyes(face)
+            this.measureFace()
+            this.resize()
           }
         )
+    },
+    measureFace() {
+      const box = new THREE.Box3().setFromObject(this.faceRoot)
+      const center = new THREE.Vector3()
+      const size = new THREE.Vector3()
+
+      box.getCenter(center)
+      box.getSize(size)
+      this.faceRoot.children.forEach((child) => {
+        child.position.sub(center)
+      })
+      this.faceRoot.position.x = FACE_HORIZONTAL_OFFSET
+      this.faceRoot.position.y = FACE_VERTICAL_OFFSET
+
+      this.faceSize = size
     },
     applyTransparentWireframe(face) {
       const wireMaterial = new THREE.MeshBasicMaterial({
@@ -142,6 +163,22 @@ export default {
       this.camera.aspect = width / height
       this.camera.updateProjectionMatrix()
       this.renderer.setSize(width, height, false)
+      this.applyContainScale(width, height)
+    },
+    applyContainScale(width, height) {
+      if (!this.faceSize) {
+        return
+      }
+
+      const distance = this.camera.position.distanceTo(this.faceRoot.position)
+      const visibleHeight = 2 * Math.tan(THREE.MathUtils.degToRad(this.camera.fov) / 2) * distance
+      const visibleWidth = visibleHeight * (width / height)
+      const fitScale = Math.min(
+        visibleWidth / this.faceSize.x,
+        visibleHeight / this.faceSize.y
+      ) * FACE_CONTAIN_MARGIN
+
+      this.faceRoot.scale.setScalar(fitScale * FACE_ZOOM)
     },
     handlePointerMove(event) {
       this.pointer.x = (event.clientX / window.innerWidth - 0.5) * 2
