@@ -4,79 +4,12 @@
 
 <script>
 import * as THREE from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
-const MASK_POINTS = [
-  [0, 3.35, 0.05],
-  [-1.35, 3.08, -0.05],
-  [1.35, 3.08, -0.05],
-  [-2.1, 2.45, 0],
-  [2.1, 2.45, 0],
-  [-2.45, 1.45, 0.08],
-  [2.45, 1.45, 0.08],
-  [-2.3, 0.2, 0.12],
-  [2.3, 0.2, 0.12],
-  [-2.05, -1.25, 0.02],
-  [2.05, -1.25, 0.02],
-  [-1.35, -2.55, -0.06],
-  [1.35, -2.55, -0.06],
-  [0, -3.15, 0.1],
-  [0, 1.55, 0.4],
-  [0, 0.2, 0.75],
-  [0, -0.85, 0.55],
-  [0, -1.75, 0.2],
-  [-1.15, 1.25, 0.35],
-  [-1.82, 0.82, 0.22],
-  [-0.62, 0.72, 0.48],
-  [1.15, 1.25, 0.35],
-  [1.82, 0.82, 0.22],
-  [0.62, 0.72, 0.48],
-  [-1.22, -1.34, 0.28],
-  [-0.38, -1.22, 0.42],
-  [0.42, -1.15, 0.42],
-  [1.34, -0.92, 0.25],
-  [-1.55, -0.2, 0.28],
-  [-0.66, -0.28, 0.52],
-  [0.7, -0.24, 0.52],
-  [1.5, -0.05, 0.28],
-  [-0.42, -2.25, 0.02],
-  [0.48, -2.2, 0.02],
-  [-1.75, 1.92, 0.08],
-  [-0.55, 2.35, 0.08],
-  [0.58, 2.25, 0.08],
-  [1.76, 1.9, 0.08],
-  [-1.86, -2.02, -0.04],
-  [1.78, -1.88, -0.04]
-]
-
-const MASK_EDGES = [
-  [0, 1], [0, 2], [1, 3], [2, 4], [3, 5], [4, 6], [5, 7], [6, 8],
-  [7, 9], [8, 10], [9, 11], [10, 12], [11, 13], [12, 13],
-  [0, 14], [14, 15], [15, 16], [16, 17], [17, 13],
-  [1, 34], [34, 3], [34, 35], [35, 14], [35, 18], [18, 34],
-  [2, 37], [37, 4], [37, 36], [36, 14], [36, 21], [21, 37],
-  [3, 18], [18, 20], [20, 14], [18, 19], [19, 5], [19, 28],
-  [4, 21], [21, 23], [23, 14], [21, 22], [22, 6], [22, 31],
-  [5, 28], [28, 7], [7, 29], [29, 15], [15, 30], [30, 8], [31, 8],
-  [18, 28], [28, 20], [20, 29], [29, 15], [15, 23], [23, 31], [31, 21],
-  [20, 15], [23, 15], [14, 20], [14, 23],
-  [7, 24], [24, 25], [25, 16], [16, 26], [26, 27], [27, 8],
-  [24, 38], [38, 9], [27, 39], [39, 10], [24, 16], [16, 27],
-  [9, 32], [32, 17], [17, 33], [33, 10], [32, 13], [33, 13],
-  [11, 38], [38, 32], [12, 39], [39, 33],
-  [28, 24], [29, 25], [30, 26], [31, 27],
-  [15, 24], [15, 27], [16, 32], [16, 33]
-]
-
-const EYE_POINTS = [
-  [-1.74, 0.86, 0.34],
-  [-1.34, 0.66, 0.42],
-  [-0.82, 0.6, 0.52],
-  [-0.55, 0.74, 0.55],
-  [0.55, 0.74, 0.55],
-  [0.9, 0.62, 0.52],
-  [1.42, 0.66, 0.42],
-  [1.78, 0.86, 0.34]
-]
+const MODEL_PATH = '/models/gltf/LeePerrySmith/LeePerrySmith.glb'
+const MODEL_HEIGHT = 5.8
+const SHOCK_DURATION = 0.82
+const SHOCK_PATH_COUNT = 42
 
 export default {
   name: 'SceneBackdrop',
@@ -84,8 +17,10 @@ export default {
     this.clock = new THREE.Clock()
     this.pointer = new THREE.Vector2()
     this.targetRotation = new THREE.Vector2()
+    this.wireframes = []
+    this.nextShockAt = this.randomShockDelay()
     this.initScene()
-    this.buildMask()
+    this.loadBust()
     this.resize()
     window.addEventListener('resize', this.resize)
     window.addEventListener('pointermove', this.handlePointerMove, { passive: true })
@@ -95,16 +30,14 @@ export default {
     window.removeEventListener('resize', this.resize)
     window.removeEventListener('pointermove', this.handlePointerMove)
     cancelAnimationFrame(this.frameId)
+    this.disposeObject(this.bustGroup)
     this.renderer?.dispose()
-    this.maskLineGeometry?.dispose()
-    this.maskPointGeometry?.dispose()
-    this.eyeGeometry?.dispose()
   },
   methods: {
     initScene() {
       this.scene = new THREE.Scene()
-      this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 100)
-      this.camera.position.set(0, 0, 10)
+      this.camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100)
+      this.camera.position.set(0, 0, 8.5)
 
       this.renderer = new THREE.WebGLRenderer({
         alpha: true,
@@ -113,140 +46,299 @@ export default {
       })
       this.renderer.setClearColor(0x000000, 0)
       this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
+      this.renderer.outputColorSpace = THREE.SRGBColorSpace
       this.$refs.stage.appendChild(this.renderer.domElement)
+
+      this.bustGroup = new THREE.Group()
+      this.bustGroup.position.set(0, -0.04, 0)
+      this.scene.add(this.bustGroup)
+
+      const ambient = new THREE.HemisphereLight(0xffffff, 0x1b1111, 1.35)
+      const key = new THREE.DirectionalLight(0xffffff, 3.3)
+      const rim = new THREE.DirectionalLight(0xe50914, 1.7)
+
+      key.position.set(-2.5, 3.2, 5.4)
+      rim.position.set(3.5, 1.2, 2.3)
+      this.scene.add(ambient, key, rim)
     },
-    buildMask() {
-      this.maskGroup = new THREE.Group()
-      this.scene.add(this.maskGroup)
+    loadBust() {
+      const loader = new GLTFLoader()
 
-      this.basePositions = MASK_POINTS.map(([x, y, z], index) => ({
-        x,
-        y,
-        z,
-        phase: index * 0.73,
-        drift: 0.018 + (index % 5) * 0.006
-      }))
+      loader.load(
+        MODEL_PATH,
+        (gltf) => {
+          const model = gltf.scene.clone(true)
+          const transparentMaterial = new THREE.MeshBasicMaterial({
+            transparent: true,
+            opacity: 0,
+            depthWrite: false
+          })
+          const wireMaterial = new THREE.LineBasicMaterial({
+            color: 0xb8b8b8,
+            transparent: true,
+            opacity: 0.34
+          })
+          let hasMesh = false
 
-      this.linePositions = new Float32Array(MASK_EDGES.length * 2 * 3)
-      this.pointPositions = new Float32Array(MASK_POINTS.length * 3)
-      this.eyePositions = new Float32Array(EYE_POINTS.length * 3)
+          model.traverse((child) => {
+            if (!child.isMesh) {
+              return
+            }
 
-      this.maskLineGeometry = new THREE.BufferGeometry()
-      this.maskLineGeometry.setAttribute('position', new THREE.BufferAttribute(this.linePositions, 3))
+            hasMesh = true
+            child.geometry = child.geometry.clone()
+            child.material = transparentMaterial.clone()
+            child.castShadow = false
+            child.receiveShadow = false
 
-      this.maskPointGeometry = new THREE.BufferGeometry()
-      this.maskPointGeometry.setAttribute('position', new THREE.BufferAttribute(this.pointPositions, 3))
+            const wireGeometry = new THREE.WireframeGeometry(child.geometry)
+            const wireframe = new THREE.LineSegments(wireGeometry, wireMaterial.clone())
+            wireframe.userData.basePositions = wireGeometry.attributes.position.array.slice()
+            wireframe.userData.shockPaths = []
+            wireframe.userData.graph = this.buildWireGraph(wireframe.userData.basePositions)
+            child.add(wireframe)
+            this.wireframes.push(wireframe)
+          })
 
-      this.eyeGeometry = new THREE.BufferGeometry()
-      this.eyeGeometry.setAttribute('position', new THREE.BufferAttribute(this.eyePositions, 3))
+          if (!hasMesh) {
+            return
+          }
 
-      const lineMaterial = new THREE.LineBasicMaterial({
-        color: 0xf4f4f4,
-        transparent: true,
-        opacity: 0.86,
-        blending: THREE.AdditiveBlending
-      })
-      const pointMaterial = new THREE.PointsMaterial({
+          this.centerModel(model)
+          this.bustGroup.add(model)
+        },
+        undefined,
+        () => {
+          this.buildFallbackBust()
+        }
+      )
+    },
+    centerModel(model) {
+      const box = new THREE.Box3().setFromObject(model)
+      const center = new THREE.Vector3()
+      const size = new THREE.Vector3()
+
+      box.getCenter(center)
+      box.getSize(size)
+      model.position.sub(center)
+
+      if (size.y > 0) {
+        model.scale.setScalar(MODEL_HEIGHT / size.y)
+      }
+    },
+    buildFallbackBust() {
+      const geometry = new THREE.SphereGeometry(1.45, 42, 64)
+      const material = new THREE.MeshStandardMaterial({
         color: 0xffffff,
-        size: 0.035,
+        roughness: 0.7,
+        metalness: 0.04,
+        wireframe: true,
         transparent: true,
-        opacity: 0.82,
-        sizeAttenuation: true
-      })
-      const eyeMaterial = new THREE.PointsMaterial({
-        color: 0xffffff,
-        size: 0.08,
-        transparent: true,
-        opacity: 0.96,
-        sizeAttenuation: true
+        opacity: 0.58
       })
 
-      this.maskLines = new THREE.LineSegments(this.maskLineGeometry, lineMaterial)
-      this.maskPoints = new THREE.Points(this.maskPointGeometry, pointMaterial)
-      this.eyeHighlights = new THREE.Points(this.eyeGeometry, eyeMaterial)
-      this.maskGroup.add(this.maskLines, this.maskPoints, this.eyeHighlights)
+      const fallback = new THREE.Mesh(geometry, material)
+      fallback.scale.set(0.82, 1.2, 0.7)
+      this.bustGroup.add(fallback)
     },
     resize() {
       const width = window.innerWidth
       const height = window.innerHeight
       const aspect = width / height
-      const frustumHeight = 8
-      const frustumWidth = frustumHeight * aspect
+      const narrowScale = aspect < 0.75 ? 0.78 : 1
 
-      this.camera.left = frustumWidth / -2
-      this.camera.right = frustumWidth / 2
-      this.camera.top = frustumHeight / 2
-      this.camera.bottom = frustumHeight / -2
+      this.camera.aspect = aspect
       this.camera.updateProjectionMatrix()
-
-      const maskWidth = 4.9
-      const maskHeight = 6.5
-      const containScale = Math.min((frustumWidth * 0.9) / maskWidth, (frustumHeight * 0.9) / maskHeight)
-      this.maskGroup.scale.setScalar(containScale)
-
+      this.bustGroup.scale.setScalar(narrowScale)
       this.renderer.setSize(width, height, false)
     },
     handlePointerMove(event) {
       this.pointer.x = (event.clientX / window.innerWidth - 0.5) * 2
       this.pointer.y = (event.clientY / window.innerHeight - 0.5) * 2
-      this.targetRotation.y = this.pointer.x * 0.08
-      this.targetRotation.x = this.pointer.y * -0.06
-    },
-    writeAnimatedPositions(time) {
-      const animated = this.basePositions.map((point, index) => {
-        const pulse = Math.sin(time * 0.92 + point.phase)
-        const secondary = Math.cos(time * 0.47 + point.phase * 1.7)
-        const breath = Math.sin(time * 0.32) * 0.012
-
-        return {
-          x: point.x + pulse * point.drift + secondary * point.drift * 0.45,
-          y: point.y + secondary * point.drift + breath,
-          z: point.z + pulse * point.drift * 2.2,
-          index
-        }
-      })
-
-      animated.forEach((point, index) => {
-        const offset = index * 3
-        this.pointPositions[offset] = point.x
-        this.pointPositions[offset + 1] = point.y
-        this.pointPositions[offset + 2] = point.z
-      })
-
-      MASK_EDGES.forEach(([from, to], edgeIndex) => {
-        const offset = edgeIndex * 6
-        const start = animated[from]
-        const end = animated[to]
-        this.linePositions[offset] = start.x
-        this.linePositions[offset + 1] = start.y
-        this.linePositions[offset + 2] = start.z
-        this.linePositions[offset + 3] = end.x
-        this.linePositions[offset + 4] = end.y
-        this.linePositions[offset + 5] = end.z
-      })
-
-      EYE_POINTS.forEach(([x, y, z], index) => {
-        const offset = index * 3
-        this.eyePositions[offset] = x
-        this.eyePositions[offset + 1] = y + Math.sin(time * 0.72 + index) * 0.01
-        this.eyePositions[offset + 2] = z + 0.04
-      })
-
-      this.maskPointGeometry.attributes.position.needsUpdate = true
-      this.maskLineGeometry.attributes.position.needsUpdate = true
-      this.eyeGeometry.attributes.position.needsUpdate = true
+      this.targetRotation.y = this.pointer.x * 0.34
+      this.targetRotation.x = this.pointer.y * 0.22
     },
     animate() {
       const time = this.clock.getElapsedTime()
-      this.writeAnimatedPositions(time)
 
-      this.maskGroup.rotation.x += (this.targetRotation.x - this.maskGroup.rotation.x) * 0.035
-      this.maskGroup.rotation.y += (this.targetRotation.y - this.maskGroup.rotation.y) * 0.035
-      this.maskGroup.rotation.z = Math.sin(time * 0.23) * 0.018
-      this.maskGroup.position.y = Math.sin(time * 0.38) * 0.08
+      this.updateShock(time)
+      this.bustGroup.rotation.x += (this.targetRotation.x - this.bustGroup.rotation.x) * 0.055
+      this.bustGroup.rotation.y += (this.targetRotation.y - this.bustGroup.rotation.y) * 0.055
+      this.bustGroup.rotation.z = Math.sin(time * 0.18) * 0.012
+      this.bustGroup.position.y = Math.sin(time * 0.34) * 0.035
 
       this.renderer.render(this.scene, this.camera)
       this.frameId = requestAnimationFrame(this.animate)
+    },
+    buildWireGraph(basePositions) {
+      const nodes = []
+      const byKey = new Map()
+
+      const getNodeIndex = (vertexIndex) => {
+        const offset = vertexIndex * 3
+        const x = basePositions[offset]
+        const y = basePositions[offset + 1]
+        const z = basePositions[offset + 2]
+        const key = `${x.toFixed(4)}:${y.toFixed(4)}:${z.toFixed(4)}`
+
+        if (!byKey.has(key)) {
+          byKey.set(key, nodes.length)
+          nodes.push({
+            position: new THREE.Vector3(x, y, z),
+            direction: new THREE.Vector3(x, y, z).normalize(),
+            occurrences: [],
+            neighbors: new Set()
+          })
+        }
+
+        const nodeIndex = byKey.get(key)
+        nodes[nodeIndex].occurrences.push(vertexIndex)
+
+        if (nodes[nodeIndex].direction.lengthSq() === 0) {
+          nodes[nodeIndex].direction.set(0, 1, 0)
+        }
+
+        return nodeIndex
+      }
+
+      for (let vertexIndex = 0; vertexIndex < basePositions.length / 3; vertexIndex += 2) {
+        const from = getNodeIndex(vertexIndex)
+        const to = getNodeIndex(vertexIndex + 1)
+
+        nodes[from].neighbors.add(to)
+        nodes[to].neighbors.add(from)
+      }
+
+      nodes.forEach((node) => {
+        node.neighbors = Array.from(node.neighbors)
+      })
+
+      return nodes
+    },
+    updateShock(time) {
+      if (time >= this.nextShockAt) {
+        this.startShock(time)
+        this.nextShockAt = time + this.randomShockDelay()
+      }
+
+      if (!this.shockEndsAt) {
+        return
+      }
+
+      this.wireframes.forEach((wireframe) => {
+        const positionAttribute = wireframe.geometry.attributes.position
+        const positions = positionAttribute.array
+        const basePositions = wireframe.userData.basePositions
+        const graph = wireframe.userData.graph
+
+        positions.set(basePositions)
+
+        wireframe.userData.shockPaths.forEach((path) => {
+          path.nodes.forEach((nodeIndex, stepIndex) => {
+            const pulseStart = path.startedAt + path.stepStarts[stepIndex]
+            const pulseProgress = (time - pulseStart) / path.stepDurations[stepIndex]
+
+            if (pulseProgress <= 0 || pulseProgress >= 1) {
+              return
+            }
+
+            const node = graph[nodeIndex]
+            const jitter = path.jitters[stepIndex]
+            const distance = Math.sin(pulseProgress * Math.PI) * path.strengths[stepIndex]
+            const direction = node.direction
+
+            node.occurrences.forEach((vertexIndex) => {
+              const offset = vertexIndex * 3
+
+              positions[offset] += (direction.x + jitter.x) * distance
+              positions[offset + 1] += (direction.y + jitter.y) * distance
+              positions[offset + 2] += (direction.z + jitter.z) * distance
+            })
+          })
+        })
+
+        positionAttribute.needsUpdate = true
+      })
+
+      if (time >= this.shockEndsAt) {
+        this.shockEndsAt = 0
+        this.wireframes.forEach((wireframe) => {
+          wireframe.geometry.attributes.position.array.set(wireframe.userData.basePositions)
+          wireframe.geometry.attributes.position.needsUpdate = true
+          wireframe.userData.shockPaths = []
+        })
+      }
+    },
+    startShock(time) {
+      this.shockEndsAt = time + SHOCK_DURATION + Math.random() * 0.22
+
+      this.wireframes.forEach((wireframe) => {
+        const graph = wireframe.userData.graph
+        const pathCount = Math.min(SHOCK_PATH_COUNT + Math.floor(Math.random() * 34), graph.length)
+
+        wireframe.userData.shockPaths = Array.from({ length: pathCount }, () => {
+          const nodes = this.buildShockPath(graph)
+          let cursor = Math.random() * 0.16
+
+          return {
+            nodes,
+            startedAt: time + Math.random() * 0.24,
+            stepStarts: nodes.map(() => {
+              cursor += 0.006 + Math.random() * 0.025
+              return cursor
+            }),
+            stepDurations: nodes.map(() => 0.08 + Math.random() * 0.16),
+            strengths: nodes.map(() => 0.16 + Math.random() * 0.5),
+            jitters: nodes.map(() => new THREE.Vector3(
+              (Math.random() - 0.5) * 0.32,
+              (Math.random() - 0.5) * 0.32,
+              (Math.random() - 0.5) * 0.32
+            ))
+          }
+        })
+      })
+    },
+    randomShockDelay() {
+      if (Math.random() < 0.22) {
+        return 0.18 + Math.random() * 0.42
+      }
+
+      return 0.75 + Math.random() * 2.2
+    },
+    buildShockPath(graph) {
+      const length = 16 + Math.floor(Math.random() * 38)
+      const path = [Math.floor(Math.random() * graph.length)]
+      let previous = -1
+
+      while (path.length < length) {
+        const current = path[path.length - 1]
+        const neighbors = graph[current].neighbors.filter((neighbor) => neighbor !== previous)
+
+        if (!neighbors.length) {
+          break
+        }
+
+        previous = current
+        path.push(neighbors[Math.floor(Math.random() * neighbors.length)])
+
+        if (Math.random() < 0.12) {
+          path.push(Math.floor(Math.random() * graph.length))
+          previous = -1
+        }
+      }
+
+      return path
+    },
+    disposeObject(object) {
+      object?.traverse((child) => {
+        child.geometry?.dispose()
+
+        if (Array.isArray(child.material)) {
+          child.material.forEach((material) => material.dispose())
+        } else {
+          child.material?.dispose()
+        }
+      })
     }
   }
 }
