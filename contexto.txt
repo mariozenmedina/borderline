@@ -1,0 +1,381 @@
+CONTEXTO MESTRE DO PROJETO - BORDERLINE DEV
+
+1. IDENTIDADE GERAL
+
+Nome do projeto: Borderline Dev
+URL principal: borderline.dev.br
+Tipo de projeto: site onepage institucional e comercial para divulgacao de servicos de desenvolvimento de software, websites, aplicacoes web, experiencias digitais interativas, interfaces modernas, visualizacoes de dados e solucoes digitais sob medida.
+
+Borderline Dev deve ser percebida como uma marca tecnica, ousada, autoral e sofisticada. A marca fala com empresas, empreendedores, criadores e equipes que querem mais do que um site generico: querem presenca digital, performance visual, arquitetura tecnica solida e uma experiencia memoravel.
+
+O site deve parecer uma demonstracao viva da capacidade tecnica da Borderline Dev. Ele nao deve apenas dizer que a empresa desenvolve interfaces modernas; ele deve provar isso atraves de interacoes, animacoes, microefeitos, composicoes 3D, vetores dinamicos, graficos e comportamento visual refinado.
+
+A palavra "Borderline" deve ser explorada de forma conceitual, com duplo sentido controlado:
+- Borderline como "linha de borda", "limite", "fronteira", "contorno", "edge", "border", "threshold".
+- Borderline como uma evocacao indireta de tensao emocional, contraste, dualidade, instabilidade controlada, mascara social, fragmentacao e recomposicao.
+
+O projeto deve evitar qualquer associacao ofensiva, simplista, caricatural ou estigmatizante com o transtorno de personalidade borderline. A referencia psicologica deve permanecer poetica, abstrata e respeitosa, nunca clinica, diagnostica, zombeteira ou sensacionalista.
+
+O posicionamento ideal e: "desenvolvimento no limite entre arte, codigo e precisao".
+
+
+2. OBJETIVO DO SITE
+
+O objetivo principal do site e divulgar os servicos da Borderline Dev e converter visitantes em contatos comerciais.
+
+Objetivos secundarios:
+- Demonstrar dominio tecnico em Vue 3, Three.js, D3.js, animacoes modernas, interfaces responsivas e experiencia interativa.
+- Criar memorabilidade atraves de uma identidade visual escura, intensa e incomum.
+- Comunicar qualidade premium, cuidado visual e capacidade de execucao pixel perfect.
+- Mostrar que a Borderline Dev atua na fronteira entre design, engenharia, performance e narrativa visual.
+- Criar uma experiencia onepage que pareca viva, com detalhes escondidos, easter eggs e camadas de interpretacao.
+
+O site deve equilibrar impacto visual com clareza comercial. A experiencia pode ser misteriosa, escura e sofisticada, mas o usuario precisa entender rapidamente o que a empresa faz, quais servicos oferece e como entrar em contato.
+
+
+3. PERSONALIDADE DA MARCA
+
+Palavras-chave:
+- obscura
+- tecnica
+- precisa
+- experimental
+- sofisticada
+- intensa
+- minimalista
+- cinematografica
+- poligonal
+- interativa
+- elegante
+- agressiva na forma, mas cuidadosa no discurso
+- emocionalmente ambigua
+- futurista sem parecer generica
+
+A marca deve soar confiante, direta e inteligente. Ela pode ser provocativa, mas nao arrogante. Pode ser sombria, mas nao pesada demais. Pode sugerir tensao emocional, mas sempre com sutileza e respeito.
+
+Tom de voz:
+- frases curtas e fortes
+- vocabulario de fronteira, limite, forma, ruptura, precisao, interface, sistema, construcao, codigo, arquitetura e presenca
+- linguagem comercial clara, sem perder a atmosfera conceitual
+- evitar exageros vazios como "revolucionario", "incrivel", "o melhor do mercado"
+- evitar jargoes tecnicos em excesso quando o texto for voltado ao cliente final
+
+Exemplos de linhas conceituais possiveis:
+- "No limite entre forma e funcao."
+- "Interfaces construidas na borda da experiencia."
+- "Codigo, design e movimento em estado de precisao."
+- "Desenvolvimento web para marcas que nao querem desaparecer."
+- "A borda tambem e linguagem."
+- "Onde a interface deixa de ser superficie e vira presenca."
+
+
+4. CUIDADOS ETICOS E LIMITES DE COMUNICACAO
+
+Como "borderline" tambem se relaciona a um transtorno psicologico real, a comunicacao deve ser extremamente cuidadosa.
+
+Evitar:
+- piadas sobre saude mental
+- uso de termos como loucura, surtado, instavel, psicotico, bipolar, insano ou doente como estetica
+- representacoes caricatas de sofrimento psicologico
+- glamourizacao de dor emocional
+- frases que parecam explorar sofrimento real como marketing
+- imagens que parecam diagnostico, internacao, violencia autoinfligida ou patologizacao de pessoas
+- qualquer associacao direta entre transtorno borderline e perigo, manipulacao, maldade ou caos
+
+Permitido e recomendado:
+- trabalhar com dualidade visual de forma abstrata
+- usar o conceito de mascara social de modo simbolico e universal
+- explorar contrastes: luz/sombra, rigidez/fluidez, borda/centro, geometria/organico, silencio/ruido
+- falar de limites, fronteiras, contornos e construcao visual
+- sugerir complexidade emocional atraves de forma, movimento e composicao, nao atraves de texto clinico
+- tratar "mascara" como simbolo de identidade digital, interface e persona, nao como sintoma
+
+Regra de ouro: o projeto pode ser psicologicamente sugestivo, mas nunca psicologicamente ofensivo.
+
+
+5. CONCEITO VISUAL CENTRAL
+
+O conceito central e uma mascara 3D formada por triangulos, como um mesh poligonal de construcao tridimensional.
+
+Essa mascara pode funcionar como logo, simbolo principal e elemento recorrente da experiencia. Ela deve parecer ao mesmo tempo:
+- uma mascara teatral
+- uma malha 3D em construcao
+- um objeto tecnico de modelagem poligonal
+- uma face ambigua
+- uma fronteira entre identidade humana e interface digital
+
+A mascara deve ter uma dualidade sutil entre dois lados. Possibilidades:
+- um lado levemente triste e outro levemente feliz
+- um lado sereno e outro tensionado
+- um lado frio e geometrico, outro mais expressivo
+- um lado com vertices mais regulares, outro com deformacoes discretas
+- um lado mais iluminado, outro quase oculto
+
+Essa dualidade nao deve ser literal demais. O ideal e que o visitante sinta que ha algo emocionalmente ambivalente na mascara, mas sem receber uma mensagem obvia ou didatica.
+
+Estilo da mascara:
+- low poly refinado
+- malha triangular visivel
+- vertices e arestas destacados com linhas finas
+- material escuro, metalico, fosco ou grafite
+- iluminacao dramatica em escala de cinza
+- pequenos acentos de cor em alguns vertices, arestas ou pontos de tensao
+- movimento lento, responsivo ao mouse, scroll ou tempo
+- deformacoes sutis, como se a mascara estivesse se recalculando
+
+A mascara pode ser usada:
+- no hero da onepage
+- como logo principal
+- como objeto Three.js interativo
+- como fallback em imagem renderizada ou canvas
+- em transicoes entre secoes
+- como easter egg quando o usuario interage de uma forma especifica
+
+
+6. LOGOTIPO E TIPOGRAFIA
+
+Texto do logo: Borderline.Dev
+
+Fonte desejada para a escrita: Offside, do Google Fonts.
+Referencia: https://fonts.google.com/specimen/Offside
+
+Direcao do logo:
+- a palavra "Borderline" e ".Dev" devem parecer uma assinatura tecnica e autoral
+- o ponto entre Borderline e Dev deve ser vermelho
+- o ponto vermelho e um elemento simbolico importante, como um unico pixel emocional dentro de uma composicao monocromatica
+- a escrita pode ser branca, cinza claro ou grafite claro sobre fundo escuro
+- o ponto vermelho deve ser pequeno, preciso e memoravel
+
+O ponto vermelho pode se tornar um elemento recorrente:
+- ponto de foco
+- cursor customizado
+- indicador de loading
+- marcador de secao
+- vertice ativo da malha
+- highlight de links
+- elemento escondido em animacoes
+
+Tipografia geral:
+- Offside para logo, marcas, headings especiais ou trechos de identidade
+- uma fonte secundaria moderna e legivel para textos longos, preferencialmente sans-serif limpa e tecnica
+- possiveis fontes secundarias: Inter, Satoshi, Manrope, IBM Plex Sans, Space Grotesk ou similares
+- usar contraste entre titulos com personalidade e textos funcionais altamente legiveis
+
+
+7. PALETA DE CORES
+
+A base visual deve ser quase toda em escala de cinza, com uso pontual de cores flat para destaque.
+
+Cores base:
+- preto profundo
+- grafite
+- cinza chumbo
+- cinza frio
+- cinza metalico
+- branco quebrado ou cinza muito claro para texto
+
+O site deve ter uma atmosfera obscura e agressiva, mas nao suja. Deve parecer preciso, limpo, caro e intencional.
+
+Uso de cor:
+- cores fortes devem aparecer raramente, com impacto
+- a referencia conceitual e semelhante a "a menina de vermelho" em A Lista de Schindler: um elemento colorido em meio a um mundo quase monocromatico
+- as cores devem destacar informacoes importantes, graficos, vertices, detalhes de interacao, estados ativos e pontos narrativos
+- evitar paleta multicolorida permanente; cor deve ser evento, nao fundo
+
+Cor principal de destaque:
+- vermelho flat para o ponto do logo, microdetalhes, hover states especiais e sinais de tensao visual
+
+Cores secundarias possiveis:
+- ciano eletrico
+- amarelo flat
+- verde acido
+- magenta controlado
+- azul tecnico
+
+Essas cores secundarias devem ser usadas com parcimonia, especialmente em graficos, visualizacoes vetoriais e pequenos momentos de interacao.
+
+
+8. REFERENCIAS ESTETICAS
+
+O projeto deve buscar uma estetica:
+- dark editorial
+- cyber brutalista refinada
+- cinematic tech
+- low poly 3D
+- interface experimental
+- minimalismo agressivo
+- arte generativa
+- laboratorio visual
+- identidade grafica de estúdio de desenvolvimento premium
+
+Evitar:
+- visual corporativo generico
+- landing page SaaS comum
+- excesso de gradientes roxos ou azuis
+- cards coloridos demais
+- efeitos gratuitos sem significado
+- estetica gamer exagerada
+- terror explicito
+- referencias clinicas ou hospitalares
+- excesso de neon
+
+A inspiracao deve vir mais de interfaces de cinema, softwares criativos, sistemas de visualizacao, design generativo e experiencias digitais premiadas do que de templates comerciais comuns.
+
+
+9. TECNOLOGIAS E DIRECAO DE IMPLEMENTACAO
+
+Stack base:
+- Vue 3
+- Three.js para 3D, mascara, cenas interativas, particulas, meshes, iluminacao e animacoes espaciais
+- D3.js para manipulacoes vetoriais, graficos, mapas conceituais, linhas, curvas, redes, dados e composicoes SVG dinamicas
+- CSS moderno para animacoes, transicoes, grids, masks, blend modes, clip-paths e responsividade
+
+O site deve buscar uma execucao pixel perfect:
+- alinhamentos precisos
+- espacamentos consistentes
+- responsividade refinada
+- animacoes suaves
+- textos sem estouro de layout
+- componentes visualmente equilibrados
+- performance cuidada
+
+Animacoes desejadas:
+- movimento 3D suave da mascara
+- reacao ao mouse ou ponteiro
+- transicoes baseadas em scroll
+- distorcoes sutis em linhas e bordas
+- revelacao de texto por clipping, masks ou stagger
+- hover states com microinteracoes
+- vetores que se reorganizam
+- pontos coloridos que aparecem apenas em momentos especificos
+- glitches controlados e raros
+- efeito de "border scanning" em elementos interativos
+- bordas que se desenham, quebram, se recompoem ou vibram
+
+Importante: os efeitos devem parecer intencionais e premium. O site nao deve virar uma colecao caotica de animacoes. O movimento precisa reforcar a marca e guiar o olhar do usuario.
+
+
+10. DIRECAO DE CONTEUDO DA ONEPAGE
+
+Possivel estrutura do site:
+
+1. Hero / Primeira dobra
+- logo Borderline.Dev com ponto vermelho
+- mascara 3D como elemento central
+- headline curta e forte
+- subtitulo explicando desenvolvimento de sites, sistemas e experiencias digitais
+- chamada para contato
+- interacao sutil com mouse ou scroll
+
+2. Manifesto / Conceito
+- texto curto sobre construir na fronteira entre design, codigo e experiencia
+- linguagem conceitual, mas comercialmente compreensivel
+- uso de linhas, bordas e pequenas animacoes vetoriais
+
+3. Servicos
+- desenvolvimento de sites
+- landing pages premium
+- sistemas web
+- interfaces Vue/React
+- dashboards e visualizacao de dados
+- integracoes com APIs
+- prototipos interativos
+- experiencias 3D e motion para web
+- otimizacao de performance e responsividade
+
+4. Processo
+- diagnostico
+- arquitetura
+- design de interface
+- desenvolvimento
+- animacao e interacao
+- testes
+- publicacao
+- evolucao
+
+5. Experimentos / Prova tecnica
+- area para demonstrar Three.js, D3.js e efeitos interativos
+- pode conter visualizacoes abstratas, graficos vivos, malhas vetoriais ou uma rede de pontos
+- deve comunicar dominio tecnico sem parecer portfolio escolar
+
+6. Chamada final
+- reforcar valor
+- contato direto
+- CTA para WhatsApp, email, formulario ou briefing
+
+
+11. EASTER EGGS E MENSAGENS SUBLIMINARES
+
+O projeto pode conter easter eggs discretos, desde que nao prejudiquem usabilidade, acessibilidade ou performance.
+
+Possibilidades:
+- mensagens curtas escondidas em atributos, comentarios visuais, tooltips raros ou microtextos
+- coordenadas, numeros ou codigos relacionados a bordas, vertices, malhas e limites
+- a mascara mudar levemente de expressao apos determinada interacao
+- o ponto vermelho se deslocar por alguns pixels como se estivesse vivo
+- linhas de borda formarem palavras por um instante
+- hover prolongado revelar um texto sutil
+- sequencias de scroll ativarem pequenas variacoes cromaticas
+- grafos D3 reorganizarem vertices para formar contornos secretos
+- estados de glitch revelarem frases como "stay on the edge", "build the border", "shape the void", ou equivalentes em portugues
+
+Cuidados:
+- mensagens subliminares nao devem parecer manipulativas, ameaçadoras, clinicas ou ofensivas
+- evitar qualquer conteudo relacionado diretamente a sintomas, diagnosticos ou sofrimento psiquico
+- manter os easter eggs como camadas poeticas e tecnicas, nao como piadas privadas
+
+
+12. ACESSIBILIDADE E USABILIDADE
+
+Mesmo sendo um site experimental, a experiencia deve ser acessivel e usavel.
+
+Diretrizes:
+- contraste adequado entre texto e fundo
+- textos legiveis em desktop e mobile
+- CTAs claros
+- navegacao simples
+- animacoes sem excesso que causem desconforto
+- respeitar prefers-reduced-motion quando possivel
+- fallback visual para recursos 3D caso WebGL falhe
+- nao depender exclusivamente de cor para transmitir informacao
+- manter performance boa em dispositivos intermediarios
+
+A atmosfera pode ser escura e intensa, mas a leitura deve ser facil.
+
+
+13. DIRECAO PARA PROMPTS DE IA
+
+Ao pedir ajuda a modelos de IA para gerar ideias, imagens, textos, layouts ou codigo, usar este contexto como base e reforcar:
+- site onepage para Borderline Dev
+- marca de desenvolvimento web e experiencias digitais
+- estetica escura em escala de cinza
+- uso pontual de vermelho e outras cores flat
+- logo com mascara 3D poligonal triangular
+- tipografia Offside para Borderline.Dev
+- ponto vermelho como assinatura visual
+- Three.js e D3.js como tecnologias visuais importantes
+- animacoes modernas, sutis e premium
+- relacao conceitual com bordas, limites, fronteiras e dualidade
+- evitar qualquer associacao ofensiva com saude mental
+- manter tom sofisticado, tecnico, experimental e comercialmente claro
+
+Prompt-base resumido:
+"Crie uma proposta visual/conceitual para Borderline Dev, um site onepage premium para divulgacao de servicos de desenvolvimento web e experiencias digitais. A identidade deve ser obscura, sofisticada, quase monocromatica, com uso pontual de vermelho flat e outras cores flat apenas como acentos. O simbolo principal e uma mascara 3D formada por triangulos, em estilo low poly/mesh, com dualidade emocional sutil e respeitosa, sem associacoes ofensivas a saude mental. A marca explora a ideia de bordas, limites, fronteiras, CSS borders, vertices, interfaces e construcao digital. Usar a fonte Offside para o logotipo Borderline.Dev, com o ponto em vermelho. A experiencia deve sugerir uso de Three.js, D3.js, animacoes premium, microinteracoes, graficos vetoriais e efeitos de ultima geracao, mantendo clareza comercial e responsividade."
+
+
+14. PRINCIPIOS DE DECISAO CRIATIVA
+
+Sempre que houver duvida entre duas ideias, escolher a que for:
+- mais precisa
+- mais sutil
+- mais memoravel
+- menos generica
+- mais respeitosa
+- mais alinhada a uma marca premium de desenvolvimento
+- mais clara para conversao comercial
+- menos dependente de clichês visuais
+
+O projeto deve parecer construido por alguem que domina codigo, design e narrativa visual. Cada animacao, cor, borda, vertice e palavra deve ter intencao.
+
+Frase norteadora:
+"Borderline Dev constroi experiencias digitais na fronteira entre precisao tecnica, impacto visual e identidade memoravel."
