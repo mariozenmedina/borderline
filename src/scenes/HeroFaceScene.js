@@ -5,7 +5,57 @@ import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.j
 import { disposeObject, setObjectOpacity } from './sceneUtils'
 
 const MODEL_PATH = '/models/gltf/facecap.glb'
-const FACE_YAW_OFFSET = THREE.MathUtils.degToRad(-30)
+const FACE_YAW_OFFSET = THREE.MathUtils.degToRad(0)
+
+// Painel de ajuste manual do rosto da hero.
+// Mexa nestes valores primeiro para posicionar o modelo sem precisar cacar numeros no codigo.
+const HERO_FACE_TUNING = {
+  // Camera compartilhada: estes valores sao aplicados apenas quando esta cena recebe a camera no resize.
+  // Como a camera e global, ajustes aqui tambem influenciam o enquadramento das outras cenas.
+  camera: {
+    fov: 30,
+    near: 0.01,
+    far: 30,
+    position: {
+      x: 0,
+      y: 0.3,
+      z: 1.5
+    },
+    lookAt: {
+      x: 0,
+      y: 0,
+      z: 0
+    }
+  },
+
+  // Tamanho final do asset depois da normalizacao pela maior dimensao do modelo.
+  // Aumente para aproximar o rosto; reduza para dar mais respiro no enquadramento.
+  modelTargetSize: 2,
+
+  // Posicao do grupo inteiro no mundo 3D.
+  // x: esquerda/direita, y: baixo/cima, z: para tras/para frente em relacao a camera.
+  position: {
+    x: 0,
+    y: 0.5,
+    z: 0
+  },
+
+  // Rotacao base extra, em graus, depois do alinhamento automatico pelos olhos.
+  rotationOffset: {
+    x: 0,
+    y: 0,
+    z: 0
+  },
+
+  // Pulso leve ligado ao peso/visibilidade da secao. Use 0 para manter escala fixa.
+  weightScaleBoost: 0.06,
+
+  // Quanto o mouse inclina o rosto. Use 0 nos eixos que quiser travar.
+  pointerRotation: {
+    x: 0.2,
+    y: 0.34
+  }
+}
 
 export default class HeroFaceScene {
   constructor({ renderer }) {
@@ -132,28 +182,62 @@ export default class HeroFaceScene {
     this.baseRotation.y = eyeYaw + FACE_YAW_OFFSET
   }
 
-  // Layout simples por enquanto: foco em renderizar e manter o modulo isolado.
-  resize({ width }) {
-    this.lastResizeContext = { width }
+  // Layout e camera da hero.
+  // O SceneBackdrop continua dono da camera, mas passa a referencia para cada cena no resize.
+  resize({ width, height, camera }) {
+    this.lastResizeContext = { width, height, camera }
+
+    if (camera) {
+      camera.fov = HERO_FACE_TUNING.camera.fov
+      camera.near = HERO_FACE_TUNING.camera.near
+      camera.far = HERO_FACE_TUNING.camera.far
+      camera.position.set(
+        HERO_FACE_TUNING.camera.position.x,
+        HERO_FACE_TUNING.camera.position.y,
+        HERO_FACE_TUNING.camera.position.z
+      )
+      camera.lookAt(
+        HERO_FACE_TUNING.camera.lookAt.x,
+        HERO_FACE_TUNING.camera.lookAt.y,
+        HERO_FACE_TUNING.camera.lookAt.z
+      )
+      camera.updateProjectionMatrix()
+      camera.updateMatrixWorld()
+    }
 
     const largestSide = Math.max(this.faceSize.x, this.faceSize.y, this.faceSize.z, 1)
-    const targetSize = width < 721 ? 2.3 : 2.15
+    const targetSize = HERO_FACE_TUNING.modelTargetSize
 
     this.baseScale = targetSize / largestSide
-    this.root.position.set(width < 721 ? 0 : -0.16, 0.06, -0.18)
+    this.root.position.set(
+      HERO_FACE_TUNING.position.x,
+      HERO_FACE_TUNING.position.y,
+      HERO_FACE_TUNING.position.z
+    )
   }
 
   // Animacao propria da cena hero.
   animate({ delta, pointer, weight }) {
     this.mixer?.update(delta)
 
-    const targetRotationX = (pointer?.y || 0) * 0.2
-    const targetRotationY = (pointer?.x || 0) * 0.34
+    const targetRotationX = (pointer?.y || 0) * HERO_FACE_TUNING.pointerRotation.x
+    const targetRotationY = (pointer?.x || 0) * HERO_FACE_TUNING.pointerRotation.y
+    const rotationOffsetX = THREE.MathUtils.degToRad(HERO_FACE_TUNING.rotationOffset.x)
+    const rotationOffsetY = THREE.MathUtils.degToRad(HERO_FACE_TUNING.rotationOffset.y)
+    const rotationOffsetZ = THREE.MathUtils.degToRad(HERO_FACE_TUNING.rotationOffset.z)
 
-    this.root.rotation.x += (this.baseRotation.x + targetRotationX - this.root.rotation.x) * 0.055
-    this.root.rotation.y += (this.baseRotation.y + targetRotationY - this.root.rotation.y) * 0.055
-    this.root.rotation.z += (this.baseRotation.z - this.root.rotation.z) * 0.055
-    this.root.scale.setScalar(this.baseScale * (0.94 + weight * 0.06))
+    this.root.rotation.x += (
+      this.baseRotation.x + rotationOffsetX + targetRotationX - this.root.rotation.x
+    ) * 0.055
+    this.root.rotation.y += (
+      this.baseRotation.y + rotationOffsetY + targetRotationY - this.root.rotation.y
+    ) * 0.055
+    this.root.rotation.z += (this.baseRotation.z + rotationOffsetZ - this.root.rotation.z) * 0.055
+    this.root.scale.setScalar(
+      this.baseScale * (
+        1 - HERO_FACE_TUNING.weightScaleBoost + weight * HERO_FACE_TUNING.weightScaleBoost
+      )
+    )
   }
 
   setOpacity(weight) {
