@@ -242,10 +242,11 @@ export default class AboutNetworkScene {
     )
   }
 
-  // Layout e camera da cena about.
-  // O SceneBackdrop continua dono da camera, mas passa a referencia para cada cena no resize.
-  resize({ width, height, camera }) {
-    this.lastResizeContext = { width, height, camera }
+  // Layout da cena about. A camera e suavizada pelo SceneBackdrop.
+  resize(context = {}) {
+    const { width = 0 } = context
+
+    this.lastResizeContext = context
     this.currentTuning = getAboutNetworkTuning(width)
 
     if (this.currentBreakpointWidth !== this.currentTuning.breakpointWidth) {
@@ -257,24 +258,6 @@ export default class AboutNetworkScene {
       )
     }
 
-    if (camera) {
-      camera.fov = this.currentTuning.camera.fov
-      camera.near = this.currentTuning.camera.near
-      camera.far = this.currentTuning.camera.far
-      camera.position.set(
-        this.currentTuning.camera.position.x,
-        this.currentTuning.camera.position.y,
-        this.currentTuning.camera.position.z
-      )
-      camera.lookAt(
-        this.currentTuning.camera.lookAt.x,
-        this.currentTuning.camera.lookAt.y,
-        this.currentTuning.camera.lookAt.z
-      )
-      camera.updateProjectionMatrix()
-      camera.updateMatrixWorld()
-    }
-
     const largestSide = Math.max(this.objectSize.x, this.objectSize.y, this.objectSize.z, 1)
 
     this.baseScale = this.currentTuning.modelTargetSize / largestSide
@@ -283,6 +266,10 @@ export default class AboutNetworkScene {
       this.currentTuning.position.y,
       this.currentTuning.position.z
     )
+  }
+
+  getCameraConfig({ width } = {}) {
+    return getAboutNetworkTuning(width || 0).camera
   }
 
   // Animacao propria da cena about.

@@ -8,6 +8,7 @@ import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment
 import { DEFAULT_SCENE, SCENE_REGISTRY } from '../scenes'
 
 const SCENE_FADE_SPEED = 0.075
+const CAMERA_TRANSITION_SPEED = 0.075
 const OBSERVER_THRESHOLDS = [0, 0.2, 0.4, 0.6, 0.8, 1]
 
 export default {
@@ -63,6 +64,9 @@ export default {
       this.camera = new THREE.PerspectiveCamera(45, 1, 1, 20)
       this.camera.position.set(-1.8, 0.8, 3)
       this.camera.lookAt(0, 0.15, -0.2)
+      this.cameraLookAt = new THREE.Vector3(0, 0.15, -0.2)
+      this.cameraTarget = null
+      this.cameraTransitionReady = false
 
       this.renderer = new THREE.WebGLRenderer({
         alpha: true,
@@ -137,7 +141,7 @@ export default {
 
           if (nextActiveScene !== this.activeScene) {
             this.activeScene = nextActiveScene
-            this.applyActiveSceneCamera()
+            this.updateTargetCamera()
           }
         },
         {
@@ -195,14 +199,14 @@ export default {
 
       if (closestSection.sceneId === this.activeScene) {
         if (forceCameraUpdate) {
-          this.applyActiveSceneCamera()
+          this.updateTargetCamera({ immediate: !this.cameraTransitionReady })
         }
 
         return
       }
 
       this.activeScene = closestSection.sceneId
-      this.applyActiveSceneCamera()
+      this.updateTargetCamera()
     },
 
     // Resize centralizado: cada cena recebe o novo viewport e ajusta sua propria escala.
@@ -239,20 +243,72 @@ export default {
           renderer: this.renderer
         })
       })
-      this.applyActiveSceneCamera()
+      this.updateTargetCamera({ immediate: !this.cameraTransitionReady })
     },
 
-    applyActiveSceneCamera() {
+    updateTargetCamera({ immediate = false } = {}) {
       const sceneModule = this.sceneInstances?.[this.activeScene]
 
       if (!sceneModule || !this.lastViewportContext) {
         return
       }
 
-      sceneModule.resize?.({
-        ...this.lastViewportContext,
-        camera: this.camera
-      })
+      const cameraConfig = sceneModule.getCameraConfig?.(this.lastViewportContext)
+
+      if (!cameraConfig) {
+        return
+      }
+
+      this.cameraTarget = this.createCameraState(cameraConfig)
+
+      if (immediate) {
+        this.applyCameraState(this.cameraTarget)
+        this.cameraTransitionReady = true
+      }
+    },
+
+    createCameraState(cameraConfig) {
+      return {
+        fov: cameraConfig.fov,
+        near: cameraConfig.near,
+        far: cameraConfig.far,
+        position: new THREE.Vector3(
+          cameraConfig.position.x,
+          cameraConfig.position.y,
+          cameraConfig.position.z
+        ),
+        lookAt: new THREE.Vector3(
+          cameraConfig.lookAt.x,
+          cameraConfig.lookAt.y,
+          cameraConfig.lookAt.z
+        )
+      }
+    },
+
+    applyCameraState(cameraState) {
+      this.camera.fov = cameraState.fov
+      this.camera.near = cameraState.near
+      this.camera.far = cameraState.far
+      this.camera.position.copy(cameraState.position)
+      this.cameraLookAt.copy(cameraState.lookAt)
+      this.camera.lookAt(this.cameraLookAt)
+      this.camera.updateProjectionMatrix()
+      this.camera.updateMatrixWorld()
+    },
+
+    updateCameraTransition() {
+      if (!this.cameraTarget) {
+        return
+      }
+
+      this.camera.fov += (this.cameraTarget.fov - this.camera.fov) * CAMERA_TRANSITION_SPEED
+      this.camera.near += (this.cameraTarget.near - this.camera.near) * CAMERA_TRANSITION_SPEED
+      this.camera.far += (this.cameraTarget.far - this.camera.far) * CAMERA_TRANSITION_SPEED
+      this.camera.position.lerp(this.cameraTarget.position, CAMERA_TRANSITION_SPEED)
+      this.cameraLookAt.lerp(this.cameraTarget.lookAt, CAMERA_TRANSITION_SPEED)
+      this.camera.lookAt(this.cameraLookAt)
+      this.camera.updateProjectionMatrix()
+      this.camera.updateMatrixWorld()
     },
 
     getStageSize() {
@@ -279,6 +335,7 @@ export default {
       const delta = this.clock.getDelta()
 
       this.updateSceneTransitions()
+      this.updateCameraTransition()
 
       Object.entries(this.sceneInstances).forEach(([sceneId, sceneModule]) => {
         sceneModule.animate?.({

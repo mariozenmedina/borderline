@@ -182,28 +182,9 @@ export default class HeroFaceScene {
     this.baseRotation.y = eyeYaw + FACE_YAW_OFFSET
   }
 
-  // Layout e camera da hero.
-  // O SceneBackdrop continua dono da camera, mas passa a referencia para cada cena no resize.
-  resize({ width, height, camera }) {
-    this.lastResizeContext = { width, height, camera }
-
-    if (camera) {
-      camera.fov = HERO_FACE_TUNING.camera.fov
-      camera.near = HERO_FACE_TUNING.camera.near
-      camera.far = HERO_FACE_TUNING.camera.far
-      camera.position.set(
-        HERO_FACE_TUNING.camera.position.x,
-        HERO_FACE_TUNING.camera.position.y,
-        HERO_FACE_TUNING.camera.position.z
-      )
-      camera.lookAt(
-        HERO_FACE_TUNING.camera.lookAt.x,
-        HERO_FACE_TUNING.camera.lookAt.y,
-        HERO_FACE_TUNING.camera.lookAt.z
-      )
-      camera.updateProjectionMatrix()
-      camera.updateMatrixWorld()
-    }
+  // Layout da hero. A camera e suavizada pelo SceneBackdrop.
+  resize(context = {}) {
+    this.lastResizeContext = context
 
     const largestSide = Math.max(this.faceSize.x, this.faceSize.y, this.faceSize.z, 1)
     const targetSize = HERO_FACE_TUNING.modelTargetSize
@@ -214,6 +195,10 @@ export default class HeroFaceScene {
       HERO_FACE_TUNING.position.y,
       HERO_FACE_TUNING.position.z
     )
+  }
+
+  getCameraConfig() {
+    return HERO_FACE_TUNING.camera
   }
 
   // Animacao propria da cena hero.
