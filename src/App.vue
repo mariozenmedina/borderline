@@ -133,7 +133,7 @@ body {
       margin: 0;
       color: @white;
       font-family: 'Offside', Arial, Helvetica, sans-serif;
-      font-size: clamp(2rem, 13vw, 3.25rem);
+      font-size: clamp(2rem, 18vw, 3.5rem);
       font-weight: 400;
       line-height: 1;
       letter-spacing: 0;
@@ -141,6 +141,7 @@ body {
       text-rendering: geometricPrecision;
       text-shadow: 0 0 18px fade(@black, 82%), 0 0 48px fade(@black, 72%);
       white-space: normal;
+      padding-bottom: 10vh;
 
       .brand-name,
       .brand-extension {
@@ -175,7 +176,7 @@ body {
         max-width: 100%;
         margin: 0;
         font-family: 'Offside', Arial, Helvetica, sans-serif;
-        font-size: clamp(2rem, 10vw, 2.55rem);
+        font-size: clamp(2rem, 9.5vw, 2.55rem);
         font-weight: 400;
         line-height: 1;
         letter-spacing: 0;
@@ -225,6 +226,12 @@ body {
           font-size: clamp(2.2rem, 4.4vw, 4.35rem);
         }
       }
+    }
+  }
+  @media (min-width: 1200px) {
+    .about{
+        align-items: center;
+        justify-items: start;
     }
   }
 }
