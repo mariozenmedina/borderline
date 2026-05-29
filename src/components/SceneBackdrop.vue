@@ -21,29 +21,29 @@ const CSS_3D_LAYOUTS = {
     {
       breakpoint: 'mobile',
       maxWidth: 720,
-      height: '100vh',
+      width: '100vw',
       top: '0vh',
       left: '0vw'
     },
     {
       breakpoint: 'desktop',
       minWidth: 721,
-      height: '100vh',
-      top: '0vh',
-      left: '0vw'
+      width: '50vw',
+      top: '-20vw',
+      left: '24vw'
     }
   ],
   about: [
     {
       breakpoint: 'mobile',
-      maxWidth: 720,
+      maxWidth: 991,
       width: '60vw',
-      top: '-5vh',
-      left: '5vw'
+      bottom: '50vh',
+      left: '0vw'
     },
     {
       breakpoint: 'desktop',
-      minWidth: 721,
+      minWidth: 992,
       width: '34vw',
       top: '2vh',
       left: '33vw'
@@ -72,13 +72,20 @@ export default {
     this.initScene()
     this.loadFace()
     this.resize()
+    this.resizeObserver = new ResizeObserver(this.resize)
+    this.resizeObserver.observe(this.$refs.stage)
     window.addEventListener('resize', this.resize)
+    window.visualViewport?.addEventListener('resize', this.resize)
+    window.visualViewport?.addEventListener('scroll', this.resize)
     window.addEventListener('pointermove', this.handlePointerMove, { passive: true })
     this.animate()
   },
   beforeUnmount() {
     this.isUnmounted = true
+    this.resizeObserver?.disconnect()
     window.removeEventListener('resize', this.resize)
+    window.visualViewport?.removeEventListener('resize', this.resize)
+    window.visualViewport?.removeEventListener('scroll', this.resize)
     window.removeEventListener('pointermove', this.handlePointerMove)
     cancelAnimationFrame(this.frameId)
     this.disposeObject(this.faceRoot)
@@ -300,14 +307,24 @@ export default {
       this.baseRotation.y = eyeYaw + FACE_YAW_OFFSET
     },
     resize() {
-      const width = window.innerWidth
-      const height = window.innerHeight
+      const { width, height } = this.getStageSize()
+
+      if (!width || !height) {
+        return
+      }
 
       this.camera.aspect = width / height
       this.camera.updateProjectionMatrix()
       this.camera.updateMatrixWorld()
       this.renderer.setSize(width, height, false)
       this.applyCssLayouts(width, height)
+    },
+    getStageSize() {
+      const rect = this.$refs.stage?.getBoundingClientRect()
+      const width = rect?.width || window.visualViewport?.width || window.innerWidth
+      const height = rect?.height || window.visualViewport?.height || window.innerHeight
+
+      return { width, height }
     },
     applyCssLayouts(width, height) {
       this.applyObjectCssLayout({
@@ -431,8 +448,14 @@ export default {
         .add(up.multiplyScalar((0.5 - y / height) * viewSize.height))
     },
     handlePointerMove(event) {
-      this.pointer.x = (event.clientX / window.innerWidth - 0.5) * 2
-      this.pointer.y = (event.clientY / window.innerHeight - 0.5) * 2
+      const { width, height } = this.getStageSize()
+
+      if (!width || !height) {
+        return
+      }
+
+      this.pointer.x = (event.clientX / width - 0.5) * 2
+      this.pointer.y = (event.clientY / height - 0.5) * 2
       this.targetRotation.y = this.pointer.x * 0.34
       this.targetRotation.x = this.pointer.y * 0.2
     },

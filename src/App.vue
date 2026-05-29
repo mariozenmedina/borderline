@@ -1,5 +1,5 @@
 <template>
-  <SceneBackdrop :key="sceneVersion" :active-scene="activeScene" />
+  <SceneBackdrop :active-scene="activeScene" />
 
   <main ref="shell" class="site-shell">
     <section class="panel hero" data-scene="hero" aria-labelledby="brand-title">
@@ -23,8 +23,6 @@
 <script>
 import SceneBackdrop from './components/SceneBackdrop.vue'
 
-const SCENE_RELOAD_DELAY = 650
-
 export default {
   name: 'App',
   components: {
@@ -33,18 +31,14 @@ export default {
   data() {
     return {
       activeScene: 'hero',
-      sceneVersion: 0,
       sectionVisibility: {}
     }
   },
   mounted() {
     this.observeSections()
-    window.addEventListener('resize', this.scheduleSceneReload)
   },
   beforeUnmount() {
     this.sectionObserver?.disconnect()
-    window.removeEventListener('resize', this.scheduleSceneReload)
-    clearTimeout(this.sceneReloadTimer)
   },
   methods: {
     observeSections() {
@@ -72,12 +66,6 @@ export default {
         this.sectionVisibility[section.dataset.scene] = 0
         this.sectionObserver.observe(section)
       })
-    },
-    scheduleSceneReload() {
-      clearTimeout(this.sceneReloadTimer)
-      this.sceneReloadTimer = setTimeout(() => {
-        this.sceneVersion += 1
-      }, SCENE_RELOAD_DELAY)
     }
   }
 }
@@ -122,116 +110,122 @@ body {
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   overscroll-behavior-y: contain;
-}
 
-.panel {
-  display: grid;
-  width: 100%;
-  min-height: 100vh;
-  min-height: 100svh;
-  overflow: hidden;
-  padding: clamp(24px, 6vw, 72px);
-  background: transparent;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-
-.hero {
-  align-items: end;
-  justify-items: center;
-}
-
-.brand-mark {
-  position: relative;
-  margin: 0;
-  color: @white;
-  font-family: 'Offside', Arial, Helvetica, sans-serif;
-  font-size: clamp(2.35rem, 8vw, 7.5rem);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0;
-  text-align: center;
-  text-rendering: geometricPrecision;
-  text-shadow: 0 0 18px fade(@black, 82%), 0 0 48px fade(@black, 72%);
-  white-space: nowrap;
-}
-
-.brand-dot {
-  color: @red;
-}
-
-.about {
-  align-items: end;
-  justify-items: center;
-}
-
-.section-copy {
-  width: min(620px, 100%);
-  margin: 0 0 clamp(34px, 7vh, 76px);
-  text-shadow: 0 0 22px fade(@black, 88%), 0 0 54px fade(@black, 76%);
-}
-
-.section-kicker {
-  margin: 0 0 18px;
-  color: @red;
-  font-size: clamp(0.72rem, 1.1vw, 0.88rem);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.section-copy h2 {
-  max-width: 13ch;
-  margin: 0;
-  font-family: 'Offside', Arial, Helvetica, sans-serif;
-  font-size: clamp(2.2rem, 4.4vw, 4.35rem);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0;
-}
-
-.section-copy p:last-child {
-  max-width: 560px;
-  margin: clamp(20px, 3vw, 32px) 0 0;
-  color: fade(@white, 82%);
-  font-size: clamp(1rem, 1.45vw, 1.28rem);
-  line-height: 1.55;
-}
-
-@media (max-width: 420px) {
-  .brand-mark {
-    font-size: clamp(2rem, 13vw, 3.25rem);
-  }
-}
-
-@media (max-width: 720px) {
   .panel {
+    display: grid;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow: hidden;
     padding: 28px;
+    background: transparent;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .hero {
     align-items: end;
     justify-items: center;
+
+    .brand-mark {
+      align-self: end;
+      position: relative;
+      margin: 0;
+      color: @white;
+      font-family: 'Offside', Arial, Helvetica, sans-serif;
+      font-size: clamp(2rem, 13vw, 3.25rem);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0;
+      text-align: center;
+      text-rendering: geometricPrecision;
+      text-shadow: 0 0 18px fade(@black, 82%), 0 0 48px fade(@black, 72%);
+      white-space: normal;
+
+      .brand-name,
+      .brand-extension {
+        display: block;
+      }
+
+      .brand-dot {
+        color: @red;
+      }
+    }
   }
 
-  .brand-mark {
-    align-self: end;
-    font-size: clamp(2.75rem, 14vw, 3.8rem);
-    white-space: normal;
+  .about {
+    align-items: end;
+    justify-items: center;
+
+    .section-copy {
+      width: min(620px, 100%);
+      margin: 0 0 clamp(38px, 7vh, 68px);
+      text-shadow: 0 0 22px fade(@black, 88%), 0 0 54px fade(@black, 76%);
+
+      .section-kicker {
+        margin: 0 0 18px;
+        color: @red;
+        font-size: clamp(0.72rem, 1.1vw, 0.88rem);
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        max-width: 100%;
+        margin: 0;
+        font-family: 'Offside', Arial, Helvetica, sans-serif;
+        font-size: clamp(2rem, 10vw, 2.55rem);
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      p:last-child {
+        max-width: 560px;
+        margin: clamp(20px, 3vw, 32px) 0 0;
+        color: fade(@white, 82%);
+        font-size: clamp(1rem, 1.45vw, 1.28rem);
+        line-height: 1.55;
+      }
+    }
   }
 
-  .brand-name,
-  .brand-extension {
-    display: block;
+  @media (min-width: 421px) {
+    .hero {
+      .brand-mark {
+        font-size: clamp(2.75rem, 14vw, 3.8rem);
+      }
+    }
   }
 
-  .section-copy {
-    margin-bottom: clamp(38px, 7vh, 68px);
-  }
+  @media (min-width: 721px) {
+    .panel {
+      padding: clamp(24px, 6vw, 72px);
+    }
 
-  .section-copy h2 {
-    max-width: 100%;
-    font-size: clamp(2rem, 10vw, 2.55rem);
+    .hero {
+      .brand-mark {
+        font-size: clamp(2.35rem, 8vw, 7.5rem);
+        white-space: nowrap;
+
+        .brand-name,
+        .brand-extension {
+          display: inline;
+        }
+      }
+    }
+
+    .about {
+      .section-copy {
+        margin-bottom: clamp(34px, 7vh, 76px);
+
+        h2 {
+          max-width: 13ch;
+          font-size: clamp(2.2rem, 4.4vw, 4.35rem);
+        }
+      }
+    }
   }
 }
 </style>
