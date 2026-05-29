@@ -44,6 +44,8 @@ export default {
     this.resizeObserver?.disconnect()
     cancelAnimationFrame(this.frameId)
     cancelAnimationFrame(this.observeFrameId)
+    cancelAnimationFrame(this.scrollFrameId)
+    this.sceneRoot?.removeEventListener('scroll', this.handleSceneRootScroll)
     window.removeEventListener('resize', this.resize)
     window.visualViewport?.removeEventListener('resize', this.resize)
     window.visualViewport?.removeEventListener('scroll', this.resize)
@@ -116,11 +118,14 @@ export default {
         return
       }
 
+      this.sceneRoot = root
+      this.sceneSections = sections
       this.sectionVisibility = sections.reduce((visibility, section) => ({
         ...visibility,
         [section.dataset.scene]: 0
       }), {})
-      this.activeScene = sections[0].dataset.scene || DEFAULT_SCENE
+      this.updateActiveSceneFromScroll(true)
+      root.addEventListener('scroll', this.handleSceneRootScroll, { passive: true })
 
       this.sectionObserver = new IntersectionObserver(
         (entries) => {
@@ -128,7 +133,12 @@ export default {
             this.sectionVisibility[entry.target.dataset.scene] = entry.intersectionRatio
           })
 
-          this.activeScene = this.getMostVisibleScene()
+          const nextActiveScene = this.getMostVisibleScene()
+
+          if (nextActiveScene !== this.activeScene) {
+            this.activeScene = nextActiveScene
+            this.applyActiveSceneCamera()
+          }
         },
         {
           root,
@@ -144,6 +154,55 @@ export default {
         .sort((a, b) => b[1] - a[1])[0] || [DEFAULT_SCENE]
 
       return sceneId
+    },
+
+    handleSceneRootScroll() {
+      if (this.scrollFrameId) {
+        return
+      }
+
+      this.scrollFrameId = requestAnimationFrame(() => {
+        this.scrollFrameId = null
+        this.updateActiveSceneFromScroll()
+      })
+    },
+
+    updateActiveSceneFromScroll(forceCameraUpdate = false) {
+      const root = this.sceneRoot
+      const sections = this.sceneSections || []
+
+      if (!root || !sections.length) {
+        return
+      }
+
+      const rootRect = root.getBoundingClientRect()
+      const viewportCenter = rootRect.top + rootRect.height / 2
+      const [closestSection] = sections
+        .map((section) => {
+          const rect = section.getBoundingClientRect()
+          const sectionCenter = rect.top + rect.height / 2
+
+          return {
+            sceneId: section.dataset.scene,
+            distance: Math.abs(sectionCenter - viewportCenter)
+          }
+        })
+        .sort((a, b) => a.distance - b.distance)
+
+      if (!closestSection?.sceneId) {
+        return
+      }
+
+      if (closestSection.sceneId === this.activeScene) {
+        if (forceCameraUpdate) {
+          this.applyActiveSceneCamera()
+        }
+
+        return
+      }
+
+      this.activeScene = closestSection.sceneId
+      this.applyActiveSceneCamera()
     },
 
     // Resize centralizado: cada cena recebe o novo viewport e ajusta sua propria escala.
@@ -167,14 +226,32 @@ export default {
       this.camera.updateProjectionMatrix()
       this.camera.updateMatrixWorld()
       this.renderer.setSize(width, height, false)
+      this.lastViewportContext = {
+        width,
+        height,
+        renderer: this.renderer
+      }
 
       Object.values(this.sceneInstances || {}).forEach((sceneModule) => {
         sceneModule.resize?.({
           width,
           height,
-          camera: this.camera,
           renderer: this.renderer
         })
+      })
+      this.applyActiveSceneCamera()
+    },
+
+    applyActiveSceneCamera() {
+      const sceneModule = this.sceneInstances?.[this.activeScene]
+
+      if (!sceneModule || !this.lastViewportContext) {
+        return
+      }
+
+      sceneModule.resize?.({
+        ...this.lastViewportContext,
+        camera: this.camera
       })
     },
 
