@@ -1,8 +1,36 @@
 @black: #010509;
 @white: #f5f5f5;
+@red: #e50914;
 
 * {
   box-sizing: border-box;
+}
+
+html{
+    /* 1. Standard Properties (Firefox / Modern Edge & Chrome) */
+  scrollbar-width: thin;          /* Options: auto | thin | none */
+  scrollbar-color: fade(@red, 50%) @black; /* format: thumb_color track_color */
+
+  /* 2. WebKit Pseudo-elements (Safari / Older Chrome & Edge) */
+  &::-webkit-scrollbar {
+    width: 10px;                  /* Width of vertical scrollbar */
+    height: 10px;                 /* Height of horizontal scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: @black;          /* Color of the track (background) */
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: @red;    /* Color of the draggable thumb */
+    border-radius: 4px;           /* Roundness of the thumb */
+    border: 2px solid @black;    /* Creates padding around the thumb */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: @red;    /* Thumb color on hover */
+  }
 }
 
 html,
