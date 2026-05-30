@@ -77,7 +77,7 @@ const GLASSES_FIT_CONTROLLER = {
   rotation: {
     x: 0,
     y: 0,
-    z: 0
+    z: -2
   }
 }
 
