@@ -16,19 +16,19 @@ const ABOUT_SCENE_TUNING = [
       position: {
         x: 0,
         y: 0,
-        z: 0
+        z: -0.24
       },
       lookAt: {
         x: .2,
         y: .41,
-        z: -1.5
+        z: -1.74
       }
     },
     modelTargetSize: .35,
     position: {
       x: .25,
       y: .5,
-      z: -1.5
+      z: -1.74
     },
     initialRotation: {
       x: 0.2,
@@ -58,19 +58,19 @@ const ABOUT_SCENE_TUNING = [
       position: {
         x: 0,
         y: 0,
-        z: 0
+        z: -0.24
       },
       lookAt: {
         x: .2,
         y: .4,
-        z: -1.5
+        z: -1.74
       }
     },
     modelTargetSize: .35,
     position: {
       x: .25,
       y: .5,
-      z: -1.5
+      z: -1.74
     },
     initialRotation: {
       x: 0.2,
@@ -100,19 +100,19 @@ const ABOUT_SCENE_TUNING = [
       position: {
         x: 0,
         y: 0,
-        z: 0
+        z: -0.24
       },
       lookAt: {
         x: .2,
         y: .5,
-        z: -1.5
+        z: -1.74
       }
     },
     modelTargetSize: .35,
     position: {
       x: .3,
       y: .5,
-      z: -1.5
+      z: -1.74
     },
     initialRotation: {
       x: 0.2,

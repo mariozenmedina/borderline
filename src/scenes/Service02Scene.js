@@ -15,19 +15,19 @@ const SERVICE_02_SCENE_TUNING = [
       position: {
         x: 0,
         y: 0,
-        z: 0
+        z: -0.24
       },
       lookAt: {
         x: 0.22,
         y: 0.31,
-        z: -1.4
+        z: -1.64
       }
     },
     modelTargetSize: 0.4,
     position: {
       x: 0.25,
       y: 0.5,
-      z: -1.5
+      z: -1.74
     },
     initialRotation: {
       x: 0.2,
@@ -56,19 +56,19 @@ const SERVICE_02_SCENE_TUNING = [
       position: {
         x: 0,
         y: 0,
-        z: 0
+        z: -0.24
       },
       lookAt: {
         x: 0.22,
         y: 0.35,
-        z: -1.4
+        z: -1.64
       }
     },
     modelTargetSize: 0.7,
     position: {
       x: 0.25,
       y: 0.5,
-      z: -1.5
+      z: -1.74
     },
     initialRotation: {
       x: 0.2,
@@ -97,19 +97,19 @@ const SERVICE_02_SCENE_TUNING = [
       position: {
         x: 0,
         y: 0,
-        z: 0
+        z: -0.24
       },
       lookAt: {
         x: 0.30,
         y: 0.35,
-        z: -1.4
+        z: -1.64
       }
     },
     modelTargetSize: 0.8,
     position: {
       x: 0.5,
       y: 0.41,
-      z: -1.5
+      z: -1.74
     },
     initialRotation: {
       x: 0.2,

@@ -15,6 +15,8 @@ const BASE_CAMERA = {
 function createServiceSceneTuning({ side = 'right', accentColor = 0xe50914 } = {}) {
   const desktopX = side === 'left' ? -0.3 : 0.3
   const desktopLookAtX = side === 'left' ? -0.2 : 0.2
+  const cameraZ = side === 'right' ? -0.24 : 0
+  const sceneZ = -1.5 + cameraZ
 
   return [
     {
@@ -22,17 +24,22 @@ function createServiceSceneTuning({ side = 'right', accentColor = 0xe50914 } = {
       accentColor,
       camera: {
         ...BASE_CAMERA,
+        position: {
+          x: 0,
+          y: 0,
+          z: cameraZ
+        },
         lookAt: {
           x: 0.2,
           y: 0.41,
-          z: -1.5
+          z: sceneZ
         }
       },
       modelTargetSize: 0.35,
       position: {
         x: 0.25,
         y: 0.5,
-        z: -1.5
+        z: sceneZ
       },
       initialRotation: {
         x: 0.2,
@@ -54,17 +61,22 @@ function createServiceSceneTuning({ side = 'right', accentColor = 0xe50914 } = {
       accentColor,
       camera: {
         ...BASE_CAMERA,
+        position: {
+          x: 0,
+          y: 0,
+          z: cameraZ
+        },
         lookAt: {
           x: 0.2,
           y: 0.4,
-          z: -1.5
+          z: sceneZ
         }
       },
       modelTargetSize: 0.35,
       position: {
         x: 0.25,
         y: 0.5,
-        z: -1.5
+        z: sceneZ
       },
       initialRotation: {
         x: 0.2,
@@ -86,17 +98,22 @@ function createServiceSceneTuning({ side = 'right', accentColor = 0xe50914 } = {
       accentColor,
       camera: {
         ...BASE_CAMERA,
+        position: {
+          x: 0,
+          y: 0,
+          z: cameraZ
+        },
         lookAt: {
           x: desktopLookAtX,
           y: 0.5,
-          z: -1.5
+          z: sceneZ
         }
       },
       modelTargetSize: 0.35,
       position: {
         x: desktopX,
         y: 0.5,
-        z: -1.5
+        z: sceneZ
       },
       initialRotation: {
         x: 0.2,
