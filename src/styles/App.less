@@ -1,35 +1,48 @@
 @black: #010509;
 @white: #f5f5f5;
 @red: #e50914;
+@font-display: 'Offside', Arial, Helvetica, sans-serif;
+@copy-width: 620px;
+@copy-text-width: 560px;
+@tablet: 721px;
+@desktop: 1200px;
+
+.screen-text-shadow() {
+  text-shadow: 0 0 22px fade(@black, 88%), 0 0 54px fade(@black, 76%);
+}
+
+.display-type() {
+  font-family: @font-display;
+  font-weight: 400;
+  letter-spacing: 0;
+}
 
 * {
   box-sizing: border-box;
 }
 
-html{
-    /* 1. Standard Properties (Firefox / Modern Edge & Chrome) */
-  scrollbar-width: thin;          /* Options: auto | thin | none */
-  scrollbar-color: fade(@red, 50%) @black; /* format: thumb_color track_color */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: fade(@red, 50%) @black;
 
-  /* 2. WebKit Pseudo-elements (Safari / Older Chrome & Edge) */
   &::-webkit-scrollbar {
-    width: 10px;                  /* Width of vertical scrollbar */
-    height: 10px;                 /* Height of horizontal scrollbar */
+    width: 10px;
+    height: 10px;
   }
 
   &::-webkit-scrollbar-track {
-    background: @black;          /* Color of the track (background) */
+    background: @black;
     border-radius: 4px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: @red;    /* Color of the draggable thumb */
-    border-radius: 4px;           /* Roundness of the thumb */
-    border: 2px solid @black;    /* Creates padding around the thumb */
+    background-color: @red;
+    border: 2px solid @black;
+    border-radius: 4px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: @red;    /* Thumb color on hover */
+    background-color: @red;
   }
 }
 
@@ -75,10 +88,128 @@ body {
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
+}
 
-  @media (min-width: 721px) {
+.hero-section {
+  align-items: end;
+  justify-items: center;
+}
+
+.brand-mark {
+  .display-type();
+  .screen-text-shadow();
+
+  align-self: end;
+  position: relative;
+  margin: 0;
+  padding-bottom: 10vh;
+  color: @white;
+  font-size: clamp(2rem, 18vw, 3.5rem);
+  line-height: 35%;
+  text-align: center;
+  text-rendering: geometricPrecision;
+  white-space: normal;
+
+  .brand-name,
+  .brand-extension {
+    display: block;
+  }
+
+  .brand-extension {
+    font-size: 0.3em;
+  }
+
+  .brand-dot {
+    color: @red;
+  }
+}
+
+.copy-section {
+  align-items: end;
+  justify-items: center;
+  background: fade(@red, 3%);
+}
+
+.section-copy {
+  .screen-text-shadow();
+
+  width: min(@copy-width, 100%);
+  margin: 0 0 clamp(38px, 7vh, 68px);
+}
+
+.section-kicker {
+  margin: 0 0 18px;
+  color: @red;
+  font-size: clamp(0.72rem, 1.1vw, 0.88rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  .display-type();
+
+  max-width: 100%;
+  margin: 0;
+  font-size: clamp(2rem, 9.5vw, 2.55rem);
+  line-height: 1;
+
+  span {
+    color: @red;
+  }
+}
+
+.section-text {
+  max-width: @copy-text-width;
+  margin: clamp(20px, 3vw, 32px) 0 0;
+  color: fade(@white, 82%);
+  font-size: clamp(1rem, 1.45vw, 1.28rem);
+  line-height: 1.55;
+}
+
+@media (min-width: 421px) {
+  .brand-mark {
+    font-size: clamp(2.75rem, 14vw, 3.8rem);
+  }
+}
+
+@media (min-width: @tablet) {
+  .site-shell {
     .panel {
       padding: clamp(24px, 6vw, 72px);
     }
+  }
+
+  .brand-mark {
+    font-size: clamp(2.35rem, 8vw, 7.5rem);
+    white-space: nowrap;
+
+    .brand-name,
+    .brand-extension {
+      display: inline;
+    }
+  }
+
+  .section-copy {
+    margin-bottom: clamp(34px, 7vh, 76px);
+  }
+
+  .section-title {
+    max-width: 13ch;
+    font-size: clamp(2.2rem, 4.4vw, 4.35rem);
+  }
+}
+
+@media (min-width: @desktop) {
+  .copy-section {
+    align-items: center;
+  }
+
+  .content-left {
+    justify-items: start;
+  }
+
+  .content-right {
+    justify-items: end;
   }
 }

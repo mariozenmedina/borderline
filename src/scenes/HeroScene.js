@@ -81,7 +81,7 @@ const GLASSES_FIT_CONTROLLER = {
   }
 }
 
-export default class HeroFaceScene {
+export default class HeroScene {
   constructor({ renderer }) {
     this.renderer = renderer
     this.root = new THREE.Group()
@@ -111,7 +111,7 @@ export default class HeroFaceScene {
         MODEL_PATH,
         (gltf) => this.handleModelLoaded(gltf),
         undefined,
-        (error) => console.error('[HeroFaceScene] Falha ao carregar modelo.', error)
+        (error) => console.error('[HeroScene] Falha ao carregar modelo.', error)
       )
   }
 
@@ -143,7 +143,7 @@ export default class HeroFaceScene {
       GLASSES_MODEL_PATH,
       (object) => this.handleGlassesLoaded(object),
       undefined,
-      (error) => console.error('[HeroFaceScene] Falha ao carregar oculos OBJ.', error)
+      (error) => console.error('[HeroScene] Falha ao carregar oculos OBJ.', error)
     )
   }
 

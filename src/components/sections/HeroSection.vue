@@ -12,5 +12,3 @@ export default {
   name: 'HeroSection'
 }
 </script>
-
-<style lang="less" scoped src="./HeroSection.less"></style>

@@ -5,7 +5,7 @@ import { disposeObject, measureObjectSize, setObjectOpacity } from './sceneUtils
 // Mexa nestes valores primeiro para posicionar e calibrar a rede 3D sem cacar numeros no codigo.
 // Cada objeto vale a partir do seu breakpointWidth.
 // A cena escolhe o maior breakpointWidth menor ou igual a largura atual da tela.
-const ABOUT_NETWORK_TUNING = [
+const ABOUT_SCENE_TUNING = [
   {
     breakpointWidth: 0,
 
@@ -135,17 +135,17 @@ const ABOUT_NETWORK_TUNING = [
   }
 ]
 
-function getAboutNetworkTuning(width) {
-  return ABOUT_NETWORK_TUNING
+function getAboutSceneTuning(width) {
+  return ABOUT_SCENE_TUNING
     .filter((tuning) => tuning.breakpointWidth <= width)
-    .sort((a, b) => b.breakpointWidth - a.breakpointWidth)[0] || ABOUT_NETWORK_TUNING[0]
+    .sort((a, b) => b.breakpointWidth - a.breakpointWidth)[0] || ABOUT_SCENE_TUNING[0]
 }
 
-export default class AboutNetworkScene {
+export default class AboutScene {
   constructor() {
     this.root = new THREE.Group()
     this.baseScale = 1
-    this.currentTuning = getAboutNetworkTuning(0)
+    this.currentTuning = getAboutSceneTuning(0)
     this.currentBreakpointWidth = null
 
     this.createObjects()
@@ -246,7 +246,7 @@ export default class AboutNetworkScene {
     const { width = 0 } = context
 
     this.lastResizeContext = context
-    this.currentTuning = getAboutNetworkTuning(width)
+    this.currentTuning = getAboutSceneTuning(width)
 
     if (this.currentBreakpointWidth !== this.currentTuning.breakpointWidth) {
       this.currentBreakpointWidth = this.currentTuning.breakpointWidth
@@ -268,7 +268,7 @@ export default class AboutNetworkScene {
   }
 
   getCameraConfig({ width } = {}) {
-    return getAboutNetworkTuning(width || 0).camera
+    return getAboutSceneTuning(width || 0).camera
   }
 
   // Animacao propria da cena about.
