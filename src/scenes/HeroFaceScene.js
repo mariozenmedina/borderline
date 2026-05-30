@@ -5,8 +5,7 @@ import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.j
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { disposeObject, setObjectOpacity } from './sceneUtils'
 
-/* global __webpack_public_path__ */
-const PUBLIC_BASE_URL = new URL(__webpack_public_path__ || './', window.location.href).href
+const PUBLIC_BASE_URL = new URL(import.meta.env.BASE_URL || './', window.location.href).href
 const publicAssetPath = (path) => {
   return new URL(path.replace(/^\/+/, ''), PUBLIC_BASE_URL).href
 }
