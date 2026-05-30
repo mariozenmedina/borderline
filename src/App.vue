@@ -9,6 +9,7 @@
     <Service03Section />
     <Service04Section />
     <HowWeWorkSection />
+    <ContactSection />
   </main>
 </template>
 
@@ -21,6 +22,7 @@ import Service02Section from './components/sections/Service02Section.vue'
 import Service03Section from './components/sections/Service03Section.vue'
 import Service04Section from './components/sections/Service04Section.vue'
 import HowWeWorkSection from './components/sections/HowWeWorkSection.vue'
+import ContactSection from './components/sections/ContactSection.vue'
 
 export default {
   name: 'App',
@@ -32,7 +34,8 @@ export default {
     Service02Section,
     Service03Section,
     Service04Section,
-    HowWeWorkSection
+    HowWeWorkSection,
+    ContactSection
   }
 }
 </script>

@@ -253,6 +253,101 @@ body {
     }
 }
 
+.contact-section {
+    align-content: center;
+    justify-items: center;
+    gap: clamp(24px, 5vh, 44px);
+    background: linear-gradient(180deg, fade(@black, 0%), fade(@red, 7%));
+}
+
+.contact-copy {
+    .screen-text-shadow();
+
+    width: min(920px, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.contact-support {
+    margin-top: 14px;
+}
+
+.linkedin-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 54px;
+    margin-top: clamp(24px, 4vw, 36px);
+    padding: 0 22px;
+    border: 1px solid fade(@red, 68%);
+    border-radius: 8px;
+    background:
+        linear-gradient(135deg, fade(@red, 74%), fade(@red, 34%)),
+        fade(@black, 30%);
+    color: @white;
+    font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    box-shadow: 0 14px 42px fade(@black, 36%);
+    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+
+    &:hover,
+    &:focus-visible {
+        transform: translateY(-2px);
+        border-color: fade(@white, 62%);
+        background:
+            linear-gradient(135deg, @red, fade(@red, 50%)),
+            fade(@black, 22%);
+    }
+
+    &:focus-visible {
+        outline: 2px solid fade(@white, 78%);
+        outline-offset: 4px;
+    }
+}
+
+.linkedin-mark {
+    .display-type();
+
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid fade(@white, 72%);
+    border-radius: 4px;
+    color: @white;
+    font-size: 0.88rem;
+    line-height: 1;
+}
+
+.contact-signals {
+    .screen-text-shadow();
+
+    width: min(920px, 100%);
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.contact-signals li {
+    min-width: 0;
+    padding: 16px 18px;
+    border: 1px solid fade(@white, 14%);
+    border-radius: 8px;
+    background:
+        linear-gradient(135deg, fade(@red, 16%), fade(@black, 24%) 44%, fade(@black, 14%)),
+        fade(@black, 18%);
+    color: fade(@white, 80%);
+    font-size: clamp(0.92rem, 1.05vw, 1rem);
+    line-height: 1.45;
+    backdrop-filter: blur(6px);
+}
+
 @media (min-width: 421px) {
     .brand-mark {
         font-size: clamp(2.75rem, 14vw, 3.8rem);
@@ -292,6 +387,22 @@ body {
         .section-title {
             max-width: 16ch;
         }
+    }
+
+    .contact-section {
+        text-align: center;
+    }
+
+    .contact-copy {
+        align-items: center;
+
+        .section-title {
+            max-width: 15ch;
+        }
+    }
+
+    .contact-signals {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .work-steps {
