@@ -5,8 +5,15 @@ import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.j
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { disposeObject, setObjectOpacity } from './sceneUtils'
 
-const MODEL_PATH = '/models/gltf/facecap.glb'
-const GLASSES_MODEL_PATH = '/models/obj/oculos.obj'
+/* global __webpack_public_path__ */
+const PUBLIC_BASE_URL = new URL(__webpack_public_path__ || './', window.location.href).href
+const publicAssetPath = (path) => {
+  return new URL(path.replace(/^\/+/, ''), PUBLIC_BASE_URL).href
+}
+
+const MODEL_PATH = publicAssetPath('models/gltf/facecap.glb')
+const GLASSES_MODEL_PATH = publicAssetPath('models/obj/oculos.obj')
+const KTX2_TRANSCODER_PATH = publicAssetPath('')
 const FACE_YAW_OFFSET = THREE.MathUtils.degToRad(0)
 
 // Painel de ajuste manual do rosto da hero.
@@ -95,7 +102,7 @@ export default class HeroFaceScene {
   // Carregamento do GLB da primeira secao.
   loadModel() {
     this.ktx2Loader = new KTX2Loader()
-      .setTranscoderPath('/')
+      .setTranscoderPath(KTX2_TRANSCODER_PATH)
       .detectSupport(this.renderer)
 
     new GLTFLoader()
