@@ -1,11 +1,11 @@
 <template>
   <section class="panel copy-section content-left" data-scene="service-02" aria-labelledby="service-02-title">
     <div class="section-copy">
-      <p class="section-kicker">Servi&ccedil;os 02</p>
-      <h2 id="service-02-title" class="section-title">Experi&ecirc;ncias Interativas. Movimento como linguagem<span>.</span></h2>
+      <p class="section-kicker">Experiências Interativas</p>
+      <h2 id="service-02-title" class="section-title">Jogos, dados e Animações<span>.</span></h2>
       <p class="section-text">
-        Interfaces interativas, visualiza&ccedil;&otilde;es de dados, anima&ccedil;&otilde;es avan&ccedil;adas e experi&ecirc;ncias
-        tridimensionais desenvolvidas para marcas que precisam se destacar al&eacute;m do layout est&aacute;tico.
+        Interfaces interativas, visualizações de dados com gráficos dinâmicos, animações avançadas, jogos e experiências
+        tridimensionais para garantir destaque.
       </p>
     </div>
   </section>
