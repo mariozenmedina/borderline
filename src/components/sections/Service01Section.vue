@@ -1,5 +1,5 @@
 <template>
-  <section class="panel copy-section content-left" data-scene="service-01" aria-labelledby="service-01-title">
+  <section class="panel copy-section content-right" data-scene="service-01" aria-labelledby="service-01-title">
     <div class="section-copy">
       <p class="section-kicker">Servi&ccedil;os 01</p>
       <h2 id="service-01-title" class="section-title">Websites &amp; Landing Pages. Websites que respeitam o design<span>.</span></h2>
