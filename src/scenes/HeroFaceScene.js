@@ -18,7 +18,7 @@ const HERO_FACE_TUNING = {
     far: 30,
     position: {
       x: 0,
-      y: 0.3,
+      y: 0,
       z: 1.5
     },
     lookAt: {
@@ -36,7 +36,7 @@ const HERO_FACE_TUNING = {
   // x: esquerda/direita, y: baixo/cima, z: para tras/para frente em relacao a camera.
   position: {
     x: 0,
-    y: 0.5,
+    y: 0.3,
     z: 0
   },
 

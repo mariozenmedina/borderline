@@ -9,79 +9,64 @@ const ABOUT_NETWORK_TUNING = [
   {
     breakpointWidth: 0,
 
-    // Camera compartilhada: estes valores sao aplicados apenas quando esta cena recebe a camera no resize.
-    // Como a camera e global, ajustes aqui tambem influenciam o enquadramento das outras cenas.
     camera: {
-      fov: 75,
+      fov: 10,
       near: 0.01,
-      far: 120,
+      far: 30,
       position: {
         x: 0,
         y: 0,
-        z: 50
+        z: 0
       },
       lookAt: {
-        x: 0,
-        y: -30,
-        z: 0
+        x: .2,
+        y: .41,
+        z: -1.5
       }
     },
-
-    // Tamanho final do objeto depois da normalizacao pela maior dimensao da cena.
-    modelTargetSize: 20,
-
-    // Posicao do grupo inteiro no mundo 3D.
-    // x: esquerda/direita, y: baixo/cima, z: para tras/para frente em relacao a camera.
+    modelTargetSize: .35,
     position: {
-      x: -9,
-      y: 0,
-      z: 0
+      x: .25,
+      y: .5,
+      z: -1.5
     },
-
-    // Rotacao inicial da rede antes da animacao continua.
     initialRotation: {
       x: 0.2,
       y: -0.4,
       z: 0.1
     },
-
-    // Giro continuo por segundo. Use 0 no eixo que quiser parar.
     spinSpeed: {
-      x: 0.08,
-      y: 0.18
+      x: 0.22,
+      y: 0.14
     },
-
-    // Quanto o mouse inclina a cena no eixo Z.
     pointerRotation: {
-      z: 0.16,
+      z: 0.56,
       smoothing: 0.035
     },
-
-    // Pulso leve ligado ao peso/visibilidade da secao. Use 0 para manter escala fixa.
     weightScaleBoost: 0.1
   },
   {
     breakpointWidth: 720,
     camera: {
-      fov: 32,
+      fov: 10,
       near: 0.01,
-      far: 120,
+      far: 30,
       position: {
         x: 0,
         y: 0,
-        z: 38
+        z: 0
       },
       lookAt: {
-        x: -5,
-        y: -5,
-        z: 0
+        x: .2,
+        y: .4,
+        z: -1.5
       }
     },
-    modelTargetSize: 20,
+    modelTargetSize: .35,
     position: {
-      x: 0,
-      y: 0,
-      z: 0
+      x: .25,
+      y: .5,
+      z: -1.5
     },
     initialRotation: {
       x: 0.2,
@@ -101,25 +86,25 @@ const ABOUT_NETWORK_TUNING = [
 {
     breakpointWidth: 1200,
     camera: {
-      fov: 32,
+      fov: 10,
       near: 0.01,
-      far: 120,
+      far: 30,
       position: {
         x: 0,
         y: 0,
-        z: 30
+        z: 0
       },
       lookAt: {
-        x: -5,
-        y: 0,
-        z: 0
+        x: .2,
+        y: .5,
+        z: -1.5
       }
     },
-    modelTargetSize: 20,
+    modelTargetSize: .35,
     position: {
-      x: 0,
-      y: 0,
-      z: 0
+      x: .3,
+      y: .5,
+      z: -1.5
     },
     initialRotation: {
       x: 0.2,
