@@ -2,9 +2,11 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js'
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js'
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { disposeObject, setObjectOpacity } from './sceneUtils'
 
 const MODEL_PATH = '/models/gltf/facecap.glb'
+const GLASSES_MODEL_PATH = '/models/obj/oculos.obj'
 const FACE_YAW_OFFSET = THREE.MathUtils.degToRad(0)
 
 // Painel de ajuste manual do rosto da hero.
@@ -57,12 +59,29 @@ const HERO_FACE_TUNING = {
   }
 }
 
+// Controlador temporario para encaixe manual do oculos.
+// Estes valores sao locais ao rosto ja centralizado; o grupo ainda segue o tuning da face.
+const GLASSES_FIT_CONTROLLER = {
+  scale: 1.1,
+  position: {
+    x: 0,
+    y: .145,
+    z: .07
+  },
+  rotation: {
+    x: 0,
+    y: 0,
+    z: 0
+  }
+}
+
 export default class HeroFaceScene {
   constructor({ renderer }) {
     this.renderer = renderer
     this.root = new THREE.Group()
     this.baseRotation = new THREE.Euler()
     this.faceSize = new THREE.Vector3(1, 1, 1)
+    this.modelCenter = new THREE.Vector3()
     this.baseScale = 1
     this.currentWeight = 1
     this.disposed = false
@@ -108,16 +127,72 @@ export default class HeroFaceScene {
 
     this.alignFaceByEyes(face)
     this.centerFace()
+    this.loadGlasses()
     this.resize(this.lastResizeContext || { width: window.innerWidth })
+    this.setOpacity(this.currentWeight)
+  }
+
+  loadGlasses() {
+    new OBJLoader().load(
+      GLASSES_MODEL_PATH,
+      (object) => this.handleGlassesLoaded(object),
+      undefined,
+      (error) => console.error('[HeroFaceScene] Falha ao carregar oculos OBJ.', error)
+    )
+  }
+
+  handleGlassesLoaded(object) {
+    if (this.disposed) {
+      disposeObject(object)
+      return
+    }
+
+    const glasses = new THREE.Group()
+    glasses.name = 'hero-glasses'
+    glasses.add(object)
+
+    const material = new THREE.MeshBasicMaterial({
+      color: 0xb8b8b8,
+      transparent: true,
+      opacity: 0.25,
+      depthWrite: false,
+      depthTest: false,
+      side: THREE.DoubleSide,
+      wireframe: true
+    })
+    material.userData.baseOpacity = material.opacity
+
+    object.traverse((child) => {
+      if (!child.isMesh) {
+        return
+      }
+
+      child.material = material.clone()
+      child.material.userData.baseOpacity = material.userData.baseOpacity
+      child.castShadow = false
+      child.receiveShadow = false
+    })
+
+    const rotation = GLASSES_FIT_CONTROLLER.rotation
+    glasses.rotation.set(
+      THREE.MathUtils.degToRad(rotation.x),
+      THREE.MathUtils.degToRad(rotation.y),
+      THREE.MathUtils.degToRad(rotation.z)
+    )
+    glasses.scale.setScalar(GLASSES_FIT_CONTROLLER.scale)
+    glasses.position.copy(GLASSES_FIT_CONTROLLER.position).sub(this.modelCenter)
+
+    this.root.add(glasses)
+    this.glasses = glasses
     this.setOpacity(this.currentWeight)
   }
 
   // Materiais: a cena decide como o modelo deve aparecer.
   applyTransparentWireframe(face) {
     const wireMaterial = new THREE.MeshBasicMaterial({
-      color: 0xb8b8b8,
+      color: 0xe50914,
       transparent: true,
-      opacity: 0.34,
+      opacity: 0.05,
       alphaTest: 0,
       depthWrite: false,
       depthTest: false,
@@ -156,6 +231,7 @@ export default class HeroFaceScene {
       child.position.sub(center)
     })
 
+    this.modelCenter.copy(center)
     new THREE.Box3().setFromObject(this.root).getSize(this.faceSize)
   }
 

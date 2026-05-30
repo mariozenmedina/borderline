@@ -36,8 +36,12 @@ const ABOUT_NETWORK_TUNING = [
       z: 0.1
     },
     spinSpeed: {
-      x: 0.22,
-      y: 0.14
+      x: 0.06,
+      y: 0.02
+    },
+    knotSpinSpeed: {
+      x: -0.12,
+      y: -0.10
     },
     pointerRotation: {
       z: 0.56,
@@ -74,8 +78,12 @@ const ABOUT_NETWORK_TUNING = [
       z: 0.1
     },
     spinSpeed: {
-      x: 0.22,
-      y: 0.14
+      x: 0.06,
+      y: 0.02
+    },
+    knotSpinSpeed: {
+      x: -0.12,
+      y: -0.10
     },
     pointerRotation: {
       z: 0.56,
@@ -112,8 +120,12 @@ const ABOUT_NETWORK_TUNING = [
       z: 0.1
     },
     spinSpeed: {
-      x: 0.22,
-      y: 0.14
+      x: 0.06,
+      y: 0.02
+    },
+    knotSpinSpeed: {
+      x: -0.12,
+      y: -0.10
     },
     pointerRotation: {
       z: 0.56,
@@ -162,13 +174,13 @@ export default class AboutNetworkScene {
 
   // Elementos 3D da secao about.
   createObjects() {
-    const shellMaterial = this.createMaterial(0xd8d8d8, 0.2)
-    const redMaterial = this.createMaterial(0xe50914, 0.42)
-    const nodeMaterial = this.createMaterial(0xf5f5f5, 0.5, false)
+    const shellMaterial = this.createMaterial(0xc1d5f9, 0.5)
+    const redMaterial = this.createMaterial(0xe50914, 0.3)
+    const nodeMaterial = this.createMaterial(0xf5f5f5, 0.1, false)
     const signalMaterial = new THREE.LineBasicMaterial({
       color: 0xe50914,
       transparent: true,
-      opacity: 0.2,
+      opacity: 0.3,
       depthWrite: false,
       depthTest: false
     })
@@ -188,13 +200,15 @@ export default class AboutNetworkScene {
     knot.material.userData.baseOpacity = redMaterial.userData.baseOpacity
     knot.rotation.set(0.8, 0.12, 0.4)
     this.root.add(knot)
+    this.knot = knot
 
-    const orbitGeometry = new THREE.TorusGeometry(1.05, 0.01, 8, 128)
+    const orbitGeometry = new THREE.TorusGeometry(1.05, 0.015, 8, 128)
 
     for (let index = 0; index < 3; index += 1) {
       const orbit = new THREE.Mesh(orbitGeometry, shellMaterial.clone())
 
-      orbit.material.userData.baseOpacity = 0.14
+      orbit.material.userData.baseOpacity = 0.05
+      orbit.material.color.set(0xffffff)
       orbit.rotation.set(index * 0.72, index * 1.14, index * 0.38)
       this.root.add(orbit)
     }
@@ -261,6 +275,8 @@ export default class AboutNetworkScene {
   animate({ delta, pointer, weight }) {
     this.root.rotation.x += delta * this.currentTuning.spinSpeed.x
     this.root.rotation.y += delta * this.currentTuning.spinSpeed.y
+    this.knot.rotation.x += delta * this.currentTuning.knotSpinSpeed.x
+    this.knot.rotation.y += delta * this.currentTuning.knotSpinSpeed.y
     this.root.rotation.z += (
       (pointer?.x || 0) * this.currentTuning.pointerRotation.z - this.root.rotation.z
     ) * this.currentTuning.pointerRotation.smoothing

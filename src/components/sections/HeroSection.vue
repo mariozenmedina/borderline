@@ -1,7 +1,8 @@
 <template>
   <section class="panel hero-section" data-scene="hero" aria-labelledby="brand-title">
     <h1 id="brand-title" class="brand-mark" aria-label="Borderline.Dev">
-      <span class="brand-name">Borderline</span><span class="brand-extension"><span class="brand-dot">.</span><span>Dev</span></span>
+      <span class="brand-name">Borderline</span>
+      <span class="brand-extension"><span class="brand-dot">.</span><span>dev</span><span class="brand-dot">.</span><span>br</span></span>
     </h1>
   </section>
 </template>
