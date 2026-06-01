@@ -49,7 +49,6 @@ export default {
         this.sceneRoot?.removeEventListener('scroll', this.handleSceneRootScroll)
         window.removeEventListener('resize', this.resize)
         window.visualViewport?.removeEventListener('resize', this.resize)
-        window.visualViewport?.removeEventListener('scroll', this.resize)
         window.removeEventListener('pointermove', this.handlePointerMove)
 
         Object.values(this.sceneInstances).forEach((sceneModule) => sceneModule.dispose?.())
@@ -215,7 +214,6 @@ export default {
             this.resizeObserver.observe(this.$refs.stage)
             window.addEventListener('resize', this.resize)
             window.visualViewport?.addEventListener('resize', this.resize)
-            window.visualViewport?.addEventListener('scroll', this.resize)
             window.addEventListener('pointermove', this.handlePointerMove, { passive: true })
         },
 

@@ -7,13 +7,97 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Offside&display=swap" rel="stylesheet">
+    <style>
+      .boot-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        perspective: 900px;
+        background:
+          linear-gradient(90deg, rgba(229, 9, 20, 0.1) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(245, 245, 245, 0.05) 1px, transparent 1px),
+          #010509;
+        background-size: 52px 52px, 52px 52px, auto;
+        color: #f5f5f5;
+        font-family: 'Offside', Arial, Helvetica, sans-serif;
+      }
+
+      .boot-loader__mark {
+        position: absolute;
+        width: clamp(150px, 44vw, 360px);
+        aspect-ratio: 1;
+        transform-style: preserve-3d;
+        animation: boot-loader-spin 2400ms linear infinite;
+      }
+
+      .boot-loader__mark span {
+        position: absolute;
+        inset: 15%;
+        border: 1px solid rgba(229, 9, 20, 0.68);
+        box-shadow: 0 0 36px rgba(229, 9, 20, 0.26);
+        transform: translateZ(46px) rotate(45deg);
+      }
+
+      .boot-loader__mark span:nth-child(2) {
+        border-color: rgba(245, 245, 245, 0.46);
+        transform: translateZ(-46px) rotate(45deg);
+      }
+
+      .boot-loader__content {
+        position: relative;
+        display: grid;
+        justify-items: center;
+        gap: 16px;
+        text-shadow: 0 0 22px rgba(1, 5, 9, 0.88), 0 0 54px rgba(1, 5, 9, 0.76);
+      }
+
+      .boot-loader__brand {
+        margin: 0;
+        font-size: clamp(2rem, 14vw, 7rem);
+        line-height: 0.8;
+      }
+
+      .boot-loader__brand span {
+        color: #e50914;
+      }
+
+      .boot-loader__progress {
+        min-width: 5ch;
+        margin: 0;
+        color: rgba(245, 245, 245, 0.82);
+        font-size: clamp(0.92rem, 2.8vw, 1.2rem);
+        line-height: 1;
+        text-align: center;
+      }
+
+      @keyframes boot-loader-spin {
+        from {
+          transform: rotateX(64deg) rotateZ(0deg);
+        }
+
+        to {
+          transform: rotateX(64deg) rotateZ(360deg);
+        }
+      }
+    </style>
     <title>Borderline.Dev</title>
   </head>
   <body>
     <noscript>
       <strong>Borderline.Dev precisa de JavaScript habilitado para funcionar corretamente.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="app">
+      <div class="boot-loader" aria-live="polite">
+        <div class="boot-loader__mark" aria-hidden="true"><span></span><span></span></div>
+        <div class="boot-loader__content">
+          <p class="boot-loader__brand">borderline<span>.</span></p>
+          <p class="boot-loader__progress">0%</p>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
