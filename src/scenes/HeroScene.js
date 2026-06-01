@@ -91,6 +91,9 @@ export default class HeroScene {
     this.baseScale = 1
     this.currentWeight = 1
     this.disposed = false
+    this.readyPromise = new Promise((resolve) => {
+      this.resolveReady = resolve
+    })
   }
 
   mount(worldScene) {
@@ -111,7 +114,10 @@ export default class HeroScene {
         MODEL_PATH,
         (gltf) => this.handleModelLoaded(gltf),
         undefined,
-        (error) => console.error('[HeroScene] Falha ao carregar modelo.', error)
+        (error) => {
+          console.error('[HeroScene] Falha ao carregar modelo.', error)
+          this.markReady()
+        }
       )
   }
 
@@ -143,7 +149,10 @@ export default class HeroScene {
       GLASSES_MODEL_PATH,
       (object) => this.handleGlassesLoaded(object),
       undefined,
-      (error) => console.error('[HeroScene] Falha ao carregar oculos OBJ.', error)
+      (error) => {
+        console.error('[HeroScene] Falha ao carregar oculos OBJ.', error)
+        this.markReady()
+      }
     )
   }
 
@@ -191,6 +200,16 @@ export default class HeroScene {
     this.root.add(glasses)
     this.glasses = glasses
     this.setOpacity(this.currentWeight)
+    this.markReady()
+  }
+
+  onReady() {
+    return this.readyPromise
+  }
+
+  markReady() {
+    this.resolveReady?.()
+    this.resolveReady = null
   }
 
   // Materiais: a cena decide como o modelo deve aparecer.
@@ -315,6 +334,7 @@ export default class HeroScene {
 
   dispose() {
     this.disposed = true
+    this.markReady()
     this.root.parent?.remove(this.root)
     disposeObject(this.root)
     this.ktx2Loader?.dispose()

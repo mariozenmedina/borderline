@@ -1,5 +1,9 @@
 <template>
-  <component :is="sceneBackdropComponent" v-if="sceneBackdropComponent" />
+  <component
+    :is="sceneBackdropComponent"
+    v-if="sceneBackdropComponent"
+    @ready="handleSceneBackdropReady"
+  />
   <LoadingScreen
     v-if="isLoadingVisible"
     :leaving="isLoadingLeaving"
@@ -78,10 +82,15 @@ export default {
       isLoadingVisible: true,
       isLoadingLeaving: false,
       loadingProgress: 8,
-      sceneBackdropComponent: null
+      sceneBackdropComponent: null,
+      sceneBackdropReadyPromise: null,
+      resolveSceneBackdropReady: null
     }
   },
   mounted() {
+    this.sceneBackdropReadyPromise = new Promise((resolve) => {
+      this.resolveSceneBackdropReady = resolve
+    })
     this.preloadExperience()
   },
   methods: {
@@ -112,6 +121,8 @@ export default {
       const sceneBackdropModule = await import('./components/SceneBackdrop.vue')
       this.sceneBackdropComponent = markRaw(sceneBackdropModule.default)
       this.setLoadingProgress(35)
+      await withTimeout(this.sceneBackdropReadyPromise || Promise.resolve(), PRELOAD_TIMEOUT)
+      this.setLoadingProgress(96)
     },
 
     async preloadAssets() {
@@ -141,6 +152,11 @@ export default {
 
     setLoadingProgress(progress) {
       this.loadingProgress = Math.max(this.loadingProgress, progress)
+    },
+
+    handleSceneBackdropReady() {
+      this.resolveSceneBackdropReady?.()
+      this.resolveSceneBackdropReady = null
     }
   }
 }

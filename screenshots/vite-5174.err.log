@@ -1,0 +1,24 @@
+$ vite "--" "--host" "127.0.0.1" "--port" "5174"
+node:internal/fs/watchers:321
+    const error = new UVException({
+                  ^
+
+Error: EBUSY: resource busy or locked, watch 'C:\dev\borderline\screenshots\chrome-hero-5174-profile\Default\Safe Browsing Network\Safe Browsing Cookies'
+    at FSWatcher.<computed> (node:internal/fs/watchers:321:19)
+    at Object.watch (node:fs:2548:36)
+    at createFsWatchInstance (file:///C:/dev/borderline/node_modules/.pnpm/vite@8.0.14_less@4.6.4/node_modules/vite/dist/node/chunks/node.js:8496:16)
+    at setFsWatchListener (file:///C:/dev/borderline/node_modules/.pnpm/vite@8.0.14_less@4.6.4/node_modules/vite/dist/node/chunks/node.js:8538:14)
+    at NodeFsHandler._watchWithNodeFs (file:///C:/dev/borderline/node_modules/.pnpm/vite@8.0.14_less@4.6.4/node_modules/vite/dist/node/chunks/node.js:8652:20)
+    at NodeFsHandler._handleFile (file:///C:/dev/borderline/node_modules/.pnpm/vite@8.0.14_less@4.6.4/node_modules/vite/dist/node/chunks/node.js:8696:24)
+    at NodeFsHandler._addToNodeFs (file:///C:/dev/borderline/node_modules/.pnpm/vite@8.0.14_less@4.6.4/node_modules/vite/dist/node/chunks/node.js:8870:26)
+Emitted 'error' event on FSWatcher instance at:
+    at FSWatcher._handleError (file:///C:/dev/borderline/node_modules/.pnpm/vite@8.0.14_less@4.6.4/node_modules/vite/dist/node/chunks/node.js:9669:146)
+    at NodeFsHandler._addToNodeFs (file:///C:/dev/borderline/node_modules/.pnpm/vite@8.0.14_less@4.6.4/node_modules/vite/dist/node/chunks/node.js:8875:18) {
+  errno: -4082,
+  syscall: 'watch',
+  code: 'EBUSY',
+  path: 'C:\\dev\\borderline\\screenshots\\chrome-hero-5174-profile\\Default\\Safe Browsing Network\\Safe Browsing Cookies',
+  filename: 'C:\\dev\\borderline\\screenshots\\chrome-hero-5174-profile\\Default\\Safe Browsing Network\\Safe Browsing Cookies'
+}
+
+Node.js v24.16.0

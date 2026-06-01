@@ -13,6 +13,7 @@ const OBSERVER_THRESHOLDS = [0, 0.2, 0.4, 0.6, 0.8, 1]
 
 export default {
     name: 'SceneBackdrop',
+    emits: ['ready'],
     props: {
         rootSelector: {
             type: String,
@@ -34,6 +35,7 @@ export default {
 
         this.initThree()
         this.initSceneRegistry()
+        this.notifyDefaultSceneReady()
         this.resize()
         this.observeViewport()
         this.observeSectionsWhenReady()
@@ -96,6 +98,21 @@ export default {
                 this.sceneWeights[sceneId] = sceneId === this.activeScene ? 1 : 0
                 sceneModule.setOpacity?.(this.sceneWeights[sceneId])
             })
+        },
+
+        notifyDefaultSceneReady() {
+            const sceneModule = this.sceneInstances?.[DEFAULT_SCENE]
+            const sceneReady = sceneModule?.onReady?.() || sceneModule?.readyPromise || Promise.resolve()
+
+            Promise.resolve(sceneReady)
+                .catch((error) => {
+                    console.warn('[SceneBackdrop] Cena inicial nao sinalizou prontidao.', error)
+                })
+                .finally(() => {
+                    if (!this.isUnmounted) {
+                        this.$emit('ready')
+                    }
+                })
         },
 
         // Observer do scroll: decide qual data-scene esta mais visivel.
