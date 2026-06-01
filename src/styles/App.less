@@ -328,9 +328,8 @@ body {
     border: 1px solid fade(@white, 16%);
     border-radius: 8px;
     background:
-        linear-gradient(135deg, fade(@red, 18%), fade(@black, 28%) 38%, fade(@black, 12%)),
-        fade(@black, 18%);
-    backdrop-filter: blur(6px);
+        linear-gradient(135deg, fade(@red, 24%), fade(@black, 54%) 38%, fade(@black, 36%)),
+        fade(@black, 54%);
 }
 
 .work-step-number {
@@ -455,12 +454,11 @@ body {
     border: 1px solid fade(@white, 14%);
     border-radius: 8px;
     background:
-        linear-gradient(135deg, fade(@red, 16%), fade(@black, 24%) 44%, fade(@black, 14%)),
-        fade(@black, 18%);
+        linear-gradient(135deg, fade(@red, 22%), fade(@black, 52%) 44%, fade(@black, 34%)),
+        fade(@black, 54%);
     color: fade(@white, 80%);
     font-size: clamp(0.92rem, 1.05vw, 1rem);
     line-height: 1.45;
-    backdrop-filter: blur(6px);
 }
 
 @media (min-width: 421px) {
@@ -571,11 +569,22 @@ body {
         align-content: start;
         min-height: 292px;
         padding: 20px;
+        background:
+            linear-gradient(135deg, fade(@red, 18%), fade(@black, 28%) 38%, fade(@black, 12%)),
+            fade(@black, 18%);
+        backdrop-filter: blur(6px);
     }
 
     .work-step-number {
         position: relative;
         z-index: 1;
         background: fade(@black, 58%);
+    }
+
+    .contact-signals li {
+        background:
+            linear-gradient(135deg, fade(@red, 16%), fade(@black, 24%) 44%, fade(@black, 14%)),
+            fade(@black, 18%);
+        backdrop-filter: blur(6px);
     }
 }
