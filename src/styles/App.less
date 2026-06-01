@@ -75,6 +75,7 @@ body {
     height: 100svh;
     overflow-x: hidden;
     overflow-y: auto;
+    scroll-snap-type: y mandatory;
     overscroll-behavior-y: contain;
 
     .panel {
@@ -85,6 +86,8 @@ body {
         overflow: hidden;
         padding: 28px;
         background: transparent;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
     }
 }
 
@@ -176,6 +179,8 @@ body {
     overflow: visible;
     gap: clamp(26px, 5vh, 54px);
     background: fade(@red, 4%);
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
 }
 
 .how-we-work-copy {
@@ -255,6 +260,8 @@ body {
     justify-items: center;
     gap: clamp(24px, 5vh, 44px);
     background: linear-gradient(180deg, fade(@black, 0%), fade(@red, 7%));
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
 }
 
 .contact-copy {
@@ -417,15 +424,6 @@ body {
 }
 
 @media (min-width: @desktop) {
-    .site-shell {
-        scroll-snap-type: y mandatory;
-
-        .panel {
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-        }
-    }
-
     .copy-section {
         align-items: center;
     }
