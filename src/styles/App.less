@@ -75,7 +75,6 @@ body {
     height: 100svh;
     overflow-x: hidden;
     overflow-y: auto;
-    scroll-snap-type: y mandatory;
     overscroll-behavior-y: contain;
 
     .panel {
@@ -86,8 +85,6 @@ body {
         overflow: hidden;
         padding: 28px;
         background: transparent;
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
     }
 }
 
@@ -420,6 +417,15 @@ body {
 }
 
 @media (min-width: @desktop) {
+    .site-shell {
+        scroll-snap-type: y mandatory;
+
+        .panel {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+    }
+
     .copy-section {
         align-items: center;
     }
