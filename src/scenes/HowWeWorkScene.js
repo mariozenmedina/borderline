@@ -36,8 +36,7 @@ const HOW_WE_WORK_SCENE_TUNING = [
       z: 0.06,
       smoothing: 0.045
     },
-    floatSpeed: 1,
-    weightScaleBoost: 0.1
+    floatSpeed: 1
   },
   {
     breakpointWidth: 720,
@@ -73,8 +72,7 @@ const HOW_WE_WORK_SCENE_TUNING = [
       z: 0.06,
       smoothing: 0.045
     },
-    floatSpeed: 1,
-    weightScaleBoost: 0.1
+    floatSpeed: 1
   },
   {
     breakpointWidth: 1200,
@@ -110,8 +108,7 @@ const HOW_WE_WORK_SCENE_TUNING = [
       z: 0.06,
       smoothing: 0.045
     },
-    floatSpeed: 1,
-    weightScaleBoost: 0.1
+    floatSpeed: 1
   }
 ]
 
@@ -341,7 +338,7 @@ export default class HowWeWorkScene {
     return getHowWeWorkSceneTuning(width || 0).camera
   }
 
-  animate({ delta, pointer, weight }) {
+  animate({ delta, pointer }) {
     this.elapsed += delta * this.currentTuning.floatSpeed
 
     const smoothing = this.currentTuning.pointerRotation.smoothing
@@ -357,11 +354,7 @@ export default class HowWeWorkScene {
     this.updateMarker()
     this.agencyShell.rotation.y += delta * 0.18
     this.process.position.y = Math.sin(this.elapsed * 0.72) * 0.024
-    this.root.scale.setScalar(
-      this.baseScale * (
-        1 - this.currentTuning.weightScaleBoost + weight * this.currentTuning.weightScaleBoost
-      )
-    )
+    this.root.scale.setScalar(this.baseScale)
   }
 
   updateSteps() {

@@ -36,8 +36,7 @@ const CONTACT_SCENE_TUNING = [
       z: 0.05,
       smoothing: 0.045
     },
-    floatSpeed: 1,
-    weightScaleBoost: 0.1
+    floatSpeed: 1
   },
   {
     breakpointWidth: 720,
@@ -73,8 +72,7 @@ const CONTACT_SCENE_TUNING = [
       z: 0.05,
       smoothing: 0.045
     },
-    floatSpeed: 1,
-    weightScaleBoost: 0.1
+    floatSpeed: 1
   },
   {
     breakpointWidth: 1200,
@@ -110,8 +108,7 @@ const CONTACT_SCENE_TUNING = [
       z: 0.05,
       smoothing: 0.045
     },
-    floatSpeed: 1,
-    weightScaleBoost: 0.1
+    floatSpeed: 1
   }
 ]
 
@@ -473,7 +470,7 @@ export default class ContactScene {
     return getContactSceneTuning(width || 0).camera
   }
 
-  animate({ delta, pointer, weight }) {
+  animate({ delta, pointer }) {
     this.elapsed += delta * this.currentTuning.floatSpeed
 
     const smoothing = this.currentTuning.pointerRotation.smoothing
@@ -497,11 +494,7 @@ export default class ContactScene {
     })
 
     this.network.position.y = Math.sin(this.elapsed * 0.62) * 0.018
-    this.root.scale.setScalar(
-      this.baseScale * (
-        1 - this.currentTuning.weightScaleBoost + weight * this.currentTuning.weightScaleBoost
-      )
-    )
+    this.root.scale.setScalar(this.baseScale)
   }
 
   setOpacity(weight) {

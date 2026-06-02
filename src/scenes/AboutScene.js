@@ -6,294 +6,287 @@ import { disposeObject, measureObjectSize, setObjectOpacity } from './sceneUtils
 // Cada objeto vale a partir do seu breakpointWidth.
 // A cena escolhe o maior breakpointWidth menor ou igual a largura atual da tela.
 const ABOUT_SCENE_TUNING = [
-  {
-    breakpointWidth: 0,
+    {
+        breakpointWidth: 0,
 
-    camera: {
-      fov: 10,
-      near: 0.01,
-      far: 30,
-      position: {
-        x: 0,
-        y: 0,
-        z: -0.24
-      },
-      lookAt: {
-        x: .2,
-        y: .41,
-        z: -1.74
-      }
+        camera: {
+            fov: 38,
+            near: 0.1,
+            far: 8,
+            position: {
+                x: 0,
+                y: 0,
+                z: 10
+            },
+            lookAt: {
+                x: -.1,
+                y: -.3,
+                z: 0
+            }
+        },
+        modelTargetSize: 1,
+        position: {
+            x: 0,
+            y: .3,
+            z: 8
+        },
+        initialRotation: {
+            x: 0.2,
+            y: -0.4,
+            z: 0.1
+        },
+        spinSpeed: {
+            x: 0.06,
+            y: 0.02
+        },
+        knotSpinSpeed: {
+            x: -0.12,
+            y: -0.10
+        },
+        pointerRotation: {
+            z: 0.56,
+            smoothing: 0.035
+        }
     },
-    modelTargetSize: .35,
-    position: {
-      x: .25,
-      y: .5,
-      z: -1.74
+    {
+        breakpointWidth: 720,
+        camera: {
+            fov: 38,
+            near: 0.1,
+            far: 8,
+            position: {
+                x: 0,
+                y: 0,
+                z: 10
+            },
+            lookAt: {
+                x: -.1,
+                y: -.3,
+                z: 0
+            }
+        },
+        modelTargetSize: 1,
+        position: {
+            x: .1,
+            y: .2,
+            z: 8.5
+        },
+        initialRotation: {
+            x: 0.2,
+            y: -0.4,
+            z: 0.1
+        },
+        spinSpeed: {
+            x: 0.06,
+            y: 0.02
+        },
+        knotSpinSpeed: {
+            x: -0.12,
+            y: -0.10
+        },
+        pointerRotation: {
+            z: 0.56,
+            smoothing: 0.035
+        }
     },
-    initialRotation: {
-      x: 0.2,
-      y: -0.4,
-      z: 0.1
-    },
-    spinSpeed: {
-      x: 0.06,
-      y: 0.02
-    },
-    knotSpinSpeed: {
-      x: -0.12,
-      y: -0.10
-    },
-    pointerRotation: {
-      z: 0.56,
-      smoothing: 0.035
-    },
-    weightScaleBoost: 0.1
-  },
-  {
-    breakpointWidth: 720,
-    camera: {
-      fov: 10,
-      near: 0.01,
-      far: 30,
-      position: {
-        x: 0,
-        y: 0,
-        z: -0.24
-      },
-      lookAt: {
-        x: .2,
-        y: .4,
-        z: -1.74
-      }
-    },
-    modelTargetSize: .35,
-    position: {
-      x: .25,
-      y: .5,
-      z: -1.74
-    },
-    initialRotation: {
-      x: 0.2,
-      y: -0.4,
-      z: 0.1
-    },
-    spinSpeed: {
-      x: 0.06,
-      y: 0.02
-    },
-    knotSpinSpeed: {
-      x: -0.12,
-      y: -0.10
-    },
-    pointerRotation: {
-      z: 0.56,
-      smoothing: 0.035
-    },
-    weightScaleBoost: 0.1
-  },
-{
-    breakpointWidth: 1200,
-    camera: {
-      fov: 10,
-      near: 0.01,
-      far: 30,
-      position: {
-        x: 0,
-        y: 0,
-        z: -0.24
-      },
-      lookAt: {
-        x: .2,
-        y: .5,
-        z: -1.74
-      }
-    },
-    modelTargetSize: .35,
-    position: {
-      x: .3,
-      y: .5,
-      z: -1.74
-    },
-    initialRotation: {
-      x: 0.2,
-      y: -0.4,
-      z: 0.1
-    },
-    spinSpeed: {
-      x: 0.06,
-      y: 0.02
-    },
-    knotSpinSpeed: {
-      x: -0.12,
-      y: -0.10
-    },
-    pointerRotation: {
-      z: 0.56,
-      smoothing: 0.035
-    },
-    weightScaleBoost: 0.1
-  }
+    {
+        breakpointWidth: 1200,
+        camera: {
+            fov: 38,
+            near: 0.1,
+            far: 8,
+            position: {
+                x: 0,
+                y: 0,
+                z: 10
+            },
+            lookAt: {
+                x: -.1,
+                y: 0,
+                z: 0
+            }
+        },
+        modelTargetSize: 1,
+        position: {
+            x: .3,
+            y: 0,
+            z: 8.8
+        },
+        initialRotation: {
+            x: 0.2,
+            y: -0.4,
+            z: 0.1
+        },
+        spinSpeed: {
+            x: 0.06,
+            y: 0.02
+        },
+        knotSpinSpeed: {
+            x: -0.12,
+            y: -0.10
+        },
+        pointerRotation: {
+            z: 0.56,
+            smoothing: 0.035
+        }
+    }
 ]
 
 function getAboutSceneTuning(width) {
-  return ABOUT_SCENE_TUNING
-    .filter((tuning) => tuning.breakpointWidth <= width)
-    .sort((a, b) => b.breakpointWidth - a.breakpointWidth)[0] || ABOUT_SCENE_TUNING[0]
+    return ABOUT_SCENE_TUNING
+        .filter((tuning) => tuning.breakpointWidth <= width)
+        .sort((a, b) => b.breakpointWidth - a.breakpointWidth)[0] || ABOUT_SCENE_TUNING[0]
 }
 
 export default class AboutScene {
-  constructor() {
-    this.root = new THREE.Group()
-    this.baseScale = 1
-    this.currentTuning = getAboutSceneTuning(0)
-    this.currentBreakpointWidth = null
+    constructor() {
+        this.root = new THREE.Group()
+        this.baseScale = 1
+        this.currentTuning = getAboutSceneTuning(0)
+        this.currentBreakpointWidth = null
 
-    this.createObjects()
-    this.objectSize = measureObjectSize(this.root)
-    this.setOpacity(0)
-  }
-
-  mount(worldScene) {
-    worldScene.add(this.root)
-  }
-
-  // Materiais base usados pelos elementos da cena.
-  createMaterial(color, opacity, wireframe = true) {
-    const material = new THREE.MeshBasicMaterial({
-      color,
-      transparent: true,
-      opacity,
-      depthWrite: false,
-      depthTest: false,
-      wireframe
-    })
-
-    material.userData.baseOpacity = opacity
-    return material
-  }
-
-  // Elementos 3D da secao about.
-  createObjects() {
-    const shellMaterial = this.createMaterial(0xc1d5f9, 0.5)
-    const redMaterial = this.createMaterial(0xe50914, 0.3)
-    const nodeMaterial = this.createMaterial(0xf5f5f5, 0.1, false)
-    const signalMaterial = new THREE.LineBasicMaterial({
-      color: 0xe50914,
-      transparent: true,
-      opacity: 0.3,
-      depthWrite: false,
-      depthTest: false
-    })
-    signalMaterial.userData.baseOpacity = signalMaterial.opacity
-
-    const core = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(0.72, 2),
-      shellMaterial.clone()
-    )
-    core.material.userData.baseOpacity = shellMaterial.userData.baseOpacity
-    this.root.add(core)
-
-    const knot = new THREE.Mesh(
-      new THREE.TorusKnotGeometry(0.74, 0.045, 180, 12, 2, 5),
-      redMaterial.clone()
-    )
-    knot.material.userData.baseOpacity = redMaterial.userData.baseOpacity
-    knot.rotation.set(0.8, 0.12, 0.4)
-    this.root.add(knot)
-    this.knot = knot
-
-    const orbitGeometry = new THREE.TorusGeometry(1.05, 0.015, 8, 128)
-
-    for (let index = 0; index < 3; index += 1) {
-      const orbit = new THREE.Mesh(orbitGeometry, shellMaterial.clone())
-
-      orbit.material.userData.baseOpacity = 0.05
-      orbit.material.color.set(0xffffff)
-      orbit.rotation.set(index * 0.72, index * 1.14, index * 0.38)
-      this.root.add(orbit)
+        this.createObjects()
+        this.objectSize = measureObjectSize(this.root)
+        this.setOpacity(0)
     }
 
-    const nodeGeometry = new THREE.SphereGeometry(0.035, 12, 12)
-    const linePoints = []
-
-    for (let index = 0; index < 10; index += 1) {
-      const angle = (index / 10) * Math.PI * 2
-      const radius = index % 2 === 0 ? 1.15 : 0.86
-      const point = new THREE.Vector3(
-        Math.cos(angle) * radius,
-        Math.sin(angle * 1.5) * 0.28,
-        Math.sin(angle) * radius
-      )
-      const node = new THREE.Mesh(nodeGeometry, nodeMaterial.clone())
-
-      node.material.userData.baseOpacity = nodeMaterial.userData.baseOpacity
-      node.position.copy(point)
-      this.root.add(node)
-      linePoints.push(point)
+    mount(worldScene) {
+        worldScene.add(this.root)
     }
 
-    const lineGeometry = new THREE.BufferGeometry().setFromPoints(linePoints.concat(linePoints[0]))
-    this.root.add(new THREE.Line(lineGeometry, signalMaterial))
-    this.root.rotation.set(
-      this.currentTuning.initialRotation.x,
-      this.currentTuning.initialRotation.y,
-      this.currentTuning.initialRotation.z
-    )
-  }
+    // Materiais base usados pelos elementos da cena.
+    createMaterial(color, opacity, wireframe = true) {
+        const material = new THREE.MeshBasicMaterial({
+            color,
+            transparent: true,
+            opacity,
+            depthWrite: false,
+            depthTest: false,
+            wireframe
+        })
 
-  // Layout da cena about. A camera e suavizada pelo SceneBackdrop.
-  resize(context = {}) {
-    const { width = 0 } = context
-
-    this.lastResizeContext = context
-    this.currentTuning = getAboutSceneTuning(width)
-
-    if (this.currentBreakpointWidth !== this.currentTuning.breakpointWidth) {
-      this.currentBreakpointWidth = this.currentTuning.breakpointWidth
-      this.root.rotation.set(
-        this.currentTuning.initialRotation.x,
-        this.currentTuning.initialRotation.y,
-        this.currentTuning.initialRotation.z
-      )
+        material.userData.baseOpacity = opacity
+        return material
     }
 
-    const largestSide = Math.max(this.objectSize.x, this.objectSize.y, this.objectSize.z, 1)
+    // Elementos 3D da secao about.
+    createObjects() {
+        const shellMaterial = this.createMaterial(0xc1d5f9, 0.5)
+        const redMaterial = this.createMaterial(0xe50914, 0.3)
+        const nodeMaterial = this.createMaterial(0xf5f5f5, 0.1, false)
+        const signalMaterial = new THREE.LineBasicMaterial({
+            color: 0xe50914,
+            transparent: true,
+            opacity: 0.3,
+            depthWrite: false,
+            depthTest: false
+        })
+        signalMaterial.userData.baseOpacity = signalMaterial.opacity
 
-    this.baseScale = this.currentTuning.modelTargetSize / largestSide
-    this.root.position.set(
-      this.currentTuning.position.x,
-      this.currentTuning.position.y,
-      this.currentTuning.position.z
-    )
-  }
+        const core = new THREE.Mesh(
+            new THREE.IcosahedronGeometry(0.72, 2),
+            shellMaterial.clone()
+        )
+        core.material.userData.baseOpacity = shellMaterial.userData.baseOpacity
+        this.root.add(core)
 
-  getCameraConfig({ width } = {}) {
-    return getAboutSceneTuning(width || 0).camera
-  }
+        const knot = new THREE.Mesh(
+            new THREE.TorusKnotGeometry(0.74, 0.045, 180, 12, 2, 5),
+            redMaterial.clone()
+        )
+        knot.material.userData.baseOpacity = redMaterial.userData.baseOpacity
+        knot.rotation.set(0.8, 0.12, 0.4)
+        this.root.add(knot)
+        this.knot = knot
 
-  // Animacao propria da cena about.
-  animate({ delta, pointer, weight }) {
-    this.root.rotation.x += delta * this.currentTuning.spinSpeed.x
-    this.root.rotation.y += delta * this.currentTuning.spinSpeed.y
-    this.knot.rotation.x += delta * this.currentTuning.knotSpinSpeed.x
-    this.knot.rotation.y += delta * this.currentTuning.knotSpinSpeed.y
-    this.root.rotation.z += (
-      (pointer?.x || 0) * this.currentTuning.pointerRotation.z - this.root.rotation.z
-    ) * this.currentTuning.pointerRotation.smoothing
-    this.root.scale.setScalar(
-      this.baseScale * (
-        1 - this.currentTuning.weightScaleBoost + weight * this.currentTuning.weightScaleBoost
-      )
-    )
-  }
+        const orbitGeometry = new THREE.TorusGeometry(1.05, 0.015, 8, 128)
 
-  setOpacity(weight) {
-    setObjectOpacity(this.root, weight)
-    this.root.visible = weight > 0.01
-  }
+        for (let index = 0; index < 3; index += 1) {
+            const orbit = new THREE.Mesh(orbitGeometry, shellMaterial.clone())
 
-  dispose() {
-    this.root.parent?.remove(this.root)
-    disposeObject(this.root)
-  }
+            orbit.material.userData.baseOpacity = 0.05
+            orbit.material.color.set(0xffffff)
+            orbit.rotation.set(index * 0.72, index * 1.14, index * 0.38)
+            this.root.add(orbit)
+        }
+
+        const nodeGeometry = new THREE.SphereGeometry(0.035, 12, 12)
+        const linePoints = []
+
+        for (let index = 0; index < 10; index += 1) {
+            const angle = (index / 10) * Math.PI * 2
+            const radius = index % 2 === 0 ? 1.15 : 0.86
+            const point = new THREE.Vector3(
+                Math.cos(angle) * radius,
+                Math.sin(angle * 1.5) * 0.28,
+                Math.sin(angle) * radius
+            )
+            const node = new THREE.Mesh(nodeGeometry, nodeMaterial.clone())
+
+            node.material.userData.baseOpacity = nodeMaterial.userData.baseOpacity
+            node.position.copy(point)
+            this.root.add(node)
+            linePoints.push(point)
+        }
+
+        const lineGeometry = new THREE.BufferGeometry().setFromPoints(linePoints.concat(linePoints[0]))
+        this.root.add(new THREE.Line(lineGeometry, signalMaterial))
+        this.root.rotation.set(
+            this.currentTuning.initialRotation.x,
+            this.currentTuning.initialRotation.y,
+            this.currentTuning.initialRotation.z
+        )
+    }
+
+    // Layout da cena about. A camera e suavizada pelo SceneBackdrop.
+    resize(context = {}) {
+        const { width = 0 } = context
+
+        this.lastResizeContext = context
+        this.currentTuning = getAboutSceneTuning(width)
+
+        if (this.currentBreakpointWidth !== this.currentTuning.breakpointWidth) {
+            this.currentBreakpointWidth = this.currentTuning.breakpointWidth
+            this.root.rotation.set(
+                this.currentTuning.initialRotation.x,
+                this.currentTuning.initialRotation.y,
+                this.currentTuning.initialRotation.z
+            )
+        }
+
+        const largestSide = Math.max(this.objectSize.x, this.objectSize.y, this.objectSize.z, 1)
+
+        this.baseScale = this.currentTuning.modelTargetSize / largestSide
+        this.root.position.set(
+            this.currentTuning.position.x,
+            this.currentTuning.position.y,
+            this.currentTuning.position.z
+        )
+    }
+
+    getCameraConfig({ width } = {}) {
+        return getAboutSceneTuning(width || 0).camera
+    }
+
+    // Animacao propria da cena about.
+    animate({ delta, pointer }) {
+        this.root.rotation.x += delta * this.currentTuning.spinSpeed.x
+        this.root.rotation.y += delta * this.currentTuning.spinSpeed.y
+        this.knot.rotation.x += delta * this.currentTuning.knotSpinSpeed.x
+        this.knot.rotation.y += delta * this.currentTuning.knotSpinSpeed.y
+        this.root.rotation.z += (
+            (pointer?.x || 0) * this.currentTuning.pointerRotation.z - this.root.rotation.z
+        ) * this.currentTuning.pointerRotation.smoothing
+        this.root.scale.setScalar(this.baseScale)
+    }
+
+    setOpacity(weight) {
+        setObjectOpacity(this.root, weight)
+        this.root.visible = weight > 0.01
+    }
+
+    dispose() {
+        this.root.parent?.remove(this.root)
+        disposeObject(this.root)
+    }
 }

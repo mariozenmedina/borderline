@@ -53,8 +53,7 @@ function createServiceSceneTuning({ side = 'right', accentColor = 0xe50914 } = {
       pointerRotation: {
         z: 0.56,
         smoothing: 0.035
-      },
-      weightScaleBoost: 0.1
+      }
     },
     {
       breakpointWidth: 720,
@@ -90,8 +89,7 @@ function createServiceSceneTuning({ side = 'right', accentColor = 0xe50914 } = {
       pointerRotation: {
         z: 0.56,
         smoothing: 0.035
-      },
-      weightScaleBoost: 0.1
+      }
     },
     {
       breakpointWidth: 1200,
@@ -127,8 +125,7 @@ function createServiceSceneTuning({ side = 'right', accentColor = 0xe50914 } = {
       pointerRotation: {
         z: 0.56,
         smoothing: 0.035
-      },
-      weightScaleBoost: 0.1
+      }
     }
   ]
 }
@@ -230,17 +227,13 @@ export default class ServiceSceneBase {
     return getServiceSceneTuning(this.tunings, width || 0).camera
   }
 
-  animate({ delta, pointer, weight }) {
+  animate({ delta, pointer }) {
     this.root.rotation.x += delta * this.currentTuning.spinSpeed.x
     this.root.rotation.y += delta * this.currentTuning.spinSpeed.y
     this.root.rotation.z += (
       (pointer?.x || 0) * this.currentTuning.pointerRotation.z - this.root.rotation.z
     ) * this.currentTuning.pointerRotation.smoothing
-    this.root.scale.setScalar(
-      this.baseScale * (
-        1 - this.currentTuning.weightScaleBoost + weight * this.currentTuning.weightScaleBoost
-      )
-    )
+    this.root.scale.setScalar(this.baseScale)
   }
 
   setOpacity(weight) {

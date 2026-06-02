@@ -21,9 +21,9 @@ const HERO_FACE_TUNING = {
   // Camera compartilhada: estes valores sao aplicados apenas quando esta cena recebe a camera no resize.
   // Como a camera e global, ajustes aqui tambem influenciam o enquadramento das outras cenas.
   camera: {
-    fov: 30,
-    near: 0.01,
-    far: 30,
+    fov: 38,
+    near: 0.1,
+    far: 10,
     position: {
       x: 0,
       y: 0,
@@ -31,7 +31,7 @@ const HERO_FACE_TUNING = {
     },
     lookAt: {
       x: 0,
-      y: 0,
+      y: -0.3,
       z: 0
     }
   },
@@ -44,7 +44,7 @@ const HERO_FACE_TUNING = {
   // x: esquerda/direita, y: baixo/cima, z: para tras/para frente em relacao a camera.
   position: {
     x: 0,
-    y: 0.3,
+    y: 0,
     z: 0
   },
 
@@ -55,13 +55,11 @@ const HERO_FACE_TUNING = {
     z: 0
   },
 
-  // Pulso leve ligado ao peso/visibilidade da secao. Use 0 para manter escala fixa.
-  weightScaleBoost: 0.06,
-
   // Quanto o mouse inclina o rosto. Use 0 nos eixos que quiser travar.
   pointerRotation: {
     x: 0.2,
-    y: 0.34
+    y: 0.34,
+    smoothing: 0.2
   }
 }
 
@@ -303,7 +301,7 @@ export default class HeroScene {
   }
 
   // Animacao propria da cena hero.
-  animate({ delta, pointer, weight }) {
+  animate({ delta, pointer }) {
     this.mixer?.update(delta)
 
     const targetRotationX = (pointer?.y || 0) * HERO_FACE_TUNING.pointerRotation.x
@@ -312,18 +310,18 @@ export default class HeroScene {
     const rotationOffsetY = THREE.MathUtils.degToRad(HERO_FACE_TUNING.rotationOffset.y)
     const rotationOffsetZ = THREE.MathUtils.degToRad(HERO_FACE_TUNING.rotationOffset.z)
 
+    const rotationSmoothing = HERO_FACE_TUNING.pointerRotation.smoothing
+
     this.root.rotation.x += (
       this.baseRotation.x + rotationOffsetX + targetRotationX - this.root.rotation.x
-    ) * 0.055
+    ) * rotationSmoothing
     this.root.rotation.y += (
       this.baseRotation.y + rotationOffsetY + targetRotationY - this.root.rotation.y
-    ) * 0.055
-    this.root.rotation.z += (this.baseRotation.z + rotationOffsetZ - this.root.rotation.z) * 0.055
-    this.root.scale.setScalar(
-      this.baseScale * (
-        1 - HERO_FACE_TUNING.weightScaleBoost + weight * HERO_FACE_TUNING.weightScaleBoost
-      )
-    )
+    ) * rotationSmoothing
+    this.root.rotation.z += (
+      this.baseRotation.z + rotationOffsetZ - this.root.rotation.z
+    ) * rotationSmoothing
+    this.root.scale.setScalar(this.baseScale)
   }
 
   setOpacity(weight) {
