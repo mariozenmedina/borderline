@@ -1,14 +1,14 @@
 <template>
   <section class="panel how-we-work-section" data-scene="how-we-work" aria-labelledby="how-we-work-title">
-    <div class="how-we-work-copy">
+    <div class="section-intro how-we-work-section__intro">
       <p class="section-kicker">Como Trabalhamos</p>
       <h2 id="how-we-work-title" class="section-title">Integrados à sua operação<span>.</span></h2>
     </div>
 
-    <ol class="work-steps" aria-label="Etapas do trabalho">
-      <li v-for="step in steps" :key="step.title" class="work-step">
-        <span class="work-step-number" aria-hidden="true">{{ step.number }}</span>
-        <div class="work-step-content">
+    <ol class="process-steps" aria-label="Etapas do trabalho">
+      <li v-for="step in steps" :key="step.title" class="process-step">
+        <span class="process-step__number" aria-hidden="true">{{ step.number }}</span>
+        <div class="process-step__content">
           <h3>{{ step.title }}</h3>
           <p>{{ step.text }}</p>
         </div>

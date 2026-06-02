@@ -22,7 +22,7 @@
     <Service02Section />
     <Service03Section />
     <Service04Section />
-    <div class="final-sections-snap-group">
+    <div class="closing-sections">
       <HowWeWorkSection />
       <ContactSection />
     </div>

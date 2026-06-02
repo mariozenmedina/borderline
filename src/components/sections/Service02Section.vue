@@ -1,6 +1,6 @@
 <template>
-  <section class="panel copy-section content-left" data-scene="service-02" aria-labelledby="service-02-title">
-    <div class="section-copy">
+  <section class="panel editorial-section editorial-section--left" data-scene="service-02" aria-labelledby="service-02-title">
+    <div class="section-intro editorial-section__intro">
       <p class="section-kicker">Experiências Interativas</p>
       <h2 id="service-02-title" class="section-title">Jogos, dados e Animações<span>.</span></h2>
       <p class="section-text">

@@ -1,6 +1,6 @@
 <template>
-  <section class="panel copy-section content-right" data-scene="service-03" aria-labelledby="service-03-title">
-    <div class="section-copy">
+  <section class="panel editorial-section editorial-section--right" data-scene="service-03" aria-labelledby="service-03-title">
+    <div class="section-intro editorial-section__intro">
       <p class="section-kicker">Plataformas &amp; Integração</p>
       <h2 id="service-03-title" class="section-title">Sistemas conectados à operação<span>.</span></h2>
       <p class="section-text">
