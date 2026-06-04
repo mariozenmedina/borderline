@@ -247,6 +247,14 @@
             align-items: end;
             justify-items: center;
 
+            &__brand-lockup {
+                display: grid;
+                justify-items: center;
+                gap: clamp(14px, 2.8vh, 28px);
+                width: min(920px, 100%);
+                padding-bottom: clamp(72px, 10vh, 120px);
+            }
+
             .brand-mark {
                 .display-type();
                 .screen-text-shadow();
@@ -254,7 +262,6 @@
                 align-self: end;
                 position: relative;
                 margin: 0;
-                padding-bottom: 10vh;
                 color: @white;
                 font-size: clamp(2rem, 18vw, 3.5rem);
                 line-height: 35%;
@@ -274,6 +281,19 @@
                 .brand-dot {
                     color: @red;
                 }
+            }
+
+            .hero-subtitle {
+                .screen-text-shadow();
+
+                max-width: min(34ch, 100%);
+                margin: 0;
+                color: fade(@white, 86%);
+                font-size: clamp(0.9rem, 3.9vw, 1.18rem);
+                font-weight: 700;
+                line-height: 1.28;
+                text-align: center;
+                text-wrap: balance;
             }
         }
 
@@ -362,6 +382,9 @@
             align-content: center;
             justify-items: center;
             gap: clamp(24px, 5vh, 44px);
+            @media (max-width: calc(@tablet - 1px)) {
+                padding-bottom: 25vh;
+            }
 
             &__intro {
                 width: min(920px, 100%);
@@ -453,6 +476,7 @@
     .loading-screen__progress,
     .section-intro,
     .site-shell .hero-section .brand-mark,
+    .site-shell .hero-section .hero-subtitle,
     .site-shell .how-we-work-section .process-steps,
     .site-shell .contact-section__reasons {
         .mobile-screen-text-shadow();
@@ -494,6 +518,10 @@
                 .brand-extension {
                     display: inline;
                 }
+            }
+
+            .hero-subtitle {
+                font-size: clamp(1rem, 1.55vw, 1.5rem);
             }
         }
 
