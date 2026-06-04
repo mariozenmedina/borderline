@@ -44,6 +44,19 @@ const replaceLink = (html, rel, href, hreflang = null) => {
   )
 }
 
+const serializeJsonLd = (value) => {
+  return JSON.stringify(value).replaceAll('<', '\\u003c')
+}
+
+const replaceJsonLd = (html, id, data) => {
+  return replaceOrFail(
+    html,
+    new RegExp(`(<script\\s+type="application/ld\\+json"\\s+id="${id}">)[\\s\\S]*?(<\\/script>)`),
+    `$1${serializeJsonLd(data)}$2`,
+    `json-ld ${id}`
+  )
+}
+
 const localizeHtml = (html, locale) => {
   const seo = getSeoForLocale(locale)
   const config = getLocaleConfig(locale)
@@ -63,17 +76,27 @@ const localizeHtml = (html, locale) => {
     'title'
   )
   localizedHtml = replaceMeta(localizedHtml, 'name', 'description', seo.description)
+  localizedHtml = replaceMeta(localizedHtml, 'name', 'keywords', seo.keywordsContent)
+  localizedHtml = replaceMeta(localizedHtml, 'itemprop', 'name', seo.title)
+  localizedHtml = replaceMeta(localizedHtml, 'itemprop', 'description', seo.description)
+  localizedHtml = replaceMeta(localizedHtml, 'itemprop', 'image', seo.imageUrl)
   localizedHtml = replaceMeta(localizedHtml, 'property', 'og:title', seo.title)
   localizedHtml = replaceMeta(localizedHtml, 'property', 'og:description', seo.description)
   localizedHtml = replaceMeta(localizedHtml, 'property', 'og:url', seo.canonicalUrl)
   localizedHtml = replaceMeta(localizedHtml, 'property', 'og:locale', seo.ogLocale)
   localizedHtml = replaceMeta(localizedHtml, 'property', 'og:locale:alternate', seo.alternateOgLocale)
+  localizedHtml = replaceMeta(localizedHtml, 'property', 'og:image', seo.imageUrl)
+  localizedHtml = replaceMeta(localizedHtml, 'property', 'og:image:secure_url', seo.imageUrl)
+  localizedHtml = replaceMeta(localizedHtml, 'property', 'og:image:alt', seo.imageAlt)
   localizedHtml = replaceMeta(localizedHtml, 'name', 'twitter:title', seo.title)
   localizedHtml = replaceMeta(localizedHtml, 'name', 'twitter:description', seo.description)
+  localizedHtml = replaceMeta(localizedHtml, 'name', 'twitter:image', seo.imageUrl)
+  localizedHtml = replaceMeta(localizedHtml, 'name', 'twitter:image:alt', seo.imageAlt)
   localizedHtml = replaceLink(localizedHtml, 'canonical', seo.canonicalUrl)
   localizedHtml = replaceLink(localizedHtml, 'alternate', getAbsoluteUrl('/'), 'pt-BR')
   localizedHtml = replaceLink(localizedHtml, 'alternate', getAbsoluteUrl('/en/'), 'en')
   localizedHtml = replaceLink(localizedHtml, 'alternate', seo.defaultAlternateUrl, 'x-default')
+  localizedHtml = replaceJsonLd(localizedHtml, 'structured-data', seo.structuredData)
   localizedHtml = replaceOrFail(
     localizedHtml,
     /<noscript>\s*<strong>[\s\S]*?<\/strong>\s*<\/noscript>/,

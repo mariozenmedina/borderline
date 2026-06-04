@@ -1,5 +1,13 @@
 export const SITE_URL = 'https://borderline.dev.br/'
+export const SITE_NAME = 'Borderline.Dev'
 export const DEFAULT_LOCALE = 'pt'
+export const THEME_COLOR = '#010911'
+export const BRAND_COLOR = '#e50914'
+export const SOCIAL_IMAGE_WIDTH = 1200
+export const SOCIAL_IMAGE_HEIGHT = 630
+
+const LINKEDIN_URL = 'https://www.linkedin.com/in/mariovmedina/'
+const ROBOTS_DIRECTIVES = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
 
 export const LOCALES = [
   {
@@ -25,6 +33,26 @@ export const siteContent = {
     seo: {
       title: 'Borderline.Dev | Desenvolvimento premium para agências',
       description: 'Time técnico integrado para agências: websites, landing pages, experiências interativas, sistemas, infraestrutura e suporte B2B com alto padrão e discrição.',
+      keywords: [
+        'desenvolvimento web para agências',
+        'landing pages premium',
+        'experiências interativas',
+        'sistemas web sob medida',
+        'infraestrutura cloud',
+        'suporte B2B',
+        'Vue',
+        'Three.js'
+      ],
+      image: '/og-image-pt.png',
+      imageAlt: 'Arte social da Borderline.Dev com símbolo geométrico vermelho sobre uma malha escura.',
+      serviceName: 'Desenvolvimento premium para agências',
+      offerCatalogName: 'Serviços digitais Borderline.Dev',
+      services: [
+        'Websites e landing pages premium',
+        'Experiências interativas e 3D',
+        'Sistemas web e integrações',
+        'Infraestrutura, deploy e suporte B2B'
+      ],
       ogLocale: 'pt_BR',
       alternateOgLocale: 'en_US',
       noScript: 'Borderline.Dev precisa de JavaScript habilitado para funcionar corretamente.'
@@ -109,6 +137,26 @@ export const siteContent = {
     seo: {
       title: 'Borderline.Dev | Premium development for agencies',
       description: 'An embedded technical partner for agencies: websites, landing pages, interactive experiences, systems, infrastructure, and B2B support delivered with high standards and discretion.',
+      keywords: [
+        'web development for agencies',
+        'premium landing pages',
+        'interactive experiences',
+        'custom web systems',
+        'cloud infrastructure',
+        'B2B support',
+        'Vue',
+        'Three.js'
+      ],
+      image: '/og-image-en.png',
+      imageAlt: 'Borderline.Dev social artwork with a red geometric symbol over a dark mesh.',
+      serviceName: 'Premium development for agencies',
+      offerCatalogName: 'Borderline.Dev digital services',
+      services: [
+        'Premium websites and landing pages',
+        'Interactive and 3D experiences',
+        'Web systems and integrations',
+        'Infrastructure, deployment and B2B support'
+      ],
       ogLocale: 'en_US',
       alternateOgLocale: 'pt_BR',
       noScript: 'Borderline.Dev needs JavaScript enabled to work properly.'
@@ -226,16 +274,83 @@ export const getAbsoluteUrl = (path) => {
 export const getSeoForLocale = (locale) => {
   const localeConfig = getLocaleConfig(locale)
   const messages = getMessages(locale)
+  const canonicalUrl = getAbsoluteUrl(localeConfig.path)
+  const imageUrl = getAbsoluteUrl(messages.seo.image)
+  const organizationId = getAbsoluteUrl('#organization')
+  const websiteId = getAbsoluteUrl('#website')
 
   return {
     ...messages.seo,
+    siteName: SITE_NAME,
     lang: localeConfig.lang,
-    canonicalUrl: getAbsoluteUrl(localeConfig.path),
+    canonicalUrl,
+    imageUrl,
+    imageWidth: SOCIAL_IMAGE_WIDTH,
+    imageHeight: SOCIAL_IMAGE_HEIGHT,
+    imageType: 'image/png',
+    robots: ROBOTS_DIRECTIVES,
+    themeColor: THEME_COLOR,
+    brandColor: BRAND_COLOR,
+    author: SITE_NAME,
+    keywordsContent: messages.seo.keywords.join(', '),
     alternates: LOCALES.map((entry) => ({
       hreflang: entry.hreflang,
       href: getAbsoluteUrl(entry.path)
     })),
-    defaultAlternateUrl: getAbsoluteUrl(getLocaleConfig(DEFAULT_LOCALE).path)
+    defaultAlternateUrl: getAbsoluteUrl(getLocaleConfig(DEFAULT_LOCALE).path),
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': organizationId,
+          name: SITE_NAME,
+          url: getAbsoluteUrl('/'),
+          logo: getAbsoluteUrl('/android-chrome-512x512.png'),
+          image: imageUrl,
+          description: messages.seo.description,
+          sameAs: [LINKEDIN_URL],
+          founder: {
+            '@type': 'Person',
+            name: 'Mario Medina',
+            sameAs: LINKEDIN_URL
+          }
+        },
+        {
+          '@type': 'WebSite',
+          '@id': websiteId,
+          name: SITE_NAME,
+          url: getAbsoluteUrl('/'),
+          description: messages.seo.description,
+          inLanguage: localeConfig.lang,
+          publisher: {
+            '@id': organizationId
+          }
+        },
+        {
+          '@type': 'Service',
+          '@id': `${canonicalUrl}#services`,
+          name: messages.seo.serviceName,
+          description: messages.seo.description,
+          url: canonicalUrl,
+          provider: {
+            '@id': organizationId
+          },
+          areaServed: ['Brazil', 'Worldwide'],
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: messages.seo.offerCatalogName,
+            itemListElement: messages.seo.services.map((service) => ({
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: service
+              }
+            }))
+          }
+        }
+      ]
+    }
   }
 }
 
@@ -255,13 +370,38 @@ const upsertMeta = ({ attribute = 'name', key, content }) => {
   element.setAttribute('content', content)
 }
 
-const upsertLink = ({ rel, href, hreflang }) => {
+const upsertLink = ({ rel, href, hreflang, sizes, type, color, media }) => {
   if (!href || typeof document === 'undefined') {
     return
   }
 
-  const hreflangSelector = hreflang ? `[hreflang="${hreflang}"]` : ':not([hreflang])'
-  let element = document.head.querySelector(`link[rel="${rel}"]${hreflangSelector}`)
+  const selectorParts = [`link[rel="${rel}"]`]
+
+  if (hreflang) {
+    selectorParts.push(`[hreflang="${hreflang}"]`)
+  } else {
+    selectorParts.push(':not([hreflang])')
+  }
+
+  if (sizes) {
+    selectorParts.push(`[sizes="${sizes}"]`)
+  }
+
+  if (type) {
+    selectorParts.push(`[type="${type}"]`)
+  }
+
+  if (color) {
+    selectorParts.push(`[color="${color}"]`)
+  }
+
+  if (media) {
+    selectorParts.push(`[media="${media}"]`)
+  } else {
+    selectorParts.push(':not([media])')
+  }
+
+  let element = document.head.querySelector(selectorParts.join(''))
 
   if (!element) {
     element = document.createElement('link')
@@ -274,6 +414,39 @@ const upsertLink = ({ rel, href, hreflang }) => {
   if (hreflang) {
     element.setAttribute('hreflang', hreflang)
   }
+
+  if (sizes) {
+    element.setAttribute('sizes', sizes)
+  }
+
+  if (type) {
+    element.setAttribute('type', type)
+  }
+
+  if (color) {
+    element.setAttribute('color', color)
+  }
+
+  if (media) {
+    element.setAttribute('media', media)
+  }
+}
+
+const upsertJsonLd = ({ id, data }) => {
+  if (!data || typeof document === 'undefined') {
+    return
+  }
+
+  let element = document.head.querySelector(`script[type="application/ld+json"]#${id}`)
+
+  if (!element) {
+    element = document.createElement('script')
+    element.setAttribute('type', 'application/ld+json')
+    element.setAttribute('id', id)
+    document.head.appendChild(element)
+  }
+
+  element.textContent = JSON.stringify(data)
 }
 
 export const updateDocumentSeo = (locale) => {
@@ -287,22 +460,66 @@ export const updateDocumentSeo = (locale) => {
   document.title = seo.title
 
   upsertMeta({ key: 'description', content: seo.description })
-  upsertMeta({ key: 'robots', content: 'index, follow' })
-  upsertMeta({ key: 'theme-color', content: '#010911' })
+  upsertMeta({ key: 'keywords', content: seo.keywordsContent })
+  upsertMeta({ key: 'author', content: seo.author })
+  upsertMeta({ key: 'creator', content: seo.author })
+  upsertMeta({ key: 'publisher', content: seo.author })
+  upsertMeta({ key: 'robots', content: seo.robots })
+  upsertMeta({ key: 'googlebot', content: seo.robots })
+  upsertMeta({ key: 'referrer', content: 'strict-origin-when-cross-origin' })
+  upsertMeta({ key: 'color-scheme', content: 'dark' })
+  upsertMeta({ key: 'format-detection', content: 'telephone=no' })
+  upsertMeta({ key: 'theme-color', content: seo.themeColor })
+  upsertMeta({ key: 'application-name', content: seo.siteName })
+  upsertMeta({ key: 'apple-mobile-web-app-title', content: seo.siteName })
+  upsertMeta({ key: 'apple-mobile-web-app-capable', content: 'yes' })
+  upsertMeta({ key: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' })
+  upsertMeta({ key: 'mobile-web-app-capable', content: 'yes' })
+  upsertMeta({ key: 'msapplication-TileColor', content: seo.themeColor })
+  upsertMeta({ key: 'msapplication-TileImage', content: '/mstile-150x150.png' })
+  upsertMeta({ key: 'msapplication-config', content: '/browserconfig.xml' })
+  upsertMeta({ attribute: 'itemprop', key: 'name', content: seo.title })
+  upsertMeta({ attribute: 'itemprop', key: 'description', content: seo.description })
+  upsertMeta({ attribute: 'itemprop', key: 'image', content: seo.imageUrl })
   upsertMeta({ attribute: 'property', key: 'og:type', content: 'website' })
-  upsertMeta({ attribute: 'property', key: 'og:site_name', content: 'Borderline.Dev' })
+  upsertMeta({ attribute: 'property', key: 'og:site_name', content: seo.siteName })
   upsertMeta({ attribute: 'property', key: 'og:title', content: seo.title })
   upsertMeta({ attribute: 'property', key: 'og:description', content: seo.description })
   upsertMeta({ attribute: 'property', key: 'og:url', content: seo.canonicalUrl })
   upsertMeta({ attribute: 'property', key: 'og:locale', content: seo.ogLocale })
   upsertMeta({ attribute: 'property', key: 'og:locale:alternate', content: seo.alternateOgLocale })
-  upsertMeta({ key: 'twitter:card', content: 'summary' })
+  upsertMeta({ attribute: 'property', key: 'og:image', content: seo.imageUrl })
+  upsertMeta({ attribute: 'property', key: 'og:image:secure_url', content: seo.imageUrl })
+  upsertMeta({ attribute: 'property', key: 'og:image:type', content: seo.imageType })
+  upsertMeta({ attribute: 'property', key: 'og:image:width', content: seo.imageWidth })
+  upsertMeta({ attribute: 'property', key: 'og:image:height', content: seo.imageHeight })
+  upsertMeta({ attribute: 'property', key: 'og:image:alt', content: seo.imageAlt })
+  upsertMeta({ key: 'twitter:card', content: 'summary_large_image' })
   upsertMeta({ key: 'twitter:title', content: seo.title })
   upsertMeta({ key: 'twitter:description', content: seo.description })
+  upsertMeta({ key: 'twitter:image', content: seo.imageUrl })
+  upsertMeta({ key: 'twitter:image:alt', content: seo.imageAlt })
 
   upsertLink({ rel: 'canonical', href: seo.canonicalUrl })
   seo.alternates.forEach((alternate) => {
     upsertLink({ rel: 'alternate', href: alternate.href, hreflang: alternate.hreflang })
   })
   upsertLink({ rel: 'alternate', href: seo.defaultAlternateUrl, hreflang: 'x-default' })
+  upsertLink({ rel: 'icon', href: '/favicon.ico', sizes: 'any' })
+  upsertLink({ rel: 'icon', href: '/favicon-dark.ico', sizes: 'any', media: '(prefers-color-scheme: dark)' })
+  upsertLink({ rel: 'icon', href: '/favicon-light.ico', sizes: 'any', media: '(prefers-color-scheme: light)' })
+  upsertLink({ rel: 'icon', href: '/favicon-dark-16x16.png', sizes: '16x16', type: 'image/png', media: '(prefers-color-scheme: dark)' })
+  upsertLink({ rel: 'icon', href: '/favicon-light-16x16.png', sizes: '16x16', type: 'image/png', media: '(prefers-color-scheme: light)' })
+  upsertLink({ rel: 'icon', href: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' })
+  upsertLink({ rel: 'icon', href: '/favicon-dark-32x32.png', sizes: '32x32', type: 'image/png', media: '(prefers-color-scheme: dark)' })
+  upsertLink({ rel: 'icon', href: '/favicon-light-32x32.png', sizes: '32x32', type: 'image/png', media: '(prefers-color-scheme: light)' })
+  upsertLink({ rel: 'icon', href: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' })
+  upsertLink({ rel: 'icon', href: '/favicon-dark-48x48.png', sizes: '48x48', type: 'image/png', media: '(prefers-color-scheme: dark)' })
+  upsertLink({ rel: 'icon', href: '/favicon-light-48x48.png', sizes: '48x48', type: 'image/png', media: '(prefers-color-scheme: light)' })
+  upsertLink({ rel: 'icon', href: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' })
+  upsertLink({ rel: 'apple-touch-icon', href: '/apple-touch-icon-dark.png', sizes: '180x180', media: '(prefers-color-scheme: dark)' })
+  upsertLink({ rel: 'apple-touch-icon', href: '/apple-touch-icon-light.png', sizes: '180x180', media: '(prefers-color-scheme: light)' })
+  upsertLink({ rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' })
+  upsertLink({ rel: 'manifest', href: '/site.webmanifest' })
+  upsertJsonLd({ id: 'structured-data', data: seo.structuredData })
 }
