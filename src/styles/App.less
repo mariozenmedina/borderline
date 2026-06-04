@@ -31,6 +31,17 @@
     }
 }
 
+@keyframes end-cursor-blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.22;
+    }
+}
+
 @media all {
     * {
         box-sizing: border-box;
@@ -223,12 +234,12 @@
         }
 
         > .closing-sections {
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
+            scroll-snap-align: none;
+            scroll-snap-stop: normal;
 
             > .panel {
-                scroll-snap-align: none;
-                scroll-snap-stop: normal;
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
             }
         }
 
@@ -468,6 +479,56 @@
                 }
             }
         }
+
+        .end-section {
+            display: grid;
+            min-height: clamp(92px, 18svh, 168px);
+            padding: 16px 28px clamp(28px, 6vh, 54px);
+            place-items: end center;
+            scroll-snap-align: none;
+            scroll-snap-stop: normal;
+            text-align: center;
+
+            &__content {
+                .screen-text-shadow();
+
+                display: inline-grid;
+                grid-template-columns: auto minmax(0, 1fr);
+                align-items: center;
+                gap: 12px;
+                max-width: 100%;
+                padding: 12px 0 0;
+                border-top: 1px solid fade(@red, 54%);
+                background:
+                    linear-gradient(90deg, fade(@red, 30%), fade(@red, 0%) 68%) top left / 100% 1px no-repeat,
+                    transparent;
+            }
+
+            &__cursor {
+                display: block;
+                width: 9px;
+                height: 9px;
+                background: @red;
+                box-shadow: 0 0 18px fade(@red, 72%);
+                animation: end-cursor-blink 1200ms steps(1, end) infinite;
+            }
+
+            &__line {
+                .display-type();
+
+                min-width: 0;
+                margin: 0;
+                color: fade(@white, 76%);
+                font-size: clamp(0.72rem, 2.8vw, 0.98rem);
+                line-height: 1.2;
+                text-align: left;
+                text-transform: lowercase;
+
+                span {
+                    color: @red;
+                }
+            }
+        }
     }
 }
 
@@ -478,9 +539,11 @@
     .site-shell .hero-section .brand-mark,
     .site-shell .hero-section .hero-subtitle,
     .site-shell .how-we-work-section .process-steps,
-    .site-shell .contact-section__reasons {
+    .site-shell .contact-section__reasons,
+    .site-shell .end-section__content {
         .mobile-screen-text-shadow();
     }
+
 }
 
 @media (min-width: 421px) {
@@ -641,5 +704,6 @@
                 }
             }
         }
+
     }
 }

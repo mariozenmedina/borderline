@@ -25,6 +25,7 @@
     <div class="closing-sections">
       <HowWeWorkSection />
       <ContactSection />
+      <EndSection />
     </div>
   </main>
 </template>
@@ -40,6 +41,7 @@ import Service03Section from './components/sections/Service03Section.vue'
 import Service04Section from './components/sections/Service04Section.vue'
 import HowWeWorkSection from './components/sections/HowWeWorkSection.vue'
 import ContactSection from './components/sections/ContactSection.vue'
+import EndSection from './components/sections/EndSection.vue'
 
 const PUBLIC_BASE_URL = new URL(import.meta.env.BASE_URL || './', window.location.href).href
 const LOADING_MIN_DURATION = 1200
@@ -75,7 +77,8 @@ export default {
     Service03Section,
     Service04Section,
     HowWeWorkSection,
-    ContactSection
+    ContactSection,
+    EndSection
   },
   data() {
     return {
