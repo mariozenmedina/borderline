@@ -1,12 +1,12 @@
 <template>
   <section class="panel how-we-work-section" data-scene="how-we-work" aria-labelledby="how-we-work-title">
     <div class="section-intro how-we-work-section__intro">
-      <p class="section-kicker">Como Trabalhamos</p>
-      <h2 id="how-we-work-title" class="section-title">Integrados à sua operação<span>.</span></h2>
+      <p class="section-kicker">{{ content.kicker }}</p>
+      <h2 id="how-we-work-title" class="section-title">{{ content.title }}<span>.</span></h2>
     </div>
 
-    <ol class="process-steps" aria-label="Etapas do trabalho">
-      <li v-for="step in steps" :key="step.title" class="process-step">
+    <ol class="process-steps" :aria-label="content.stepsLabel">
+      <li v-for="step in content.steps" :key="step.title" class="process-step">
         <span class="process-step__number" aria-hidden="true">{{ step.number }}</span>
         <div class="process-step__content">
           <h3>{{ step.title }}</h3>
@@ -18,34 +18,12 @@
 </template>
 
 <script>
-const steps = [
-  {
-    number: '01',
-    title: 'Entramos pelo briefing',
-    text: 'Participamos das conversas, reuniões, arquitetura da solução e direcionamento criativo via agência, inclusive com e-mail e canais da agência quando fizer sentido para a operação.'
-  },
-  {
-    number: '02',
-    title: 'Fechamos as definições técnicas',
-    text: 'Traduzimos o escopo em stack, cronograma e orçamento para a agência, contemplando nossa parte de desenvolvimento e alinhando tudo com o time de design.'
-  },
-  {
-    number: '03',
-    title: 'Desenvolvemos e publicamos',
-    text: 'Construímos, testamos e fazemos o deploy em nome da agência, com atenção a performance, responsividade, acessibilidade, segurança e qualidade de acabamento.'
-  },
-  {
-    number: '04',
-    title: 'Seguimos junto no pós-lançamento',
-    text: 'Quando o projeto pede continuidade, assumimos suporte e manutenção mensal, com garantia de funcionamento, ajustes evolutivos e estabilidade no dia a dia.'
-  }
-]
-
 export default {
   name: 'HowWeWorkSection',
-  data() {
-    return {
-      steps
+  props: {
+    content: {
+      type: Object,
+      required: true
     }
   }
 }

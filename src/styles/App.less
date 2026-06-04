@@ -223,6 +223,59 @@
         line-height: 1.55;
     }
 
+    .language-switcher {
+        position: fixed;
+        top: max(18px, env(safe-area-inset-top));
+        right: max(18px, env(safe-area-inset-right));
+        z-index: 6;
+        display: inline-grid;
+        grid-auto-flow: column;
+        gap: 6px;
+        padding: 5px;
+        border: 1px solid fade(@white, 14%);
+        border-radius: 8px;
+        background:
+            linear-gradient(135deg, fade(@red, 18%), fade(@black, 42%) 48%, fade(@black, 60%)),
+            fade(@black, 66%);
+        box-shadow: 0 16px 44px fade(@black, 38%);
+        backdrop-filter: blur(10px);
+
+        &__option {
+            .display-type();
+
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 34px;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            color: fade(@white, 68%);
+            font-size: 0.76rem;
+            line-height: 1;
+            text-decoration: none;
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
+
+            &:hover,
+            &:focus-visible {
+                transform: translateY(-1px);
+                border-color: fade(@white, 36%);
+                color: @white;
+            }
+
+            &:focus-visible {
+                outline: 2px solid fade(@white, 78%);
+                outline-offset: 3px;
+            }
+
+            &--active {
+                border-color: fade(@red, 72%);
+                background: linear-gradient(135deg, fade(@red, 72%), fade(@red, 28%));
+                box-shadow: 0 0 24px fade(@red, 22%);
+                color: @white;
+            }
+        }
+    }
+
     .site-shell {
         position: relative;
         z-index: 1;

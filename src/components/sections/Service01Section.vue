@@ -1,18 +1,21 @@
 <template>
   <section class="panel editorial-section editorial-section--right" data-scene="service-01" aria-labelledby="service-01-title">
     <div class="section-intro editorial-section__intro">
-      <p class="section-kicker">Websites &amp; Landing Pages</p>
-      <h2 id="service-01-title" class="section-title">Websites que respeitam o design<span>.</span></h2>
-      <p class="section-text">
-        Desenvolvimento pixel-perfect para sites institucionais, landing pages, e campanhas digitais.
-        Responsividade, usabilidade, performance e acessibilidade em cada projeto.
-      </p>
+      <p class="section-kicker">{{ content.kicker }}</p>
+      <h2 id="service-01-title" class="section-title">{{ content.title }}<span>.</span></h2>
+      <p class="section-text">{{ content.text }}</p>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  name: 'Service01Section'
+  name: 'Service01Section',
+  props: {
+    content: {
+      type: Object,
+      required: true
+    }
+  }
 }
 </script>

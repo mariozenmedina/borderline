@@ -6,13 +6,19 @@
                 <span class="brand-extension"><span class="brand-dot">.</span><span>dev</span><span
                         class="brand-dot">.</span><span>br</span></span>
             </h1>
-            <h2 class="hero-subtitle">integrado ao seu time.</h2>
+            <h2 class="hero-subtitle">{{ content.subtitle }}</h2>
         </div>
     </section>
 </template>
 
 <script>
 export default {
-    name: 'HeroSection'
+    name: 'HeroSection',
+    props: {
+        content: {
+            type: Object,
+            required: true
+        }
+    }
 }
 </script>

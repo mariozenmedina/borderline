@@ -1,18 +1,21 @@
 <template>
   <section class="panel editorial-section editorial-section--left" data-scene="service-02" aria-labelledby="service-02-title">
     <div class="section-intro editorial-section__intro">
-      <p class="section-kicker">Experiências Interativas</p>
-      <h2 id="service-02-title" class="section-title">Jogos, dados e Animações<span>.</span></h2>
-      <p class="section-text">
-        Interfaces interativas, visualizações de dados com gráficos dinâmicos, animações avançadas, jogos e experiências
-        tridimensionais para garantir destaque.
-      </p>
+      <p class="section-kicker">{{ content.kicker }}</p>
+      <h2 id="service-02-title" class="section-title">{{ content.title }}<span>.</span></h2>
+      <p class="section-text">{{ content.text }}</p>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  name: 'Service02Section'
+  name: 'Service02Section',
+  props: {
+    content: {
+      type: Object,
+      required: true
+    }
+  }
 }
 </script>

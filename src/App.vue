@@ -9,6 +9,21 @@
     :leaving="isLoadingLeaving"
     :progress="loadingProgress"
   />
+  <nav class="language-switcher" :aria-label="content.ui.languageSwitcherLabel">
+    <a
+      v-for="option in languageOptions"
+      :key="option.code"
+      class="language-switcher__option"
+      :class="{ 'language-switcher__option--active': option.code === locale }"
+      :href="option.href"
+      :lang="option.lang"
+      :hreflang="option.hreflang"
+      :aria-current="option.code === locale ? 'page' : null"
+      @click="handleLanguageClick(option.code, $event)"
+    >
+      {{ option.label }}
+    </a>
+  </nav>
 
   <main
     ref="shell"
@@ -16,16 +31,16 @@
     :class="{ 'site-shell--loading': isLoadingVisible }"
     data-scene-root
   >
-    <HeroSection />
-    <AboutSection />
-    <Service01Section />
-    <Service02Section />
-    <Service03Section />
-    <Service04Section />
+    <HeroSection :content="content.hero" />
+    <AboutSection :content="content.about" />
+    <Service01Section :content="content.service01" />
+    <Service02Section :content="content.service02" />
+    <Service03Section :content="content.service03" />
+    <Service04Section :content="content.service04" />
     <div class="closing-sections">
-      <HowWeWorkSection />
-      <ContactSection />
-      <EndSection />
+      <HowWeWorkSection :content="content.howWeWork" />
+      <ContactSection :content="content.contact" />
+      <EndSection :content="content.end" />
     </div>
   </main>
 </template>
@@ -42,8 +57,15 @@ import Service04Section from './components/sections/Service04Section.vue'
 import HowWeWorkSection from './components/sections/HowWeWorkSection.vue'
 import ContactSection from './components/sections/ContactSection.vue'
 import EndSection from './components/sections/EndSection.vue'
+import {
+  DEFAULT_LOCALE,
+  LOCALES,
+  getLocaleFromPath,
+  getLocalePath,
+  getMessages,
+  updateDocumentSeo
+} from './i18n/siteContent.mjs'
 
-const PUBLIC_BASE_URL = new URL(import.meta.env.BASE_URL || './', window.location.href).href
 const LOADING_MIN_DURATION = 1200
 const LOADING_EXIT_DURATION = 520
 const PRELOAD_TIMEOUT = 6500
@@ -54,6 +76,20 @@ const PRELOAD_ASSETS = [
   'basis_transcoder.js'
 ]
 
+const getPublicBaseUrl = () => {
+  const configuredBase = import.meta.env.BASE_URL || '/'
+
+  if (configuredBase === './') {
+    const currentPath = window.location.pathname.toLowerCase()
+    const relativeBase = currentPath === '/en' || currentPath.startsWith('/en/') ? '../' : './'
+
+    return new URL(relativeBase, window.location.href).href
+  }
+
+  return new URL(configuredBase, window.location.origin).href
+}
+
+const PUBLIC_BASE_URL = getPublicBaseUrl()
 const publicAssetPath = (path) => new URL(path.replace(/^\/+/, ''), PUBLIC_BASE_URL).href
 const wait = (duration) => new Promise((resolve) => window.setTimeout(resolve, duration))
 const withTimeout = (promise, duration) => Promise.race([promise, wait(duration)])
@@ -82,6 +118,7 @@ export default {
   },
   data() {
     return {
+      locale: getLocaleFromPath(window.location.pathname || DEFAULT_LOCALE),
       isLoadingVisible: true,
       isLoadingLeaving: false,
       loadingProgress: 8,
@@ -90,13 +127,72 @@ export default {
       resolveSceneBackdropReady: null
     }
   },
+  computed: {
+    content() {
+      return getMessages(this.locale)
+    },
+
+    languageOptions() {
+      return LOCALES.map((option) => ({
+        ...option,
+        href: getLocalePath(option.code)
+      }))
+    }
+  },
+  created() {
+    this.updateLocaleSeo()
+    window.addEventListener('popstate', this.handlePopState)
+  },
   mounted() {
     this.sceneBackdropReadyPromise = new Promise((resolve) => {
       this.resolveSceneBackdropReady = resolve
     })
     this.preloadExperience()
   },
+  beforeUnmount() {
+    window.removeEventListener('popstate', this.handlePopState)
+  },
   methods: {
+    handleLanguageClick(locale, event) {
+      if (this.shouldUseNativeNavigation(event)) {
+        return
+      }
+
+      event.preventDefault()
+      this.setLocale(locale)
+    },
+
+    shouldUseNativeNavigation(event) {
+      return event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.altKey ||
+        event.ctrlKey ||
+        event.shiftKey
+    },
+
+    setLocale(locale) {
+      if (locale === this.locale && window.location.pathname === getLocalePath(locale)) {
+        return
+      }
+
+      this.locale = locale
+
+      const nextPath = getLocalePath(locale)
+      const nextUrl = `${nextPath}${window.location.hash || ''}`
+      window.history.pushState({ locale }, '', nextUrl)
+      this.updateLocaleSeo()
+    },
+
+    handlePopState() {
+      this.locale = getLocaleFromPath(window.location.pathname)
+      this.updateLocaleSeo()
+    },
+
+    updateLocaleSeo() {
+      updateDocumentSeo(this.locale)
+    },
+
     async preloadExperience() {
       await wait(80)
       this.setLoadingProgress(12)

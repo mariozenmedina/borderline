@@ -5,7 +5,20 @@ import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.j
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import { disposeObject, setObjectOpacity } from './sceneUtils'
 
-const PUBLIC_BASE_URL = new URL(import.meta.env.BASE_URL || './', window.location.href).href
+const getPublicBaseUrl = () => {
+  const configuredBase = import.meta.env.BASE_URL || '/'
+
+  if (configuredBase === './') {
+    const currentPath = window.location.pathname.toLowerCase()
+    const relativeBase = currentPath === '/en' || currentPath.startsWith('/en/') ? '../' : './'
+
+    return new URL(relativeBase, window.location.href).href
+  }
+
+  return new URL(configuredBase, window.location.origin).href
+}
+
+const PUBLIC_BASE_URL = getPublicBaseUrl()
 const publicAssetPath = (path) => {
   return new URL(path.replace(/^\/+/, ''), PUBLIC_BASE_URL).href
 }
