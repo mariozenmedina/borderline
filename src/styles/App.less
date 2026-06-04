@@ -11,6 +11,10 @@
     text-shadow: 0 0 22px fade(@black, 88%), 0 0 54px fade(@black, 76%);
 }
 
+.mobile-screen-text-shadow() {
+    text-shadow: 0 0 14px fade(@black, 72%);
+}
+
 .display-type() {
     font-family: @font-display;
     font-weight: 400;
@@ -33,6 +37,8 @@
     }
 
     html {
+        scroll-snap-type: y mandatory;
+        overscroll-behavior-y: contain;
         scrollbar-width: thin;
         scrollbar-color: fade(@red, 50%) @black;
 
@@ -64,7 +70,7 @@
     }
 
     body {
-        overflow: hidden;
+        overflow-x: hidden;
         background: @black;
         color: @white;
         font-family: Arial, Helvetica, sans-serif;
@@ -209,12 +215,8 @@
     .site-shell {
         position: relative;
         z-index: 1;
-        height: 100vh;
-        height: 100svh;
-        overflow-x: hidden;
-        overflow-y: auto;
-        scroll-snap-type: y mandatory;
-        overscroll-behavior-y: contain;
+        min-height: 100vh;
+        min-height: 100svh;
 
         &--loading {
             pointer-events: none;
@@ -443,6 +445,17 @@
                 }
             }
         }
+    }
+}
+
+@media (max-width: 720px) {
+    .loading-screen__brand,
+    .loading-screen__progress,
+    .section-intro,
+    .site-shell .hero-section .brand-mark,
+    .site-shell .how-we-work-section .process-steps,
+    .site-shell .contact-section__reasons {
+        .mobile-screen-text-shadow();
     }
 }
 

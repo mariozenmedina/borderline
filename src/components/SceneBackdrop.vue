@@ -48,7 +48,7 @@ export default {
         cancelAnimationFrame(this.frameId)
         cancelAnimationFrame(this.observeFrameId)
         cancelAnimationFrame(this.scrollFrameId)
-        this.sceneRoot?.removeEventListener('scroll', this.handleSceneRootScroll)
+        this.scrollTarget?.removeEventListener('scroll', this.handleSceneRootScroll)
         window.removeEventListener('resize', this.resize)
         window.visualViewport?.removeEventListener('resize', this.resize)
         window.removeEventListener('pointermove', this.handlePointerMove)
@@ -139,13 +139,14 @@ export default {
             }
 
             this.sceneRoot = root
+            this.scrollTarget = this.getScrollTarget(root)
             this.sceneSections = sections
             this.sectionVisibility = sections.reduce((visibility, section) => ({
                 ...visibility,
                 [section.dataset.scene]: 0
             }), {})
             this.updateActiveSceneFromScroll(true)
-            root.addEventListener('scroll', this.handleSceneRootScroll, { passive: true })
+            this.scrollTarget.addEventListener('scroll', this.handleSceneRootScroll, { passive: true })
 
             this.sectionObserver = new IntersectionObserver(
                 (entries) => {
@@ -161,12 +162,20 @@ export default {
                     }
                 },
                 {
-                    root,
+                    root: this.scrollTarget === window ? null : root,
                     threshold: OBSERVER_THRESHOLDS
                 }
             )
 
             sections.forEach((section) => this.sectionObserver.observe(section))
+        },
+
+        getScrollTarget(root) {
+            const style = window.getComputedStyle(root)
+            const canScroll = /(auto|scroll)/.test(style.overflowY)
+                && root.scrollHeight > root.clientHeight + 1
+
+            return canScroll ? root : window
         },
 
         getMostVisibleScene() {
@@ -195,8 +204,10 @@ export default {
                 return
             }
 
-            const rootRect = root.getBoundingClientRect()
-            const viewportCenter = rootRect.top + rootRect.height / 2
+            const rootRect = this.scrollTarget === window ? null : root.getBoundingClientRect()
+            const viewportCenter = rootRect
+                ? rootRect.top + rootRect.height / 2
+                : (window.visualViewport?.height || window.innerHeight) / 2
             const [closestSection] = sections
                 .map((section) => {
                     const rect = section.getBoundingClientRect()
