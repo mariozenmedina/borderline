@@ -22,6 +22,22 @@
     <meta name="msapplication-TileColor" content="#010911">
     <meta name="msapplication-TileImage" content="/mstile-150x150.png">
     <meta name="msapplication-config" content="/browserconfig.xml">
+    <script>
+      (function () {
+        var protocol = window.location.protocol
+        var hostname = window.location.hostname
+        var isLocalHost = hostname === 'localhost' ||
+          hostname === '127.0.0.1' ||
+          hostname === '0.0.0.0' ||
+          hostname === '::1' ||
+          hostname === '[::1]' ||
+          hostname.endsWith('.localhost')
+
+        if (protocol === 'http:' && !isLocalHost) {
+          window.location.replace('https:' + window.location.href.slice(protocol.length))
+        }
+      })()
+    </script>
     <link rel="canonical" href="https://borderline.dev.br/">
     <link rel="alternate" hreflang="pt-BR" href="https://borderline.dev.br/">
     <link rel="alternate" hreflang="en" href="https://borderline.dev.br/en/">
