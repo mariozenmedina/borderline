@@ -40,8 +40,8 @@
     <div class="closing-sections">
       <HowWeWorkSection :content="content.howWeWork" />
       <ContactSection :content="content.contact" />
-      <EndSection :content="content.end" />
     </div>
+    <EndSection :content="content.end" />
   </main>
 </template>
 
