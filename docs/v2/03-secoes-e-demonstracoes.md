@@ -1,6 +1,6 @@
 # Seções e demonstrações
 
-Especificação de experiência proposta. Nomes fictícios, temas, quantidades e transições são pontos de partida; o operador revisa direção de arte e comportamento. O escopo desta branch continua sendo planejamento.
+Especificação da V2 proposta. Nomes fictícios, temas, quantidades e transições são pontos de partida; o operador revisa direção de arte e comportamento. Um primeiro recorte de S01, menu e temas já foi implementado na branch `feat/v2-01-hero`; os demais capítulos e a narrativa completa continuam planejados.
 
 ## Regras comuns
 
@@ -23,6 +23,8 @@ As cenas 3D não carregam juntas. Simulações e dados ficam identificados. O vi
 **Mobile/alternativa:** composição vertical e etapas estáticas com texto equivalente; ilustração HTML/SVG da entrega e das frentes de trabalho. Movimento reduzido troca estados diretamente. Sem gestos obrigatórios, rolagem travada ou espera para acessar o conteúdo.
 
 **Aceite:** público, oferta e próximo passo claros antes de interagir; equipe e interlocutor compreensíveis antes da assinatura; hero independente dos módulos pesados das outras demos; contato e navegação disponíveis em qualquer etapa. Operador avalia se a linguagem comunica confiança e suavidade sem perder presença.
+
+**Primeiro recorte implementado:** tema claro padrão, seletor manual, hero sem máscara e composição HTML/SVG com perspectiva CSS 3D. O controle “A entrega / A operação” abre as camadas de website, desenvolvimento e infraestrutura, com Mário como interlocutor. É uma exploração da composição inicial; a narrativa por scroll e o desfecho na assinatura serão construídos depois da avaliação. Não há dependência de WebGL neste recorte.
 
 ## S02 — White label: assinatura que se adapta
 

@@ -42,6 +42,8 @@ O operador quer uma expressão mais suave e profissional e considera retirar a m
 
 A base atual — fundo `#010911`, texto `#f5f5f5`, vermelho `#e50914`, Offside e malha — é ponto de partida, não uma obrigação de manter todos os tokens. Propor mais espaço, iluminação difusa, superfícies foscas ou claras, contornos sutis e transições contínuas. Testar menor presença do vermelho saturado e do contraste dramático na composição; preservar contraste legível em textos e controles.
 
+**Decisão posterior do operador:** tema claro por padrão, com seletor manual de claro/escuro e sem seguir o navegador ou o OS. A composição clara pode conter capítulos escuros para criar ritmo. O primeiro recorte explora superfície clara quente, texto verde-grafite e acento terracota; no escuro, materiais profundos e textos claros. Esses tokens são uma primeira proposta implementada, sujeita à revisão visual.
+
 A marca tipográfica Borderline.Dev pode ganhar protagonismo, acompanhada de uma linguagem autoral de bordas, enquadramentos e camadas. O ponto e os contornos podem conectar marca, navegação e cenas. Evitar substituir a máscara por outro objeto abstrato sem relação com a oferta. Uma alteração de tipografia ou cor precisa ser apresentada como direção visual para revisão.
 
 O impacto passa a vir da precisão das transformações, da materialidade e da qualidade das demonstrações. Movimento calmo não significa perder profundidade ou complexidade. Em dados e estados, complementar cor com rótulos, padrões e ícones.

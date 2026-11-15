@@ -1,7 +1,7 @@
 export const SITE_URL = 'https://borderline.dev.br/'
 export const SITE_NAME = 'Borderline.Dev'
 export const DEFAULT_LOCALE = 'pt'
-export const THEME_COLOR = '#010911'
+export const THEME_COLOR = '#f6f5f1'
 export const BRAND_COLOR = '#e50914'
 export const SOCIAL_IMAGE_WIDTH = 1200
 export const SOCIAL_IMAGE_HEIGHT = 630
@@ -467,9 +467,7 @@ export const updateDocumentSeo = (locale) => {
   upsertMeta({ key: 'robots', content: seo.robots })
   upsertMeta({ key: 'googlebot', content: seo.robots })
   upsertMeta({ key: 'referrer', content: 'strict-origin-when-cross-origin' })
-  upsertMeta({ key: 'color-scheme', content: 'dark' })
   upsertMeta({ key: 'format-detection', content: 'telephone=no' })
-  upsertMeta({ key: 'theme-color', content: seo.themeColor })
   upsertMeta({ key: 'application-name', content: seo.siteName })
   upsertMeta({ key: 'apple-mobile-web-app-title', content: seo.siteName })
   upsertMeta({ key: 'apple-mobile-web-app-capable', content: 'yes' })
@@ -506,19 +504,9 @@ export const updateDocumentSeo = (locale) => {
   })
   upsertLink({ rel: 'alternate', href: seo.defaultAlternateUrl, hreflang: 'x-default' })
   upsertLink({ rel: 'icon', href: '/favicon.ico', sizes: 'any' })
-  upsertLink({ rel: 'icon', href: '/favicon-dark.ico', sizes: 'any', media: '(prefers-color-scheme: dark)' })
-  upsertLink({ rel: 'icon', href: '/favicon-light.ico', sizes: 'any', media: '(prefers-color-scheme: light)' })
-  upsertLink({ rel: 'icon', href: '/favicon-dark-16x16.png', sizes: '16x16', type: 'image/png', media: '(prefers-color-scheme: dark)' })
-  upsertLink({ rel: 'icon', href: '/favicon-light-16x16.png', sizes: '16x16', type: 'image/png', media: '(prefers-color-scheme: light)' })
   upsertLink({ rel: 'icon', href: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' })
-  upsertLink({ rel: 'icon', href: '/favicon-dark-32x32.png', sizes: '32x32', type: 'image/png', media: '(prefers-color-scheme: dark)' })
-  upsertLink({ rel: 'icon', href: '/favicon-light-32x32.png', sizes: '32x32', type: 'image/png', media: '(prefers-color-scheme: light)' })
   upsertLink({ rel: 'icon', href: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' })
-  upsertLink({ rel: 'icon', href: '/favicon-dark-48x48.png', sizes: '48x48', type: 'image/png', media: '(prefers-color-scheme: dark)' })
-  upsertLink({ rel: 'icon', href: '/favicon-light-48x48.png', sizes: '48x48', type: 'image/png', media: '(prefers-color-scheme: light)' })
   upsertLink({ rel: 'icon', href: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' })
-  upsertLink({ rel: 'apple-touch-icon', href: '/apple-touch-icon-dark.png', sizes: '180x180', media: '(prefers-color-scheme: dark)' })
-  upsertLink({ rel: 'apple-touch-icon', href: '/apple-touch-icon-light.png', sizes: '180x180', media: '(prefers-color-scheme: light)' })
   upsertLink({ rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' })
   upsertLink({ rel: 'manifest', href: '/site.webmanifest' })
   upsertJsonLd({ id: 'structured-data', data: seo.structuredData })

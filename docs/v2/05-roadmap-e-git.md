@@ -2,16 +2,16 @@
 
 ## Estado atual
 
-Planejamento local na branch `docs/v2-plan`, iniciada a partir de `main` em `16b9a54`. A V2 ainda não foi implementada. Os IDs abaixo são referências de backlog no repositório; não são números de issues já abertas no GitHub.
+Planejamento local na branch `docs/v2-plan`, iniciada a partir de `main` em `16b9a54`. Após autorização do operador, `v2` foi criada a partir do planejamento em `49f5060`, e `feat/v2-01-hero` contém o primeiro recorte de implementação. Os IDs abaixo são referências locais de backlog, não números de issues já abertas no GitHub.
 
-O operador escolheu planejamento detalhado primeiro. A entrega desta etapa é o conjunto de documentos e seu commit, preservando as alterações prévias nas imagens sociais. Push, PR remoto, merge e publicação não fazem parte desta etapa local.
+O operador escolheu planejar primeiro e depois autorizou implementar hero, menu e temas para revisão. As imagens sociais anteriores foram salvas por solicitação em `20fee05`. O trabalho continua local, sem push ou publicação; a implementação aguarda validação antes de integração em `v2`.
 
 ## Sequência e dependências
 
 | ID | Entrega | Depende de | Dimensão relativa | Estado |
 | --- | --- | --- | --- | --- |
 | V2-00 | Planejamento, conteúdo e decisões | — | M | Documentado, em revisão |
-| V2-01 | Shell, navegação, tokens e PT/EN | V2-00 revisado | M | Planejado |
+| V2-01 | Shell, navegação, tokens e PT/EN | V2-00 revisado | M | Primeiro recorte implementado; validação pendente |
 | V2-02 | Runtime de demos, atividade e alternativas | V2-01 | G | Planejado |
 | V2-03 | Assinatura white label e operação por trás | V2-02 | G | Planejado |
 | V2-04 | Laboratório D3 | V2-02 | G | Planejado |
@@ -34,9 +34,10 @@ Branch `docs/v2-plan`. Consolidar auditoria, direção, arquitetura da informaç
 
 ### V2-01 — Shell e conteúdo
 
-Branch sugerida `feat/v2-01-shell`.
+Branch do primeiro recorte: `feat/v2-01-hero`. [Escopo implementado e roteiro](entregas/01-hero-menu.md). O shell completo e os seis capítulos continuam pendentes; não considerar toda a V2-01 encerrada.
 
 - Extrair tokens visuais, navegação e conteúdo de seção com IDs semânticos.
+- Implementar tema claro padrão e escolha manual de claro/escuro persistida, sem seguir navegador/OS.
 - Trocar snap obrigatório por scroll natural; reservar espaços de demos.
 - Manter `/` e `/en/`, navegação por hash e histórico.
 - Reescrever hero para operação técnica com equipe própria e interlocução de Mário.
@@ -163,7 +164,7 @@ main (V1 publicável)
 Após revisão do plano e início do desenvolvimento:
 main
   └─ v2                # integração da nova versão
-      ├─ feat/v2-01-shell
+      ├─ feat/v2-01-hero
       ├─ feat/v2-02-demo-runtime
       ├─ feat/v2-03-signature
       └─ demais entregas, uma por vez conforme dependências

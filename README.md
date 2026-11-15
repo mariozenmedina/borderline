@@ -6,7 +6,7 @@ Site bilíngue de desenvolvimento white label para agências, construído com Vu
 
 O [plano da V2](docs/v2/README.md) reúne direção criativa, arquitetura da informação, demonstrações, arquitetura técnica, backlog e workflow Git. O [registro de ideias](docs/v2/07-registro-de-ideias.md) acompanha as contribuições e correções durante o planejamento.
 
-Nesta etapa, a V2 é uma proposta documentada. Sua implementação ainda não começou.
+O primeiro recorte da V2 está implementado na branch `feat/v2-01-hero`: hero, menu responsivo, PT/EN e temas claro/escuro com escolha manual. O tema claro é o padrão e não acompanha o navegador ou o sistema. A validação visual pelo operador está pendente; consulte a [entrega e o roteiro de revisão](docs/v2/entregas/01-hero-menu.md).
 
 ## Desenvolvimento local
 

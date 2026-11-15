@@ -72,6 +72,22 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 - **Aplicação nesta etapa:** apenas planejamento; revisão da marca e implementação ocorrerão em etapas próprias.
 - **Documentos:** índice, direção de arte, S01, assets, roadmap e avaliação criativa.
 
+## I-008 — Claro por padrão, tema escolhido pelo visitante
+
+- **Origem:** operador propôs versões clara e escura, clara como padrão e seletor explícito, sem acompanhar navegador ou OS.
+- **Estado:** requisito confirmado e incluído no primeiro recorte de implementação.
+- **Aplicação:** preferência manual persistida localmente, claro quando não existir valor válido; troca de idioma preserva a escolha. Seções podem ter atmosfera escura mesmo no tema claro.
+- **Direção:** a base clara abre espaço para suavidade, com contraste entre capítulos conforme a narrativa.
+- **Documentos:** direção, navegação, arquitetura técnica, V2-01 e roteiro de validação.
+
+## I-009 — Começar pelo hero e menu
+
+- **Origem:** “pode fazer o hero com o menu e a gente valida a partir dali”.
+- **Estado:** implementação autorizada para esse recorte; validação visual pelo operador pendente.
+- **Aplicação:** entrada sem máscara, mensagem de operação white label, composição em camadas, menu responsivo, PT/EN e seletor manual de tema.
+- **Limite:** a assinatura e o storyboard completo permanecem para as próximas entregas. O primeiro hero explora a relação entre entrega e operação por controle explícito, usando CSS 3D/HTML/SVG.
+- **Git:** branch `feat/v2-01-hero`, baseada em `v2`; merge e publicação não executados nesta entrega.
+
 ## Próximas contribuições
 
 Adicionar um identificador com origem, intenção, estado e impacto. Quando houver correção, atualizar a especificação ativa e registrar aqui o que deixou de valer. Distinguir pedido do operador, proposta do agente, decisão e adiamento.

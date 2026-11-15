@@ -6,7 +6,7 @@
 
 O agente pode ler código, revisar diffs, gerar build e verificar regras de domínio sem DOM/navegador. Esses checks não comprovam acabamento visual, usabilidade, compatibilidade móvel ou desempenho de renderização.
 
-Esta branch altera documentação e template de revisão. Portanto, sua verificação se limita a integridade dos documentos, links locais, consistência do escopo, diff e preservação das alterações do operador. Não executar build só para validar prosa.
+Para entregas somente documentais, verificar documentos, links locais, consistência, diff e preservação das alterações do operador, sem build de produto. O primeiro recorte de código tem verificações e roteiro próprios em [Hero, menu e temas](entregas/01-hero-menu.md).
 
 ## Checks por tipo de alteração
 
@@ -48,6 +48,7 @@ O agente fornece o roteiro específico da entrega e os resultados dos checks exe
 | Área | Percurso mínimo | Resultado esperado |
 | --- | --- | --- |
 | Hero | Abrir página e navegar antes de todo 3D carregar | Oferta, equipe própria e liderança técnica compreensíveis; navegação disponível |
+| Temas | Primeira visita, troca manual, reload, mudança de idioma e mudança de tema do OS | Claro por padrão; somente escolha explícita altera o tema; preferência local preservada |
 | Narrativa de abertura | Percorrer S01 até a assinatura e acessar `#whitelabel` diretamente | Assinatura conclui a história; oferta clara antes da interação; acesso direto contextualizado e scroll livre |
 | Assinatura | Selecionar Web; adicionar Sistemas; mudar para Casual e outra paleta; remover serviços; reset | Cargo e módulos coerentes; composição/fontes mudam; nada exige nome ou e-mail do visitante |
 | Operação atrás da assinatura | Selecionar Dados + Infra e revelar bastidores | Frentes correspondentes destacadas, Mário como interlocutor e equipe preservada |

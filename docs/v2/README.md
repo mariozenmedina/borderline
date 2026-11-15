@@ -2,7 +2,7 @@
 
 Data: 15/11/2026. Base auditada: `main`, commit `16b9a54`. Branch: `docs/v2-plan`.
 
-**Status: planejamento detalhado para discussão. Nenhuma implementação de produto foi iniciada.** O operador escolheu planejar primeiro. As propostas abaixo são uma base concreta para revisão, não decisões já aprovadas em sua totalidade.
+**Status: planejamento em evolução; primeiro recorte de hero, menu e temas implementado para validação do operador.** Após o planejamento inicial, o operador autorizou começar pela entrada do site. O restante das experiências continua proposto. Veja a [entrega V2-01](entregas/01-hero-menu.md).
 
 ## Objetivo
 
@@ -47,7 +47,8 @@ Jogo, D3 complexo, planta de infraestrutura e assinatura transformável vêm das
 - Demonstrar serviços por experiências reconhecíveis e funcionais, com impacto próprio por seção.
 - Nenhum teste em navegador pelo agente, inclusive automação e screenshots.
 - Usar pnpm e Docker quando necessários; commits com a identidade indicada no README.
-- Nesta etapa: documentação e workflow local, sem publicar ou substituir a V1.
+- Desenvolvimento local em branches da V2; a V1 em `main` permanece disponível. Primeiro recorte autorizado: hero, menu e temas, com validação do operador antes de avançar.
+- Tema claro por padrão e escuro por escolha explícita. Persistir a escolha localmente; não seguir preferências de cor do navegador/OS. Seções escuras podem existir no tema claro como decisão editorial.
 - Na assinatura, o visitante escolhe **serviços, direção visual e paleta**. Cargo, componentes, fontes e layout são derivados. O nome de Mário permanece fixo; agência e e-mail vêm de exemplos fictícios. Não há preenchimento desses dados.
 - A assinatura conclui a narrativa de abertura, depois de explicar oferta, liderança e equipe. A primeira tela comunica a proposta antes de pedir interação.
 

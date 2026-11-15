@@ -45,7 +45,9 @@ flowchart TD
 
 ## Navegação
 
-Barra discreta com marca, Capacidades, White label, Como trabalhamos, Contato e PT/EN. “Capacidades” abre uma lista curta dos seis serviços. Em telas pequenas, menu acessível; acesso ao idioma e contato continua fácil.
+Barra discreta com marca, Capacidades, White label, Como trabalhamos, Contato, PT/EN e seletor manual de tema. “Capacidades” abre uma lista curta dos seis serviços na versão completa. Em telas pequenas, menu acessível; acesso ao idioma, tema e contato continua fácil.
+
+No primeiro recorte implementado, o menu aponta para o conteúdo já disponível: O que fazemos (`#capacidades`), Como trabalhamos (`#parceria`) e Contato (`#contato`). White label e os seis destinos de demonstração entram quando existirem. O seletor começa em claro, lembra a escolha explícita do visitante e não consulta a preferência de cor do sistema.
 
 Depois da abertura, uma régua compacta de capítulos pode indicar a seção atual. A régua não deve competir com o palco da demo. O rodapé repete os links essenciais e o canal de contato.
 

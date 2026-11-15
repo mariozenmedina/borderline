@@ -6,6 +6,14 @@ Manter Vue 3, Vite, Less e Three.js. Adicionar somente os módulos D3 necessári
 
 Docker permanece disponível quando houver necessidade real de ambiente ou serviço. A V2 proposta pode ser servida como arquivos estáticos no destino atual. Publicação e configuração de hospedagem serão confirmadas antes do lançamento.
 
+### Primeiro recorte e temas
+
+O hero inicial usa HTML/SVG e transformações CSS 3D para revisar composição e linguagem visual antes do runtime Three completo. A entrada atual não monta `SceneBackdrop` nem pré-carrega a máscara. Os arquivos da V1 permanecem no repositório para migração posterior. Conteúdo editorial existente foi reaproveitado abaixo do hero para manter navegação funcional; as novas demos continuam planejadas.
+
+O tema é um atributo `data-theme` no elemento raiz, com tokens CSS e dois valores: `light` e `dark`. Claro é sempre o padrão sem preferência válida salva. A chave `borderline-theme` armazena apenas escolha explícita; falha do armazenamento mantém a troca em memória. Um bootstrap pequeno no head aplica a preferência antes da primeira pintura, e `src/theme.mjs` gerencia as alterações da UI. Não consultar `prefers-color-scheme` nem oferecer modo automático. `prefers-reduced-motion` continua independente do tema.
+
+`data-tone="dark"` permite uma seção editorial escura em ambos os temas. Troca de idioma preserva tema, âncora e estado da interação. Metadados de cor são controlados pelo tema, não pelo módulo de SEO. Favicons deixam de usar media queries de cor; o manifesto tem claro como cor inicial.
+
 | Decisão | Motivo | Limite/contrapartida |
 | --- | --- | --- |
 | Home com capítulos e expansão inline | Permite narrativa e exploração sem multiplicar páginas vazias | Cada capítulo precisa controlar altura e histórico de navegação |

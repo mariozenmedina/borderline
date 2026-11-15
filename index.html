@@ -11,15 +11,27 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="color-scheme" content="dark">
+    <meta name="color-scheme" content="light">
     <meta name="format-detection" content="telephone=no">
-    <meta name="theme-color" content="#010911">
+    <meta name="theme-color" content="#f6f5f1">
+    <script id="theme-bootstrap">
+      (function () {
+        var theme = 'light'
+        try {
+          if (window.localStorage.getItem('borderline-theme') === 'dark') theme = 'dark'
+        } catch {}
+        document.documentElement.dataset.theme = theme
+        document.documentElement.style.colorScheme = theme
+        document.querySelector('meta[name="color-scheme"]').setAttribute('content', theme)
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', theme === 'dark' ? '#171d1b' : '#f6f5f1')
+      })()
+    </script>
     <meta name="application-name" content="Borderline.Dev">
     <meta name="apple-mobile-web-app-title" content="Borderline.Dev">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="msapplication-TileColor" content="#010911">
+    <meta name="msapplication-TileColor" content="#f6f5f1">
     <meta name="msapplication-TileImage" content="/mstile-150x150.png">
     <meta name="msapplication-config" content="/browserconfig.xml">
     <script>
@@ -64,19 +76,9 @@
     <meta name="twitter:image" content="https://borderline.dev.br/og-image-pt.png">
     <meta name="twitter:image:alt" content="Arte social da Borderline.Dev com símbolo geométrico vermelho sobre uma malha escura.">
     <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon-dark.ico" sizes="any" media="(prefers-color-scheme: dark)">
-    <link rel="icon" href="/favicon-light.ico" sizes="any" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-dark-16x16.png" media="(prefers-color-scheme: dark)">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-light-16x16.png" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-dark-32x32.png" media="(prefers-color-scheme: dark)">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-light-32x32.png" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-dark-48x48.png" media="(prefers-color-scheme: dark)">
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-light-48x48.png" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-dark.png" media="(prefers-color-scheme: dark)">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-light.png" media="(prefers-color-scheme: light)">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <script type="application/ld+json" id="structured-data">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://borderline.dev.br/#organization","name":"Borderline.Dev","url":"https://borderline.dev.br/","logo":"https://borderline.dev.br/android-chrome-512x512.png","image":"https://borderline.dev.br/og-image-pt.png","description":"Time técnico integrado para agências: websites, landing pages, experiências interativas, sistemas, infraestrutura e suporte B2B com alto padrão e discrição.","sameAs":["https://www.linkedin.com/in/mariovmedina/"],"founder":{"@type":"Person","name":"Mario Medina","sameAs":"https://www.linkedin.com/in/mariovmedina/"}},{"@type":"WebSite","@id":"https://borderline.dev.br/#website","name":"Borderline.Dev","url":"https://borderline.dev.br/","description":"Time técnico integrado para agências: websites, landing pages, experiências interativas, sistemas, infraestrutura e suporte B2B com alto padrão e discrição.","inLanguage":"pt-BR","publisher":{"@id":"https://borderline.dev.br/#organization"}},{"@type":"Service","@id":"https://borderline.dev.br/#services","name":"Desenvolvimento premium para agências","description":"Time técnico integrado para agências: websites, landing pages, experiências interativas, sistemas, infraestrutura e suporte B2B com alto padrão e discrição.","url":"https://borderline.dev.br/","provider":{"@id":"https://borderline.dev.br/#organization"},"areaServed":["Brazil","Worldwide"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Serviços digitais Borderline.Dev","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Websites e landing pages premium"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Experiências interativas e 3D"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Sistemas web e integrações"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Infraestrutura, deploy e suporte B2B"}}]}}]}</script>
@@ -84,80 +86,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Offside&display=swap" rel="stylesheet">
     <style>
-      .boot-loader {
-        position: fixed;
-        inset: 0;
-        z-index: 999;
-        display: grid;
-        place-items: center;
-        overflow: hidden;
-        perspective: 900px;
-        background:
-          linear-gradient(90deg, rgba(229, 9, 20, 0.1) 1px, transparent 1px),
-          linear-gradient(180deg, rgba(245, 245, 245, 0.05) 1px, transparent 1px),
-          #010509;
-        background-size: 52px 52px, 52px 52px, auto;
-        color: #f5f5f5;
-        font-family: 'Offside', Arial, Helvetica, sans-serif;
-      }
-
-      .boot-loader__mark {
-        position: absolute;
-        width: clamp(150px, 44vw, 360px);
-        aspect-ratio: 1;
-        transform-style: preserve-3d;
-        animation: boot-loader-spin 2400ms linear infinite;
-      }
-
-      .boot-loader__mark span {
-        position: absolute;
-        inset: 15%;
-        border: 1px solid rgba(229, 9, 20, 0.68);
-        box-shadow: 0 0 36px rgba(229, 9, 20, 0.26);
-        transform: translateZ(46px) rotate(45deg);
-      }
-
-      .boot-loader__mark span:nth-child(2) {
-        border-color: rgba(245, 245, 245, 0.46);
-        transform: translateZ(-46px) rotate(45deg);
-      }
-
-      .boot-loader__content {
-        position: relative;
-        display: grid;
-        justify-items: center;
-        gap: 16px;
-        text-shadow: 0 0 22px rgba(1, 5, 9, 0.88), 0 0 54px rgba(1, 5, 9, 0.76);
-      }
-
-      .boot-loader__brand {
-        margin: 0;
-        font-size: clamp(2rem, 14vw, 7rem);
-        line-height: 0.8;
-      }
-
-      .boot-loader__brand span {
-        color: #e50914;
-      }
-
-      .boot-loader__progress {
-        min-width: 5ch;
-        margin: 0;
-        color: rgba(245, 245, 245, 0.82);
-        font-size: clamp(0.92rem, 2.8vw, 1.2rem);
-        line-height: 1;
-        text-align: center;
-      }
-
-      @keyframes boot-loader-spin {
-        from {
-          transform: rotateX(64deg) rotateZ(0deg);
-        }
-
-        to {
-          transform: rotateX(64deg) rotateZ(360deg);
-        }
-      }
+      html { background: #f6f5f1; color: #25372f; }
+      html[data-theme="dark"] { background: #171d1b; color: #f0f1e9; }
+      body { margin: 0; }
+      .boot-brand { margin: 28px 5vw; font: 20px Arial, sans-serif; letter-spacing: -1px; }
+      .boot-brand span { color: #ae4836; }
     </style>
     <title>Borderline.Dev | Desenvolvimento premium para agências</title>
   </head>
@@ -165,15 +98,7 @@
     <noscript>
       <strong>Borderline.Dev precisa de JavaScript habilitado para funcionar corretamente.</strong>
     </noscript>
-    <div id="app">
-      <div class="boot-loader" aria-live="polite">
-        <div class="boot-loader__mark" aria-hidden="true"><span></span><span></span></div>
-        <div class="boot-loader__content">
-          <p class="boot-loader__brand">borderline<span>.</span></p>
-          <p class="boot-loader__progress">0%</p>
-        </div>
-      </div>
-    </div>
+    <div id="app"><p class="boot-brand">borderline<span>.</span>dev</p></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
