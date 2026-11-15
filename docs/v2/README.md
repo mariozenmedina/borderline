@@ -6,7 +6,7 @@ Data: 15/11/2026. Base auditada: `main`, commit `16b9a54`. Branch: `docs/v2-plan
 
 ## Objetivo
 
-Fazer a agência reconhecer capacidade de execução ao experimentar o próprio site. A V2 mantém a identidade escura, autoral e tridimensional da Borderline.Dev e amplia a prova técnica: websites, 3D, jogos, dados, sistemas e infraestrutura.
+Fazer a agência reconhecer capacidade de execução ao experimentar o próprio site. A V2 evolui a identidade autoral e tridimensional da Borderline.Dev para uma expressão mais suave e profissional e amplia a prova técnica: websites, 3D, jogos, dados, sistemas e infraestrutura. A proposta visual principal passa a explorar um hero sem máscara; a retirada definitiva do símbolo permanece em avaliação.
 
 Mensagem central proposta: **“A operação técnica por trás da sua agência.”** A Borderline.Dev tem equipe própria de desenvolvimento e TI nos bastidores, enquanto Mário conduz reuniões, decisões técnicas e entregas como interlocutor integrado à agência. Cada demo precisa mostrar o que essa operação entrega sob a marca da agência.
 
@@ -16,8 +16,8 @@ A home será uma apresentação navegável com demonstrações funcionais. Cada 
 
 | Capítulo | Experiência principal | O que a agência percebe |
 | --- | --- | --- |
-| Abertura | Máscara 3D da marca e composição autoral | Identidade e domínio de execução |
-| White label | Serviços e direções visuais transformam uma assinatura de e-mail em 3D | Mário assume a frente técnica da agência, apoiado pela operação própria |
+| Abertura | Entrega digital em 3D que revela liderança e operação em uma narrativa curta | Clareza da oferta, estrutura e domínio de execução |
+| White label | Desfecho da abertura: serviços e direções visuais transformam a assinatura de e-mail | Mário assume a frente técnica da agência, apoiado pela operação própria |
 | Websites | Campanha navegável que se recompõe entre larguras e conteúdos | Fidelidade ao design, responsividade e acabamento |
 | 3D e produto | Luminária modular com acabamentos, componentes e luz ajustáveis | Configuradores, lançamentos e experiências de produto |
 | Jogos | Minijogo com três faixas, colisões, pontuação e reinício | Mecânicas reais para campanhas e ativações |
@@ -42,13 +42,14 @@ Jogo, D3 complexo, planta de infraestrutura e assinatura transformável vêm das
 ## Restrições confirmadas
 
 - Português e inglês desde o início de cada entrega.
-- Preservar identidade visual, presença do 3D e foco white label para agências.
+- Preservar reconhecimento da marca, presença do 3D e foco white label para agências, evoluindo para uma linguagem mais suave; a máscara deixa de ser requisito de preservação.
 - Comunicar equipe própria operacional nos bastidores, liderança técnica de Mário e capacidade de atender múltiplos clientes, conforme confirmado pelo operador; não divulgar integrantes nem inventar porte numérico.
 - Demonstrar serviços por experiências reconhecíveis e funcionais, com impacto próprio por seção.
 - Nenhum teste em navegador pelo agente, inclusive automação e screenshots.
 - Usar pnpm e Docker quando necessários; commits com a identidade indicada no README.
 - Nesta etapa: documentação e workflow local, sem publicar ou substituir a V1.
 - Na assinatura, o visitante escolhe **serviços, direção visual e paleta**. Cargo, componentes, fontes e layout são derivados. O nome de Mário permanece fixo; agência e e-mail vêm de exemplos fictícios. Não há preenchimento desses dados.
+- A assinatura conclui a narrativa de abertura, depois de explicar oferta, liderança e equipe. A primeira tela comunica a proposta antes de pedir interação.
 
 ## Ordem de construção sugerida
 
@@ -61,6 +62,7 @@ Uma entrega completa inclui PT/EN, controles, resposta à interação, reset, al
 | Tema | Proposta de partida | Momento de decisão |
 | --- | --- | --- |
 | Voz da marca | Voz de empresa/operação; Mário como liderança e interlocutor, equipe própria nos bastidores | Refinar texto sem reduzir a oferta a trabalho individual |
+| Identidade | Hero sem máscara, marca tipográfica e linguagem de bordas; materiais e movimento mais suaves | Revisão visual antes do shell; símbolo, paleta e tipografia finais ainda abertos |
 | Assinatura | Três direções visuais e seis serviços; papel derivado por regras simples | Storyboard da primeira demo |
 | Jogo | Percurso de 30 segundos e tema geométrico original | Antes de implementar o jogo |
 | Produto 3D | Luminária modular autoral | Antes de implementar o configurador |

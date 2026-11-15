@@ -30,7 +30,7 @@ M/G expressam complexidade relativa, não estimativa de prazo. Calendário só d
 
 ### V2-00 — Planejamento
 
-Branch `docs/v2-plan`. Consolidar auditoria, direção, arquitetura da informação, demos, contratos, backlog e validação. Manter registro das novas ideias e correções. Aceite: documentos coerentes com o posicionamento de equipe própria e liderança técnica, referências navegáveis e nenhuma alteração de produto.
+Branch `docs/v2-plan`. Consolidar auditoria, direção, arquitetura da informação, demos, contratos, backlog e validação. Manter registro das novas ideias e correções. A revisão criativa inclui storyboard da abertura, assinatura como desfecho e proposta de identidade mais suave com hero sem máscara. A retirada definitiva do símbolo e os tokens finais continuam abertos. Aceite: documentos coerentes com equipe própria e liderança técnica, referências navegáveis e nenhuma alteração de produto.
 
 ### V2-01 — Shell e conteúdo
 
@@ -40,6 +40,7 @@ Branch sugerida `feat/v2-01-shell`.
 - Trocar snap obrigatório por scroll natural; reservar espaços de demos.
 - Manter `/` e `/en/`, navegação por hash e histórico.
 - Reescrever hero para operação técnica com equipe própria e interlocução de Mário.
+- Aplicar a direção visual revisada e estruturar a narrativa anterior à assinatura; não tratar o hero sem máscara como identidade final aprovada antes da revisão visual.
 - Criar conteúdo PT/EN dos capítulos, com alternativas editoriais legíveis.
 - Aceite: navegação e idioma independem do 3D; hash direto e voltar/avançar têm roteiro explícito para operador; build localizado continua gerando os dois idiomas.
 
@@ -61,6 +62,7 @@ Branch sugerida `feat/v2-03-signature`.
 - Primeiro corte: serviços, estilos e assinatura HTML, cargo e módulos derivados.
 - Segundo corte: transformação 3D, tipografia, paletas e inspeção frontal.
 - Terceiro corte: revelar frentes operacionais conforme os serviços, com Mário como interlocutor.
+- Integrar a assinatura como desfecho de S01; a oferta e a operação são compreensíveis antes dos controles. Preservar acesso direto contextualizado.
 - Três identidades fictícias; nenhuma edição de nome/e-mail/cargo; reset e PT/EN.
 - Aceite: regras para todas as 64 combinações, mudanças rápidas consistentes, estilo altera composição, alternativas sem WebGL; equipe própria comunicada sem expor integrantes.
 - Verificação sem navegador: testes de derivação, precedência de papéis, combinações, paleta e seleção vazia. Operador avalia legibilidade e impacto da transformação.

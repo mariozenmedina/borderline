@@ -48,6 +48,7 @@ O agente fornece o roteiro específico da entrega e os resultados dos checks exe
 | Área | Percurso mínimo | Resultado esperado |
 | --- | --- | --- |
 | Hero | Abrir página e navegar antes de todo 3D carregar | Oferta, equipe própria e liderança técnica compreensíveis; navegação disponível |
+| Narrativa de abertura | Percorrer S01 até a assinatura e acessar `#whitelabel` diretamente | Assinatura conclui a história; oferta clara antes da interação; acesso direto contextualizado e scroll livre |
 | Assinatura | Selecionar Web; adicionar Sistemas; mudar para Casual e outra paleta; remover serviços; reset | Cargo e módulos coerentes; composição/fontes mudam; nada exige nome ou e-mail do visitante |
 | Operação atrás da assinatura | Selecionar Dados + Infra e revelar bastidores | Frentes correspondentes destacadas, Mário como interlocutor e equipe preservada |
 | Websites | Alternar larguras, abrir menu e trocar para conteúdo longo/EN | Responsividade real, texto legível e ações locais funcionais |
@@ -69,6 +70,7 @@ Para cada capítulo, registrar uma frase sobre o momento mais forte e o que prec
 - A demonstração faz a agência imaginar um projeto contratável?
 - A experiência móvel mantém a ideia, mesmo com menos efeitos?
 - A operação parece estruturada e liderada, com equipe própria por trás?
+- A direção visual transmite suavidade e confiança, mantendo personalidade sem depender da máscara?
 
 “Funciona” e “tem impacto” são critérios separados. Ajustes de direção de arte devem ser registrados com referência à seção e ao estado, para não virar uma solicitação genérica de mais animação.
 

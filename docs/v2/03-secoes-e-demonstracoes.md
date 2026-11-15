@@ -8,25 +8,29 @@ Toda demo precisa de estado inicial legível, instrução curta, efeito verific�
 
 As cenas 3D não carregam juntas. Simulações e dados ficam identificados. O visitante nunca precisa interagir para acessar texto ou contato. Detalhes técnicos aparecem sob demanda; controles não recebem nomes internos de bibliotecas.
 
-## S01 — Abertura: assinatura da marca
+## S01 — Abertura: a entrega e a operação
 
-**Objetivo:** comunicar imediatamente desenvolvimento white label para agências e abrir uma experiência autoral.
+**Objetivo:** comunicar imediatamente uma operação white label para agências, com liderança técnica e equipe própria, e preparar o sentido da assinatura interativa.
 
-**Composição:** manter a máscara triangular como protagonista, Offside na marca, fundo escuro e uma frase comercial legível. Um pequeno índice de capacidades sugere a profundidade seguinte. Evitar um hero ocupado só pelo logotipo e pelo carregamento.
+**Composição proposta:** marca tipográfica e mensagem comercial à esquerda; uma entrega digital reconhecível em uma cena 3D à direita, com contornos suaves, materiais foscos e luz difusa. A entrega pode ser um website fictício com acabamento editorial; sua moldura e algumas camadas sugerem a estrutura que será revelada. O hero sem máscara é a direção principal em estudo, ainda sujeita a revisão visual.
 
-**Interação:** pointer altera sutilmente a leitura da superfície; foco ou ativação de uma capacidade destaca um detalhe e oferece navegação direta. A máscara continua reconhecível. Controles e título não dependem dela.
+**Mensagem proposta:** “Sua agência à frente. Nossa operação por trás.” Apoio: desenvolvimento, experiências interativas e TI sob a marca da agência, com uma liderança nas reuniões e uma equipe própria nas entregas. A formulação final terá equivalente em inglês e será revisada junto ao texto da arquitetura da informação.
 
-**Momento de impacto:** ao revelar a marca, faces e arestas se organizam com precisão; o movimento inicial é curto e pode ser suprimido. Não exigir assistir a uma introdução.
+**Storyboard proposto:** primeira tela com oferta e entrega → interlocução técnica de Mário → frentes operacionais que sustentam o projeto → adaptação à identidade da agência → assinatura interativa em S02. A câmera pode contornar a interface e revelar suas camadas conforme a leitura avança. As frentes usam exemplos leves de interfaces e entregáveis, sem carregar as seis demos completas dentro do hero.
 
-**Mobile/alternativa:** enquadramento próprio, poster da máscara e ausência de parallax no modo de pouco movimento.
+**Momento de impacto:** uma entrega que parecia uma superfície única revela uma estrutura coordenada por trás. O acabamento está na continuidade da transformação e na relação clara entre liderança, execução e entrega. Reservar a planta detalhada e seus equipamentos para Infraestrutura, mantendo papéis distintos para os dois capítulos.
 
-**Aceite:** o visitante identifica público, oferta e próximo passo antes de interagir; hero não espera recursos de outras demos; contato e navegação funcionam com falha do 3D.
+**Mobile/alternativa:** composição vertical e etapas estáticas com texto equivalente; ilustração HTML/SVG da entrega e das frentes de trabalho. Movimento reduzido troca estados diretamente. Sem gestos obrigatórios, rolagem travada ou espera para acessar o conteúdo.
+
+**Aceite:** público, oferta e próximo passo claros antes de interagir; equipe e interlocutor compreensíveis antes da assinatura; hero independente dos módulos pesados das outras demos; contato e navegação disponíveis em qualquer etapa. Operador avalia se a linguagem comunica confiança e suavidade sem perder presença.
 
 ## S02 — White label: assinatura que se adapta
 
 **Origem:** ideias I-003 e I-004 do operador. Esta é a versão ativa: serviços e direções visuais orientam a transformação; não há campos para preencher nome, cargo ou e-mail.
 
 **Objetivo:** tornar visível como Mário assume a interlocução e liderança técnica dentro da agência, enquanto a equipe própria de desenvolvimento e TI sustenta a entrega nos bastidores.
+
+**Papel na narrativa:** desfecho interativo do capítulo de abertura, não o conteúdo inicial da primeira tela. O visitante já entende a operação ao chegar aos controles. Manter uma introdução curta para quem acessa diretamente `#whitelabel`.
 
 **Composição:** uma janela de e-mail em perspectiva, com mensagem fictícia curta e assinatura de Mário Medina. Ao lado, uma área compacta com a gama de serviços, direções “Moderna”, “Casual” e “Editorial” e paletas identificáveis. O estilo da demo muda; a navegação do site mantém a marca Borderline.Dev.
 
@@ -56,7 +60,7 @@ As regras exatas têm fonte única na [arquitetura técnica](04-arquitetura-tecn
 
 **Momento de impacto:** a alteração dos serviços transforma a atuação visível; a alteração de estilo transforma a assinatura inteira. Elementos deslizam e reorganizam a peça enquanto a câmera faz um ajuste curto. Não substituir tudo por um simples fade entre imagens prontas.
 
-**Segunda leitura proposta:** “Ver a operação por trás” afasta a câmera e revela frentes de desenvolvimento, sistemas/dados e TI conectadas à assinatura. As frentes destacadas seguem os serviços escolhidos. Representar funções e fluxo de entrega, sem fotos, nomes, organograma numérico ou contagem fictícia de profissionais. O detalhamento operacional continua na S09.
+**Retomada opcional:** “Ver a operação por trás” retorna à leitura das frentes já apresentadas em S01, agora destacadas pelos serviços escolhidos. Evitar repetir toda a introdução. Representar funções e fluxo de entrega, sem fotos, nomes ou contagem fictícia de profissionais. O detalhamento operacional continua na S09.
 
 **Estados:** configuração inicial com Websites e direção Moderna; seleção vazia mostra o papel genérico e convite para explorar; múltiplos serviços têm regra determinística; mudanças rápidas cancelam a transição anterior sem desencontrar assinatura e controles; “Restaurar exemplo” volta ao início.
 

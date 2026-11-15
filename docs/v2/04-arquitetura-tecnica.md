@@ -88,7 +88,7 @@ Esse contrato é conceitual; evitar criar uma biblioteca genérica maior que o n
 
 1. Renderizar primeiro texto, navegação, layout reservado e alternativas leves.
 2. Importar a primeira cena após o shell estar disponível; não impor duração mínima ao loader.
-3. Pré-carregar o módulo da seção próxima, sem montar todas as cenas ou baixar todos os assets.
+3. Pré-carregar o módulo da seção próxima, sem montar todas as cenas ou baixar todos os assets. S01 e S02 compartilham a narrativa de abertura, mas os controles e recursos da assinatura só são ativados na sua etapa; acesso direto por hash continua independente.
 4. Ativar a experiência visível/principal; intenção explícita do visitante prevalece sobre um cruzamento pequeno de viewport.
 5. Ao sair da área ou ocultar a página, pausar loops, simulações, timers e áudio. Pausa de jogo não retoma automaticamente.
 6. Liberar recursos pesados de experiências distantes; manter apenas o pequeno estado necessário para voltar.
@@ -204,7 +204,8 @@ Perfis: completo, reduzido e estático. Reduzido diminui DPR, efeitos e densidad
 
 | Asset | Origem proposta | Condição de uso |
 | --- | --- | --- |
-| Máscara | Asset existente | Verificar origem/licença antes de redistribuição nova; não presumir ausência de restrição |
+| Entrega e camadas do hero | Interface fictícia e geometria autorais | Ilustração leve, sem montar as outras demos; equivalência HTML/SVG |
+| Máscara da V1 | Asset existente, fora da proposta principal do novo hero | Retirada definitiva em avaliação; remover dependências apenas na implementação aprovada |
 | Assinaturas e marcas fictícias | SVG/CSS autorais | Domínios `.example`, identificação de demo |
 | Fontes de estilo | Conjunto pequeno, licença adequada | Documentar origem e carregar sob demanda |
 | Luminária | Geometria autoral | Evitar catálogo de produto real sem autorização |

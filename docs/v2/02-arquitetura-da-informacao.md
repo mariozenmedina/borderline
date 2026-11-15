@@ -12,9 +12,14 @@ Três níveis de leitura:
 
 As experiências não bloqueiam a navegação. Não exigir login, formulário, áudio, pontuação mínima ou conclusão de percurso para chegar ao contato.
 
+S01 e S02 formam um primeiro capítulo contínuo. A assinatura é seu desfecho interativo, depois de o visitante entender a oferta, a interlocução de Mário e a equipe própria. A sequência visual exata ainda será desenhada; a proposta atual parte de uma entrega reconhecível, revela liderança e operação e termina na adaptação à identidade da agência.
+
+A primeira tela apresenta mensagem e CTAs completos. Scroll pode aprofundar a cena, com narrativa textual em fluxo normal e navegação livre; não criar vídeo obrigatório, scroll travado ou interação necessária para revelar a oferta. Um acesso direto a `#whitelabel` deve trazer uma frase de contexto e funcionar sem exigir a sequência anterior.
+
 ```mermaid
 flowchart TD
-    A[Abertura: parceiro técnico para agências] --> B[White label: assinatura adaptável]
+    A[Abertura: oferta e entrega reconhecível] --> A1[Liderança técnica e equipe nos bastidores]
+    A1 --> B[Desfecho white label: assinatura adaptável]
     B --> C[Websites e campanhas]
     C --> D[3D e produto]
     D --> E[Jogos e ativações]

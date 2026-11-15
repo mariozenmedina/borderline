@@ -38,7 +38,13 @@ No início do trabalho, `public/og-image-pt.png` e `public/og-image-en.png` já 
 
 ## Direção de arte
 
-Preservar fundo `#010911`, texto `#f5f5f5`, vermelho `#e50914`, malha discreta, Offside na marca, máscara triangular e iluminação dramática. Textos e controles usam fonte de leitura simples. Em dados e estados, complementar cor com rótulos, padrões e ícones.
+O operador quer uma expressão mais suave e profissional e considera retirar a máscara por perceber agressividade no símbolo. A direção passa a preservar reconhecimento e qualidade tridimensional, com liberdade para rever o símbolo. Explorar o hero sem máscara é a proposta principal; não há aprovação definitiva de um novo logotipo ou sistema visual.
+
+A base atual — fundo `#010911`, texto `#f5f5f5`, vermelho `#e50914`, Offside e malha — é ponto de partida, não uma obrigação de manter todos os tokens. Propor mais espaço, iluminação difusa, superfícies foscas ou claras, contornos sutis e transições contínuas. Testar menor presença do vermelho saturado e do contraste dramático na composição; preservar contraste legível em textos e controles.
+
+A marca tipográfica Borderline.Dev pode ganhar protagonismo, acompanhada de uma linguagem autoral de bordas, enquadramentos e camadas. O ponto e os contornos podem conectar marca, navegação e cenas. Evitar substituir a máscara por outro objeto abstrato sem relação com a oferta. Uma alteração de tipografia ou cor precisa ser apresentada como direção visual para revisão.
+
+O impacto passa a vir da precisão das transformações, da materialidade e da qualidade das demonstrações. Movimento calmo não significa perder profundidade ou complexidade. Em dados e estados, complementar cor com rótulos, padrões e ícones.
 
 Variar a composição: peça editorial 3D na assinatura; tipografia e janelas reais em websites; objeto central no configurador; palco largo no jogo; instrumentos coordenados em dados; trilha de eventos em sistemas; planta arquitetônica em infraestrutura.
 
