@@ -2,7 +2,7 @@
 
 Branch: `feat/v2-01-hero`, a partir de `v2` em `49f5060`.
 
-**Estado: implementado, com validação visual e de interação pelo operador pendente.** Este é o primeiro recorte do shell, não a V2 completa nem o storyboard integral.
+**Estado: implementado em `fedf803`, com direção visual rejeitada pelo operador.** O refinamento está pausado: a prioridade passou a ser validar o [mediakit](00-mediakit.md), recuperando preto, vermelho, branco e cinzas. Este registro preserva o primeiro recorte do shell; não representa aceite nem a V2 completa.
 
 ## O que mudou
 

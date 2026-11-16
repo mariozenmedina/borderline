@@ -2,7 +2,7 @@
 
 Data: 15/11/2026. Base auditada: `main`, commit `16b9a54`. Branch: `docs/v2-plan`.
 
-**Status: planejamento em evolução; primeiro recorte de hero, menu e temas implementado para validação do operador.** Após o planejamento inicial, o operador autorizou começar pela entrada do site. O restante das experiências continua proposto. Veja a [entrega V2-01](entregas/01-hero-menu.md).
+**Status: mediakit implementado para validação; refinamento do hero pausado.** O operador considerou a direção visual do primeiro hero distante do esperado. A prioridade é validar os elementos básicos em preto, vermelho, branco e cinzas antes de reformular a entrada. Veja a [entrega do mediakit](entregas/00-mediakit.md) e o [histórico do hero](entregas/01-hero-menu.md). As demais experiências continuam propostas.
 
 ## Objetivo
 
@@ -47,14 +47,14 @@ Jogo, D3 complexo, planta de infraestrutura e assinatura transformável vêm das
 - Demonstrar serviços por experiências reconhecíveis e funcionais, com impacto próprio por seção.
 - Nenhum teste em navegador pelo agente, inclusive automação e screenshots.
 - Usar pnpm e Docker quando necessários; commits com a identidade indicada no README.
-- Desenvolvimento local em branches da V2; a V1 em `main` permanece disponível. Primeiro recorte autorizado: hero, menu e temas, com validação do operador antes de avançar.
+- Desenvolvimento local em branches da V2; a V1 em `main` permanece disponível. Após o primeiro hero, a prioridade autorizada passou a ser o mediakit, com validação do operador antes de retomar a entrada.
 - Tema claro por padrão e escuro por escolha explícita. Persistir a escolha localmente; não seguir preferências de cor do navegador/OS. Seções escuras podem existir no tema claro como decisão editorial.
 - Na assinatura, o visitante escolhe **serviços, direção visual e paleta**. Cargo, componentes, fontes e layout são derivados. O nome de Mário permanece fixo; agência e e-mail vêm de exemplos fictícios. Não há preenchimento desses dados.
 - A assinatura conclui a narrativa de abertura, depois de explicar oferta, liderança e equipe. A primeira tela comunica a proposta antes de pedir interação.
 
 ## Ordem de construção sugerida
 
-Base de navegação e ciclo de vida; assinatura white label; laboratório D3; infraestrutura; jogo; websites; configurador de produto; sistemas e integrações; narrativa de parceria e contato; integração final. A ordem de construção difere da ordem de leitura da home.
+Mediakit e validação dos fundamentos visuais; reformulação do hero/menu; base de navegação e ciclo de vida; assinatura white label; laboratório D3; infraestrutura; jogo; websites; configurador de produto; sistemas e integrações; narrativa de parceria e contato; integração final. A ordem de construção difere da ordem de leitura da home.
 
 Uma entrega completa inclui PT/EN, controles, resposta à interação, reset, alternativa sem animação e roteiro de validação. Uma cena bonita sozinha não encerra a entrega.
 
@@ -63,7 +63,7 @@ Uma entrega completa inclui PT/EN, controles, resposta à interação, reset, al
 | Tema | Proposta de partida | Momento de decisão |
 | --- | --- | --- |
 | Voz da marca | Voz de empresa/operação; Mário como liderança e interlocutor, equipe própria nos bastidores | Refinar texto sem reduzir a oferta a trabalho individual |
-| Identidade | Hero sem máscara, marca tipográfica e linguagem de bordas; materiais e movimento mais suaves | Revisão visual antes do shell; símbolo, paleta e tipografia finais ainda abertos |
+| Identidade | Preto, vermelho `#e50914`, branco e cinzas; ponto da marca como interação; camadas que revelam a operação | Mediakit antes de retomar hero/menu; Manrope, botões e iconografia ainda em revisão |
 | Assinatura | Três direções visuais e seis serviços; papel derivado por regras simples | Storyboard da primeira demo |
 | Jogo | Percurso de 30 segundos e tema geométrico original | Antes de implementar o jogo |
 | Produto 3D | Luminária modular autoral | Antes de implementar o configurador |

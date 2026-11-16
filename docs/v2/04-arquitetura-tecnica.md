@@ -8,6 +8,10 @@ Docker permanece disponível quando houver necessidade real de ambiente ou servi
 
 ### Primeiro recorte e temas
 
+O refinamento do hero está pausado para validar o mediakit em `/?view=mediakit` e `/en/?view=mediakit`. `MediakitPage.vue` é carregado por import dinâmico, com conteúdo PT/EN próprio. `components/design/DotLink.vue` e `RevealButton.vue` concentram os novos controles; `styles/mediakit.less` mantém os tokens candidatos isolados do hero anterior. `data-view="mediakit"` aplica fundo e metadados neutros desde o bootstrap, preservando a preferência manual de tema. A página de estudo recebe `noindex, nofollow` pelo bootstrap e pela atualização de SEO; não entra no sitemap.
+
+Manrope variável é servida localmente pelo pacote Fontsource, usando apenas o subconjunto Latin necessário ao conteúdo atual; Phosphor é importado por componentes, sem registro global. Licenças são incluídas em `public/licenses/`. Streamline e Lordicon aparecem apenas como links de referência. A releitura de camadas do botão Uiverse foi escrita localmente; nenhuma implementação do exemplo foi copiada. O estudo usa CSS, sem WebGL, timers ou player de animação.
+
 O hero inicial usa HTML/SVG e transformações CSS 3D para revisar composição e linguagem visual antes do runtime Three completo. A entrada atual não monta `SceneBackdrop` nem pré-carrega a máscara. Os arquivos da V1 permanecem no repositório para migração posterior. Conteúdo editorial existente foi reaproveitado abaixo do hero para manter navegação funcional; as novas demos continuam planejadas.
 
 O tema é um atributo `data-theme` no elemento raiz, com tokens CSS e dois valores: `light` e `dark`. Claro é sempre o padrão sem preferência válida salva. A chave `borderline-theme` armazena apenas escolha explícita; falha do armazenamento mantém a troca em memória. Um bootstrap pequeno no head aplica a preferência antes da primeira pintura, e `src/theme.mjs` gerencia as alterações da UI. Não consultar `prefers-color-scheme` nem oferecer modo automático. `prefers-reduced-motion` continua independente do tema.

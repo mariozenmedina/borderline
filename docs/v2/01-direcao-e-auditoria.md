@@ -40,9 +40,15 @@ No início do trabalho, `public/og-image-pt.png` e `public/og-image-en.png` já 
 
 O operador quer uma expressão mais suave e profissional e considera retirar a máscara por perceber agressividade no símbolo. A direção passa a preservar reconhecimento e qualidade tridimensional, com liberdade para rever o símbolo. Explorar o hero sem máscara é a proposta principal; não há aprovação definitiva de um novo logotipo ou sistema visual.
 
-A base atual — fundo `#010911`, texto `#f5f5f5`, vermelho `#e50914`, Offside e malha — é ponto de partida, não uma obrigação de manter todos os tokens. Propor mais espaço, iluminação difusa, superfícies foscas ou claras, contornos sutis e transições contínuas. Testar menor presença do vermelho saturado e do contraste dramático na composição; preservar contraste legível em textos e controles.
+A base original — fundo `#010911`, texto `#f5f5f5`, vermelho `#e50914`, Offside e malha — permanece como referência de reconhecimento. Após avaliar o primeiro hero, o operador pediu foco em preto, vermelho, branco e escala de cinza. Suavidade deve vir de espaço, desenho e movimento, preservando a força dessas cores.
 
-**Decisão posterior do operador:** tema claro por padrão, com seletor manual de claro/escuro e sem seguir o navegador ou o OS. A composição clara pode conter capítulos escuros para criar ritmo. O primeiro recorte explora superfície clara quente, texto verde-grafite e acento terracota; no escuro, materiais profundos e textos claros. Esses tokens são uma primeira proposta implementada, sujeita à revisão visual.
+**Decisão do operador:** tema claro por padrão, com seletor manual de claro/escuro e sem seguir o navegador ou o OS. A composição clara pode conter capítulos escuros para criar ritmo. O primeiro hero explorou superfície quente, verde-grafite e terracota; essa direção foi rejeitada. Ela fica preservada apenas no recorte anterior para comparação. O mediakit passa a ser a referência em avaliação: branco `#ffffff`, preto `#111111`, vermelho original `#e50914` e cinzas neutros.
+
+Validar títulos, botões, links e estados antes de redesenhar o hero. O estudo propõe Manrope para texto e títulos, mantendo Offside na marca. Links recebem o ponto vermelho, que cresce para envolver o texto em hover/foco. Botões circulares começam com ícone e revelam o rótulo ao expandir; no toque, o rótulo já aparece.
+
+O operador acrescentou a [referência de botão de vinodjangid07 no Uiverse](https://uiverse.io/vinodjangid07/great-ape-33): uma máscara/superfície à frente e algo que sai por trás. A interpretação para white label é a agência na frente e a operação técnica revelada atrás. O mediakit compara essa variação em camadas com o círculo expansível. Isso não equivale a retomar a máscara facial da V1.
+
+Iconografia mais detalhada permanece em avaliação: Phosphor Duotone como amostra integrada; Streamline Ultimate Duotone e Lordicon como referências para desenhos mais ricos e movimento. O formato SVG não define a simplicidade do desenho. Não confundir a amostra provisória com escolha definitiva de família.
 
 A marca tipográfica Borderline.Dev pode ganhar protagonismo, acompanhada de uma linguagem autoral de bordas, enquadramentos e camadas. O ponto e os contornos podem conectar marca, navegação e cenas. Evitar substituir a máscara por outro objeto abstrato sem relação com a oferta. Uma alteração de tipografia ou cor precisa ser apresentada como direção visual para revisão.
 

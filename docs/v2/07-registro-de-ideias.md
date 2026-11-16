@@ -83,10 +83,32 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 ## I-009 — Começar pelo hero e menu
 
 - **Origem:** “pode fazer o hero com o menu e a gente valida a partir dali”.
-- **Estado:** implementação autorizada para esse recorte; validação visual pelo operador pendente.
+- **Estado:** recorte implementado em `fedf803`; direção visual rejeitada pelo operador, com reformulação adiada até validar a I-010.
 - **Aplicação:** entrada sem máscara, mensagem de operação white label, composição em camadas, menu responsivo, PT/EN e seletor manual de tema.
 - **Limite:** a assinatura e o storyboard completo permanecem para as próximas entregas. O primeiro hero explora a relação entre entrega e operação por controle explícito, usando CSS 3D/HTML/SVG.
 - **Git:** branch `feat/v2-01-hero`, baseada em `v2`; merge e publicação não executados nesta entrega.
+
+## I-010 — Mediakit antes da entrada
+
+- **Origem:** operador considerou o visual distante do esperado e pediu validar elementos básicos antes de ajustar o hero.
+- **Estado:** mudança de prioridade confirmada; primeira página de estudo implementada para revisão.
+- **Paleta:** preto, vermelho original `#e50914`, branco e escala de cinza. A proposta quente/verde/terracota deixa de orientar a V2.
+- **Links:** cor ou peso diferente e ponto vermelho da marca; experimentar expansão do ponto até envolver o texto.
+- **Botões:** círculo com ícone em repouso; expansão para revelar texto no hover, com equivalente por foco e texto visível no toque.
+- **Tipografia proposta:** Manrope no conteúdo, Offside preservada na marca. A família e os pesos ainda não estão aprovados.
+- **Ícones:** operador quer mais complexidade que desenhos lineares simples. Phosphor Duotone integrado como amostra; Streamline Ultimate Duotone e Lordicon registrados como referências, sem aquisição de assets.
+- **Aplicação:** `/?view=mediakit` e `/en/?view=mediakit`, independente do hero, com temas manuais e estados comparáveis.
+- **Git:** `feat/v2-00-mediakit`, a partir de `feat/v2-01-hero` em `fedf803`; hero preservado em `/` e `/en/` para comparação.
+- **Documentos:** direção, arquitetura técnica, roadmap e [entrega do mediakit](entregas/00-mediakit.md).
+
+## I-011 — Superfície à frente, operação por trás
+
+- **Origem:** [botão de vinodjangid07 no Uiverse](https://uiverse.io/vinodjangid07/great-ape-33), enviado pelo operador durante o desenvolvimento do mediakit.
+- **Intenção:** associar a máscara/superfície frontal e a camada que aparece por trás ao conceito de white label.
+- **Estado:** referência aceita para experimentação; implementação candidata, ainda sem aprovação visual.
+- **Interpretação:** frente neutra representa a marca da agência; camada vermelha revela a estrutura técnica que a sustenta. É uma linguagem de superfícies e movimento, não decisão de recuperar a máscara facial da V1.
+- **Aplicação:** segunda família de botões, comparação com o círculo expansível e peça maior com camadas que podem ficar abertas por clique.
+- **Origem do código:** releitura própria em CSS. A página pública identifica o exemplo e sua licença MIT; o código HTML/CSS do exemplo não ficou acessível pela consulta HTTP. Não houve teste em navegador nem cópia de implementação.
 
 ## Próximas contribuições
 

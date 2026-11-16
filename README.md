@@ -6,7 +6,9 @@ Site bilíngue de desenvolvimento white label para agências, construído com Vu
 
 O [plano da V2](docs/v2/README.md) reúne direção criativa, arquitetura da informação, demonstrações, arquitetura técnica, backlog e workflow Git. O [registro de ideias](docs/v2/07-registro-de-ideias.md) acompanha as contribuições e correções durante o planejamento.
 
-O primeiro recorte da V2 está implementado na branch `feat/v2-01-hero`: hero, menu responsivo, PT/EN e temas claro/escuro com escolha manual. O tema claro é o padrão e não acompanha o navegador ou o sistema. A validação visual pelo operador está pendente; consulte a [entrega e o roteiro de revisão](docs/v2/entregas/01-hero-menu.md).
+O primeiro hero foi implementado em `feat/v2-01-hero`, mas sua direção visual não foi aprovada. A etapa atual é o **mediakit**, na branch `feat/v2-00-mediakit`: validar cores, tipografia, links e botões antes de reformular a entrada. O tema claro continua padrão, com escolha manual de claro/escuro sem acompanhar navegador ou sistema.
+
+Com o servidor local iniciado, abrir **`/?view=mediakit`** ou **`/en/?view=mediakit`** no endereço informado pelo Vite. Por exemplo, `http://localhost:5173/?view=mediakit`. O hero anterior continua acessível em `/` e `/en/`. Consulte a [entrega do mediakit e o roteiro de revisão](docs/v2/entregas/00-mediakit.md).
 
 ## Desenvolvimento local
 

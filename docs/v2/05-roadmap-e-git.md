@@ -4,14 +4,15 @@
 
 Planejamento local na branch `docs/v2-plan`, iniciada a partir de `main` em `16b9a54`. Após autorização do operador, `v2` foi criada a partir do planejamento em `49f5060`, e `feat/v2-01-hero` contém o primeiro recorte de implementação. Os IDs abaixo são referências locais de backlog, não números de issues já abertas no GitHub.
 
-O operador escolheu planejar primeiro e depois autorizou implementar hero, menu e temas para revisão. As imagens sociais anteriores foram salvas por solicitação em `20fee05`. O trabalho continua local, sem push ou publicação; a implementação aguarda validação antes de integração em `v2`.
+O operador escolheu planejar primeiro e depois autorizou implementar hero, menu e temas para revisão. As imagens sociais anteriores foram salvas por solicitação em `20fee05`. O primeiro hero foi salvo em `fedf803`, mas sua direção visual foi rejeitada. O operador pediu validar um mediakit antes de reformular a entrada. A branch `feat/v2-00-mediakit` deriva desse commit para preservar temas, idiomas e histórico do hero. O trabalho continua local, sem push ou publicação, aguardando validação antes de integração em `v2`.
 
 ## Sequência e dependências
 
 | ID | Entrega | Depende de | Dimensão relativa | Estado |
 | --- | --- | --- | --- | --- |
 | V2-00 | Planejamento, conteúdo e decisões | — | M | Documentado, em revisão |
-| V2-01 | Shell, navegação, tokens e PT/EN | V2-00 revisado | M | Primeiro recorte implementado; validação pendente |
+| V2-00A | Mediakit: paleta, tipografia, links, botões e ícones | V2-00 e feedback do hero | M | Implementado para validação |
+| V2-01 | Shell, navegação, tokens e PT/EN | V2-00A validado | M | Primeiro hero rejeitado visualmente; reformulação pausada |
 | V2-02 | Runtime de demos, atividade e alternativas | V2-01 | G | Planejado |
 | V2-03 | Assinatura white label e operação por trás | V2-02 | G | Planejado |
 | V2-04 | Laboratório D3 | V2-02 | G | Planejado |
@@ -33,6 +34,8 @@ M/G expressam complexidade relativa, não estimativa de prazo. Calendário só d
 Branch `docs/v2-plan`. Consolidar auditoria, direção, arquitetura da informação, demos, contratos, backlog e validação. Manter registro das novas ideias e correções. A revisão criativa inclui storyboard da abertura, assinatura como desfecho e proposta de identidade mais suave com hero sem máscara. A retirada definitiva do símbolo e os tokens finais continuam abertos. Aceite: documentos coerentes com equipe própria e liderança técnica, referências navegáveis e nenhuma alteração de produto.
 
 ### V2-01 — Shell e conteúdo
+
+Antes de retomar esta entrega, validar a [V2-00A — mediakit](entregas/00-mediakit.md). Incorporar a direção aprovada aos componentes da entrada em um próximo recorte, sem tratar a existência do primeiro hero como aceite visual.
 
 Branch do primeiro recorte: `feat/v2-01-hero`. [Escopo implementado e roteiro](entregas/01-hero-menu.md). O shell completo e os seis capítulos continuam pendentes; não considerar toda a V2-01 encerrada.
 
@@ -165,6 +168,7 @@ Após revisão do plano e início do desenvolvimento:
 main
   └─ v2                # integração da nova versão
       ├─ feat/v2-01-hero
+      │   └─ feat/v2-00-mediakit  # revisão visual antes de reformular a entrada
       ├─ feat/v2-02-demo-runtime
       ├─ feat/v2-03-signature
       └─ demais entregas, uma por vez conforme dependências
