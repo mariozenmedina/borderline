@@ -2,7 +2,7 @@
 
 Branch: `feat/v2-00-mediakit`, derivada de `feat/v2-01-hero` em `fedf803`.
 
-**Estado: implementado para revisão do operador; visual e interações ainda não validados em navegador.** O primeiro hero ficou distante da expectativa. Esta entrega prioriza a aprovação dos elementos básicos antes de reformular a entrada.
+**Estado: direção do mediakit aprovada pelo operador, com ajustes de títulos e links implementados para conferência.** O operador aprovou os botões e definiu círculos expansíveis para ações, camadas para serviços e seções de identidade. Pediu Offside nos títulos e ponto dos links à direita, crescendo para a esquerda, com padding equilibrado. O agente não testa em navegador.
 
 ## Abrir o estudo
 
@@ -18,8 +18,8 @@ Não é uma nova home publicada. O estudo não entra no sitemap e aplica `noinde
 ## O que avaliar
 
 1. **Cor:** branco `#ffffff`, preto `#111111`, vermelho original `#e50914` e cinzas. `#d00b15` é o fundo de ação para texto branco; links vermelhos têm variantes legíveis em fundo claro e escuro.
-2. **Tipografia:** Manrope variável no conteúdo, Offside preservada na marca. Display, título, subtítulo, texto e apoio apresentados em escala responsiva.
-3. **Links:** peso de destaque, ponto vermelho em repouso; o ponto cresce para envolver o texto em hover/foco. Uma amostra fica aberta para comparação, com destinos reais dentro da página.
+2. **Tipografia:** Offside na marca, títulos e subtítulos, em peso regular e espaçamento próprio; Manrope nos textos e controles. Escala responsiva preservada.
+3. **Links:** ponto vermelho à direita em repouso; cresce para a esquerda até envolver o texto em hover/foco, com padding horizontal simétrico de 20px. Uma amostra fica aberta para comparação, com destinos reais dentro da página.
 4. **Botão circular:** ícone em repouso; expansão lateral com rótulo. Variações principal, neutra, contorno e desabilitada.
 5. **Botão em camadas:** frente neutra e fundo vermelho que se desloca/gira ao revelar. Releitura da referência enviada no Uiverse; comparável com o botão circular.
 6. **White label:** peça maior mostra a marca da agência à frente e a operação por trás. Clique fixa/recolhe o estado; hover/foco permitem inspecionar.

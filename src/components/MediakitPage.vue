@@ -80,7 +80,7 @@
             <h3>{{ copy.layerTitle }}</h3><p class="kit-caption">{{ copy.layerNote }}</p>
             <div class="kit-button-row">
               <div class="kit-button-slot"><RevealButton :label="copy.operation" layers :preview="previewOpen" @click="demonstrate('operation')"><PhStack weight="duotone" /></RevealButton><small>{{ copy.layers }}</small></div>
-              <div class="kit-button-slot"><RevealButton :label="copy.contact" layers tone="outline" :preview="previewOpen" @click="demonstrate('contact')"><PhChatCircleDots weight="duotone" /></RevealButton><small>{{ copy.outline }}</small></div>
+              <div class="kit-button-slot"><RevealButton :label="copy.explore" layers tone="outline" :preview="previewOpen" @click="demonstrate('explore')"><PhCube weight="duotone" /></RevealButton><small>{{ copy.outline }}</small></div>
             </div>
           </article>
         </div>
@@ -121,7 +121,7 @@
             <p class="kit-meta">{{ copy.compositionEyebrow }}</p><h3>{{ copy.compositionHeading }}<span class="kit-dot" aria-hidden="true"></span></h3>
             <p class="kit-copy">{{ copy.compositionCopy }}</p>
             <div class="kit-composition-actions">
-              <RevealButton :label="copy.contact" layers :preview="previewOpen" @click="demonstrate('contact')"><PhChatCircleDots weight="duotone" /></RevealButton>
+              <RevealButton :label="copy.contact" tone="accent" :preview="previewOpen" @click="demonstrate('contact')"><PhChatCircleDots weight="duotone" /></RevealButton>
               <DotLink href="#kit-white-label">{{ copy.compositionLink }}</DotLink>
             </div>
           </article>

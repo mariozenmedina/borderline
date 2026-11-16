@@ -110,7 +110,15 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 - **Aplicação:** segunda família de botões, comparação com o círculo expansível e peça maior com camadas que podem ficar abertas por clique.
 - **Origem do código:** releitura própria em CSS. A página pública identifica o exemplo e sua licença MIT; o código HTML/CSS do exemplo não ficou acessível pela consulta HTTP. Não houve teste em navegador nem cópia de implementação.
 
-## Próximas contribuições
+## I-012 — Aprovação dos controles e ajuste de tipografia
+
+- **Origem:** operador aprovou o mediakit e os botões, solicitando títulos com a mesma Offside da logo e ajustes nos links de bolinha.
+- **Decisão:** Offside na marca, títulos e subtítulos; Manrope continua nos textos e controles. Offside usa peso regular, com espaçamento ajustado para seu desenho.
+- **Links:** ponto à direita, expansão para a esquerda e padding horizontal simétrico, sem deslocar o texto durante a expansão.
+- **Uso dos controles:** círculos expansíveis para ações; camadas/cartões que se revelam por trás para serviços e seções relacionadas à identidade.
+- **Estado:** ajustes implementados no mediakit, em PT/EN, para conferência do operador. Hero permanece para a etapa seguinte.
+
+## Como registrar novas contribuições
 
 Adicionar um identificador com origem, intenção, estado e impacto. Quando houver correção, atualizar a especificação ativa e registrar aqui o que deixou de valer. Distinguir pedido do operador, proposta do agente, decisão e adiamento.
 

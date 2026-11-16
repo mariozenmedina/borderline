@@ -18,13 +18,13 @@ defineProps({
 <style lang="less" scoped>
 .dot-link {
   position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: 14px;
-  min-height: 44px; padding: 10px 16px 10px 26px; max-width: 100%;
+  min-height: 44px; padding: 10px 20px; max-width: 100%;
   color: var(--kit-ink); text-decoration: none; font-size: 14px; font-weight: 700; line-height: 1.5;
   border-radius: 999px; transition: color var(--kit-duration) var(--kit-ease);
 }
 .dot-link--accent { color: var(--kit-link); }
 .dot-link__surface {
-  position: absolute; z-index: -1; left: 0; top: 50%; width: 8px; height: 8px;
+  position: absolute; z-index: -1; right: 0; top: 50%; width: 8px; height: 8px;
   transform: translateY(-50%); background: var(--kit-red); border-radius: 999px;
   transition: width var(--kit-duration) var(--kit-ease), height var(--kit-duration) var(--kit-ease), background var(--kit-duration);
 }
