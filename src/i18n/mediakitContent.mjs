@@ -44,7 +44,7 @@ const messages = {
     compositionEyebrow: 'Operação técnica white label', compositionHeading: 'Sua agência à frente',
     compositionCopy: 'Liderança técnica nas reuniões. Equipe própria nos bastidores. Desenvolvimento e TI sob a sua marca.',
     compositionLink: 'Conheça a operação',
-    footer: 'Estudo para validação / V2 / 2026', previous: 'Ver o hero anterior', top: 'Voltar ao início',
+    footer: 'Mediakit aprovado / V2 / 2026', previous: 'Ver a home', top: 'Voltar ao início',
   },
   en: {
     title: 'Design kit — Borderline.Dev', skip: 'Skip to the elements', edition: 'Visual study / 01',
@@ -91,7 +91,7 @@ const messages = {
     compositionEyebrow: 'White label technical operation', compositionHeading: 'Your agency out front',
     compositionCopy: 'Technical leadership in meetings. Our own team behind the scenes. Development and IT under your brand.',
     compositionLink: 'Meet the operation',
-    footer: 'Study for review / V2 / 2026', previous: 'View the previous hero', top: 'Back to top',
+    footer: 'Approved design kit / V2 / 2026', previous: 'View the home page', top: 'Back to top',
   },
 }
 

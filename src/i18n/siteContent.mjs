@@ -1,7 +1,7 @@
 export const SITE_URL = 'https://borderline.dev.br/'
 export const SITE_NAME = 'Borderline.Dev'
 export const DEFAULT_LOCALE = 'pt'
-export const THEME_COLOR = '#f6f5f1'
+export const THEME_COLOR = '#ffffff'
 export const BRAND_COLOR = '#e50914'
 export const SOCIAL_IMAGE_WIDTH = 1200
 export const SOCIAL_IMAGE_HEIGHT = 630

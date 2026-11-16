@@ -1,16 +1,18 @@
 <template>
-  <button type="button" class="reveal-button" :class="[`reveal-button--${tone}`, { 'reveal-button--layers': layers, 'is-preview': preview }]"
-    :disabled="disabled" :aria-label="label">
+  <component :is="href ? 'a' : 'button'" :type="href ? undefined : 'button'" :href="disabled ? undefined : href"
+    class="reveal-button motion-trigger" :class="[`reveal-button--${tone}`, { 'reveal-button--layers': layers, 'is-preview': preview, 'is-disabled': disabled }]"
+    :disabled="href ? undefined : disabled" :aria-disabled="href && disabled ? true : undefined" :aria-label="label">
     <span v-if="layers" class="reveal-button__back" aria-hidden="true"></span>
     <span class="reveal-button__front" aria-hidden="true"></span>
     <span class="reveal-button__icon" aria-hidden="true"><slot /></span>
     <span class="reveal-button__label" aria-hidden="true"><span>{{ label }}</span></span>
-  </button>
+  </component>
 </template>
 
 <script setup>
 defineProps({
   label: { type: String, required: true },
+  href: { type: String, default: undefined },
   tone: { type: String, default: 'ink' },
   layers: Boolean,
   preview: Boolean,
@@ -23,7 +25,7 @@ defineProps({
   --control-fill: var(--kit-ink); --control-ink: var(--kit-surface); --control-radius: 999px;
   position: relative; isolation: isolate; display: inline-flex; flex: none; align-items: center; vertical-align: middle;
   min-width: 56px; min-height: 56px; max-width: 100%; padding: 0; border: 0; border-radius: var(--control-radius);
-  background: transparent; color: var(--control-ink); cursor: pointer; font: inherit;
+  background: transparent; color: var(--control-ink); cursor: pointer; font: inherit; text-decoration: none;
 }
 .reveal-button--accent { --control-fill: var(--kit-action); --control-ink: #fff; }
 .reveal-button--outline { --control-fill: var(--kit-surface); --control-ink: var(--kit-ink); }
@@ -36,14 +38,14 @@ defineProps({
 .reveal-button__label > span { min-width: 0; overflow: hidden; white-space: nowrap; font-family: var(--kit-font-accent); font-size: 14px; font-weight: 400; line-height: 1.5; }
 .reveal-button__label > span::after { content: ''; display: inline-block; width: 24px; }
 .reveal-button:focus-visible .reveal-button__label, .reveal-button.is-preview .reveal-button__label { grid-template-columns: 1fr; opacity: 1; }
-.reveal-button:active:not(:disabled) .reveal-button__front { filter: brightness(.88); }
-.reveal-button:disabled { opacity: .35; cursor: not-allowed; }
+.reveal-button:active:not(.is-disabled) .reveal-button__front { filter: brightness(.88); }
+.reveal-button.is-disabled { opacity: .35; cursor: not-allowed; }
 .reveal-button--layers { --control-radius: 17px; }
 .reveal-button__back { z-index: -2; background: var(--kit-red); transition: transform var(--kit-duration) var(--kit-ease); }
 .reveal-button--layers:focus-visible .reveal-button__back, .reveal-button--layers.is-preview .reveal-button__back { transform: translate(7px, -7px) rotate(-9deg); }
 @media (hover: hover) and (pointer: fine) {
-  .reveal-button:hover:not(:disabled) .reveal-button__label { grid-template-columns: 1fr; opacity: 1; }
-  .reveal-button--layers:hover:not(:disabled) .reveal-button__back { transform: translate(7px, -7px) rotate(-9deg); }
+  .reveal-button:hover:not(.is-disabled) .reveal-button__label { grid-template-columns: 1fr; opacity: 1; }
+  .reveal-button--layers:hover:not(.is-disabled) .reveal-button__back { transform: translate(7px, -7px) rotate(-9deg); }
 }
 @media (hover: none), (pointer: coarse) {
   .reveal-button__label { grid-template-columns: 1fr; opacity: 1; }

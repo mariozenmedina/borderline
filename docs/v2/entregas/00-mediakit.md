@@ -2,7 +2,7 @@
 
 Branch: `feat/v2-00-mediakit`, derivada de `feat/v2-01-hero` em `fedf803`.
 
-**Estado: direção do mediakit aprovada pelo operador, com nova tipografia implementada para conferência.** O operador aprovou os botões e definiu círculos expansíveis para ações, camadas para serviços e seções de identidade. Após avaliar Offside nos títulos, escolheu Poppins para títulos e textos, reservando Offside à marca, botões e chapéus curtos. Os links mantêm ponto à direita, expansão à esquerda e padding equilibrado. O agente não testa em navegador.
+**Estado: mediakit aprovado pelo operador, incluindo a tipografia.** O operador aprovou os botões e definiu círculos expansíveis para ações, camadas para serviços e seções de identidade. Após avaliar Offside nos títulos, escolheu Poppins para títulos e textos, reservando Offside à marca, botões e chapéus curtos. Os links mantêm ponto à direita, expansão à esquerda e padding equilibrado. A aplicação à home está na [entrega seguinte](01-home-mediakit.md). O agente não testa em navegador.
 
 ## Abrir o estudo
 
@@ -11,7 +11,7 @@ Executar `pnpm dev` e acrescentar ao endereço local do Vite:
 - Português: `/?view=mediakit`.
 - Inglês: `/en/?view=mediakit`.
 - Referência direta de botões: `/?view=mediakit#kit-buttons`.
-- Hero anterior: `/` ou `/en/`, também disponível pelo rodapé do mediakit.
+- Home com mediakit aplicado: `/` ou `/en/`, também disponível pelo rodapé do mediakit.
 
 Não é uma nova home publicada. O estudo não entra no sitemap e aplica `noindex, nofollow` no bootstrap e no SEO em execução.
 
@@ -40,8 +40,8 @@ Não é uma nova home publicada. O estudo não entra no sitemap e aplica `noinde
 ## Implementação e origem
 
 - `src/components/MediakitPage.vue`: página de estudo carregada sob demanda.
-- `src/components/design/DotLink.vue` e `RevealButton.vue`: componentes candidatos a adoção posterior no site.
-- `src/styles/mediakit.less`: paleta, tipografia e composição isoladas do hero antigo.
+- `src/components/design/DotLink.vue` e `RevealButton.vue`: componentes compartilhados com a home.
+- `src/styles/mediakit.less`: composição do estudo; fontes e tokens compartilhados em `fonts.less` e `design-tokens.less` após aprovação.
 - `src/i18n/mediakitContent.mjs`: conteúdo completo PT/EN.
 - Poppins: `@fontsource/poppins`, WOFF2 Latin nos pesos 400, 500, 600 e 700 servido localmente; [licença OFL](../../../public/licenses/poppins-OFL.txt). Pacote e licença de Manrope removidos após a substituição.
 - Phosphor: `@phosphor-icons/vue`, imports individuais, sem registro global; [licença MIT](../../../public/licenses/phosphor-MIT.txt).
@@ -70,4 +70,4 @@ Nenhum navegador foi aberto. Build, cálculo de contraste e verificações de l�
 7. Alternar os três tratamentos das amostras provisórias para avaliar contraste; no próximo recorte, validar Lordicon/Lotties autorais com movimento, temas e alternativa estática.
 8. Ativar movimento reduzido; conferir que a informação e os controles continuam disponíveis.
 9. Abrir a âncora direta de botões, trocar idioma e usar voltar/avançar; conferir posição e URL.
-10. Retornar ao hero anterior pelo rodapé para comparar. A nova linguagem será aplicada à entrada apenas no próximo recorte.
+10. Retornar à home pelo rodapé para conferir a aplicação da linguagem aprovada.

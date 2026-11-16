@@ -1,6 +1,6 @@
 # Seções e demonstrações
 
-Especificação da V2 proposta. Nomes fictícios, temas, quantidades e transições são pontos de partida; o operador revisa direção de arte e comportamento. Um primeiro recorte de S01, menu e temas já foi implementado na branch `feat/v2-01-hero`; os demais capítulos e a narrativa completa continuam planejados.
+Especificação da V2 proposta. Nomes fictícios, temas, quantidades e transições são pontos de partida; o operador revisa direção de arte e comportamento. S01 e menu foram reformulados com o mediakit aprovado na branch `feat/v2-01-home`; os demais capítulos e a narrativa completa continuam planejados.
 
 ## Regras comuns
 
@@ -12,7 +12,7 @@ As cenas 3D não carregam juntas. Simulações e dados ficam identificados. O vi
 
 **Objetivo:** comunicar imediatamente uma operação white label para agências, com liderança técnica e equipe própria, e preparar o sentido da assinatura interativa.
 
-**Composição proposta:** marca tipográfica e mensagem comercial à esquerda; uma entrega digital reconhecível em uma cena 3D à direita, com contornos suaves, materiais foscos e luz difusa. A entrega pode ser um website fictício com acabamento editorial; sua moldura e algumas camadas sugerem a estrutura que será revelada. O hero sem máscara é a direção principal em estudo, ainda sujeita a revisão visual.
+**Composição atual:** chapéu em Offside, título e texto em Poppins e dois botões circulares expansíveis à esquerda. À direita, o card da agência fica à frente de seis cards da operação Borderline. O slider abre continuamente a composição, revelando desenvolvimento, infraestrutura, games, dados, 3D e integrações. Preto, vermelho, branco e cinzas seguem o mediakit aprovado. A aplicação visual aguarda revisão.
 
 **Mensagem proposta:** “Sua agência à frente. Nossa operação por trás.” Apoio: desenvolvimento, experiências interativas e TI sob a marca da agência, com uma liderança nas reuniões e uma equipe própria nas entregas. A formulação final terá equivalente em inglês e será revisada junto ao texto da arquitetura da informação.
 
@@ -24,7 +24,7 @@ As cenas 3D não carregam juntas. Simulações e dados ficam identificados. O vi
 
 **Aceite:** público, oferta e próximo passo claros antes de interagir; equipe e interlocutor compreensíveis antes da assinatura; hero independente dos módulos pesados das outras demos; contato e navegação disponíveis em qualquer etapa. Operador avalia se a linguagem comunica confiança e suavidade sem perder presença.
 
-**Primeiro recorte implementado:** tema claro padrão, seletor manual, hero sem máscara e composição HTML/SVG com perspectiva CSS 3D. O controle “A entrega / A operação” abre as camadas de website, desenvolvimento e infraestrutura, com Mário como interlocutor. É uma exploração da composição inicial; a narrativa por scroll e o desfecho na assinatura serão construídos depois da avaliação. Não há dependência de WebGL neste recorte.
+**Recorte atual implementado:** tema claro padrão e seletor manual; composição HTML/SVG com perspectiva CSS 3D e slider de 0 a 100, com atalhos para fechar ou abrir tudo. Os seis serviços ficam visíveis na abertura completa e a agência permanece em primeiro plano. Há instrução por teclado, texto equivalente e microanimações autorais com respeito a movimento reduzido. Não depende de WebGL. Substitui o primeiro controle binário “A entrega / A operação”; narrativa por scroll e assinatura continuam futuras. Consulte a [entrega](entregas/01-home-mediakit.md).
 
 ## S02 — White label: assinatura que se adapta
 

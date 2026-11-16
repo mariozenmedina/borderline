@@ -134,6 +134,15 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 - **Próximo recorte:** quatro amostras (contato, operação, dados e infraestrutura), seleção de assets/licenças, player e fonte editável dos autorais. Sem compra ou assinatura nesta etapa.
 - **Estado:** decisão registrada no plano e no mediakit PT/EN; as animações ainda não foram implementadas.
 
+## I-015 — Mediakit aprovado e operação revelada por slider
+
+- **Origem:** “Mediakit aprovado, vamos modificar a home”; chapéu, título, texto e dois botões, agência à frente e cards dos serviços por trás, com sugestão de slider para abrir a composição.
+- **Decisão:** aplicar o mediakit aprovado ao hero e menu; manter a agência visível enquanto seis frentes da Borderline se revelam por controle contínuo.
+- **Implementação:** range de 0 a 100, atalhos de fechar/abrir tudo, seis serviços, PT/EN e tema manual. Conteúdo explica Mário como interlocutor e equipe própria na operação. Posição do slider preservada na troca de idioma e tema.
+- **Ícones:** microanimações SVG/CSS autorais nesta composição. Não são assets Lordicon nem arquivos Lottie; seleção prevista na I-014 permanece aberta.
+- **Estado:** implementado para validação visual do operador em `feat/v2-01-home`, derivada de `3bed5ba`. Mediakit aprovado; home ainda não avaliada. Assinatura e demos aprofundadas continuam futuras.
+- **Entrega:** [home com mediakit](entregas/01-home-mediakit.md).
+
 ## Como registrar novas contribuições
 
 Adicionar um identificador com origem, intenção, estado e impacto. Quando houver correção, atualizar a especificação ativa e registrar aqui o que deixou de valer. Distinguir pedido do operador, proposta do agente, decisão e adiamento.

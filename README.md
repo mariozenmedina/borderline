@@ -6,9 +6,9 @@ Site bilíngue de desenvolvimento white label para agências, construído com Vu
 
 O [plano da V2](docs/v2/README.md) reúne direção criativa, arquitetura da informação, demonstrações, arquitetura técnica, backlog e workflow Git. O [registro de ideias](docs/v2/07-registro-de-ideias.md) acompanha as contribuições e correções durante o planejamento.
 
-O primeiro hero foi implementado em `feat/v2-01-hero`, mas sua direção visual não foi aprovada. A etapa atual é o **mediakit**, na branch `feat/v2-00-mediakit`: validar cores, tipografia, links e botões antes de reformular a entrada. O tema claro continua padrão, com escolha manual de claro/escuro sem acompanhar navegador ou sistema.
+O **mediakit foi aprovado** e aplicado à entrada na branch `feat/v2-01-home`: menu, chapéu, título, texto, dois botões e cards da operação controlados por slider. Esta home aguarda validação visual do operador. O tema claro continua padrão, com escolha manual de claro/escuro sem acompanhar navegador ou sistema.
 
-Com o servidor local iniciado, abrir **`/?view=mediakit`** ou **`/en/?view=mediakit`** no endereço informado pelo Vite. Por exemplo, `http://localhost:5173/?view=mediakit`. O hero anterior continua acessível em `/` e `/en/`. Consulte a [entrega do mediakit e o roteiro de revisão](docs/v2/entregas/00-mediakit.md).
+Com o servidor local iniciado, abrir **`/`** ou **`/en/`** para revisar a home. O mediakit continua em `/?view=mediakit` e `/en/?view=mediakit`. Consulte a [entrega da home e o roteiro de revisão](docs/v2/entregas/01-home-mediakit.md) e a [referência do mediakit](docs/v2/entregas/00-mediakit.md). O primeiro hero rejeitado está preservado no histórico de `feat/v2-01-hero`.
 
 ## Desenvolvimento local
 

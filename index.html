@@ -13,7 +13,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="color-scheme" content="light">
     <meta name="format-detection" content="telephone=no">
-    <meta name="theme-color" content="#f6f5f1">
+    <meta name="theme-color" content="#ffffff">
     <script id="theme-bootstrap">
       (function () {
         var theme = 'light'
@@ -25,7 +25,7 @@
         document.documentElement.dataset.view = isMediakit ? 'mediakit' : 'site'
         document.documentElement.style.colorScheme = theme
         document.querySelector('meta[name="color-scheme"]').setAttribute('content', theme)
-        document.querySelector('meta[name="theme-color"]').setAttribute('content', isMediakit ? (theme === 'dark' ? '#111111' : '#ffffff') : (theme === 'dark' ? '#171d1b' : '#f6f5f1'))
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', theme === 'dark' ? '#111111' : '#ffffff')
         if (isMediakit) {
           document.querySelector('meta[name="robots"]').setAttribute('content', 'noindex, nofollow')
           document.querySelector('meta[name="googlebot"]').setAttribute('content', 'noindex, nofollow')
@@ -37,7 +37,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="msapplication-TileColor" content="#f6f5f1">
+    <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/mstile-150x150.png">
     <meta name="msapplication-config" content="/browserconfig.xml">
     <script>
@@ -92,14 +92,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Offside&display=swap" rel="stylesheet">
     <style>
-      html { background: #f6f5f1; color: #25372f; }
-      html[data-theme="dark"] { background: #171d1b; color: #f0f1e9; }
+      html { background: #ffffff; color: #111111; }
+      html[data-theme="dark"] { background: #111111; color: #ffffff; }
       html[data-view="mediakit"] { background: #fff; color: #111; }
       html[data-view="mediakit"][data-theme="dark"] { background: #111; color: #fff; }
       html[data-view="mediakit"] .boot-brand span { color: #e50914; }
       body { margin: 0; }
       .boot-brand { margin: 28px 5vw; font: 20px Arial, sans-serif; letter-spacing: -1px; }
-      .boot-brand span { color: #ae4836; }
+      .boot-brand span { color: #e50914; }
     </style>
     <title>Borderline.Dev | Desenvolvimento premium para agências</title>
   </head>

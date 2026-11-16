@@ -4,8 +4,8 @@
     <div class="site-header__inner">
       <a class="wordmark" href="#inicio" :aria-label="content.home" @click="closeMenu()">borderline<span class="wordmark__dot">.</span><span class="wordmark__dev">dev</span></a>
       <nav class="desktop-navigation" :aria-label="content.label">
-        <a href="#capacidades">{{ content.capabilities }}</a>
-        <a href="#parceria">{{ content.partnership }}</a>
+        <DotLink href="#capacidades">{{ content.capabilities }}</DotLink>
+        <DotLink href="#parceria">{{ content.partnership }}</DotLink>
       </nav>
       <div class="header-actions">
         <nav class="locale-switch" :aria-label="content.language">
@@ -22,7 +22,7 @@
           <svg v-if="theme === 'light'" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 13.1A8.7 8.7 0 0 1 10.9 3.5 8.7 8.7 0 1 0 20.5 13.1Z" /></svg>
           <svg v-else viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
         </button>
-        <a class="header-contact" href="#contato">{{ content.contact }} <span aria-hidden="true">↗</span></a>
+        <RevealButton class="header-contact" :label="content.contact" href="#contato" tone="accent"><MotionIcon kind="contact" /></RevealButton>
         <button ref="menuButton" class="icon-button menu-toggle" type="button"
           :aria-expanded="menuOpen" aria-controls="mobile-navigation"
           :aria-label="menuOpen ? content.close : content.open" @click="menuOpen = !menuOpen">
@@ -40,6 +40,9 @@
 
 <script setup>
 import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import DotLink from './design/DotLink.vue'
+import RevealButton from './design/RevealButton.vue'
+import MotionIcon from './design/MotionIcon.vue'
 defineProps({
   content: { type: Object, required: true }, locale: { type: String, required: true },
   theme: { type: String, required: true }, languageOptions: { type: Array, required: true }
@@ -82,11 +85,10 @@ onBeforeUnmount(() => {
 .site-header { position: sticky; top: 0; z-index: 30; background: var(--header-background); border-bottom: 1px solid var(--line); backdrop-filter: blur(18px); }
 .site-header__inner { max-width: 1536px; min-height: 90px; margin: auto; padding: 0 var(--page-gutter); display: flex; align-items: center; gap: 36px; }
 .wordmark { font-family: 'Offside', Arial, sans-serif; font-size: 23px; letter-spacing: -1.3px; white-space: nowrap; text-decoration: none; color: var(--ink); }
-.wordmark__dot { color: var(--accent); } .wordmark__dev { color: var(--muted); }
-.desktop-navigation { display: flex; gap: 30px; margin-left: auto; }
-.desktop-navigation a, .header-contact, .locale-switch a { text-decoration: none; font-size: 13px; font-weight: 500; }
-.desktop-navigation a { color: var(--muted); padding: 14px 0; }
-.desktop-navigation a:hover { color: var(--ink); }
+.wordmark__dot { color: var(--accent); } .wordmark__dev { color: var(--ink); }
+.desktop-navigation { display: flex; gap: 8px; margin-left: auto; }
+.desktop-navigation :deep(.dot-link) { font-size: 12px; }
+.locale-switch a { text-decoration: none; font-size: 13px; font-weight: 500; }
 .header-actions { display: flex; align-items: center; gap: 13px; }
 .locale-switch { display: flex; align-items: center; gap: 2px; }
 .locale-switch a { display: grid; place-items: center; width: 30px; min-height: 40px; color: var(--muted); font-size: 11px; }
@@ -95,15 +97,13 @@ onBeforeUnmount(() => {
 .icon-button { width: 40px; height: 40px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer; }
 .icon-button:hover { background: var(--surface-alt); }
 .icon-button svg { width: 19px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.header-contact { display: inline-flex; gap: 25px; align-items: center; padding: 13px 18px; border: 1px solid var(--line-strong); border-radius: 7px; color: var(--ink); }
-.header-contact:hover { border-color: var(--accent); } .header-contact span { font-size: 18px; line-height: 1; }
 .menu-toggle, .mobile-navigation { display: none; }
-@media (max-width: 1120px) { .site-header__inner { gap: 22px; } .desktop-navigation { gap: 18px; } .header-actions { gap: 8px; } }
+@media (max-width: 1120px) { .site-header__inner { gap: 18px; } .desktop-navigation { gap: 0; } .header-actions { gap: 8px; } }
 @media (max-width: 960px) {
   .site-header__inner { min-height: 76px; justify-content: space-between; gap: 12px; }
   .desktop-navigation, .header-contact { display: none; } .menu-toggle { display: grid; }
   .mobile-navigation:not([hidden]) { display: grid; padding: 8px var(--page-gutter) 24px; background: var(--surface); border-top: 1px solid var(--line); }
-  .mobile-navigation a { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); }
+  .mobile-navigation a { display: flex; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); font-family: var(--kit-font-accent); }
 }
 @media (max-width: 480px) {
   .wordmark { font-size: 18px; letter-spacing: -1px; }

@@ -2,7 +2,7 @@
 
 Data: 15/11/2026. Base auditada: `main`, commit `16b9a54`. Branch: `docs/v2-plan`.
 
-**Status: mediakit implementado para validação; refinamento do hero pausado.** O operador considerou a direção visual do primeiro hero distante do esperado. A prioridade é validar os elementos básicos em preto, vermelho, branco e cinzas antes de reformular a entrada. Veja a [entrega do mediakit](entregas/00-mediakit.md) e o [histórico do hero](entregas/01-hero-menu.md). As demais experiências continuam propostas.
+**Status: mediakit aprovado; home reformulada para validação visual.** A entrada aplica preto, vermelho, branco e cinzas, Poppins no conteúdo e Offside nos detalhes. Um slider revela seis serviços atrás do card da agência. Veja a [entrega da home](entregas/01-home-mediakit.md), a [referência do mediakit](entregas/00-mediakit.md) e o [histórico do primeiro hero](entregas/01-hero-menu.md). As demais experiências continuam propostas.
 
 ## Objetivo
 
@@ -16,7 +16,7 @@ A home será uma apresentação navegável com demonstrações funcionais. Cada 
 
 | Capítulo | Experiência principal | O que a agência percebe |
 | --- | --- | --- |
-| Abertura | Entrega digital em 3D que revela liderança e operação em uma narrativa curta | Clareza da oferta, estrutura e domínio de execução |
+| Abertura | Card da agência em primeiro plano; slider revela seis serviços da operação por trás | Clareza da oferta, estrutura e domínio de execução |
 | White label | Desfecho da abertura: serviços e direções visuais transformam a assinatura de e-mail | Mário assume a frente técnica da agência, apoiado pela operação própria |
 | Websites | Campanha navegável que se recompõe entre larguras e conteúdos | Fidelidade ao design, responsividade e acabamento |
 | 3D e produto | Luminária modular com acabamentos, componentes e luz ajustáveis | Configuradores, lançamentos e experiências de produto |
@@ -47,7 +47,7 @@ Jogo, D3 complexo, planta de infraestrutura e assinatura transformável vêm das
 - Demonstrar serviços por experiências reconhecíveis e funcionais, com impacto próprio por seção.
 - Nenhum teste em navegador pelo agente, inclusive automação e screenshots.
 - Usar pnpm e Docker quando necessários; commits com a identidade indicada no README.
-- Desenvolvimento local em branches da V2; a V1 em `main` permanece disponível. Após o primeiro hero, a prioridade autorizada passou a ser o mediakit, com validação do operador antes de retomar a entrada.
+- Desenvolvimento local em branches da V2; a V1 em `main` permanece disponível. O mediakit foi aprovado e o operador autorizou sua aplicação à home com slider de abertura dos cards.
 - Tema claro por padrão e escuro por escolha explícita. Persistir a escolha localmente; não seguir preferências de cor do navegador/OS. Seções escuras podem existir no tema claro como decisão editorial.
 - Na assinatura, o visitante escolhe **serviços, direção visual e paleta**. Cargo, componentes, fontes e layout são derivados. O nome de Mário permanece fixo; agência e e-mail vêm de exemplos fictícios. Não há preenchimento desses dados.
 - A assinatura conclui a narrativa de abertura, depois de explicar oferta, liderança e equipe. A primeira tela comunica a proposta antes de pedir interação.
@@ -63,7 +63,7 @@ Uma entrega completa inclui PT/EN, controles, resposta à interação, reset, al
 | Tema | Proposta de partida | Momento de decisão |
 | --- | --- | --- |
 | Voz da marca | Voz de empresa/operação; Mário como liderança e interlocutor, equipe própria nos bastidores | Refinar texto sem reduzir a oferta a trabalho individual |
-| Identidade | Preto, vermelho `#e50914`, branco e cinzas; Poppins nos títulos e textos, Offside na marca, botões e chapéus curtos; círculos para ações e camadas para identidade | Conferir Poppins; iconografia animada definida, com Lordicon prioritário e Lotties autorais para necessidades específicas; assets ainda a selecionar |
+| Identidade | Mediakit aprovado: preto, vermelho `#e50914`, branco e cinzas; Poppins nos títulos e textos, Offside na marca, botões e chapéus curtos; círculos para ações e camadas para identidade | Validar aplicação na home; microanimações autorais presentes, seleção de Lordicon/Lotties ainda pendente |
 | Assinatura | Três direções visuais e seis serviços; papel derivado por regras simples | Storyboard da primeira demo |
 | Jogo | Percurso de 30 segundos e tema geométrico original | Antes de implementar o jogo |
 | Produto 3D | Luminária modular autoral | Antes de implementar o configurador |

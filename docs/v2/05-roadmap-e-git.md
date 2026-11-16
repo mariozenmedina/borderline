@@ -4,15 +4,15 @@
 
 Planejamento local na branch `docs/v2-plan`, iniciada a partir de `main` em `16b9a54`. Após autorização do operador, `v2` foi criada a partir do planejamento em `49f5060`, e `feat/v2-01-hero` contém o primeiro recorte de implementação. Os IDs abaixo são referências locais de backlog, não números de issues já abertas no GitHub.
 
-O operador escolheu planejar primeiro e depois autorizou implementar hero, menu e temas para revisão. As imagens sociais anteriores foram salvas por solicitação em `20fee05`. O primeiro hero foi salvo em `fedf803`, mas sua direção visual foi rejeitada. O operador pediu validar um mediakit antes de reformular a entrada. A branch `feat/v2-00-mediakit` deriva desse commit para preservar temas, idiomas e histórico do hero. O trabalho continua local, sem push ou publicação, aguardando validação antes de integração em `v2`.
+O operador escolheu planejar primeiro e depois autorizou implementar hero, menu e temas para revisão. As imagens sociais anteriores foram salvas por solicitação em `20fee05`. O primeiro hero foi salvo em `fedf803`, mas sua direção visual foi rejeitada. A branch `feat/v2-00-mediakit` deriva desse commit. Após aprovação explícita do mediakit, `feat/v2-01-home` foi criada a partir de `3bed5ba` para aplicar o visual e revelar a operação por slider. O trabalho continua local, sem push ou publicação, aguardando validação da home antes de integração em `v2`.
 
 ## Sequência e dependências
 
 | ID | Entrega | Depende de | Dimensão relativa | Estado |
 | --- | --- | --- | --- | --- |
 | V2-00 | Planejamento, conteúdo e decisões | — | M | Documentado, em revisão |
-| V2-00A | Mediakit: paleta, tipografia, links, botões e ícones | V2-00 e feedback do hero | M | Implementado para validação |
-| V2-01 | Shell, navegação, tokens e PT/EN | V2-00A validado | M | Primeiro hero rejeitado visualmente; reformulação pausada |
+| V2-00A | Mediakit: paleta, tipografia, links, botões e ícones | V2-00 e feedback do hero | M | Aprovado; família Lordicon/Lottie ainda a selecionar |
+| V2-01 | Shell, navegação, tokens e PT/EN | V2-00A validado | M | Home/menu/slider reformulados, aguardando validação visual |
 | V2-02 | Runtime de demos, atividade e alternativas | V2-01 | G | Planejado |
 | V2-03 | Assinatura white label e operação por trás | V2-02 | G | Planejado |
 | V2-04 | Laboratório D3 | V2-02 | G | Planejado |
@@ -35,9 +35,9 @@ Branch `docs/v2-plan`. Consolidar auditoria, direção, arquitetura da informaç
 
 ### V2-01 — Shell e conteúdo
 
-Próximo recorte do mediakit: selecionar uma família Lordicon e preparar quatro ícones animados (contato, operação, dados e infraestrutura), produzindo Lotties autorais onde necessário. Validar movimento, coerência de desenho, temas e fallback estático antes de espalhar a família pelo site. Phosphor permanece provisório; direção registrada na I-014.
+Iconografia futura: selecionar uma família Lordicon e preparar amostras, produzindo Lotties autorais onde necessário. Phosphor permanece provisório no mediakit. A home já usa microanimações autorais em SVG/CSS, sem player ou assets externos; isso não encerra a seleção da família animada prevista na I-014.
 
-Antes de retomar esta entrega, validar a [V2-00A — mediakit](entregas/00-mediakit.md). Incorporar a direção aprovada aos componentes da entrada em um próximo recorte, sem tratar a existência do primeiro hero como aceite visual.
+A [V2-00A — mediakit](entregas/00-mediakit.md) foi aprovada. Sua direção está aplicada à entrada em `feat/v2-01-home`, com dois botões, menu e slider que revela serviços atrás da agência. Veja o [escopo atual e roteiro](entregas/01-home-mediakit.md); o aceite visual da home permanece com o operador.
 
 Branch do primeiro recorte: `feat/v2-01-hero`. [Escopo implementado e roteiro](entregas/01-hero-menu.md). O shell completo e os seis capítulos continuam pendentes; não considerar toda a V2-01 encerrada.
 
@@ -170,7 +170,8 @@ Após revisão do plano e início do desenvolvimento:
 main
   └─ v2                # integração da nova versão
       ├─ feat/v2-01-hero
-      │   └─ feat/v2-00-mediakit  # revisão visual antes de reformular a entrada
+      │   └─ feat/v2-00-mediakit  # direção visual aprovada
+      │       └─ feat/v2-01-home # aplicação na home e slider da operação
       ├─ feat/v2-02-demo-runtime
       ├─ feat/v2-03-signature
       └─ demais entregas, uma por vez conforme dependências
