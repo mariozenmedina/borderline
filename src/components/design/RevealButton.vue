@@ -33,7 +33,7 @@ defineProps({
 .reveal-button__icon { width: 56px; height: 56px; flex: 0 0 56px; display: grid; place-items: center; }
 .reveal-button__icon :deep(svg) { width: 25px; height: 25px; }
 .reveal-button__label { display: grid; grid-template-columns: 0fr; opacity: 0; transition: grid-template-columns var(--kit-duration) var(--kit-ease), opacity var(--kit-duration); }
-.reveal-button__label > span { min-width: 0; overflow: hidden; white-space: nowrap; font-size: 14px; font-weight: 700; line-height: 1.5; }
+.reveal-button__label > span { min-width: 0; overflow: hidden; white-space: nowrap; font-family: var(--kit-font-accent); font-size: 14px; font-weight: 400; line-height: 1.5; }
 .reveal-button__label > span::after { content: ''; display: inline-block; width: 24px; }
 .reveal-button:focus-visible .reveal-button__label, .reveal-button.is-preview .reveal-button__label { grid-template-columns: 1fr; opacity: 1; }
 .reveal-button:active:not(:disabled) .reveal-button__front { filter: brightness(.88); }

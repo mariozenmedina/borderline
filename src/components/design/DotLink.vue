@@ -19,7 +19,7 @@ defineProps({
 .dot-link {
   position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: 14px;
   min-height: 44px; padding: 10px 20px; max-width: 100%;
-  color: var(--kit-ink); text-decoration: none; font-size: 14px; font-weight: 700; line-height: 1.5;
+  color: var(--kit-ink); text-decoration: none; font-family: var(--kit-font-accent); font-size: 14px; font-weight: 400; line-height: 1.5;
   border-radius: 999px; transition: color var(--kit-duration) var(--kit-ease);
 }
 .dot-link--accent { color: var(--kit-link); }

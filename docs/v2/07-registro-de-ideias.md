@@ -118,7 +118,14 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 - **Uso dos controles:** círculos expansíveis para ações; camadas/cartões que se revelam por trás para serviços e seções relacionadas à identidade.
 - **Estado:** ajustes implementados no mediakit, em PT/EN, para conferência do operador. Hero permanece para a etapa seguinte.
 
-## Como registrar novas contribuições
+## I-013 — Poppins para leitura, Offside nos detalhes
+
+- **Origem:** operador avaliou que Offside não funcionou bem nos títulos e pediu Poppins para títulos e textos, reservando Offside a botões e chapéus curtos.
+- **Decisão ativa:** Poppins no conteúdo, títulos e subtítulos; Offside regular na marca, botões, links expansíveis e chapéus curtos. Substitui a decisão tipográfica da I-012.
+- **Implementação:** Poppins local nos pesos 400/500/600/700, títulos em 600; dependência e licença de Manrope removidas. Movimentos e espaçamentos dos controles preservados.
+- **Estado:** aplicado ao mediakit PT/EN para conferência do operador, antes de retomar o hero.
+
+## Próximas contribuições
 
 Adicionar um identificador com origem, intenção, estado e impacto. Quando houver correção, atualizar a especificação ativa e registrar aqui o que deixou de valer. Distinguir pedido do operador, proposta do agente, decisão e adiamento.
 

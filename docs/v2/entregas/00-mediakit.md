@@ -2,7 +2,7 @@
 
 Branch: `feat/v2-00-mediakit`, derivada de `feat/v2-01-hero` em `fedf803`.
 
-**Estado: direção do mediakit aprovada pelo operador, com ajustes de títulos e links implementados para conferência.** O operador aprovou os botões e definiu círculos expansíveis para ações, camadas para serviços e seções de identidade. Pediu Offside nos títulos e ponto dos links à direita, crescendo para a esquerda, com padding equilibrado. O agente não testa em navegador.
+**Estado: direção do mediakit aprovada pelo operador, com nova tipografia implementada para conferência.** O operador aprovou os botões e definiu círculos expansíveis para ações, camadas para serviços e seções de identidade. Após avaliar Offside nos títulos, escolheu Poppins para títulos e textos, reservando Offside à marca, botões e chapéus curtos. Os links mantêm ponto à direita, expansão à esquerda e padding equilibrado. O agente não testa em navegador.
 
 ## Abrir o estudo
 
@@ -18,7 +18,7 @@ Não é uma nova home publicada. O estudo não entra no sitemap e aplica `noinde
 ## O que avaliar
 
 1. **Cor:** branco `#ffffff`, preto `#111111`, vermelho original `#e50914` e cinzas. `#d00b15` é o fundo de ação para texto branco; links vermelhos têm variantes legíveis em fundo claro e escuro.
-2. **Tipografia:** Offside na marca, títulos e subtítulos, em peso regular e espaçamento próprio; Manrope nos textos e controles. Escala responsiva preservada.
+2. **Tipografia:** Poppins nos títulos/subtítulos em peso 600 e nos textos em peso regular; Offside regular na marca, botões, links expansíveis e chapéus curtos. Escala responsiva preservada.
 3. **Links:** ponto vermelho à direita em repouso; cresce para a esquerda até envolver o texto em hover/foco, com padding horizontal simétrico de 20px. Uma amostra fica aberta para comparação, com destinos reais dentro da página.
 4. **Botão circular:** ícone em repouso; expansão lateral com rótulo. Variações principal, neutra, contorno e desabilitada.
 5. **Botão em camadas:** frente neutra e fundo vermelho que se desloca/gira ao revelar. Releitura da referência enviada no Uiverse; comparável com o botão circular.
@@ -43,7 +43,7 @@ Não é uma nova home publicada. O estudo não entra no sitemap e aplica `noinde
 - `src/components/design/DotLink.vue` e `RevealButton.vue`: componentes candidatos a adoção posterior no site.
 - `src/styles/mediakit.less`: paleta, tipografia e composição isoladas do hero antigo.
 - `src/i18n/mediakitContent.mjs`: conteúdo completo PT/EN.
-- Manrope variável: `@fontsource-variable/manrope`, subconjunto Latin servido localmente; [licença OFL](../../../public/licenses/manrope-OFL.txt).
+- Poppins: `@fontsource/poppins`, WOFF2 Latin nos pesos 400, 500, 600 e 700 servido localmente; [licença OFL](../../../public/licenses/poppins-OFL.txt). Pacote e licença de Manrope removidos após a substituição.
 - Phosphor: `@phosphor-icons/vue`, imports individuais, sem registro global; [licença MIT](../../../public/licenses/phosphor-MIT.txt).
 - A fonte Offside existente da marca continua carregada pelo Google Fonts; fallback tipográfico permanece disponível.
 - [Referência de botão, vinodjangid07 / Uiverse](https://uiverse.io/vinodjangid07/great-ape-33). A animação candidata foi escrita localmente a partir da ideia descrita pelo operador. Não foi copiado HTML/CSS da referência nem comprovada equivalência visual ao exemplo.

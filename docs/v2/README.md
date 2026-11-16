@@ -63,7 +63,7 @@ Uma entrega completa inclui PT/EN, controles, resposta à interação, reset, al
 | Tema | Proposta de partida | Momento de decisão |
 | --- | --- | --- |
 | Voz da marca | Voz de empresa/operação; Mário como liderança e interlocutor, equipe própria nos bastidores | Refinar texto sem reduzir a oferta a trabalho individual |
-| Identidade | Preto, vermelho `#e50914`, branco e cinzas; Offside nos títulos, Manrope nos textos; círculos para ações e camadas para identidade | Direção e controles aprovados; conferir ajustes dos títulos e links antes de retomar hero/menu; iconografia final ainda aberta |
+| Identidade | Preto, vermelho `#e50914`, branco e cinzas; Poppins nos títulos e textos, Offside na marca, botões e chapéus curtos; círculos para ações e camadas para identidade | Direção e controles aprovados; conferir a aplicação de Poppins antes de retomar hero/menu; iconografia final ainda aberta |
 | Assinatura | Três direções visuais e seis serviços; papel derivado por regras simples | Storyboard da primeira demo |
 | Jogo | Percurso de 30 segundos e tema geométrico original | Antes de implementar o jogo |
 | Produto 3D | Luminária modular autoral | Antes de implementar o configurador |
