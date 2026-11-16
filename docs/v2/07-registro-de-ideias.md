@@ -125,7 +125,16 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 - **Implementação:** Poppins local nos pesos 400/500/600/700, títulos em 600; dependência e licença de Manrope removidas. Movimentos e espaçamentos dos controles preservados.
 - **Estado:** aplicado ao mediakit PT/EN para conferência do operador, antes de retomar o hero.
 
-## Próximas contribuições
+## I-014 — Ícones animados, com Lordicon ou produção própria
+
+- **Origem:** “vamos de lordicon ou pelo menos icones animados, nem que a gente produza nossos lotties”.
+- **Decisão:** animação passa a ser requisito da linguagem de ícones da V2. Lordicon é a opção prioritária; Lotties autorais são aceitos para necessidades específicas. Phosphor atual permanece provisório.
+- **Direção proposta:** sequências curtas que expliquem ações/serviços, integradas à revelação das camadas e à paleta preto/vermelho/branco; sem loop contínuo como padrão.
+- **Interação:** hover, foco e toque; ação acessível sem aguardar animação, alternativa estática com movimento reduzido e em falha de carregamento.
+- **Próximo recorte:** quatro amostras (contato, operação, dados e infraestrutura), seleção de assets/licenças, player e fonte editável dos autorais. Sem compra ou assinatura nesta etapa.
+- **Estado:** decisão registrada no plano e no mediakit PT/EN; as animações ainda não foram implementadas.
+
+## Como registrar novas contribuições
 
 Adicionar um identificador com origem, intenção, estado e impacto. Quando houver correção, atualizar a especificação ativa e registrar aqui o que deixou de valer. Distinguir pedido do operador, proposta do agente, decisão e adiamento.
 

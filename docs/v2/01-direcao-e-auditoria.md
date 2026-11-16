@@ -48,7 +48,7 @@ Validar títulos, botões, links e estados antes de redesenhar o hero. Após com
 
 O operador acrescentou a [referência de botão de vinodjangid07 no Uiverse](https://uiverse.io/vinodjangid07/great-ape-33): uma máscara/superfície à frente e algo que sai por trás. A interpretação para white label é a agência na frente e a operação técnica revelada atrás. O mediakit compara essa variação em camadas com o círculo expansível. Isso não equivale a retomar a máscara facial da V1.
 
-Iconografia mais detalhada permanece em avaliação: Phosphor Duotone como amostra integrada; Streamline Ultimate Duotone e Lordicon como referências para desenhos mais ricos e movimento. O formato SVG não define a simplicidade do desenho. Não confundir a amostra provisória com escolha definitiva de família.
+Iconografia animada é a direção escolhida pelo operador. Lordicon é a primeira opção; produzir Lotties autorais quando o catálogo não atender ao conceito ou à identidade. Phosphor Duotone permanece apenas como amostra provisória no mediakit. Streamline deixa de ser a alternativa prioritária. Manter preto, vermelho, branco e cinzas, coerência de traço e movimento breve que explique a ação ou o serviço, em vez de agitação decorativa contínua.
 
 A marca tipográfica Borderline.Dev pode ganhar protagonismo, acompanhada de uma linguagem autoral de bordas, enquadramentos e camadas. O ponto e os contornos podem conectar marca, navegação e cenas. Evitar substituir a máscara por outro objeto abstrato sem relação com a oferta. Uma alteração de tipografia ou cor precisa ser apresentada como direção visual para revisão.
 

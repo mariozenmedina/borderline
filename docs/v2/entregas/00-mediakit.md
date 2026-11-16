@@ -23,7 +23,7 @@ Não é uma nova home publicada. O estudo não entra no sitemap e aplica `noinde
 4. **Botão circular:** ícone em repouso; expansão lateral com rótulo. Variações principal, neutra, contorno e desabilitada.
 5. **Botão em camadas:** frente neutra e fundo vermelho que se desloca/gira ao revelar. Releitura da referência enviada no Uiverse; comparável com o botão circular.
 6. **White label:** peça maior mostra a marca da agência à frente e a operação por trás. Clique fixa/recolhe o estado; hover/foco permitem inspecionar.
-7. **Ícones:** seis amostras de Phosphor com controles duotone, contorno e preenchimento. Streamline e Lordicon apresentados como referências externas, não como assets já integrados.
+7. **Ícones:** direção animada definida, com Lordicon prioritário e Lotties autorais para conceitos específicos. As seis amostras de Phosphor continuam estáticas e provisórias; o conteúdo identifica explicitamente que as animações ainda não estão integradas.
 8. **Composição:** os elementos juntos em branco e preto. É uma aplicação de linguagem, não uma nova proposta de hero.
 
 ## Comportamentos implementados
@@ -47,7 +47,7 @@ Não é uma nova home publicada. O estudo não entra no sitemap e aplica `noinde
 - Phosphor: `@phosphor-icons/vue`, imports individuais, sem registro global; [licença MIT](../../../public/licenses/phosphor-MIT.txt).
 - A fonte Offside existente da marca continua carregada pelo Google Fonts; fallback tipográfico permanece disponível.
 - [Referência de botão, vinodjangid07 / Uiverse](https://uiverse.io/vinodjangid07/great-ape-33). A animação candidata foi escrita localmente a partir da ideia descrita pelo operador. Não foi copiado HTML/CSS da referência nem comprovada equivalência visual ao exemplo.
-- [Phosphor Vue](https://github.com/phosphor-icons/vue), [Streamline Ultimate Duotone](https://www.streamlinehq.com/icons/streamline-duotone) e [animação Lordicon](https://lordicon.com/docs/animation). A escolha definitiva e as licenças de assets das alternativas ficam para depois da revisão.
+- [Phosphor Vue](https://github.com/phosphor-icons/vue) é provisório; [animação Lordicon](https://lordicon.com/docs/animation) é a direção prioritária, complementada por Lotties autorais. Seleção de assets/licenças e integração do player serão feitas no próximo recorte.
 
 ## Verificações sem navegador
 
@@ -67,7 +67,7 @@ Nenhum navegador foi aberto. Build, cálculo de contraste e verificações de l�
 4. Comparar as duas famílias de botões, seus estados fixados e a confirmação local. Conferir se o espaço ao redor acomoda a expansão.
 5. Usar a peça white label com mouse, Enter/Espaço e toque; avaliar se o movimento comunica agência/frente e operação/bastidores.
 6. Em mobile, conferir rótulos visíveis, nenhum corte ou scroll horizontal e ações no primeiro toque.
-7. Alternar os três tratamentos de ícone. Avaliar se duotone atende à riqueza desejada ou se vale avançar com outra família.
+7. Alternar os três tratamentos das amostras provisórias para avaliar contraste; no próximo recorte, validar Lordicon/Lotties autorais com movimento, temas e alternativa estática.
 8. Ativar movimento reduzido; conferir que a informação e os controles continuam disponíveis.
 9. Abrir a âncora direta de botões, trocar idioma e usar voltar/avançar; conferir posição e URL.
 10. Retornar ao hero anterior pelo rodapé para comparar. A nova linguagem será aplicada à entrada apenas no próximo recorte.

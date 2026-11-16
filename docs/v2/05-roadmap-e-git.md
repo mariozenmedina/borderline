@@ -35,6 +35,8 @@ Branch `docs/v2-plan`. Consolidar auditoria, direção, arquitetura da informaç
 
 ### V2-01 — Shell e conteúdo
 
+Próximo recorte do mediakit: selecionar uma família Lordicon e preparar quatro ícones animados (contato, operação, dados e infraestrutura), produzindo Lotties autorais onde necessário. Validar movimento, coerência de desenho, temas e fallback estático antes de espalhar a família pelo site. Phosphor permanece provisório; direção registrada na I-014.
+
 Antes de retomar esta entrega, validar a [V2-00A — mediakit](entregas/00-mediakit.md). Incorporar a direção aprovada aos componentes da entrada em um próximo recorte, sem tratar a existência do primeiro hero como aceite visual.
 
 Branch do primeiro recorte: `feat/v2-01-hero`. [Escopo implementado e roteiro](entregas/01-hero-menu.md). O shell completo e os seis capítulos continuam pendentes; não considerar toda a V2-01 encerrada.
