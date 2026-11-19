@@ -213,6 +213,15 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 - **Câmera:** aproximação de 10% no desktop, campo de visão ajustado à proporção para manter escala em telas largas, movimento lateral de 4 unidades e vertical/profundidade de 2/2,4 antes da escala de distância, com amortecimento mais responsivo. Mobile conserva o deslocamento por scroll e as alternativas estáticas.
 - **Validação:** build e testes de topologia; checagem matemática da cobertura do chão nos extremos de câmera e proporções de tela, sem navegador. Aparência e intensidade aguardam revisão do operador na issue #4 / PR #16.
 
+## I-024 — Câmera persistente, superfície translúcida e leitura mobile
+
+- **Origem (19/11/2026):** manter a posição do 3D ao sair com o mouse, adotar superfície translúcida nos serviços, resolver o retângulo branco atrás de `borderline.` e reduzir a interferência do fundo no mobile.
+- **Implementado:** saída do mouse deixa de zerar o alvo da câmera; o movimento amortecido conserva o último alvo e só recebe novas coordenadas ao retornar. O fechamento dos cards por saída do hover continua independente.
+- **Superfícies:** agrupamento com base do tema a 74% de opacidade; cards a 92% e desfoque de fundo. No modo mobile/scroll, agrupamento a 92% e cards a 97% para priorizar leitura.
+- **Solução aplicada à marca:** nome sem fundo próprio; máscara SVG interrompe os dois contornos e a superfície apenas no espaço ocupado pela marca. O recorte acompanha as dimensões reais do texto via ResizeObserver, inclusive após carregamento da fonte e redimensionamento. Substitui o fundo opaco das I-020/I-022.
+- **Mobile:** fundo 3D reduzido de 64% para 28% de opacidade, com proteção adicional pela cor do tema. Movimento pelo scroll e tempo de leitura continuam preservados.
+- **Estado:** implementado para validação visual do operador na issue #4 / PR #16. Conferir retorno do mouse, assinatura sem retângulo, superfícies e leitura nos dois temas.
+
 ## Como registrar novas contribuições
 
 Adicionar um identificador com origem, intenção, estado e impacto. Quando houver correção, atualizar a especificação ativa e registrar aqui o que deixou de valer. Distinguir pedido do operador, proposta do agente, decisão e adiamento.

@@ -123,7 +123,6 @@ function pointer(event) {
   pointerX = Math.max(-1, Math.min(1, (event.clientX - rect.left) / rect.width * 2 - 1))
   pointerY = Math.max(-1, Math.min(1, (event.clientY - rect.top) / rect.height * 2 - 1))
 }
-function resetPointer() { pointerX = pointerY = 0 }
 function visibility() {
   if (document.hidden) stop()
   else { initialize(); resume() }
@@ -141,7 +140,6 @@ onMounted(() => {
   reduced.addEventListener('change', syncMotion)
   coarse.addEventListener('change', syncMotion)
   section.addEventListener('pointermove', pointer, { passive: true })
-  section.addEventListener('pointerleave', resetPointer, { passive: true })
   document.addEventListener('visibilitychange', visibility)
   canvas.value.addEventListener('webglcontextlost', contextLost)
   resizeObserver = new ResizeObserver(resize)
@@ -162,7 +160,6 @@ onBeforeUnmount(() => {
   reduced?.removeEventListener('change', syncMotion)
   coarse?.removeEventListener('change', syncMotion)
   section?.removeEventListener('pointermove', pointer)
-  section?.removeEventListener('pointerleave', resetPointer)
   document.removeEventListener('visibilitychange', visibility)
   canvas.value?.removeEventListener('webglcontextlost', contextLost)
   release()
@@ -187,7 +184,7 @@ canvas.is-ready { opacity: 1; }
 .fallback-chip-top { fill: var(--surface-alt); stroke: var(--line-strong); stroke-width: 1; }
 .fallback-core { fill: var(--accent); }
 @media (max-width: 900px), (hover: none), (pointer: coarse) {
-  .circuit-viewport { position: sticky; top: 68px; height: min(740px, calc(100svh - 68px)); opacity: .64; }
-  .circuit-viewport::after { background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 78%, transparent), transparent 60%); }
+  .circuit-viewport { position: sticky; top: 68px; height: min(740px, calc(100svh - 68px)); opacity: .28; }
+  .circuit-viewport::after { background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 88%, transparent), color-mix(in srgb, var(--surface) 35%, transparent) 60%); }
 }
 </style>

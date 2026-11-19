@@ -5,7 +5,21 @@
       @pointerenter="hovered = true" @pointerleave="hovered = false"
       @focus="focused = $event.target.matches(':focus-visible')" @blur="focused = false">
       <div class="delivery-artwork" aria-hidden="true">
-        <div class="operation-boundary" :style="{ opacity: opening / 100 }"><span class="operation-brand">borderline<b>.</b></span></div>
+        <div ref="boundary" class="operation-boundary" :style="{ opacity: opening / 100 }">
+          <svg class="operation-frame" width="100%" height="100%" focusable="false">
+            <defs>
+              <mask :id="frameMaskId" maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
+                <rect width="100%" height="100%" fill="white" />
+                <rect :x="brandGap.x" :y="brandGap.y" :width="brandGap.width" :height="brandGap.height" fill="black" />
+              </mask>
+            </defs>
+            <g :mask="`url(#${frameMaskId})`">
+              <rect class="operation-frame__surface" x=".5" y=".5" rx="18" />
+              <rect class="operation-frame__accent" x="4.5" y="4.5" rx="14" />
+            </g>
+          </svg>
+          <span ref="operationBrand" class="operation-brand">borderline<b>.</b></span>
+        </div>
         <div v-for="(card, index) in layout.services" :key="card.id" class="service-card motion-trigger" :class="`service-card--${card.id}`" :style="cardStyle(card)">
           <div class="service-card__heading"><MotionIcon :kind="card.id" :active="opening > 65" /><span>{{ String(index + 1).padStart(2, '0') }}</span></div>
           <strong>{{ content.services[index].name }}</strong>
@@ -23,7 +37,7 @@
 </template>
 
 <script setup>
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId, watch } from 'vue'
 import MotionIcon from './design/MotionIcon.vue'
 import { getOperationLayout, getScrollOpening } from '../hero/operationLayout.mjs'
 const props = defineProps({ content: { type: Object, required: true } })
@@ -31,6 +45,10 @@ const emit = defineEmits(['opening-change'])
 const track = ref(null)
 const figure = ref(null)
 const scrollDistance = ref(null)
+const boundary = ref(null)
+const operationBrand = ref(null)
+const frameMaskId = `operation-frame-${useId()}`
+const brandGap = ref({ x: 0, y: 0, width: 0, height: 0 })
 const hovered = ref(false)
 const focused = ref(false)
 const scrollMode = ref(false)
@@ -53,6 +71,12 @@ function measureScroll() {
 function scheduleMeasure() {
   if (!frame && scrollMode.value && !staticMode.value) frame = requestAnimationFrame(measureScroll)
 }
+function measureBrandGap() {
+  if (!boundary.value || !operationBrand.value) return
+  const box = boundary.value.getBoundingClientRect()
+  const brand = operationBrand.value.getBoundingClientRect()
+  brandGap.value = { x: brand.left - box.left, y: brand.top - box.top, width: brand.width, height: brand.height }
+}
 watch(() => props.content, scheduleMeasure, { flush: 'post' })
 async function syncMode() {
   scrollMode.value = media[0].matches
@@ -66,10 +90,13 @@ onMounted(() => {
   media.forEach(query => query.addEventListener('change', syncMode))
   window.addEventListener('scroll', scheduleMeasure, { passive: true })
   window.addEventListener('resize', scheduleMeasure, { passive: true })
-  resizeObserver = new ResizeObserver(scheduleMeasure)
+  resizeObserver = new ResizeObserver(() => { scheduleMeasure(); measureBrandGap() })
   resizeObserver.observe(track.value)
   resizeObserver.observe(figure.value)
   resizeObserver.observe(track.value.parentElement)
+  resizeObserver.observe(boundary.value)
+  resizeObserver.observe(operationBrand.value)
+  measureBrandGap()
   syncMode()
 })
 onBeforeUnmount(() => {
@@ -100,12 +127,14 @@ function cardStyle(card) {
 .is-static .service-card, .is-static .agency-card, .is-static .operation-boundary { transition: none; }
 .is-static { min-height: 0; }
 .is-static .hero-delivery { position: relative; top: auto; }
-.operation-boundary { position: absolute; inset: 0 0 32%; border: 1px solid var(--line); border-radius: 18px; pointer-events: none; }
-.operation-boundary::before { content: ''; position: absolute; inset: 4px; border: 1px solid var(--accent); border-radius: 14px; }
-.operation-brand { position: absolute; z-index: 1; right: clamp(14px, 3%, 24px); bottom: 2px; transform: translateY(50%); padding: 2px 10px; background: var(--surface); font: 400 clamp(16px, 1.6vw, 24px)/1 var(--kit-font-accent); white-space: nowrap; color: var(--ink); }
+.operation-boundary { --operation-surface-opacity: .74; position: absolute; inset: 0 0 32%; pointer-events: none; }
+.operation-frame { position: absolute; inset: 0; overflow: visible; }
+.operation-frame__surface { width: calc(100% - 1px); height: calc(100% - 1px); fill: var(--surface); fill-opacity: var(--operation-surface-opacity); stroke: var(--line); }
+.operation-frame__accent { width: calc(100% - 9px); height: calc(100% - 9px); fill: none; stroke: var(--accent); }
+.operation-brand { position: absolute; z-index: 1; right: clamp(14px, 3%, 24px); bottom: 2px; transform: translateY(50%); padding: 2px 10px; font: 400 clamp(16px, 1.6vw, 24px)/1 var(--kit-font-accent); white-space: nowrap; color: var(--ink); }
 .operation-brand b { color: var(--accent); font-weight: inherit; }
-.service-card { position: absolute; overflow: hidden; padding: clamp(10px, 1vw, 14px); border: 1px solid var(--line-strong); border-radius: 14px; background: var(--surface); box-shadow: 0 8px 18px -12px var(--scene-shadow); }
-.service-card--infra, .service-card--data, .service-card--systems { background: var(--surface-alt); }
+.service-card { --card-surface: var(--surface); --card-opacity: 92%; position: absolute; overflow: hidden; padding: clamp(10px, 1vw, 14px); border: 1px solid var(--line-strong); border-radius: 14px; background: color-mix(in srgb, var(--card-surface) var(--card-opacity), transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 8px 18px -12px var(--scene-shadow); }
+.service-card--infra, .service-card--data, .service-card--systems { --card-surface: var(--surface-alt); }
 .service-card__heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; color: var(--accent); }
 .service-card__heading > span { font: 9px var(--kit-font-accent); color: var(--muted); }
 .service-card__heading :deep(svg) { width: clamp(22px, 2vw, 26px); height: clamp(22px, 2vw, 26px); }
@@ -146,7 +175,8 @@ function cardStyle(card) {
   .agency-card__bottom { font-size: 8px; } .agency-arrow { font-size: 16px; }
 }
 @media (max-width: 360px) { .delivery-artwork { aspect-ratio: 1 / 1.6; } }
-.is-scroll .service-card { padding: 10px 12px; }
+.is-scroll .operation-boundary { --operation-surface-opacity: .92; }
+.is-scroll .service-card { --card-opacity: 97%; padding: 10px 12px; }
 .is-scroll .service-card__heading { margin-bottom: 4px; }
 .is-scroll .service-card__heading :deep(svg) { width: 22px; height: 22px; }
 .is-scroll .service-card strong { font-size: 12px; }
