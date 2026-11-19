@@ -38,6 +38,7 @@ Jogo, D3 complexo, planta de infraestrutura e assinatura transformável vêm das
 5. [Roadmap e Git](05-roadmap-e-git.md): entregas, dependências, branches e commits.
 6. [Validação](06-validacao.md): verificações do agente e roteiro do operador.
 7. [Registro de ideias](07-registro-de-ideias.md): sugestões, correções e decisões abertas.
+8. [Workflow ativo no GitHub](08-github-workflow.md): milestones, issues, estados, PRs e verificações automáticas.
 
 ## Restrições confirmadas
 

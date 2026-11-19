@@ -157,6 +157,14 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 - **Implementação:** barra de 52px após 160px de scroll, marca abreviada com ponto vermelho e retorno à versão completa até 80px do topo. Links, idioma, tema, contato e menu móvel continuam disponíveis.
 - **Estado:** implementado em `feat/v2-01-home`, aguardando validação visual. Movimento reduzido desativa as transições; o nome acessível da marca permanece completo.
 
+## I-018 — Autonomia para organizar Git e GitHub
+
+- **Origem (18/11/2026):** operador autorizou o uso livre do workflow Git da V2, incluindo milestones, e confirmou que o repositório é exclusivamente seu.
+- **Aplicação:** administrar branches, commits, pushes, issues, labels, milestones e PRs; integrar entregas com critérios concluídos. Não pedir confirmação para ações rotineiras já autorizadas.
+- **Organização:** quatro milestones e quinze issues iniciais; plano e mediakit concluídos, home em revisão visual, demais experiências planejadas. CI sem navegador e PR da home em rascunho.
+- **Regras preservadas:** identidade obrigatória nos commits, pnpm, validação visual exclusivamente pelo operador e publicação do site como etapa distinta do workflow.
+- **Referência:** [workflow ativo no GitHub](08-github-workflow.md).
+
 ## Como registrar novas contribuições
 
 Adicionar um identificador com origem, intenção, estado e impacto. Quando houver correção, atualizar a especificação ativa e registrar aqui o que deixou de valer. Distinguir pedido do operador, proposta do agente, decisão e adiamento.

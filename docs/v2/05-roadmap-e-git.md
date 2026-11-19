@@ -2,9 +2,9 @@
 
 ## Estado atual
 
-Planejamento local na branch `docs/v2-plan`, iniciada a partir de `main` em `16b9a54`. Após autorização do operador, `v2` foi criada a partir do planejamento em `49f5060`, e `feat/v2-01-hero` contém o primeiro recorte de implementação. Os IDs abaixo são referências locais de backlog, não números de issues já abertas no GitHub.
+Planejamento iniciado na branch `docs/v2-plan`, a partir de `main` em `16b9a54`. `v2` foi criada a partir do planejamento em `49f5060`. Em 18/11/2026, o operador autorizou a administração completa do workflow Git/GitHub. Os IDs abaixo estão vinculados a issues reais em quatro milestones; consulte o [workflow ativo e mapa de issues](08-github-workflow.md).
 
-O operador escolheu planejar primeiro e depois autorizou implementar hero, menu e temas para revisão. As imagens sociais anteriores foram salvas por solicitação em `20fee05`. O primeiro hero foi salvo em `fedf803`, mas sua direção visual foi rejeitada. A branch `feat/v2-00-mediakit` deriva desse commit. Após aprovação explícita do mediakit, `feat/v2-01-home` foi criada a partir de `3bed5ba` para aplicar o visual e revelar a operação por hover/scroll. O trabalho continua local, sem push ou publicação, aguardando validação da home antes de integração em `v2`.
+O operador escolheu planejar primeiro e depois autorizou implementar hero, menu e temas para revisão. As imagens sociais anteriores foram salvas em `20fee05`. O primeiro hero, em `fedf803`, foi rejeitado visualmente. A branch `feat/v2-00-mediakit` deriva desse commit; após aprovação do mediakit, `feat/v2-01-home` foi criada a partir de `3bed5ba`. A home está em revisão, com hover/scroll e menu compacto. Branches e PRs passam a ser publicados no GitHub; aceite visual continua pendente antes da integração desta entrega em `v2`.
 
 ## Sequência e dependências
 
@@ -12,6 +12,7 @@ O operador escolheu planejar primeiro e depois autorizou implementar hero, menu 
 | --- | --- | --- | --- | --- |
 | V2-00 | Planejamento, conteúdo e decisões | — | M | Documentado, em revisão |
 | V2-00A | Mediakit: paleta, tipografia, links, botões e ícones | V2-00 e feedback do hero | M | Aprovado; família Lordicon/Lottie ainda a selecionar |
+| V2-00B | Família de ícones animados | V2-00A | M | Planejado; pendência separada do mediakit aprovado |
 | V2-01 | Shell, navegação, tokens e PT/EN | V2-00A validado | M | Home/menu/hover/scroll reformulados, aguardando validação visual |
 | V2-02 | Runtime de demos, atividade e alternativas | V2-01 | G | Planejado |
 | V2-03 | Assinatura white label e operação por trás | V2-02 | G | Planejado |
@@ -190,7 +191,7 @@ Para cada entrega:
 7. Registrar resultado do operador e corrigir na mesma entrega. Só considerar o aceite visual concluído quando ele o confirmar.
 8. Integrar em `v2`; a publicação da V2 permanece separada do merge de funcionalidades.
 
-PRs, quando utilizados no remoto, terão `v2` como base e escopo por entrega. O PR final será `v2` → `main`. O template no repositório orienta revisão; ele não cria nem publica PR automaticamente.
+PRs terão `v2` como base e escopo por entrega, vinculados à issue e ao milestone. O PR final será `v2` → `main`. O agente está autorizado a organizar e publicar o workflow, incluindo merges quando os critérios da entrega estiverem satisfeitos; mudanças visuais aguardam o retorno do operador. Ver [regras, estados e CI](08-github-workflow.md).
 
 Exemplo de identidade para todos os commits:
 
