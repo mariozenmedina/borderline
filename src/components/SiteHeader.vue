@@ -1,8 +1,10 @@
 <template>
   <a class="skip-link" href="#conteudo">{{ content.skip }}</a>
-  <header ref="header" class="site-header" @keydown.esc="closeMenu(true)">
+  <header ref="header" class="site-header" :class="{ 'is-collapsed': collapsed }" @keydown.esc="closeMenu(true)">
     <div class="site-header__inner">
-      <a class="wordmark" href="#inicio" :aria-label="content.home" @click="closeMenu()">borderline<span class="wordmark__dot">.</span><span class="wordmark__dev">dev</span></a>
+      <a class="wordmark" href="#inicio" :aria-label="content.home" @click="closeMenu()">
+        <span class="wordmark__visual" aria-hidden="true">b<span class="wordmark__rest"><span>orderline</span></span><span class="wordmark__dot">.</span><span class="wordmark__rest wordmark__dev"><span>dev</span></span></span>
+      </a>
       <nav class="desktop-navigation" :aria-label="content.label">
         <DotLink href="#capacidades">{{ content.capabilities }}</DotLink>
         <DotLink href="#parceria">{{ content.partnership }}</DotLink>
@@ -51,6 +53,11 @@ const emit = defineEmits(['change-locale', 'toggle-theme'])
 const header = ref(null)
 const menuButton = ref(null)
 const menuOpen = ref(false)
+const collapsed = ref(false)
+function syncCollapsed() {
+  // Limites distintos evitam alternância enquanto a própria barra encolhe.
+  collapsed.value = window.scrollY > (collapsed.value ? 80 : 160)
+}
 function closeMenu(restoreFocus = false) {
   if (!menuOpen.value) return
   menuOpen.value = false
@@ -67,12 +74,17 @@ function handleFocus(event) { if (!header.value?.contains(event.relatedTarget)) 
 let desktopQuery
 function handleBreakpoint(event) { if (event.matches) closeMenu() }
 onMounted(() => {
+  syncCollapsed()
+  window.addEventListener('scroll', syncCollapsed, { passive: true })
+  window.addEventListener('pageshow', syncCollapsed)
   document.addEventListener('pointerdown', handleOutside)
   header.value?.addEventListener('focusout', handleFocus)
   desktopQuery = window.matchMedia('(min-width: 961px)')
   desktopQuery.addEventListener('change', handleBreakpoint)
 })
 onBeforeUnmount(() => {
+  window.removeEventListener('scroll', syncCollapsed)
+  window.removeEventListener('pageshow', syncCollapsed)
   document.removeEventListener('pointerdown', handleOutside)
   header.value?.removeEventListener('focusout', handleFocus)
   desktopQuery?.removeEventListener('change', handleBreakpoint)
@@ -83,8 +95,11 @@ onBeforeUnmount(() => {
 .skip-link { position: fixed; top: 12px; left: 16px; z-index: 100; padding: 12px 20px; background: var(--ink); color: var(--surface); border-radius: 8px; transform: translateY(-160%); }
 .skip-link:focus { transform: translateY(0); }
 .site-header { position: sticky; top: 0; z-index: 30; background: var(--header-background); border-bottom: 1px solid var(--line); backdrop-filter: blur(18px); }
-.site-header__inner { max-width: 1536px; min-height: 90px; margin: auto; padding: 0 var(--page-gutter); display: flex; align-items: center; gap: 36px; }
-.wordmark { font-family: 'Offside', Arial, sans-serif; font-size: 23px; letter-spacing: -1.3px; white-space: nowrap; text-decoration: none; color: var(--ink); }
+.site-header__inner { max-width: 1536px; min-height: 90px; margin: auto; padding: 0 var(--page-gutter); display: flex; align-items: center; gap: 36px; transition: min-height var(--kit-duration) var(--kit-ease); }
+.wordmark { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; flex: none; font-family: 'Offside', Arial, sans-serif; font-size: 23px; letter-spacing: -1.3px; white-space: nowrap; text-decoration: none; color: var(--ink); }
+.wordmark__visual { display: inline-flex; align-items: baseline; }
+.wordmark__rest { display: inline-grid; grid-template-columns: 1fr; opacity: 1; transition: grid-template-columns var(--kit-duration) var(--kit-ease), opacity var(--kit-duration); }
+.wordmark__rest > span { min-width: 0; overflow: hidden; }
 .wordmark__dot { color: var(--accent); } .wordmark__dev { color: var(--ink); }
 .desktop-navigation { display: flex; gap: 8px; margin-left: auto; }
 .desktop-navigation :deep(.dot-link) { font-size: 12px; }
@@ -109,5 +124,14 @@ onBeforeUnmount(() => {
   .wordmark { font-size: 18px; letter-spacing: -1px; }
   .header-actions { gap: 2px; } .header-divider { display: none; }
   .icon-button { width: 34px; height: 40px; } .locale-switch a { width: 27px; }
+}
+.is-collapsed .site-header__inner { min-height: 52px; }
+.is-collapsed .wordmark__rest { grid-template-columns: 0fr; opacity: 0; }
+.header-contact { transition: min-height var(--kit-duration) var(--kit-ease), min-width var(--kit-duration) var(--kit-ease); }
+.header-contact :deep(.reveal-button__icon) { transition: width var(--kit-duration) var(--kit-ease), height var(--kit-duration) var(--kit-ease), flex-basis var(--kit-duration) var(--kit-ease); }
+.is-collapsed .header-contact { min-height: 44px; min-width: 44px; }
+.is-collapsed .header-contact :deep(.reveal-button__icon) { width: 44px; height: 44px; flex-basis: 44px; }
+@media (prefers-reduced-motion: reduce) {
+  .site-header__inner, .wordmark__rest, .header-contact, .header-contact :deep(.reveal-button__icon) { transition: none; }
 }
 </style>

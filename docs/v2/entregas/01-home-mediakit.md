@@ -37,7 +37,10 @@ Executar `pnpm dev`; abrir `/` e `/en/` no endereço informado pelo Vite. O medi
 5. Revisar desktop, tablet e celular, incluindo 320/360/390px, sem cortes nos cards e sem rolagem horizontal. No toque, conferir rótulos visíveis nos botões.
 6. Conferir preferência de movimento reduzido: operação aberta, sem animação dos ícones ou percurso adicional de scroll.
 7. Conferir menu móvel, navegação por hash, voltar/avançar e retorno entre home e mediakit.
+8. Rolar além de 160px: a barra deve reduzir para 52px e a marca virar “b.”, com o ponto vermelho. Voltar até 80px do topo restaura o menu completo. Conferir links, idiomas, tema, contato e abertura do menu móvel no estado compacto, incluindo chegada direta por hash.
 
 Sem push, merge em `v2` ou publicação nesta entrega.
 
 Revisão de 18/11/2026: hover/scroll e retirada dos textos periféricos substituem o slider da primeira versão (`cabf1ad`), por pedido do operador. Validação de build e lógica refeita; nenhuma validação em navegador pelo agente.
+
+Revisão adicional de 18/11/2026: menu compacto após scroll, com altura de 52px e marca “b.”. Limites de 160px para recolher e 80px para expandir evitam alternância perto do ponto de mudança. Mantém navegação, preferência de movimento reduzido e nome acessível completo da marca. Listener passivo de scroll, sincronização na montagem/retorno à página e remoção dos listeners ao desmontar.

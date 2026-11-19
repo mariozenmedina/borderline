@@ -151,6 +151,12 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 - **Alternativas:** foco do teclado revela a operação. Movimento reduzido e viewport muito baixo usam composição aberta sem sticky ou espaço adicional.
 - **Estado:** implementado na mesma branch `feat/v2-01-home`; build e oito testes de lógica aprovados, avaliação visual com o operador.
 
+## I-017 — Menu fino e marca abreviada após scroll
+
+- **Origem (18/11/2026):** operador pediu que o menu colapse após certo scroll e a logo se reduza a “b.”.
+- **Implementação:** barra de 52px após 160px de scroll, marca abreviada com ponto vermelho e retorno à versão completa até 80px do topo. Links, idioma, tema, contato e menu móvel continuam disponíveis.
+- **Estado:** implementado em `feat/v2-01-home`, aguardando validação visual. Movimento reduzido desativa as transições; o nome acessível da marca permanece completo.
+
 ## Como registrar novas contribuições
 
 Adicionar um identificador com origem, intenção, estado e impacto. Quando houver correção, atualizar a especificação ativa e registrar aqui o que deixou de valer. Distinguir pedido do operador, proposta do agente, decisão e adiamento.
