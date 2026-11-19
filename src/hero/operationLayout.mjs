@@ -5,6 +5,12 @@ export function normalizeOpening(value) {
   return Number.isFinite(number) ? Math.min(100, Math.max(0, number)) : 0
 }
 
+// Abre durante 80% do percurso sticky e reserva o final para ler os cards.
+export function getScrollOpening(trackTop, stickyTop, travel) {
+  if (![trackTop, stickyTop, travel].every(Number.isFinite) || travel <= 0) return 100
+  return normalizeOpening((stickyTop - trackTop) / (travel * 0.8) * 100)
+}
+
 export function getOperationLayout(value) {
   const progress = normalizeOpening(value) / 100
   const lerp = (from, to) => from + (to - from) * progress

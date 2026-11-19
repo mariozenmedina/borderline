@@ -8,10 +8,12 @@ Branch: `feat/v2-01-home`, derivada de `feat/v2-00-mediakit` em `3bed5ba`.
 
 - Chapéu em Offside, título e texto em Poppins. Preto, vermelho, branco e cinzas nos temas claro e escuro.
 - Dois botões circulares expansíveis do mediakit: serviços e contato, com destinos reais na página. Menu reutiliza links com ponto à direita e expansão à esquerda.
-- Card da agência à frente. Slider abre gradualmente seis cards: desenvolvimento, infraestrutura, games, dados, experiências 3D e integrações.
+- Card da agência à frente. Hover abre seis cards: desenvolvimento, infraestrutura, games, dados, experiências 3D e integrações. Ao sair com o mouse, a pilha se recompõe.
 - Abertura completa dispõe os serviços em duas colunas e três linhas, mantendo a agência visível em primeiro plano. O fechamento recompõe a pilha.
-- Controle nativo por arraste e teclado, atalhos para fechar/abrir tudo e texto equivalente para tecnologias assistivas. Sem autoplay ou rolagem controlada.
-- Tema claro inicial, preferência manual persistida e PT/EN. Troca de tema e idioma preserva a abertura durante a visita.
+- Em telas até 900px ou dispositivos com toque/sem hover, a composição fica sticky durante um percurso adicional de 80svh. O scroll abre os cards nos primeiros 80% desse percurso; o restante permite ler a composição aberta. Subir a página recompõe a pilha. Não intercepta o scroll.
+- Foco por teclado também abre a composição; texto equivalente permanece para tecnologias assistivas. Com movimento reduzido ou altura inferior a 600px no modo de scroll, a operação aparece aberta, sem sticky nem espaço adicional.
+- Tema claro inicial, preferência manual persistida e PT/EN. A abertura deriva do hover/foco ou da posição atual de scroll, recalculada ao trocar idioma ou tamanho de tela.
+- Removidos slider, porcentagem, instruções, legendas ao redor da composição e faixa inferior de informações. Preservados chapéu, título, texto principal, dois botões e textos internos dos cards.
 - Ícones com microanimações autorais em SVG/CSS, disparadas pela abertura, hover ou foco. Movimento reduzido desativa essas animações. Fonte editável em `MotionIcon.vue`; não há integração Lordicon/Lottie neste recorte.
 
 Fontes e tokens foram compartilhados entre home e mediakit. A composição usa HTML/SVG e perspectiva CSS, sem WebGL ou dependências adicionais. Conteúdo das seções abaixo recebe a base visual global; as demos detalhadas e a assinatura ainda não foram implementadas.
@@ -19,7 +21,7 @@ Fontes e tokens foram compartilhados entre home e mediakit. A composição usa H
 ## Verificações sem navegador
 
 - `pnpm build`: aprovado; gera português e inglês com fontes locais.
-- `node tests/operation-layout.test.mjs`: cinco testes aprovados. Cobrem normalização, todas as 101 posições, ausência de sobreposição na abertura completa, interpolação/reversibilidade e paridade PT/EN.
+- `node tests/operation-layout.test.mjs`: oito testes aprovados. Cobrem normalização, todas as 101 posições, ausência de sobreposição na abertura completa, interpolação/reversibilidade, paridade PT/EN e progresso do scroll com início, término, pausa final, retorno e percurso inválido.
 - `git diff --check`: aprovado.
 - Dez cenários de bootstrap/tema verificados em Node, incluindo preferência ausente, inválida e armazenamento bloqueado; referências a assets e fontes conferidas nos dois HTMLs gerados.
 - Nenhum navegador aberto. Testes de geometria verificam os dados do layout; não substituem a revisão de legibilidade, recortes e aparência pelo operador.
@@ -29,11 +31,13 @@ Fontes e tokens foram compartilhados entre home e mediakit. A composição usa H
 Executar `pnpm dev`; abrir `/` e `/en/` no endereço informado pelo Vite. O mediakit continua em `/?view=mediakit` e `/en/?view=mediakit`.
 
 1. Conferir menu, chapéu, título, texto e os dois botões contra o mediakit aprovado.
-2. Arrastar o slider lentamente em ambos os sentidos; conferir a relação agência/operação e a leitura dos seis serviços em 100%.
-3. Usar atalhos de fechar/abrir e teclado no slider (setas, Home e End). Conferir foco e navegação aos serviços/contato.
-4. Trocar PT/EN e tema com a composição parcialmente aberta; conferir preservação da posição, textos e contraste.
+2. Entrar e sair com o mouse pela área dos cards, inclusive rapidamente; conferir abertura, recolhimento e leitura dos seis serviços. Usar Tab para conferir abertura por foco.
+3. No celular, rolar nos dois sentidos: a cena deve fixar abaixo do menu, revelar gradualmente a operação e liberar a página após um breve trecho totalmente aberto.
+4. Trocar PT/EN e tema durante o percurso; conferir atualização do progresso, textos e contraste. Girar o dispositivo e conferir o modo sem sticky em altura inferior a 600px.
 5. Revisar desktop, tablet e celular, incluindo 320/360/390px, sem cortes nos cards e sem rolagem horizontal. No toque, conferir rótulos visíveis nos botões.
-6. Conferir preferência de movimento reduzido, sem animação dos ícones; o slider deve continuar funcional.
+6. Conferir preferência de movimento reduzido: operação aberta, sem animação dos ícones ou percurso adicional de scroll.
 7. Conferir menu móvel, navegação por hash, voltar/avançar e retorno entre home e mediakit.
 
 Sem push, merge em `v2` ou publicação nesta entrega.
+
+Revisão de 18/11/2026: hover/scroll e retirada dos textos periféricos substituem o slider da primeira versão (`cabf1ad`), por pedido do operador. Validação de build e lógica refeita; nenhuma validação em navegador pelo agente.

@@ -11,19 +11,9 @@ const messages = {
       headline: 'Sua agência à frente.', emphasis: 'Nossa operação por trás',
       description: 'Mário conduz as reuniões e as decisões técnicas como parte da sua agência. Nossa equipe de desenvolvimento e TI sustenta as entregas nos bastidores. Tudo sob a sua marca.',
       primary: 'Explore os serviços', secondary: 'Vamos conversar',
-      facts: [
-        { title: 'Uma frente técnica', text: 'Presente nas decisões.' },
-        { title: 'Uma equipe própria', text: 'Estrutura para entregar.' },
-        { title: 'A marca é sua', text: 'A parceria é white label.' },
-      ],
-      next: 'Conheça as possibilidades',
       scene: {
         label: 'A agência à frente dos serviços da Borderline.Dev',
-        frontLabel: 'Sua marca na frente', backLabel: 'Nossa estrutura por trás',
         agencyEyebrow: 'Para o seu cliente', agency: 'Sua agência', agencyDetail: 'A identidade de cada entrega.',
-        sliderLabel: 'Revele a operação', openingValue: 'de abertura das camadas',
-        sliderHelp: 'Arraste para abrir. Ou use as setas do teclado.', closed: 'Sua agência', open: 'A operação completa',
-        caption: 'Mário na interlocução. Nossa equipe própria na execução. A agência continua à frente.',
         services: [
           { id: 'dev', name: 'Desenvolvimento', detail: 'Websites e aplicações.' },
           { id: 'infra', name: 'Infraestrutura', detail: 'Cloud, redes e suporte.' },
@@ -47,19 +37,9 @@ const messages = {
       headline: 'Your agency out front.', emphasis: 'Our operation behind it',
       description: 'Mário leads meetings and technical decisions as part of your agency. Our own development and IT team supports delivery behind the scenes. All under your brand.',
       primary: 'Explore our services', secondary: 'Let’s talk',
-      facts: [
-        { title: 'One technical lead', text: 'Part of every decision.' },
-        { title: 'Our own team', text: 'Built to deliver.' },
-        { title: 'Your brand', text: 'A white label partnership.' },
-      ],
-      next: 'Explore the possibilities',
       scene: {
         label: 'The agency in front of Borderline.Dev services',
-        frontLabel: 'Your brand out front', backLabel: 'Our structure behind it',
         agencyEyebrow: 'For your client', agency: 'Your agency', agencyDetail: 'The identity of every delivery.',
-        sliderLabel: 'Reveal the operation', openingValue: 'of the layers revealed',
-        sliderHelp: 'Drag to open. Or use the arrow keys.', closed: 'Your agency', open: 'The full operation',
-        caption: 'Mário leads the conversation. Our own team delivers. Your agency stays out front.',
         services: [
           { id: 'dev', name: 'Development', detail: 'Websites and applications.' },
           { id: 'infra', name: 'Infrastructure', detail: 'Cloud, networks and support.' },

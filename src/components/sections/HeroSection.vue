@@ -12,17 +12,12 @@
       </div>
       <HeroDelivery :content="content.scene" />
     </div>
-    <div class="hero-bottom">
-      <dl class="hero-facts"><div v-for="fact in content.facts" :key="fact.title"><dt>{{ fact.title }}</dt><dd>{{ fact.text }}</dd></div></dl>
-      <DotLink href="#capacidades">{{ content.next }}</DotLink>
-    </div>
   </section>
 </template>
 
 <script setup>
 import HeroDelivery from '../HeroDelivery.vue'
 import RevealButton from '../design/RevealButton.vue'
-import DotLink from '../design/DotLink.vue'
 import MotionIcon from '../design/MotionIcon.vue'
 defineProps({ content: { type: Object, required: true } })
 </script>
@@ -38,17 +33,12 @@ h1 > span + span { margin-top: .12em; }
 h1 i { display: inline-block; width: .14em; height: .14em; margin-left: .06em; border-radius: 50%; background: var(--accent); }
 .hero-description { max-width: 45ch; margin: 28px 0 0; color: var(--muted); font-size: 15px; line-height: 1.9; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-top: 34px; min-height: 58px; }
-.hero-bottom { display: flex; justify-content: space-between; align-items: center; gap: 30px; padding: 28px 0 36px; border-top: 1px solid var(--line); }
-.hero-facts { display: flex; flex-wrap: wrap; gap: clamp(22px, 3vw, 50px); margin: 0; }
-.hero-facts dt { font: 400 11px/1.7 var(--kit-font-accent); }
-.hero-facts dd { margin: 7px 0 0; font-size: 11px; color: var(--muted); }
-@media (max-width: 1100px) { .hero-layout { gap: 28px; } .hero-bottom { flex-wrap: wrap; } }
-@media (max-width: 900px) {
+@media (max-width: 1100px) { .hero-layout { gap: 28px; } }
+@media (max-width: 900px), (hover: none), (pointer: coarse) {
   .hero-layout { grid-template-columns: 1fr; padding-top: 44px; gap: 32px; }
   .hero-copy { max-width: 650px; padding-bottom: 0; }
   h1 { font-size: clamp(40px, 7vw, 66px); max-width: 18ch; }
   .hero-description { max-width: 53ch; }
-  .hero-bottom { align-items: flex-start; }
 }
-@media (max-width: 480px) { .hero-layout { padding-top: 36px; } h1 { font-size: clamp(35px, 9.8vw, 46px); } .hero-facts { gap: 22px; } }
+@media (max-width: 480px) { .hero-layout { padding-top: 36px; } h1 { font-size: clamp(35px, 9.8vw, 46px); } }
 </style>

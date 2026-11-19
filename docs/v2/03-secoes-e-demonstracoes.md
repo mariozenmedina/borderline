@@ -12,7 +12,7 @@ As cenas 3D não carregam juntas. Simulações e dados ficam identificados. O vi
 
 **Objetivo:** comunicar imediatamente uma operação white label para agências, com liderança técnica e equipe própria, e preparar o sentido da assinatura interativa.
 
-**Composição atual:** chapéu em Offside, título e texto em Poppins e dois botões circulares expansíveis à esquerda. À direita, o card da agência fica à frente de seis cards da operação Borderline. O slider abre continuamente a composição, revelando desenvolvimento, infraestrutura, games, dados, 3D e integrações. Preto, vermelho, branco e cinzas seguem o mediakit aprovado. A aplicação visual aguarda revisão.
+**Composição atual:** chapéu em Offside, título e texto em Poppins e dois botões circulares expansíveis à esquerda. À direita, o card da agência fica à frente de seis cards da operação Borderline. Hover revela desenvolvimento, infraestrutura, games, dados, 3D e integrações; no mobile, o scroll abre a composição enquanto ela fica sticky. Textos pequenos periféricos e faixa inferior foram removidos, preservando o conteúdo interno dos cards. Preto, vermelho, branco e cinzas seguem o mediakit aprovado. A aplicação visual aguarda revisão.
 
 **Mensagem proposta:** “Sua agência à frente. Nossa operação por trás.” Apoio: desenvolvimento, experiências interativas e TI sob a marca da agência, com uma liderança nas reuniões e uma equipe própria nas entregas. A formulação final terá equivalente em inglês e será revisada junto ao texto da arquitetura da informação.
 
@@ -24,7 +24,7 @@ As cenas 3D não carregam juntas. Simulações e dados ficam identificados. O vi
 
 **Aceite:** público, oferta e próximo passo claros antes de interagir; equipe e interlocutor compreensíveis antes da assinatura; hero independente dos módulos pesados das outras demos; contato e navegação disponíveis em qualquer etapa. Operador avalia se a linguagem comunica confiança e suavidade sem perder presença.
 
-**Recorte atual implementado:** tema claro padrão e seletor manual; composição HTML/SVG com perspectiva CSS 3D e slider de 0 a 100, com atalhos para fechar ou abrir tudo. Os seis serviços ficam visíveis na abertura completa e a agência permanece em primeiro plano. Há instrução por teclado, texto equivalente e microanimações autorais com respeito a movimento reduzido. Não depende de WebGL. Substitui o primeiro controle binário “A entrega / A operação”; narrativa por scroll e assinatura continuam futuras. Consulte a [entrega](entregas/01-home-mediakit.md).
+**Recorte atual implementado:** tema claro padrão e seletor manual; composição HTML/SVG com perspectiva CSS 3D, hover no desktop e percurso sticky de 80svh no mobile. O fim do percurso mantém os cards abertos por um breve trecho; ao subir, a pilha se recompõe. Foco por teclado revela todos os serviços. Movimento reduzido ou tela muito baixa usa composição aberta sem sticky. Há texto equivalente e microanimações autorais. Não depende de WebGL. Substitui o controle binário inicial e o slider posterior; storyboard completo e assinatura continuam futuros. Consulte a [entrega](entregas/01-home-mediakit.md).
 
 ## S02 — White label: assinatura que se adapta
 

@@ -143,6 +143,14 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 - **Estado:** implementado para validação visual do operador em `feat/v2-01-home`, derivada de `3bed5ba`. Mediakit aprovado; home ainda não avaliada. Assinatura e demos aprofundadas continuam futuras.
 - **Entrega:** [home com mediakit](entregas/01-home-mediakit.md).
 
+## I-016 — Revelação por hover e scroll, sem textos periféricos
+
+- **Origem (18/11/2026):** operador pediu substituir “Revele a operação” por mouse over; no mobile, usar sticky e espaço de scroll para desvendar os cards. Em seguida, pediu retirar os textos pequenos fora dos cards, ao redor do hero.
+- **Decisão ativa:** desktop abre ao entrar com o mouse e recolhe ao sair. Mobile usa scroll nativo e composição sticky, com revelação progressiva e trecho final aberto. Substitui o controle por slider da I-015.
+- **Composição:** preservar chapéu, título, texto principal, dois botões e conteúdo interno dos cards; remover legendas superiores, instrução, porcentagem, texto inferior e faixa de informações ao final do hero.
+- **Alternativas:** foco do teclado revela a operação. Movimento reduzido e viewport muito baixo usam composição aberta sem sticky ou espaço adicional.
+- **Estado:** implementado na mesma branch `feat/v2-01-home`; build e oito testes de lógica aprovados, avaliação visual com o operador.
+
 ## Como registrar novas contribuições
 
 Adicionar um identificador com origem, intenção, estado e impacto. Quando houver correção, atualizar a especificação ativa e registrar aqui o que deixou de valer. Distinguir pedido do operador, proposta do agente, decisão e adiamento.
