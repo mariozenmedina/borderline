@@ -26,6 +26,16 @@ As cenas 3D não carregam juntas. Simulações e dados ficam identificados. O vi
 
 **Recorte atual implementado:** tema claro padrão e seletor manual; composição HTML/SVG com perspectiva CSS 3D, hover no desktop e percurso sticky de 120svh (64svh de abertura e 56svh de leitura) no mobile. O fim do percurso mantém os cards abertos por 56svh de scroll; ao subir, a pilha se recompõe. Foco por teclado revela todos os serviços. Movimento reduzido ou tela muito baixa usa composição aberta sem sticky. Há texto equivalente e microanimações autorais. Não depende de WebGL. Substitui o controle binário inicial e o slider posterior; storyboard completo e assinatura continuam futuros. Consulte a [entrega](entregas/01-home-mediakit.md).
 
+### Próxima direção do fundo — malha de circuitos em perspectiva
+
+Direção fornecida pelo operador em I-022, ainda não implementada: mesh vista em sobrevoo inclinado, com trilhas de placa-mãe junto ao chão conectando serviços a uma região central. Substitui a proposta anterior de fita 3D.
+
+Como detalhamento proposto, usar um plano amplo com vias, contatos, trilhas ramificadas e componentes baixos. Seis núcleos de serviços convergem sob o agrupamento dos cards, sem duplicar os rótulos do primeiro plano. Branco/cinza e grafite formam a base; vermelho destaca conexões selecionadas. A área do texto recebe menos densidade e contraste, com profundidade suavizada à distância.
+
+A câmera pode responder ao mouse com movimentos pequenos e amortecidos; pulsos esparsos chegam ao centro, e a abertura dos cards pode ativar as conexões correspondentes. No mobile, movimento discreto acompanha o scroll já existente. Movimento reduzido, falta de WebGL ou dispositivo limitado recebem uma composição estática equivalente. O fundo não captura eventos de navegação e deve pausar fora da tela.
+
+Validar com o operador presença, riqueza de detalhes, legibilidade e movimento nos dois temas, mantendo a planta e os equipamentos detalhados exclusivos da seção de infraestrutura. Implementação e avaliação visual permanecem pendentes na issue #4.
+
 ## S02 — White label: assinatura que se adapta
 
 **Origem:** ideias I-003 e I-004 do operador. Esta é a versão ativa: serviços e direções visuais orientam a transformação; não há campos para preencher nome, cargo ou e-mail.
