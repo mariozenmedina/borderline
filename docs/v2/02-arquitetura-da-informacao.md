@@ -12,7 +12,7 @@ Três níveis de leitura:
 
 As experiências não bloqueiam a navegação. Não exigir login, formulário, áudio, pontuação mínima ou conclusão de percurso para chegar ao contato.
 
-S01 e S02 formam um primeiro capítulo contínuo. A assinatura é seu desfecho interativo, depois de o visitante entender a oferta, a interlocução de Mário e a equipe própria. A sequência visual exata ainda será desenhada; a proposta atual parte de uma entrega reconhecível, revela liderança e operação e termina na adaptação à identidade da agência.
+S01 e S02 formam um primeiro capítulo contínuo. A assinatura é seu desfecho interativo, depois de o visitante entender a oferta, a interlocução técnica e a equipe própria. A sequência visual exata ainda será desenhada; a proposta atual parte de uma entrega reconhecível, revela liderança e operação e termina na adaptação à identidade da agência.
 
 A primeira tela apresenta mensagem e CTAs completos. Scroll pode aprofundar a cena, com narrativa textual em fluxo normal e navegação livre; não criar vídeo obrigatório, scroll travado ou interação necessária para revelar a oferta. Um acesso direto a `#whitelabel` deve trazer uma frase de contexto e funcionar sem exigir a sequência anterior.
 
@@ -45,7 +45,9 @@ flowchart TD
 
 ## Navegação
 
-Barra discreta com marca, Capacidades, White label, Como trabalhamos, Contato e PT/EN. “Capacidades” abre uma lista curta dos seis serviços. Em telas pequenas, menu acessível; acesso ao idioma e contato continua fácil.
+Barra discreta com marca, Capacidades, White label, Como trabalhamos, Contato, PT/EN e seletor manual de tema. “Capacidades” abre uma lista curta dos seis serviços na versão completa. Em telas pequenas, menu acessível; acesso ao idioma, tema e contato continua fácil.
+
+No primeiro recorte implementado, o menu aponta para o conteúdo já disponível: O que fazemos (`#capacidades`), Como trabalhamos (`#parceria`) e Contato (`#contato`). White label e os seis destinos de demonstração entram quando existirem. O seletor começa em claro, lembra a escolha explícita do visitante e não consulta a preferência de cor do sistema.
 
 Depois da abertura, uma régua compacta de capítulos pode indicar a seção atual. A régua não deve competir com o palco da demo. O rodapé repete os links essenciais e o canal de contato.
 
@@ -79,7 +81,7 @@ Rascunho para direção, não texto final aprovado. O tom é direto, técnico qu
 | Seção | Título PT | Título EN | Mensagem que precisa acompanhar |
 | --- | --- | --- | --- |
 | S01 | A operação técnica por trás da sua agência. | The technical operation behind your agency. | Equipe própria de desenvolvimento e TI, com liderança técnica integrada à agência |
-| S02 | Uma frente técnica. Uma equipe por trás. | One technical point of contact. A team behind it. | Mário representa a operação sob a identidade da agência |
+| S02 | Uma frente técnica. Uma equipe por trás. | One technical point of contact. A team behind it. | Uma pessoa designada representa a operação sob a identidade da agência |
 | S03 | Do layout aprovado à experiência no ar. | From approved design to a live experience. | Responsividade, fidelidade, conteúdo e interação |
 | S04 | Dê ao produto uma experiência própria. | Give your product an experience of its own. | Configuração, detalhes, materiais e narrativa de produto |
 | S05 | Uma campanha que dá vontade de jogar. | A campaign people want to play. | Mecânica curta, feedback e identidade de marca |
@@ -120,7 +122,7 @@ O contato atual por LinkedIn permanece. O CTA de um serviço marca esse interess
 
 A configuração da assinatura pode alimentar o resumo de interesse somente dentro da sessão. Alterar estilo visual não significa consentir em envio de informação. Sem backend de leads nesta versão.
 
-Credibilidade vem de comportamento demonstrável, equipe própria confirmada e liderança identificável. Apresentar Mário como responsável pela interlocução e coordenação, sem expor a identidade dos profissionais operacionais. A seção de parceria explica como as frentes se organizam para múltiplos projetos; não promete capacidade ilimitada. Se o operador fornecer casos autorizados, incluir contexto, papel e resultados verificáveis em uma etapa própria.
+Credibilidade vem de comportamento demonstrável, equipe própria confirmada e responsabilidades claras. Apresentar a interlocução e coordenação como papéis da operação, sem vincular a oferta a uma pessoa específica ou expor a equipe. A seção de parceria explica como as frentes se organizam para múltiplos projetos; não promete capacidade ilimitada. Se o operador fornecer casos autorizados, incluir contexto, papel e resultados verificáveis em uma etapa própria.
 
 ## Ritmo e acessibilidade
 

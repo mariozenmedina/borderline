@@ -1,12 +1,11 @@
 export const SITE_URL = 'https://borderline.dev.br/'
-export const SITE_NAME = 'Borderline.Dev'
+export const SITE_NAME = 'borderline.dev.br'
 export const DEFAULT_LOCALE = 'pt'
-export const THEME_COLOR = '#010911'
+export const THEME_COLOR = '#ffffff'
 export const BRAND_COLOR = '#e50914'
 export const SOCIAL_IMAGE_WIDTH = 1200
 export const SOCIAL_IMAGE_HEIGHT = 630
 
-const LINKEDIN_URL = 'https://www.linkedin.com/in/mariovmedina/'
 const ROBOTS_DIRECTIVES = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
 
 export const LOCALES = [
@@ -31,7 +30,7 @@ export const LOCALES = [
 export const siteContent = {
   pt: {
     seo: {
-      title: 'Borderline.Dev | Desenvolvimento premium para agências',
+      title: 'borderline.dev.br | Desenvolvimento premium para agências',
       description: 'Time técnico integrado para agências: websites, landing pages, experiências interativas, sistemas, infraestrutura e suporte B2B com alto padrão e discrição.',
       keywords: [
         'desenvolvimento web para agências',
@@ -44,9 +43,9 @@ export const siteContent = {
         'Three.js'
       ],
       image: '/og-image-pt.png',
-      imageAlt: 'Arte social da Borderline.Dev com símbolo geométrico vermelho sobre uma malha escura.',
+      imageAlt: 'Arte social da borderline.dev.br com símbolo geométrico vermelho sobre uma malha escura.',
       serviceName: 'Desenvolvimento premium para agências',
-      offerCatalogName: 'Serviços digitais Borderline.Dev',
+      offerCatalogName: 'Serviços digitais borderline.dev.br',
       services: [
         'Websites e landing pages premium',
         'Experiências interativas e 3D',
@@ -55,7 +54,7 @@ export const siteContent = {
       ],
       ogLocale: 'pt_BR',
       alternateOgLocale: 'en_US',
-      noScript: 'Borderline.Dev precisa de JavaScript habilitado para funcionar corretamente.'
+      noScript: 'borderline.dev.br precisa de JavaScript habilitado para funcionar corretamente.'
     },
     ui: {
       languageSwitcherLabel: 'Selecionar idioma'
@@ -118,15 +117,16 @@ export const siteContent = {
     contact: {
       kicker: 'Contato B2B',
       title: 'Vamos falar de parceria',
-      text: 'Se a sua agência precisa de um parceiro técnico para assumir projetos digitais com maturidade, discrição e padrão premium, o melhor ponto de partida é o LinkedIn.',
-      followup: 'Por lá, a conversa começa com contexto: você conhece meu perfil, entende minha trajetória e abre um canal mais profissional para avaliarmos como trabalhar juntos.',
-      linkLabel: 'Conectar no LinkedIn',
-      linkAriaLabel: 'Conectar com Mario Medina no LinkedIn',
-      reasonsLabel: 'Motivos para conversar pelo LinkedIn',
+      text: 'Sua agência pode contar com uma operação técnica para assumir projetos digitais com maturidade, discrição e padrão premium.',
+      followup: 'A conversa começa pelo contexto da sua agência: escopo, prazos e necessidades de entrega. A partir daí, definimos como nossa operação pode se integrar à sua.',
+      href: null,
+      linkLabel: 'Falar com a Borderline',
+      linkAriaLabel: 'Abrir canal de contato da Borderline',
+      reasonsLabel: 'Como construímos a parceria',
       reasons: [
-        'Perfil aberto para decisores validarem quem está por trás da entrega.',
-        'Canal adequado para discutir parceria, escopo, recorrência e oportunidade.',
-        'Primeiro contato mais pessoal que e-mail e mais profissional que WhatsApp.'
+        'Contexto para alinhar as necessidades da agência à nossa capacidade de entrega.',
+        'Definição de escopo, recorrência e responsabilidades de cada entrega.',
+        'Interlocução técnica designada conforme a necessidade de cada cliente.'
       ]
     },
     end: {
@@ -135,7 +135,7 @@ export const siteContent = {
   },
   en: {
     seo: {
-      title: 'Borderline.Dev | Premium development for agencies',
+      title: 'borderline.dev.br | Premium development for agencies',
       description: 'An embedded technical partner for agencies: websites, landing pages, interactive experiences, systems, infrastructure, and B2B support delivered with high standards and discretion.',
       keywords: [
         'web development for agencies',
@@ -148,9 +148,9 @@ export const siteContent = {
         'Three.js'
       ],
       image: '/og-image-en.png',
-      imageAlt: 'Borderline.Dev social artwork with a red geometric symbol over a dark mesh.',
+      imageAlt: 'borderline.dev.br social artwork with a red geometric symbol over a dark mesh.',
       serviceName: 'Premium development for agencies',
-      offerCatalogName: 'Borderline.Dev digital services',
+      offerCatalogName: 'borderline.dev.br digital services',
       services: [
         'Premium websites and landing pages',
         'Interactive and 3D experiences',
@@ -159,7 +159,7 @@ export const siteContent = {
       ],
       ogLocale: 'en_US',
       alternateOgLocale: 'pt_BR',
-      noScript: 'Borderline.Dev needs JavaScript enabled to work properly.'
+      noScript: 'borderline.dev.br needs JavaScript enabled to work properly.'
     },
     ui: {
       languageSwitcherLabel: 'Select language'
@@ -222,15 +222,16 @@ export const siteContent = {
     contact: {
       kicker: 'B2B Contact',
       title: 'Let’s talk partnership',
-      text: 'If your agency needs a technical partner to take on digital projects with maturity, discretion, and premium execution, LinkedIn is the best place to start.',
-      followup: 'There, the conversation starts with context: you can review my profile, understand my background, and open a more professional channel to assess how we can work together.',
-      linkLabel: 'Connect on LinkedIn',
-      linkAriaLabel: 'Connect with Mario Medina on LinkedIn',
-      reasonsLabel: 'Reasons to talk through LinkedIn',
+      text: 'Your agency can count on a technical operation to take on digital projects with maturity, discretion and premium execution.',
+      followup: 'The conversation starts with your agency’s context: scope, deadlines and delivery needs. From there, we define how our operation can integrate with yours.',
+      href: null,
+      linkLabel: 'Talk to Borderline',
+      linkAriaLabel: 'Open Borderline’s contact channel',
+      reasonsLabel: 'How we build the partnership',
       reasons: [
-        'An open profile so decision-makers can validate who is behind the delivery.',
-        'The right channel to discuss partnership, scope, retainer work, and opportunity.',
-        'A first contact that is more personal than e-mail and more professional than WhatsApp.'
+        'Context to align your agency’s needs with our delivery capabilities.',
+        'Clear scope, ongoing needs and responsibilities for each delivery.',
+        'A technical point of contact assigned to each client’s needs.'
       ]
     },
     end: {
@@ -308,13 +309,7 @@ export const getSeoForLocale = (locale) => {
           url: getAbsoluteUrl('/'),
           logo: getAbsoluteUrl('/android-chrome-512x512.png'),
           image: imageUrl,
-          description: messages.seo.description,
-          sameAs: [LINKEDIN_URL],
-          founder: {
-            '@type': 'Person',
-            name: 'Mario Medina',
-            sameAs: LINKEDIN_URL
-          }
+          description: messages.seo.description
         },
         {
           '@type': 'WebSite',
@@ -467,9 +462,7 @@ export const updateDocumentSeo = (locale) => {
   upsertMeta({ key: 'robots', content: seo.robots })
   upsertMeta({ key: 'googlebot', content: seo.robots })
   upsertMeta({ key: 'referrer', content: 'strict-origin-when-cross-origin' })
-  upsertMeta({ key: 'color-scheme', content: 'dark' })
   upsertMeta({ key: 'format-detection', content: 'telephone=no' })
-  upsertMeta({ key: 'theme-color', content: seo.themeColor })
   upsertMeta({ key: 'application-name', content: seo.siteName })
   upsertMeta({ key: 'apple-mobile-web-app-title', content: seo.siteName })
   upsertMeta({ key: 'apple-mobile-web-app-capable', content: 'yes' })
@@ -506,19 +499,9 @@ export const updateDocumentSeo = (locale) => {
   })
   upsertLink({ rel: 'alternate', href: seo.defaultAlternateUrl, hreflang: 'x-default' })
   upsertLink({ rel: 'icon', href: '/favicon.ico', sizes: 'any' })
-  upsertLink({ rel: 'icon', href: '/favicon-dark.ico', sizes: 'any', media: '(prefers-color-scheme: dark)' })
-  upsertLink({ rel: 'icon', href: '/favicon-light.ico', sizes: 'any', media: '(prefers-color-scheme: light)' })
-  upsertLink({ rel: 'icon', href: '/favicon-dark-16x16.png', sizes: '16x16', type: 'image/png', media: '(prefers-color-scheme: dark)' })
-  upsertLink({ rel: 'icon', href: '/favicon-light-16x16.png', sizes: '16x16', type: 'image/png', media: '(prefers-color-scheme: light)' })
   upsertLink({ rel: 'icon', href: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' })
-  upsertLink({ rel: 'icon', href: '/favicon-dark-32x32.png', sizes: '32x32', type: 'image/png', media: '(prefers-color-scheme: dark)' })
-  upsertLink({ rel: 'icon', href: '/favicon-light-32x32.png', sizes: '32x32', type: 'image/png', media: '(prefers-color-scheme: light)' })
   upsertLink({ rel: 'icon', href: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' })
-  upsertLink({ rel: 'icon', href: '/favicon-dark-48x48.png', sizes: '48x48', type: 'image/png', media: '(prefers-color-scheme: dark)' })
-  upsertLink({ rel: 'icon', href: '/favicon-light-48x48.png', sizes: '48x48', type: 'image/png', media: '(prefers-color-scheme: light)' })
   upsertLink({ rel: 'icon', href: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' })
-  upsertLink({ rel: 'apple-touch-icon', href: '/apple-touch-icon-dark.png', sizes: '180x180', media: '(prefers-color-scheme: dark)' })
-  upsertLink({ rel: 'apple-touch-icon', href: '/apple-touch-icon-light.png', sizes: '180x180', media: '(prefers-color-scheme: light)' })
   upsertLink({ rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' })
   upsertLink({ rel: 'manifest', href: '/site.webmanifest' })
   upsertJsonLd({ id: 'structured-data', data: seo.structuredData })

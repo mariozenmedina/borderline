@@ -2,16 +2,18 @@
 
 ## Estado atual
 
-Planejamento local na branch `docs/v2-plan`, iniciada a partir de `main` em `16b9a54`. A V2 ainda não foi implementada. Os IDs abaixo são referências de backlog no repositório; não são números de issues já abertas no GitHub.
+Planejamento iniciado na branch `docs/v2-plan`, a partir de `main` em `16b9a54`. `v2` foi criada a partir do planejamento em `49f5060`. Em 18/11/2026, o operador autorizou a administração completa do workflow Git/GitHub. Os IDs abaixo estão vinculados a issues reais em quatro milestones; consulte o [workflow ativo e mapa de issues](08-github-workflow.md).
 
-O operador escolheu planejamento detalhado primeiro. A entrega desta etapa é o conjunto de documentos e seu commit, preservando as alterações prévias nas imagens sociais. Push, PR remoto, merge e publicação não fazem parte desta etapa local.
+O operador escolheu planejar primeiro e depois autorizou implementar hero, menu e temas para revisão. As imagens sociais anteriores foram salvas em `20fee05`. O primeiro hero, em `fedf803`, foi rejeitado visualmente. A branch `feat/v2-00-mediakit` deriva desse commit; após aprovação do mediakit, `feat/v2-01-home` foi criada a partir de `3bed5ba`. A home está em revisão, com hover/scroll e menu compacto. Branches e PRs passam a ser publicados no GitHub; aceite visual continua pendente antes da integração desta entrega em `v2`.
 
 ## Sequência e dependências
 
 | ID | Entrega | Depende de | Dimensão relativa | Estado |
 | --- | --- | --- | --- | --- |
 | V2-00 | Planejamento, conteúdo e decisões | — | M | Documentado, em revisão |
-| V2-01 | Shell, navegação, tokens e PT/EN | V2-00 revisado | M | Planejado |
+| V2-00A | Mediakit: paleta, tipografia, links, botões e ícones | V2-00 e feedback do hero | M | Aprovado; família Lordicon/Lottie ainda a selecionar |
+| V2-00B | Família de ícones animados | V2-00A | M | Planejado; pendência separada do mediakit aprovado |
+| V2-01 | Shell, navegação, tokens e PT/EN | V2-00A validado | M | Home/menu/hover/scroll reformulados, aguardando validação visual |
 | V2-02 | Runtime de demos, atividade e alternativas | V2-01 | G | Planejado |
 | V2-03 | Assinatura white label e operação por trás | V2-02 | G | Planejado |
 | V2-04 | Laboratório D3 | V2-02 | G | Planejado |
@@ -34,12 +36,17 @@ Branch `docs/v2-plan`. Consolidar auditoria, direção, arquitetura da informaç
 
 ### V2-01 — Shell e conteúdo
 
-Branch sugerida `feat/v2-01-shell`.
+Iconografia futura: selecionar uma família Lordicon e preparar amostras, produzindo Lotties autorais onde necessário. Phosphor permanece provisório no mediakit. A home já usa microanimações autorais em SVG/CSS, sem player ou assets externos; isso não encerra a seleção da família animada prevista na I-014.
+
+A [V2-00A — mediakit](entregas/00-mediakit.md) foi aprovada. Sua direção está aplicada à entrada em `feat/v2-01-home`, com dois botões, menu e hover/scroll que revelam serviços atrás da agência. Veja o [escopo atual e roteiro](entregas/01-home-mediakit.md); o aceite visual da home permanece com o operador.
+
+Branch do primeiro recorte: `feat/v2-01-hero`. [Escopo implementado e roteiro](entregas/01-hero-menu.md). O shell completo e os seis capítulos continuam pendentes; não considerar toda a V2-01 encerrada.
 
 - Extrair tokens visuais, navegação e conteúdo de seção com IDs semânticos.
+- Implementar tema claro padrão e escolha manual de claro/escuro persistida, sem seguir navegador/OS.
 - Trocar snap obrigatório por scroll natural; reservar espaços de demos.
 - Manter `/` e `/en/`, navegação por hash e histórico.
-- Reescrever hero para operação técnica com equipe própria e interlocução de Mário.
+- Reescrever hero para operação técnica com equipe própria e interlocução técnica designada por cliente.
 - Aplicar a direção visual revisada e estruturar a narrativa anterior à assinatura; não tratar o hero sem máscara como identidade final aprovada antes da revisão visual.
 - Criar conteúdo PT/EN dos capítulos, com alternativas editoriais legíveis.
 - Aceite: navegação e idioma independem do 3D; hash direto e voltar/avançar têm roteiro explícito para operador; build localizado continua gerando os dois idiomas.
@@ -61,7 +68,7 @@ Branch sugerida `feat/v2-03-signature`.
 
 - Primeiro corte: serviços, estilos e assinatura HTML, cargo e módulos derivados.
 - Segundo corte: transformação 3D, tipografia, paletas e inspeção frontal.
-- Terceiro corte: revelar frentes operacionais conforme os serviços, com Mário como interlocutor.
+- Terceiro corte: revelar frentes operacionais conforme os serviços, com uma pessoa designada como interlocutora.
 - Integrar a assinatura como desfecho de S01; a oferta e a operação são compreensíveis antes dos controles. Preservar acesso direto contextualizado.
 - Três identidades fictícias; nenhuma edição de nome/e-mail/cargo; reset e PT/EN.
 - Aceite: regras para todas as 64 combinações, mudanças rápidas consistentes, estilo altera composição, alternativas sem WebGL; equipe própria comunicada sem expor integrantes.
@@ -129,7 +136,7 @@ Branch sugerida `feat/v2-09-systems`.
 
 Branch sugerida `feat/v2-10-partnership`.
 
-- Duas camadas: Mário na interlocução, equipe própria na execução.
+- Duas camadas: Frente técnica na interlocução, equipe própria na execução.
 - Fluxo de briefing a continuidade com artefatos e exemplo de projetos paralelos.
 - Interesse contextual por serviço e resumo copiável; link atual do LinkedIn.
 - Aceite: processo claro, equipe preservada nos bastidores e nenhum envio simulado como real.
@@ -163,7 +170,9 @@ main (V1 publicável)
 Após revisão do plano e início do desenvolvimento:
 main
   └─ v2                # integração da nova versão
-      ├─ feat/v2-01-shell
+      ├─ feat/v2-01-hero
+      │   └─ feat/v2-00-mediakit  # direção visual aprovada
+      │       └─ feat/v2-01-home # aplicação na home e hover/scroll da operação
       ├─ feat/v2-02-demo-runtime
       ├─ feat/v2-03-signature
       └─ demais entregas, uma por vez conforme dependências
@@ -182,7 +191,7 @@ Para cada entrega:
 7. Registrar resultado do operador e corrigir na mesma entrega. Só considerar o aceite visual concluído quando ele o confirmar.
 8. Integrar em `v2`; a publicação da V2 permanece separada do merge de funcionalidades.
 
-PRs, quando utilizados no remoto, terão `v2` como base e escopo por entrega. O PR final será `v2` → `main`. O template no repositório orienta revisão; ele não cria nem publica PR automaticamente.
+PRs terão `v2` como base e escopo por entrega, vinculados à issue e ao milestone. O PR final será `v2` → `main`. O agente está autorizado a organizar e publicar o workflow, incluindo merges quando os critérios da entrega estiverem satisfeitos; mudanças visuais aguardam o retorno do operador. Ver [regras, estados e CI](08-github-workflow.md).
 
 Exemplo de identidade para todos os commits:
 

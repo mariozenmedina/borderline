@@ -1,13 +1,13 @@
 {
-  "name": "Borderline.Dev",
+  "name": "borderline.dev.br",
   "short_name": "Borderline",
   "description": "Premium development partner for websites, interactive experiences, systems, and infrastructure.",
   "lang": "pt-BR",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#010911",
-  "theme_color": "#010911",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

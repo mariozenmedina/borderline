@@ -6,6 +6,27 @@ Manter Vue 3, Vite, Less e Three.js. Adicionar somente os módulos D3 necessári
 
 Docker permanece disponível quando houver necessidade real de ambiente ou serviço. A V2 proposta pode ser servida como arquivos estáticos no destino atual. Publicação e configuração de hospedagem serão confirmadas antes do lançamento.
 
+### Primeiro recorte e temas
+
+**Iconografia animada — decisão posterior:** Lordicon é prioritário; Lotties autorais são a alternativa para conceitos específicos da marca. O mediakit ainda usa Phosphor estático como provisório. Para a próxima implementação, usar um componente com asset, frame estático e estado de reprodução; carregar player/JSON sob demanda e liberar instâncias ao desmontar. Preservar nomes acessíveis nos controles e tratar a animação interna como decorativa.
+
+A [documentação de formatos Lordicon](https://lordicon.com/docs/customization-formats) indica Lottie JSON para interação. A proposta do projeto é executar uma sequência curta por hover/foco ou ativação por toque, sem exigir segundo toque para a ação e sem reinícios concorrentes. Respeitar movimento reduzido com frame estático, pausar fora da área visível e manter fallback se o asset/player falhar. O player definitivo será escolhido junto dos assets; um Lottie autoral não deve depender de estados ou recursos exclusivos do catálogo Lordicon.
+
+Primeiras amostras propostas: contato (balão que se abre), operação (camadas que revelam estrutura), dados (gráfico que se organiza) e infraestrutura (conexões que se completam). Paleta e espessura de traço devem ser coerentes entre biblioteca e produção própria. Cada asset precisa registrar origem/licença, JSON e alternativa estática; os autorais também devem conservar fonte editável ou gerador. Não há compra nem integração de player nesta decisão.
+
+O mediakit foi aprovado e aplicado à home. `styles/design-tokens.less` e `styles/fonts.less` compartilham paleta e fontes; `components/design/DotLink.vue` e `RevealButton.vue` atendem home, menu e estudo. `RevealButton` usa âncora real quando recebe `href`. `MediakitPage.vue` continua carregado por import dinâmico em `/?view=mediakit` e `/en/?view=mediakit`, com conteúdo PT/EN próprio. A página de estudo recebe `noindex, nofollow` pelo bootstrap e pela atualização de SEO; não entra no sitemap.
+
+Poppins é servida localmente pelo pacote Fontsource, em WOFF2 Latin nos pesos 400, 500, 600 e 700; substitui a Manrope anterior. Offside permanece na marca e nos detalhes curtos. Phosphor é importado por componentes, sem registro global. Licenças são incluídas em `public/licenses/`. Streamline e Lordicon aparecem apenas como links de referência. A releitura de camadas do botão Uiverse foi escrita localmente; nenhuma implementação do exemplo foi copiada. O estudo usa CSS, sem WebGL, timers ou player de animação.
+
+Os cards do hero usam HTML/SVG e transformações CSS 3D, independentes do fundo Three.js. `hero/operationLayout.mjs` calcula posições a partir de uma abertura normalizada de 0 a 100 e deriva o progresso da posição do scroll. `HeroDelivery.vue` abre por hover/foco; em telas até 900px ou sem hover/com ponteiro coarse, usa sticky a 68px com percurso de 120svh e scroll nativo (64svh de abertura e 56svh de leitura). A figura inicia com 48% da altura final e cresce conforme abre; a pilha fechada fica junto ao topo. Um elemento de medida fora do fluxo fornece a distância de scroll, sem depender da altura animada da figura. Um listener passivo agenda no máximo uma medição por frame; ResizeObserver e troca de idioma recalculam a geometria. Listeners, observer e frame pendente são liberados ao desmontar. Movimento reduzido ou altura inferior a 600px no modo de scroll mostra tudo aberto, sem sticky. Na abertura completa, seis serviços e agência ocupam áreas distintas. Doze testes de geometria e identidade verificam limites, interpolação, reversibilidade, não sobreposição final, paridade PT/EN e progresso do scroll. `MotionIcon.vue` contém fontes SVG autorais com microanimações CSS e estado estático para movimento reduzido; não integra Lordicon ou player Lottie. A entrada não monta `SceneBackdrop` nem pré-carrega a máscara. Os arquivos da V1 e o conteúdo editorial abaixo do hero permanecem para migração posterior; novas demos continuam planejadas.
+
+
+O fundo da I-022 usa `HeroCircuitBackdrop.vue` como dono do ciclo de vida e `createCircuitScene.mjs` como renderer isolado. `circuitLayout.mjs` fornece a mesma topologia para WebGL e SVG estático. O import dinâmico ocorre por visibilidade; movimento reduzido e dispositivos que informam até 2 GB/2 processadores lógicos usam SVG sem carregar Three. A cena limita DPR a 1,5 (1 no mobile) e renderiza até 30fps, pausando fora da tela e com aba oculta. Instâncias compartilham geometrias/materiais; unmount libera também buffers de instância, observers, eventos e frame. Perda de contexto ou falha retorna ao SVG. O fundo recebe `opening-change` dos cards: ativa conexões e desloca discretamente a câmera no mobile, sem criar outro percurso de scroll. Tema manual atualiza materiais e névoa. Cinco testes adicionais cobrem topologia, rotas, pulsos, ativação e projeção; são 17 testes no total. Este renderer local não conclui o runtime compartilhado da V2-02, que permanece planejado.
+
+O tema é um atributo `data-theme` no elemento raiz, com tokens CSS e dois valores: `light` e `dark`. Claro é sempre o padrão sem preferência válida salva. A chave `borderline-theme` armazena apenas escolha explícita; falha do armazenamento mantém a troca em memória. Um bootstrap pequeno no head aplica a preferência antes da primeira pintura, e `src/theme.mjs` gerencia as alterações da UI. Não consultar `prefers-color-scheme` nem oferecer modo automático. `prefers-reduced-motion` continua independente do tema.
+
+`data-tone="dark"` permite uma seção editorial escura em ambos os temas. Troca de idioma preserva tema, âncora e estado da interação. Metadados de cor são controlados pelo tema, não pelo módulo de SEO. Favicons deixam de usar media queries de cor; o manifesto tem claro como cor inicial.
+
 | Decisão | Motivo | Limite/contrapartida |
 | --- | --- | --- |
 | Home com capítulos e expansão inline | Permite narrativa e exploração sem multiplicar páginas vazias | Cada capítulo precisa controlar altura e histórico de navegação |
@@ -114,6 +135,8 @@ locale: pt | en
 ```
 
 Saída: `roleKey`, `layoutId`, `fontTokens`, `colorTokens`, `modules`, nome, agência e e-mail ilustrativos. Nome e e-mail não são campos editáveis. A fixture corresponde ao exemplo de agência do estilo; a escolha de serviços altera função e conteúdo, sem gerar dados pessoais aleatórios.
+
+Desde 19/11/2026, o nome do representante é fictício: a comunicação não fixa o proprietário como interlocutor. Metadados da organização também não incluem pessoa fundadora ou vínculo de identidade com perfil pessoal. O link pessoal foi retirado; `contact.href` permanece nulo até o operador confirmar um destino institucional. A seção de contato continua acessível, sem link externo fictício.
 
 Precedência proposta para o cargo, aplicada de cima para baixo:
 

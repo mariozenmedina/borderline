@@ -7,13 +7,14 @@
       <p class="section-text contact-section__followup">{{ content.followup }}</p>
 
       <a
-        class="linkedin-profile-link"
-        href="https://www.linkedin.com/in/mariovmedina/"
+        v-if="content.href"
+        class="contact-link"
+        :href="content.href"
         target="_blank"
         rel="noopener noreferrer"
         :aria-label="content.linkAriaLabel"
       >
-        <span class="linkedin-profile-link__mark" aria-hidden="true">in</span>
+        <span class="contact-link__mark" aria-hidden="true">↗</span>
         <span>{{ content.linkLabel }}</span>
       </a>
     </div>
