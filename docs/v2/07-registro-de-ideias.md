@@ -181,6 +181,13 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 - **Decisão ativa:** marca em Offside com ponto vermelho, sobre fundo do tema, atravessando os dois contornos do agrupamento. Substitui a identificação completa no alto prevista na I-019; menu e demais aplicações da marca completa permanecem como definidos.
 - **Estado:** implementado para validação visual do operador, vinculado à issue #4, milestone V2.1 e PR #16.
 
+## I-021 — Mais leitura e proposta de fundo com profundidade
+
+- **Origem (19/11/2026):** prolongar o scroll com cards abertos; buscar mais impacto no fundo claro, com 3D ou reação ao mouse, sem tirar o foco do conteúdo. Operador citou o infinito interativo da Pitecg como referência de comportamento.
+- **Implementado:** 40svh extras apenas no final do trecho sticky. Abertura preservada em 64svh; leitura totalmente aberta ampliada de 16svh para 56svh. Vinculado à issue #4 e PR #16, aguardando validação visual.
+- **Proposta do agente, ainda não aprovada nem implementada:** uma fita vermelha contínua em 3D, com dobras suaves que revelam uma face grafite; composição ampla parcialmente fora do enquadramento, concentrada atrás da operação. Material acetinado, sombras suaves, reação curta e amortecida ao mouse. Conforme os cards abrem, a fita se acomoda no entorno para preservar a leitura. No mobile, movimento discreto ligado ao scroll; com movimento reduzido, composição estática. A forma remete à linha da marca e às camadas white label, sem retomar a máscara.
+- **Limite:** manter títulos e cards como protagonistas; evitar rotação contínua, brilho pulsante ou contraste forte atrás do texto. Desenvolvimento do fundo depende da direção escolhida pelo operador.
+
 ## Como registrar novas contribuições
 
 Adicionar um identificador com origem, intenção, estado e impacto. Quando houver correção, atualizar a especificação ativa e registrar aqui o que deixou de valer. Distinguir pedido do operador, proposta do agente, decisão e adiamento.

@@ -91,7 +91,7 @@ function cardStyle(card) {
 .delivery-artwork { position: relative; aspect-ratio: 1 / 1.02; perspective: 1200px; }
 .service-card, .agency-card { transition: left 750ms var(--kit-ease), top 750ms var(--kit-ease), width 750ms var(--kit-ease), height 750ms var(--kit-ease), transform 750ms var(--kit-ease); }
 .operation-boundary { transition: opacity 750ms var(--kit-ease); }
-.is-scroll { --scene-height: clamp(460px, calc(100svh - 96px), 620px); --scroll-travel: 80svh; max-width: 620px; justify-self: center; min-height: calc(var(--scene-height) + var(--scroll-travel)); }
+.is-scroll { --scene-height: clamp(460px, calc(100svh - 96px), 620px); --scroll-travel: 80svh; --reading-travel: 40svh; max-width: 620px; justify-self: center; min-height: calc(var(--scene-height) + var(--scroll-travel) + var(--reading-travel)); }
 .is-scroll .delivery-scroll-distance { height: var(--scroll-travel); }
 .is-scroll .hero-delivery { position: sticky; top: 68px; }
 .is-scroll .delivery-artwork { height: calc(var(--scene-height) * var(--scene-scale)); aspect-ratio: auto; }

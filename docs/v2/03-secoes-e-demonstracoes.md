@@ -24,7 +24,7 @@ As cenas 3D não carregam juntas. Simulações e dados ficam identificados. O vi
 
 **Aceite:** público, oferta e próximo passo claros antes de interagir; equipe e interlocutor compreensíveis antes da assinatura; hero independente dos módulos pesados das outras demos; contato e navegação disponíveis em qualquer etapa. Operador avalia se a linguagem comunica confiança e suavidade sem perder presença.
 
-**Recorte atual implementado:** tema claro padrão e seletor manual; composição HTML/SVG com perspectiva CSS 3D, hover no desktop e percurso sticky de 80svh no mobile. O fim do percurso mantém os cards abertos por um breve trecho; ao subir, a pilha se recompõe. Foco por teclado revela todos os serviços. Movimento reduzido ou tela muito baixa usa composição aberta sem sticky. Há texto equivalente e microanimações autorais. Não depende de WebGL. Substitui o controle binário inicial e o slider posterior; storyboard completo e assinatura continuam futuros. Consulte a [entrega](entregas/01-home-mediakit.md).
+**Recorte atual implementado:** tema claro padrão e seletor manual; composição HTML/SVG com perspectiva CSS 3D, hover no desktop e percurso sticky de 120svh (64svh de abertura e 56svh de leitura) no mobile. O fim do percurso mantém os cards abertos por 56svh de scroll; ao subir, a pilha se recompõe. Foco por teclado revela todos os serviços. Movimento reduzido ou tela muito baixa usa composição aberta sem sticky. Há texto equivalente e microanimações autorais. Não depende de WebGL. Substitui o controle binário inicial e o slider posterior; storyboard completo e assinatura continuam futuros. Consulte a [entrega](entregas/01-home-mediakit.md).
 
 ## S02 — White label: assinatura que se adapta
 
