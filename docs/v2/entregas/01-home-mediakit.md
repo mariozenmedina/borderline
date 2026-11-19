@@ -16,13 +16,14 @@ Branch: `feat/v2-01-home`, derivada de `feat/v2-00-mediakit` em `3bed5ba`.
 - Removidos slider, porcentagem, instruções, legendas ao redor da composição e faixa inferior de informações. Preservados chapéu, título, texto principal, dois botões e textos internos dos cards.
 - Ícones com microanimações autorais em SVG/CSS, disparadas pela abertura, hover ou foco. Movimento reduzido desativa essas animações. Fonte editável em `MotionIcon.vue`; não há integração Lordicon/Lottie neste recorte.
 
-Fontes e tokens foram compartilhados entre home e mediakit. A composição usa HTML/SVG e perspectiva CSS, sem WebGL ou dependências adicionais. Conteúdo das seções abaixo recebe a base visual global; as demos detalhadas e a assinatura ainda não foram implementadas.
+Fontes e tokens foram compartilhados entre home e mediakit. Os cards usam HTML/SVG e perspectiva CSS. O fundo usa Three.js já presente no projeto, carregado separadamente, com SVG estático equivalente. Conteúdo das seções abaixo recebe a base visual global; as demos detalhadas e a assinatura ainda não foram implementadas.
 
 ## Verificações sem navegador
 
 - `pnpm build`: aprovado; gera português e inglês com fontes locais.
 - `node tests/operation-layout.test.mjs`: dez testes aprovados. Cobrem normalização, todas as 101 posições, ausência de sobreposição na abertura completa, interpolação/reversibilidade, paridade PT/EN, progresso do scroll e crescimento da cena mobile sem margem superior antecipada.
 - `node tests/site-identity.test.mjs`: dois testes aprovados para marca, conteúdo institucional e ausência de vínculo pessoal nos metadados PT/EN.
+- `node tests/circuit-layout.test.mjs`: cinco testes aprovados para conexão dos seis serviços, trechos ortogonais/45 graus, percurso dos pulsos, ativação reversível e projeção da alternativa estática.
 - `git diff --check`: aprovado.
 - Dez cenários de bootstrap/tema verificados em Node, incluindo preferência ausente, inválida e armazenamento bloqueado; referências a assets e fontes conferidas nos dois HTMLs gerados.
 - Nenhum navegador aberto. Testes de geometria verificam os dados do layout; não substituem a revisão de legibilidade, recortes e aparência pelo operador.
@@ -40,6 +41,8 @@ Executar `pnpm dev`; abrir `/` e `/en/` no endereço informado pelo Vite. O medi
 7. Conferir menu móvel, navegação por hash, voltar/avançar e retorno entre home e mediakit.
 8. Rolar além de 160px: a barra deve reduzir para 52px e a marca virar “b.”, com o ponto vermelho. Voltar até 80px do topo restaura o menu completo. Conferir links, idiomas, tema, contato e abertura do menu móvel no estado compacto, incluindo chegada direta por hash.
 9. Conferir `borderline.dev.br`, sufixo menor e pontos vermelhos; marca agrupando serviços; alinhamento de chapéu/título/texto; mobile fechado junto ao topo e crescimento da figura durante a abertura.
+10. Conferir o fundo de circuitos em claro/escuro: perspectiva, relevo, detalhe, contraste do texto e integração com os cards. Mover o mouse, sair do hero e abrir/fechar os cards para avaliar câmera, pulsos e ativação das conexões.
+11. No mobile, conferir movimento discreto durante a abertura, leitura e rolagem livres. Validar alternativa SVG com movimento reduzido e sem WebGL; trocar a preferência durante a visita. Verificar pausa fora da tela/aba oculta e retomada, além de retorno ao SVG após perda do contexto.
 
 Entrega enviada à branch remota e acompanhada no PR #16, ainda sem merge em `v2` ou publicação.
 
@@ -54,3 +57,5 @@ Contato institucional pendente de informação do operador: o link para LinkedIn
 Revisão adicional de 19/11/2026: identificação do agrupamento substituída por `borderline.` maior, no canto inferior direito, com fundo interrompendo as bordas cinza e vermelha. Conferir a assinatura nos dois temas e nos cards totalmente abertos em desktop e mobile. Detalhes na I-020.
 
 Revisão de leitura em 19/11/2026: acrescentados 40svh ao final do percurso sticky, mantendo a velocidade de abertura. A permanência totalmente aberta passa de 16svh para 56svh. Conferir tempo de leitura e liberação da próxima seção; movimento reduzido e telas baixas continuam sem percurso adicional.
+
+Revisão do fundo em 19/11/2026: implementada a I-022 em `HeroCircuitBackdrop.vue`, `circuitLayout.mjs` e `createCircuitScene.mjs`. Cena própria da home com import dinâmico, instâncias, pausa e limpeza de recursos; não monta o runtime antigo nem carrega seus modelos. O chunk adicional de Three/cena mede aproximadamente 132 kB gzip no build desta entrega. Geometria e lógica verificadas em Node; renderização, sensação de movimento e desempenho real aguardam o operador.

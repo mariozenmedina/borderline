@@ -191,12 +191,20 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 ## I-022 — Malha de circuitos em perspectiva como fundo do hero
 
 - **Origem (19/11/2026):** operador propõe uma mesh de fundo vista em sobrevoo, inclinada, com trilhas de placa-mãe coladas ao chão, conectando diversos serviços a uma região central. Direção conceitual, rica em detalhes.
-- **Direção ativa:** substitui a fita da I-021. O fundo representa uma operação integrada por uma rede de circuitos; preserva os cards como explicação principal da agência e dos serviços. Ainda não implementado.
+- **Direção ativa:** substitui a fita da I-021. O fundo representa uma operação integrada por uma rede de circuitos; preserva os cards como explicação principal da agência e dos serviços. Implementação autorizada e entregue para validação visual do operador.
 - **Detalhamento proposto pelo agente:** plano amplo em perspectiva oblíqua, com trilhas ortogonais e diagonais de 45 graus, ramificações, contatos, vias e pequenos componentes de baixo relevo. Seis núcleos periféricos remetem às frentes de serviço e convergem para uma região central sob o agrupamento dos cards. Evitar repetir títulos e legendas no fundo.
 - **Identidade proposta:** superfície branca/cinza no tema claro, detalhes grafite e caminhos selecionados em vermelho; no escuro, superfície carvão e trilhas cinza, preservando os acentos vermelhos. Névoa suave de profundidade e menor densidade atrás do texto preservam a leitura. O detalhe vem da geometria, não de excesso de brilho.
 - **Movimento proposto:** câmera com deslocamento e inclinação pequenos, amortecidos pelo mouse, mantendo a sensação de sobrevoo; pulsos esparsos percorrem caminhos até o centro. A abertura dos cards pode acender as seis conexões. No mobile, câmera vinculada discretamente ao scroll existente, sem prolongar o percurso; movimento reduzido usa quadro estático.
 - **Limites e aceite futuro:** nenhum controle de câmera obrigatório; canvas não captura cliques ou scroll; títulos, botões e cards legíveis nos dois temas. Carregamento independente do conteúdo, alternativa estática sem WebGL, animação pausada fora da tela e qualidade adaptada ao dispositivo. A cena de infraestrutura continua reservada à planta e equipamentos concretos de S08.
 - **Workflow:** direção vinculada à issue #4 / milestone V2.1; avaliar integração com o runtime de #5 durante a implementação, sem antecipar a conclusão dessas issues.
+
+### Implementação da I-022 — 19/11/2026
+
+- Cena Three.js própria carregada por import dinâmico quando o fundo entra na tela: plano em perspectiva, seis núcleos, centro, 150 trilhas, 156 vias, 72 componentes e 336 contatos dos chips. Geometrias repetidas usam instâncias; a iluminação evidencia o relevo sem mapas de sombra.
+- Mouse desloca a câmera com amortecimento. Pulsos esparsos percorrem os caminhos; o estado real de abertura dos cards ativa gradualmente as seis conexões. No mobile, a câmera responde à abertura por scroll, mantendo os 56svh de leitura.
+- Tema manual atualiza materiais e névoa; máscara de contraste preserva a coluna de texto. SVG estático gerado da mesma topologia permanece durante o carregamento e em falha, perda de contexto, movimento reduzido ou dispositivos que informam até 2 GB de memória/2 processadores lógicos.
+- Renderização limitada a 30fps e DPR máximo de 1,5 (1 no mobile). Pausa fora da tela ou com aba oculta; desmontagem libera observers, eventos, frame, geometrias, materiais, instâncias e renderer. Não carrega assets da máscara da V1.
+- Build PT/EN e 17 testes de lógica aprovados, incluindo cinco de topologia, rotas, pulsos, ativação e projeção estática. Aparência, desempenho real e eventos WebGL continuam sob validação do operador, sem navegador pelo agente. O runtime compartilhado de #5 permanece futuro.
 
 ## Como registrar novas contribuições
 

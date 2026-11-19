@@ -1,5 +1,6 @@
 <template>
   <section id="inicio" class="hero-section" aria-labelledby="hero-title" tabindex="-1">
+    <HeroCircuitBackdrop :opening="opening" />
     <div class="hero-layout">
       <div class="hero-copy">
         <p class="hero-eyebrow">{{ content.eyebrow }}</p>
@@ -10,21 +11,24 @@
           <RevealButton :label="content.secondary" href="#contato" tone="outline"><MotionIcon kind="contact" /></RevealButton>
         </div>
       </div>
-      <HeroDelivery :content="content.scene" />
+      <HeroDelivery :content="content.scene" @opening-change="opening = $event" />
     </div>
   </section>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import HeroCircuitBackdrop from '../HeroCircuitBackdrop.vue'
 import HeroDelivery from '../HeroDelivery.vue'
 import RevealButton from '../design/RevealButton.vue'
 import MotionIcon from '../design/MotionIcon.vue'
 defineProps({ content: { type: Object, required: true } })
+const opening = ref(0)
 </script>
 
 <style lang="less" scoped>
-.hero-section { max-width: 1536px; margin: auto; padding: 0 var(--page-gutter); }
-.hero-layout { display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: clamp(30px, 4vw, 64px); padding: 60px 0 48px; min-height: min(780px, calc(100svh - 150px)); }
+.hero-section { position: relative; isolation: isolate; max-width: 1536px; margin: auto; padding: 0 var(--page-gutter); }
+.hero-layout { position: relative; z-index: 1; display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: clamp(30px, 4vw, 64px); padding: 60px 0 48px; min-height: min(780px, calc(100svh - 150px)); }
 .hero-copy { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; padding-bottom: 25px; text-align: start; }
 .hero-copy > * { grid-column: 1; margin-inline: 0; padding-inline: 0; }
 .hero-eyebrow { margin: 0 0 26px; max-width: 36ch; font: 400 11px/1.8 var(--kit-font-accent); letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }

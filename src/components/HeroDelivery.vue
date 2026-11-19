@@ -5,7 +5,6 @@
       @pointerenter="hovered = true" @pointerleave="hovered = false"
       @focus="focused = $event.target.matches(':focus-visible')" @blur="focused = false">
       <div class="delivery-artwork" aria-hidden="true">
-        <div class="operation-grid"></div>
         <div class="operation-boundary" :style="{ opacity: opening / 100 }"><span class="operation-brand">borderline<b>.</b></span></div>
         <div v-for="(card, index) in layout.services" :key="card.id" class="service-card motion-trigger" :class="`service-card--${card.id}`" :style="cardStyle(card)">
           <div class="service-card__heading"><MotionIcon :kind="card.id" :active="opening > 65" /><span>{{ String(index + 1).padStart(2, '0') }}</span></div>
@@ -28,6 +27,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import MotionIcon from './design/MotionIcon.vue'
 import { getOperationLayout, getScrollOpening } from '../hero/operationLayout.mjs'
 const props = defineProps({ content: { type: Object, required: true } })
+const emit = defineEmits(['opening-change'])
 const track = ref(null)
 const figure = ref(null)
 const scrollDistance = ref(null)
@@ -38,6 +38,7 @@ const staticMode = ref(false)
 const scrollOpening = ref(0)
 const opening = computed(() => staticMode.value || focused.value ? 100 : scrollMode.value ? scrollOpening.value : hovered.value ? 100 : 0)
 const layout = computed(() => getOperationLayout(opening.value, { compact: scrollMode.value }))
+watch(opening, value => emit('opening-change', value), { immediate: true })
 let frame = 0
 let resizeObserver
 let media = []
@@ -99,7 +100,6 @@ function cardStyle(card) {
 .is-static .service-card, .is-static .agency-card, .is-static .operation-boundary { transition: none; }
 .is-static { min-height: 0; }
 .is-static .hero-delivery { position: relative; top: auto; }
-.operation-grid { position: absolute; inset: 0; background-image: radial-gradient(var(--line-strong) .7px, transparent .7px); background-size: 22px 22px; mask-image: radial-gradient(ellipse, #000 15%, transparent 72%); opacity: .55; }
 .operation-boundary { position: absolute; inset: 0 0 32%; border: 1px solid var(--line); border-radius: 18px; pointer-events: none; }
 .operation-boundary::before { content: ''; position: absolute; inset: 4px; border: 1px solid var(--accent); border-radius: 14px; }
 .operation-brand { position: absolute; z-index: 1; right: clamp(14px, 3%, 24px); bottom: 2px; transform: translateY(50%); padding: 2px 10px; background: var(--surface); font: 400 clamp(16px, 1.6vw, 24px)/1 var(--kit-font-accent); white-space: nowrap; color: var(--ink); }
