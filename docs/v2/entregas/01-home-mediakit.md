@@ -8,7 +8,7 @@ Branch: `feat/v2-01-home`, derivada de `feat/v2-00-mediakit` em `3bed5ba`.
 
 - Chapéu em Offside, título e texto em Poppins. Preto, vermelho, branco e cinzas nos temas claro e escuro.
 - Dois botões circulares expansíveis do mediakit: serviços e contato, com destinos reais na página. Menu reutiliza links com ponto à direita e expansão à esquerda.
-- Card da agência à frente. Hover abre seis cards: desenvolvimento, infraestrutura, games, dados, experiências 3D e integrações, agrupados sob a marca borderline.dev.br. Ao sair com o mouse, a pilha se recompõe.
+- Card da agência à frente. Hover abre seis cards: desenvolvimento, infraestrutura, games, dados, experiências 3D e integrações. O agrupamento tem contornos cinza e vermelho, interrompidos pela marca `borderline.` maior no canto inferior direito. Ao sair com o mouse, a pilha se recompõe.
 - Abertura completa dispõe os serviços em duas colunas e três linhas, mantendo a agência visível em primeiro plano. O fechamento recompõe a pilha.
 - Em telas até 900px ou dispositivos com toque/sem hover, a figura começa compacta, com a pilha no topo e 48% da altura final. Durante o scroll ela cresce para abrir os cards, ficando sticky a 68px. O percurso adicional de 80svh é independente dessa altura variável: abre nos primeiros 80% e reserva o restante para leitura. Subir recompõe a pilha. Não intercepta o scroll nem antecipa uma margem acima do card fechado.
 - Foco por teclado também abre a composição; texto equivalente permanece para tecnologias assistivas. Com movimento reduzido ou altura inferior a 600px no modo de scroll, a operação aparece aberta, sem sticky nem espaço adicional.
@@ -41,7 +41,7 @@ Executar `pnpm dev`; abrir `/` e `/en/` no endereço informado pelo Vite. O medi
 8. Rolar além de 160px: a barra deve reduzir para 52px e a marca virar “b.”, com o ponto vermelho. Voltar até 80px do topo restaura o menu completo. Conferir links, idiomas, tema, contato e abertura do menu móvel no estado compacto, incluindo chegada direta por hash.
 9. Conferir `borderline.dev.br`, sufixo menor e pontos vermelhos; marca agrupando serviços; alinhamento de chapéu/título/texto; mobile fechado junto ao topo e crescimento da figura durante a abertura.
 
-Sem push, merge em `v2` ou publicação nesta entrega.
+Entrega enviada à branch remota e acompanhada no PR #16, ainda sem merge em `v2` ou publicação.
 
 Revisão de 18/11/2026: hover/scroll e retirada dos textos periféricos substituem o slider da primeira versão (`cabf1ad`), por pedido do operador. Validação de build e lógica refeita; nenhuma validação em navegador pelo agente.
 
@@ -50,3 +50,5 @@ Revisão adicional de 18/11/2026: menu compacto após scroll, com altura de 52px
 Revisão de 19/11/2026: marca completa com sufixo menor; agrupamento dos serviços identificado; comunicação institucional sem vincular interlocução ao proprietário; chapéu e conteúdo na mesma coluna, sem correção óptica por deslocamento; figura mobile compacta que cresce durante o scroll. Detalhes na I-019.
 
 Contato institucional pendente de informação do operador: o link para LinkedIn pessoal foi retirado, inclusive dos metadados. A seção continua acessível pelas âncoras da home; seu link externo só aparece quando `contact.href` tem um destino confirmado. Nenhum e-mail, telefone ou perfil de empresa foi inventado. Pendência acompanhada em #13.
+
+Revisão adicional de 19/11/2026: identificação do agrupamento substituída por `borderline.` maior, no canto inferior direito, com fundo interrompendo as bordas cinza e vermelha. Conferir a assinatura nos dois temas e nos cards totalmente abertos em desktop e mobile. Detalhes na I-020.

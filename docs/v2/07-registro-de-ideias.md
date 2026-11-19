@@ -175,6 +175,12 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 - **Mobile:** a figura inicia com 48% da altura final, pilha junto ao topo e altura crescente durante a abertura; sticky a 68px, abaixo da barra compacta. O percurso de scroll é estável e medido independentemente da altura variável da figura. Espaço da experiência fica depois da pilha, sem margem superior antecipada.
 - **Workflow:** ajustes visuais e hero em #4 / milestone V2.1; regra institucional refletida em #6 (assinatura), #13 (parceria/contato) e #14 (SEO). Não encerrar a issue da home antes da validação visual.
 
+## I-020 — Assinatura maior sobre as bordas do agrupamento
+
+- **Origem (19/11/2026):** retirar a identificação pequena dos cards abertos e usar apenas `borderline.`, maior, no canto inferior direito; acrescentar uma borda vermelha à cinza e fazer o nome interromper as linhas.
+- **Decisão ativa:** marca em Offside com ponto vermelho, sobre fundo do tema, atravessando os dois contornos do agrupamento. Substitui a identificação completa no alto prevista na I-019; menu e demais aplicações da marca completa permanecem como definidos.
+- **Estado:** implementado para validação visual do operador, vinculado à issue #4, milestone V2.1 e PR #16.
+
 ## Como registrar novas contribuições
 
 Adicionar um identificador com origem, intenção, estado e impacto. Quando houver correção, atualizar a especificação ativa e registrar aqui o que deixou de valer. Distinguir pedido do operador, proposta do agente, decisão e adiamento.

@@ -6,7 +6,7 @@
       @focus="focused = $event.target.matches(':focus-visible')" @blur="focused = false">
       <div class="delivery-artwork" aria-hidden="true">
         <div class="operation-grid"></div>
-        <div class="operation-boundary" :style="{ opacity: opening / 100 }"><span class="operation-brand">borderline<b>.</b><small>dev<b>.</b>br</small></span></div>
+        <div class="operation-boundary" :style="{ opacity: opening / 100 }"><span class="operation-brand">borderline<b>.</b></span></div>
         <div v-for="(card, index) in layout.services" :key="card.id" class="service-card motion-trigger" :class="`service-card--${card.id}`" :style="cardStyle(card)">
           <div class="service-card__heading"><MotionIcon :kind="card.id" :active="opening > 65" /><span>{{ String(index + 1).padStart(2, '0') }}</span></div>
           <strong>{{ content.services[index].name }}</strong>
@@ -100,10 +100,10 @@ function cardStyle(card) {
 .is-static { min-height: 0; }
 .is-static .hero-delivery { position: relative; top: auto; }
 .operation-grid { position: absolute; inset: 0; background-image: radial-gradient(var(--line-strong) .7px, transparent .7px); background-size: 22px 22px; mask-image: radial-gradient(ellipse, #000 15%, transparent 72%); opacity: .55; }
-.operation-boundary { position: absolute; inset: 0 0 32%; border: 1px solid var(--line); border-radius: 18px; }
-.operation-brand { position: absolute; top: 4px; left: 4%; font: 400 9px/12px var(--kit-font-accent); color: var(--ink); }
+.operation-boundary { position: absolute; inset: 0 0 32%; border: 1px solid var(--line); border-radius: 18px; pointer-events: none; }
+.operation-boundary::before { content: ''; position: absolute; inset: 4px; border: 1px solid var(--accent); border-radius: 14px; }
+.operation-brand { position: absolute; z-index: 1; right: clamp(14px, 3%, 24px); bottom: 2px; transform: translateY(50%); padding: 2px 10px; background: var(--surface); font: 400 clamp(16px, 1.6vw, 24px)/1 var(--kit-font-accent); white-space: nowrap; color: var(--ink); }
 .operation-brand b { color: var(--accent); font-weight: inherit; }
-.operation-brand small { font-size: .75em; }
 .service-card { position: absolute; overflow: hidden; padding: clamp(10px, 1vw, 14px); border: 1px solid var(--line-strong); border-radius: 14px; background: var(--surface); box-shadow: 0 8px 18px -12px var(--scene-shadow); }
 .service-card--infra, .service-card--data, .service-card--systems { background: var(--surface-alt); }
 .service-card__heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; color: var(--accent); }
