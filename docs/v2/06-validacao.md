@@ -51,14 +51,14 @@ O agente fornece o roteiro específico da entrega e os resultados dos checks exe
 | Temas | Primeira visita, troca manual, reload, mudança de idioma e mudança de tema do OS | Claro por padrão; somente escolha explícita altera o tema; preferência local preservada |
 | Narrativa de abertura | Percorrer S01 até a assinatura e acessar `#whitelabel` diretamente | Assinatura conclui a história; oferta clara antes da interação; acesso direto contextualizado e scroll livre |
 | Assinatura | Selecionar Web; adicionar Sistemas; mudar para Casual e outra paleta; remover serviços; reset | Cargo e módulos coerentes; composição/fontes mudam; nada exige nome ou e-mail do visitante |
-| Operação atrás da assinatura | Selecionar Dados + Infra e revelar bastidores | Frentes correspondentes destacadas, Mário como interlocutor e equipe preservada |
+| Operação atrás da assinatura | Selecionar Dados + Infra e revelar bastidores | Frentes correspondentes destacadas, uma pessoa designada como interlocutora e equipe preservada |
 | Websites | Alternar larguras, abrir menu e trocar para conteúdo longo/EN | Responsividade real, texto legível e ações locais funcionais |
 | Produto | Trocar acabamento, abrir peças, selecionar componente, recompor | Estado consistente e objeto compreensível |
 | Jogo | Iniciar, coletar, colidir, pausar, sair, retornar e reiniciar | Tempo congelado na pausa, pontos corretos, retomada explícita e controles acessíveis |
 | Dados | Selecionar período, canal e célula; esvaziar seleção; limpar filtros | Totais e gráficos concordam, seleção visível, vazio tratado |
 | Sistemas | Enviar exemplo, provocar erro, tentar novamente e usar dado inválido | Fluxo coerente sem duplicação; inválido não avança |
 | Infraestrutura | Selecionar estação, seguir tráfego, derrubar WAN, ativar redundância e derrubar switch | Caminhos e indisponibilidade seguem topologia; backup não simula redundância |
-| Parceria | Percorrer etapas e frentes de execução | Decisões passam por Mário, equipe executa, entregáveis retornam sob a agência |
+| Parceria | Percorrer etapas e frentes de execução | Decisões passam pela frente técnica, equipe executa, entregáveis retornam sob a agência |
 | Contato | Chegar por serviço e sem seleção; copiar texto | Resumo correto ou genérico; falha de cópia honesta; sem envio automático |
 
 ## Avaliação criativa

@@ -165,6 +165,16 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 - **Regras preservadas:** identidade obrigatória nos commits, pnpm, validação visual exclusivamente pelo operador e publicação do site como etapa distinta do workflow.
 - **Referência:** [workflow ativo no GitHub](08-github-workflow.md).
 
+## I-019 — Marca institucional, agrupamento e composição mobile
+
+- **Origem (19/11/2026):** marca completa `borderline.dev.br`, com `dev.br` menor e pontos vermelhos; mencionar Borderline no agrupamento dos serviços; não vincular a oferta ao nome do proprietário; conferir alinhamento sem compensação matemática; retirar o vazio acima da pilha fechada no mobile.
+- **Posicionamento ativo:** a Borderline designa a frente técnica por cliente. O nome do proprietário não aparece no texto comercial, mediakit ou metadados de fundador. Esta decisão substitui as orientações anteriores que fixavam Mário como interlocutor; o histórico dessas ideias é preservado. A identidade obrigatória de commits não muda.
+- **Assinatura futura:** usar representante fictício, sem nome real do proprietário e sem campos de dados pessoais. Atualizar também as narrativas de parceria e contato.
+- **Marca:** nome completo no menu, rodapé, mediakit e metadados; `b.` preservado no menu compacto. O agrupamento dos cards recebe a marca completa como identificação da operação.
+- **Alinhamento:** chapéu, título, texto e ações compartilham a mesma coluna e origem horizontal. Não usar recuos, margens negativas ou transforms para compensar desenhos tipográficos.
+- **Mobile:** a figura inicia com 48% da altura final, pilha junto ao topo e altura crescente durante a abertura; sticky a 68px, abaixo da barra compacta. O percurso de scroll é estável e medido independentemente da altura variável da figura. Espaço da experiência fica depois da pilha, sem margem superior antecipada.
+- **Workflow:** ajustes visuais e hero em #4 / milestone V2.1; regra institucional refletida em #6 (assinatura), #13 (parceria/contato) e #14 (SEO). Não encerrar a issue da home antes da validação visual.
+
 ## Como registrar novas contribuições
 
 Adicionar um identificador com origem, intenção, estado e impacto. Quando houver correção, atualizar a especificação ativa e registrar aqui o que deixou de valer. Distinguir pedido do operador, proposta do agente, decisão e adiamento.

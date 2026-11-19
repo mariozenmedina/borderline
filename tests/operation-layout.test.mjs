@@ -79,3 +79,31 @@ test('PT e EN usam os mesmos serviços e estrutura de conteúdo', () => {
   assert.deepEqual(shape(getHeroContent('pt')), shape(getHeroContent('en')))
   for (const locale of ['pt', 'en']) assert.deepEqual(getHeroContent(locale).hero.scene.services.map(service => service.id), SERVICE_IDS)
 })
+
+test('mobile fechado começa compacto no topo e cresce sem deslocamentos descontínuos', () => {
+  const start = getOperationLayout(0, { compact: true })
+  const end = getOperationLayout(100, { compact: true })
+  assert.equal(start.stageRatio, 0.48)
+  assert.ok(start.agency.top * start.stageRatio <= 3.01)
+  assert.deepEqual(end, getOperationLayout(100))
+  for (let opening = 0; opening <= 100; opening++) {
+    const layout = getOperationLayout(opening, { compact: true })
+    assert.ok(layout.stageRatio >= 0.48 && layout.stageRatio <= 1)
+    for (const card of [layout.agency, ...layout.services]) {
+      assert.ok(card.top >= 0 && card.top + card.height <= 100 + 1e-9)
+      assert.ok(card.left >= 0 && card.left + card.width <= 100)
+    }
+    const expectedTop = 3 + (71 - 3) * opening / 100
+    assert.ok(Math.abs(layout.agency.top * layout.stageRatio - expectedTop) < 1e-9)
+  }
+})
+
+test('abertura mobile não depende da altura variável da figura e recompõe ao retornar', () => {
+  const trackTop = -252, stickyTop = 68, travel = 800
+  const opening = getScrollOpening(trackTop, stickyTop, travel)
+  const middle = getOperationLayout(opening, { compact: true })
+  assert.equal(opening, 50)
+  assert.equal(middle.stageRatio, 0.74)
+  getOperationLayout(100, { compact: true })
+  assert.deepEqual(getOperationLayout(getScrollOpening(68, stickyTop, travel), { compact: true }), getOperationLayout(0, { compact: true }))
+})

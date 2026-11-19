@@ -46,7 +46,7 @@ Branch do primeiro recorte: `feat/v2-01-hero`. [Escopo implementado e roteiro](e
 - Implementar tema claro padrão e escolha manual de claro/escuro persistida, sem seguir navegador/OS.
 - Trocar snap obrigatório por scroll natural; reservar espaços de demos.
 - Manter `/` e `/en/`, navegação por hash e histórico.
-- Reescrever hero para operação técnica com equipe própria e interlocução de Mário.
+- Reescrever hero para operação técnica com equipe própria e interlocução técnica designada por cliente.
 - Aplicar a direção visual revisada e estruturar a narrativa anterior à assinatura; não tratar o hero sem máscara como identidade final aprovada antes da revisão visual.
 - Criar conteúdo PT/EN dos capítulos, com alternativas editoriais legíveis.
 - Aceite: navegação e idioma independem do 3D; hash direto e voltar/avançar têm roteiro explícito para operador; build localizado continua gerando os dois idiomas.
@@ -68,7 +68,7 @@ Branch sugerida `feat/v2-03-signature`.
 
 - Primeiro corte: serviços, estilos e assinatura HTML, cargo e módulos derivados.
 - Segundo corte: transformação 3D, tipografia, paletas e inspeção frontal.
-- Terceiro corte: revelar frentes operacionais conforme os serviços, com Mário como interlocutor.
+- Terceiro corte: revelar frentes operacionais conforme os serviços, com uma pessoa designada como interlocutora.
 - Integrar a assinatura como desfecho de S01; a oferta e a operação são compreensíveis antes dos controles. Preservar acesso direto contextualizado.
 - Três identidades fictícias; nenhuma edição de nome/e-mail/cargo; reset e PT/EN.
 - Aceite: regras para todas as 64 combinações, mudanças rápidas consistentes, estilo altera composição, alternativas sem WebGL; equipe própria comunicada sem expor integrantes.
@@ -136,7 +136,7 @@ Branch sugerida `feat/v2-09-systems`.
 
 Branch sugerida `feat/v2-10-partnership`.
 
-- Duas camadas: Mário na interlocução, equipe própria na execução.
+- Duas camadas: Frente técnica na interlocução, equipe própria na execução.
 - Fluxo de briefing a continuidade com artefatos e exemplo de projetos paralelos.
 - Interesse contextual por serviço e resumo copiável; link atual do LinkedIn.
 - Aceite: processo claro, equipe preservada nos bastidores e nenhum envio simulado como real.

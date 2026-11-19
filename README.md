@@ -146,7 +146,7 @@ The available local quality checks are:
 - `pnpm run lint`;
 - `pnpm run build`.
 
-The V2 includes eight Node logic tests and a GitHub Actions workflow for locked dependency installation, logic checks and the PT/EN production build. Browser validation is performed exclusively by the operator. Lint remains available on request; it is not part of this CI workflow.
+The V2 includes twelve Node logic and identity tests and a GitHub Actions workflow for locked dependency installation, logic checks and the PT/EN production build. Browser validation is performed exclusively by the operator. Lint remains available on request; it is not part of this CI workflow.
 
 ## Security Notes
 

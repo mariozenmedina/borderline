@@ -3,7 +3,7 @@
   <header ref="header" class="site-header" :class="{ 'is-collapsed': collapsed }" @keydown.esc="closeMenu(true)">
     <div class="site-header__inner">
       <a class="wordmark" href="#inicio" :aria-label="content.home" @click="closeMenu()">
-        <span class="wordmark__visual" aria-hidden="true">b<span class="wordmark__rest"><span>orderline</span></span><span class="wordmark__dot">.</span><span class="wordmark__rest wordmark__dev"><span>dev</span></span></span>
+        <span class="wordmark__visual" aria-hidden="true">b<span class="wordmark__rest"><span>orderline</span></span><span class="wordmark__dot">.</span><span class="wordmark__rest wordmark__dev"><span>dev<span class="wordmark__dot">.</span>br</span></span></span>
       </a>
       <nav class="desktop-navigation" :aria-label="content.label">
         <DotLink href="#capacidades">{{ content.capabilities }}</DotLink>
@@ -100,7 +100,7 @@ onBeforeUnmount(() => {
 .wordmark__visual { display: inline-flex; align-items: baseline; }
 .wordmark__rest { display: inline-grid; grid-template-columns: 1fr; opacity: 1; transition: grid-template-columns var(--kit-duration) var(--kit-ease), opacity var(--kit-duration); }
 .wordmark__rest > span { min-width: 0; overflow: hidden; }
-.wordmark__dot { color: var(--accent); } .wordmark__dev { color: var(--ink); }
+.wordmark__dot { color: var(--accent); } .wordmark__dev { color: var(--ink); font-size: .7em; letter-spacing: -.04em; }
 .desktop-navigation { display: flex; gap: 8px; margin-left: auto; }
 .desktop-navigation :deep(.dot-link) { font-size: 12px; }
 .locale-switch a { text-decoration: none; font-size: 13px; font-weight: 500; }

@@ -8,9 +8,9 @@ Branch: `feat/v2-01-home`, derivada de `feat/v2-00-mediakit` em `3bed5ba`.
 
 - Chapéu em Offside, título e texto em Poppins. Preto, vermelho, branco e cinzas nos temas claro e escuro.
 - Dois botões circulares expansíveis do mediakit: serviços e contato, com destinos reais na página. Menu reutiliza links com ponto à direita e expansão à esquerda.
-- Card da agência à frente. Hover abre seis cards: desenvolvimento, infraestrutura, games, dados, experiências 3D e integrações. Ao sair com o mouse, a pilha se recompõe.
+- Card da agência à frente. Hover abre seis cards: desenvolvimento, infraestrutura, games, dados, experiências 3D e integrações, agrupados sob a marca borderline.dev.br. Ao sair com o mouse, a pilha se recompõe.
 - Abertura completa dispõe os serviços em duas colunas e três linhas, mantendo a agência visível em primeiro plano. O fechamento recompõe a pilha.
-- Em telas até 900px ou dispositivos com toque/sem hover, a composição fica sticky durante um percurso adicional de 80svh. O scroll abre os cards nos primeiros 80% desse percurso; o restante permite ler a composição aberta. Subir a página recompõe a pilha. Não intercepta o scroll.
+- Em telas até 900px ou dispositivos com toque/sem hover, a figura começa compacta, com a pilha no topo e 48% da altura final. Durante o scroll ela cresce para abrir os cards, ficando sticky a 68px. O percurso adicional de 80svh é independente dessa altura variável: abre nos primeiros 80% e reserva o restante para leitura. Subir recompõe a pilha. Não intercepta o scroll nem antecipa uma margem acima do card fechado.
 - Foco por teclado também abre a composição; texto equivalente permanece para tecnologias assistivas. Com movimento reduzido ou altura inferior a 600px no modo de scroll, a operação aparece aberta, sem sticky nem espaço adicional.
 - Tema claro inicial, preferência manual persistida e PT/EN. A abertura deriva do hover/foco ou da posição atual de scroll, recalculada ao trocar idioma ou tamanho de tela.
 - Removidos slider, porcentagem, instruções, legendas ao redor da composição e faixa inferior de informações. Preservados chapéu, título, texto principal, dois botões e textos internos dos cards.
@@ -21,7 +21,8 @@ Fontes e tokens foram compartilhados entre home e mediakit. A composição usa H
 ## Verificações sem navegador
 
 - `pnpm build`: aprovado; gera português e inglês com fontes locais.
-- `node tests/operation-layout.test.mjs`: oito testes aprovados. Cobrem normalização, todas as 101 posições, ausência de sobreposição na abertura completa, interpolação/reversibilidade, paridade PT/EN e progresso do scroll com início, término, pausa final, retorno e percurso inválido.
+- `node tests/operation-layout.test.mjs`: dez testes aprovados. Cobrem normalização, todas as 101 posições, ausência de sobreposição na abertura completa, interpolação/reversibilidade, paridade PT/EN, progresso do scroll e crescimento da cena mobile sem margem superior antecipada.
+- `node tests/site-identity.test.mjs`: dois testes aprovados para marca, conteúdo institucional e ausência de vínculo pessoal nos metadados PT/EN.
 - `git diff --check`: aprovado.
 - Dez cenários de bootstrap/tema verificados em Node, incluindo preferência ausente, inválida e armazenamento bloqueado; referências a assets e fontes conferidas nos dois HTMLs gerados.
 - Nenhum navegador aberto. Testes de geometria verificam os dados do layout; não substituem a revisão de legibilidade, recortes e aparência pelo operador.
@@ -38,9 +39,14 @@ Executar `pnpm dev`; abrir `/` e `/en/` no endereço informado pelo Vite. O medi
 6. Conferir preferência de movimento reduzido: operação aberta, sem animação dos ícones ou percurso adicional de scroll.
 7. Conferir menu móvel, navegação por hash, voltar/avançar e retorno entre home e mediakit.
 8. Rolar além de 160px: a barra deve reduzir para 52px e a marca virar “b.”, com o ponto vermelho. Voltar até 80px do topo restaura o menu completo. Conferir links, idiomas, tema, contato e abertura do menu móvel no estado compacto, incluindo chegada direta por hash.
+9. Conferir `borderline.dev.br`, sufixo menor e pontos vermelhos; marca agrupando serviços; alinhamento de chapéu/título/texto; mobile fechado junto ao topo e crescimento da figura durante a abertura.
 
 Sem push, merge em `v2` ou publicação nesta entrega.
 
 Revisão de 18/11/2026: hover/scroll e retirada dos textos periféricos substituem o slider da primeira versão (`cabf1ad`), por pedido do operador. Validação de build e lógica refeita; nenhuma validação em navegador pelo agente.
 
 Revisão adicional de 18/11/2026: menu compacto após scroll, com altura de 52px e marca “b.”. Limites de 160px para recolher e 80px para expandir evitam alternância perto do ponto de mudança. Mantém navegação, preferência de movimento reduzido e nome acessível completo da marca. Listener passivo de scroll, sincronização na montagem/retorno à página e remoção dos listeners ao desmontar.
+
+Revisão de 19/11/2026: marca completa com sufixo menor; agrupamento dos serviços identificado; comunicação institucional sem vincular interlocução ao proprietário; chapéu e conteúdo na mesma coluna, sem correção óptica por deslocamento; figura mobile compacta que cresce durante o scroll. Detalhes na I-019.
+
+Contato institucional pendente de informação do operador: o link para LinkedIn pessoal foi retirado, inclusive dos metadados. A seção continua acessível pelas âncoras da home; seu link externo só aparece quando `contact.href` tem um destino confirmado. Nenhum e-mail, telefone ou perfil de empresa foi inventado. Pendência acompanhada em #13.

@@ -11,15 +11,17 @@ export function getScrollOpening(trackTop, stickyTop, travel) {
   return normalizeOpening((stickyTop - trackTop) / (travel * 0.8) * 100)
 }
 
-export function getOperationLayout(value) {
+export function getOperationLayout(value, { compact = false } = {}) {
   const progress = normalizeOpening(value) / 100
   const lerp = (from, to) => from + (to - from) * progress
+  const stageRatio = compact ? lerp(0.48, 1) : 1
   return {
-    agency: { left: lerp(12, 17), top: lerp(30, 71), width: lerp(76, 66), height: lerp(42, 25), angle: lerp(-7, 0) },
+    stageRatio,
+    agency: { left: lerp(12, 17), top: lerp(compact ? 3 : 30, 71) / stageRatio, width: lerp(76, 66), height: lerp(42, 25) / stageRatio, angle: lerp(compact ? 0 : -7, 0) },
     services: SERVICE_IDS.map((id, index) => ({
       id, left: lerp(16 + index * 1.2, index % 2 ? 52 : 4),
-      top: lerp(31 + index * 1.4, 5 + Math.floor(index / 2) * 21),
-      width: lerp(76, 44), height: lerp(42, 18), angle: lerp(-5 + index * 2, 0),
+      top: lerp(compact ? 4 + index * 0.6 : 31 + index * 1.4, 5 + Math.floor(index / 2) * 21) / stageRatio,
+      width: lerp(76, 44), height: lerp(compact ? 40 : 42, 18) / stageRatio, angle: lerp(compact ? 0 : -5 + index * 2, 0),
     })),
   }
 }

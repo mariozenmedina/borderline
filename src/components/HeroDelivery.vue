@@ -1,11 +1,12 @@
 <template>
-  <div ref="track" class="delivery-track" :class="{ 'is-scroll': scrollMode, 'is-static': staticMode }">
+  <div ref="track" class="delivery-track" :class="{ 'is-scroll': scrollMode, 'is-static': staticMode }" :style="{ '--scene-scale': layout.stageRatio }">
+    <div ref="scrollDistance" class="delivery-scroll-distance" aria-hidden="true"></div>
     <figure ref="figure" class="hero-delivery" :aria-label="content.label" tabindex="0" role="group"
       @pointerenter="hovered = true" @pointerleave="hovered = false"
       @focus="focused = $event.target.matches(':focus-visible')" @blur="focused = false">
       <div class="delivery-artwork" aria-hidden="true">
         <div class="operation-grid"></div>
-        <div class="operation-boundary" :style="{ opacity: opening / 100 }"></div>
+        <div class="operation-boundary" :style="{ opacity: opening / 100 }"><span class="operation-brand">borderline<b>.</b><small>dev<b>.</b>br</small></span></div>
         <div v-for="(card, index) in layout.services" :key="card.id" class="service-card motion-trigger" :class="`service-card--${card.id}`" :style="cardStyle(card)">
           <div class="service-card__heading"><MotionIcon :kind="card.id" :active="opening > 65" /><span>{{ String(index + 1).padStart(2, '0') }}</span></div>
           <strong>{{ content.services[index].name }}</strong>
@@ -29,13 +30,14 @@ import { getOperationLayout, getScrollOpening } from '../hero/operationLayout.mj
 const props = defineProps({ content: { type: Object, required: true } })
 const track = ref(null)
 const figure = ref(null)
+const scrollDistance = ref(null)
 const hovered = ref(false)
 const focused = ref(false)
 const scrollMode = ref(false)
 const staticMode = ref(false)
 const scrollOpening = ref(0)
 const opening = computed(() => staticMode.value || focused.value ? 100 : scrollMode.value ? scrollOpening.value : hovered.value ? 100 : 0)
-const layout = computed(() => getOperationLayout(opening.value))
+const layout = computed(() => getOperationLayout(opening.value, { compact: scrollMode.value }))
 let frame = 0
 let resizeObserver
 let media = []
@@ -45,7 +47,7 @@ function measureScroll() {
   frame = 0
   if (!scrollMode.value || staticMode.value || !track.value || !figure.value) return
   const top = parseFloat(getComputedStyle(figure.value).top) || 0
-  scrollOpening.value = getScrollOpening(track.value.getBoundingClientRect().top, top, track.value.offsetHeight - figure.value.offsetHeight)
+  scrollOpening.value = getScrollOpening(track.value.getBoundingClientRect().top, top, scrollDistance.value.getBoundingClientRect().height)
 }
 function scheduleMeasure() {
   if (!frame && scrollMode.value && !staticMode.value) frame = requestAnimationFrame(measureScroll)
@@ -83,21 +85,25 @@ function cardStyle(card) {
 </script>
 
 <style lang="less" scoped>
-.delivery-track { min-width: 0; width: 100%; align-self: start; }
+.delivery-track { position: relative; min-width: 0; width: 100%; align-self: start; }
+.delivery-scroll-distance { position: absolute; visibility: hidden; pointer-events: none; width: 0; height: 0; }
 .hero-delivery { position: relative; min-width: 0; width: 100%; margin: 0; isolation: isolate; border-radius: 18px; }
 .delivery-artwork { position: relative; aspect-ratio: 1 / 1.02; perspective: 1200px; }
 .service-card, .agency-card { transition: left 750ms var(--kit-ease), top 750ms var(--kit-ease), width 750ms var(--kit-ease), height 750ms var(--kit-ease), transform 750ms var(--kit-ease); }
 .operation-boundary { transition: opacity 750ms var(--kit-ease); }
-.is-scroll { max-width: 620px; justify-self: center; }
-.is-scroll::after { content: ""; display: block; height: 80svh; }
-.is-scroll .hero-delivery { position: sticky; top: 96px; }
-.is-scroll .delivery-artwork { height: clamp(460px, calc(100svh - 136px), 620px); aspect-ratio: auto; }
+.is-scroll { --scene-height: clamp(460px, calc(100svh - 96px), 620px); --scroll-travel: 80svh; max-width: 620px; justify-self: center; min-height: calc(var(--scene-height) + var(--scroll-travel)); }
+.is-scroll .delivery-scroll-distance { height: var(--scroll-travel); }
+.is-scroll .hero-delivery { position: sticky; top: 68px; }
+.is-scroll .delivery-artwork { height: calc(var(--scene-height) * var(--scene-scale)); aspect-ratio: auto; }
 .is-scroll .service-card, .is-scroll .agency-card, .is-scroll .operation-boundary,
 .is-static .service-card, .is-static .agency-card, .is-static .operation-boundary { transition: none; }
-.is-static::after { display: none; }
+.is-static { min-height: 0; }
 .is-static .hero-delivery { position: relative; top: auto; }
 .operation-grid { position: absolute; inset: 0; background-image: radial-gradient(var(--line-strong) .7px, transparent .7px); background-size: 22px 22px; mask-image: radial-gradient(ellipse, #000 15%, transparent 72%); opacity: .55; }
 .operation-boundary { position: absolute; inset: 0 0 32%; border: 1px solid var(--line); border-radius: 18px; }
+.operation-brand { position: absolute; top: 4px; left: 4%; font: 400 9px/12px var(--kit-font-accent); color: var(--ink); }
+.operation-brand b { color: var(--accent); font-weight: inherit; }
+.operation-brand small { font-size: .75em; }
 .service-card { position: absolute; overflow: hidden; padding: clamp(10px, 1vw, 14px); border: 1px solid var(--line-strong); border-radius: 14px; background: var(--surface); box-shadow: 0 8px 18px -12px var(--scene-shadow); }
 .service-card--infra, .service-card--data, .service-card--systems { background: var(--surface-alt); }
 .service-card__heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; color: var(--accent); }

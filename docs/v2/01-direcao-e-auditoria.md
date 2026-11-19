@@ -4,13 +4,13 @@
 
 Público principal: responsáveis por criação, produção, projetos e tecnologia em agências que precisam de execução técnica sob sua marca. A experiência deve responder “essa operação consegue sustentar nossas entregas?” e “quem assume as decisões e a comunicação técnica?”.
 
-O operador confirmou equipe própria operacional de desenvolvimento e TI. Mário é a frente: participa das reuniões, explica decisões, coordena e apresenta as entregas. A equipe permanece nos bastidores e dá sustentação ao atendimento de múltiplos clientes. Isso é um fato fornecido pelo operador, não uma hipótese de posicionamento.
+O operador confirmou equipe própria operacional de desenvolvimento e TI. A frente técnica participa das reuniões, explica decisões, coordena e apresenta as entregas. Em 19/11/2026, definiu que seu nome não deve ser vinculado à comunicação: outra pessoa pode assumir a frente de um cliente. A equipe permanece nos bastidores e sustenta o atendimento de múltiplos clientes.
 
 Apresentar uma empresa estruturada: liderança técnica visível, responsabilidades claras, frentes de entrega, processo e continuidade. A percepção de porte vem dessa estrutura e das demonstrações. Não depender de expor integrantes; não criar headcount, escritórios, certificações, SLAs ou números de clientes que não foram fornecidos.
 
 A V2 demonstra capacidade visual e capacidade de lidar com estado, dados, erros e continuidade. O texto comercial acompanha o que a pessoa acabou de experimentar: uma assinatura, configuração, partida, seleção de dados ou recuperação de falha.
 
-Nomes como Three.js e D3 podem aparecer em detalhes opcionais. A narrativa principal explica aplicações: campanha, configurador, ativação, relatório, portal e infraestrutura. Usar voz de operação (“desenvolvemos”, “nossa equipe”, “coordenamos”) e identificar Mário como interlocutor técnico. Clientes, depoimentos, métricas e resultados exigem evidência antes de publicação.
+Nomes como Three.js e D3 podem aparecer em detalhes opcionais. A narrativa principal explica aplicações: campanha, configurador, ativação, relatório, portal e infraestrutura. Usar voz de operação (“desenvolvemos”, “nossa equipe”, “coordenamos”), sem identificar nominalmente a pessoa responsável pela interlocução. Clientes, depoimentos, métricas e resultados exigem evidência antes de publicação.
 
 ## Auditoria do repositório
 
@@ -31,7 +31,7 @@ Leitura de código em 15/11/2026, sem navegador. Estas são observações de est
 | Scroll | `src/styles/App.less`: snap obrigatório e painéis de viewport | Conteúdo profundo precisa de fluxo normal |
 | Acessibilidade | Há títulos e labels; não encontrados tratamentos de movimento reduzido ou perda de contexto WebGL | Acrescentar essas políticas na fundação |
 | SEO | `index.html`, conteúdo SEO e script de build localizado | Preservar `/` e `/en/`; metadados não equivalem a conteúdo pré-renderizado |
-| Conversão | Contato direciona ao LinkedIn de Mario Medina | Manter canal e acrescentar contexto de interesse |
+| Conversão | A V1 direcionava ao LinkedIn pessoal do proprietário | Substituir por canal institucional confirmado pelo operador e acrescentar contexto de interesse |
 | Documentação | README anterior citava npm e Vue CLI | Atualizado para pnpm e Vite junto ao plano |
 
 No início do trabalho, `public/og-image-pt.png` e `public/og-image-en.png` já tinham modificações locais. Elas pertencem ao operador e ficam fora do commit de planejamento.

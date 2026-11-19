@@ -17,7 +17,7 @@
     </section>
     <div id="parceria" class="content-shell partnership-content" tabindex="-1"><HowWeWorkSection :content="content.howWeWork" /></div>
     <div id="contato" class="contact-content" tabindex="-1"><div class="content-shell"><ContactSection :content="content.contact" /></div></div>
-    <footer class="site-footer content-shell"><span class="footer-brand">borderline<span>.</span>dev</span><EndSection :content="content.end" /></footer>
+    <footer class="site-footer content-shell"><span class="footer-brand">borderline<span>.</span><small>dev<span>.</span>br</small></span><EndSection :content="content.end" /></footer>
   </main>
   </template>
 </template>

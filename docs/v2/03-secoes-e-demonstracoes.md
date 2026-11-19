@@ -16,7 +16,7 @@ As cenas 3D não carregam juntas. Simulações e dados ficam identificados. O vi
 
 **Mensagem proposta:** “Sua agência à frente. Nossa operação por trás.” Apoio: desenvolvimento, experiências interativas e TI sob a marca da agência, com uma liderança nas reuniões e uma equipe própria nas entregas. A formulação final terá equivalente em inglês e será revisada junto ao texto da arquitetura da informação.
 
-**Storyboard proposto:** primeira tela com oferta e entrega → interlocução técnica de Mário → frentes operacionais que sustentam o projeto → adaptação à identidade da agência → assinatura interativa em S02. A câmera pode contornar a interface e revelar suas camadas conforme a leitura avança. As frentes usam exemplos leves de interfaces e entregáveis, sem carregar as seis demos completas dentro do hero.
+**Storyboard proposto:** primeira tela com oferta e entrega → interlocução técnica da Borderline → frentes operacionais que sustentam o projeto → adaptação à identidade da agência → assinatura interativa em S02. A câmera pode contornar a interface e revelar suas camadas conforme a leitura avança. As frentes usam exemplos leves de interfaces e entregáveis, sem carregar as seis demos completas dentro do hero.
 
 **Momento de impacto:** uma entrega que parecia uma superfície única revela uma estrutura coordenada por trás. O acabamento está na continuidade da transformação e na relação clara entre liderança, execução e entrega. Reservar a planta detalhada e seus equipamentos para Infraestrutura, mantendo papéis distintos para os dois capítulos.
 
@@ -30,11 +30,11 @@ As cenas 3D não carregam juntas. Simulações e dados ficam identificados. O vi
 
 **Origem:** ideias I-003 e I-004 do operador. Esta é a versão ativa: serviços e direções visuais orientam a transformação; não há campos para preencher nome, cargo ou e-mail.
 
-**Objetivo:** tornar visível como Mário assume a interlocução e liderança técnica dentro da agência, enquanto a equipe própria de desenvolvimento e TI sustenta a entrega nos bastidores.
+**Objetivo:** tornar visível como uma pessoa designada pela Borderline assume a interlocução e liderança técnica dentro da agência, enquanto a equipe própria de desenvolvimento e TI sustenta a entrega nos bastidores.
 
 **Papel na narrativa:** desfecho interativo do capítulo de abertura, não o conteúdo inicial da primeira tela. O visitante já entende a operação ao chegar aos controles. Manter uma introdução curta para quem acessa diretamente `#whitelabel`.
 
-**Composição:** uma janela de e-mail em perspectiva, com mensagem fictícia curta e assinatura de Mário Medina. Ao lado, uma área compacta com a gama de serviços, direções “Moderna”, “Casual” e “Editorial” e paletas identificáveis. O estilo da demo muda; a navegação do site mantém a marca Borderline.Dev.
+**Composição:** uma janela de e-mail em perspectiva, com mensagem fictícia curta e assinatura de um representante fictício. Ao lado, uma área compacta com a gama de serviços, direções “Moderna”, “Casual” e “Editorial” e paletas identificáveis. O estilo da demo muda; a navegação do site mantém a marca borderline.dev.br. O nome do proprietário não aparece.
 
 **Exemplos de direções, sujeitos a desenho:**
 
@@ -56,7 +56,7 @@ Os pares são direções cromáticas, não tokens finais; contraste e licenças 
 - Infraestrutura: papel voltado à infraestrutura e módulo de redes, cloud e continuidade.
 - Combinação entre famílias: “Parceiro técnico da agência”, com resumo dos serviços selecionados.
 
-Os papéis acima descrevem a especialidade da configuração. Uma linha fixa, “Seu interlocutor técnico / Your technical point of contact”, deixa claro que a pessoa na assinatura coordena a entrega. Os títulos finais serão refinados para refletir essa liderança, sem sugerir que Mário executa sozinho todas as disciplinas.
+Os papéis acima descrevem a especialidade da configuração. Uma linha fixa, “Seu interlocutor técnico / Your technical point of contact”, deixa claro que a pessoa na assinatura coordena a entrega. Os títulos finais serão refinados para refletir essa liderança, sem sugerir que uma única pessoa executa todas as disciplinas.
 
 As regras exatas têm fonte única na [arquitetura técnica](04-arquitetura-tecnica.md). O nome permanece fixo; marcas e domínios `.example` são fixtures fictícias. Não usar e-mails reais de terceiros.
 
@@ -200,9 +200,9 @@ As regras exatas têm fonte única na [arquitetura técnica](04-arquitetura-tecn
 
 **Objetivo:** transformar confiança técnica em confiança numa operação white label com equipe própria, coordenada por um interlocutor único.
 
-**Composição:** duas camadas conectadas. Na frente, Agência ↔ Mário, com reuniões, decisões e entregas. Atrás, frentes da equipe própria: desenvolvimento, sistemas/dados e TI/infraestrutura. Uma trilha percorre briefing, definição técnica, produção, revisão, publicação e continuidade. Ao selecionar uma etapa, abre-se um artefato — escopo, quadro de trabalho, pacote publicado ou plano de manutenção.
+**Composição:** duas camadas conectadas. Na frente, Agência ↔ Frente técnica, com reuniões, decisões e entregas. Atrás, frentes da equipe própria: desenvolvimento, sistemas/dados e TI/infraestrutura. Uma trilha percorre briefing, definição técnica, produção, revisão, publicação e continuidade. Ao selecionar uma etapa, abre-se um artefato — escopo, quadro de trabalho, pacote publicado ou plano de manutenção.
 
-**Interação e impacto:** o projeto passa da decisão técnica para as frentes operacionais e retorna como entrega apresentada por Mário. Selecionar Desenvolvimento ou TI evidencia a frente correspondente. Uma visão ilustrativa de dois projetos mostra organização de demandas em paralelo, identificada como exemplo de fluxo, não como monitor de clientes reais. A marca da agência permanece na frente.
+**Interação e impacto:** o projeto passa da decisão técnica para as frentes operacionais e retorna como entrega apresentada pela frente técnica. Selecionar Desenvolvimento ou TI evidencia a frente correspondente. Uma visão ilustrativa de dois projetos mostra organização de demandas em paralelo, identificada como exemplo de fluxo, não como monitor de clientes reais. A marca da agência permanece na frente.
 
 **Conteúdo:** entrada pelos canais da agência, alinhamento com criação, escopo e cronograma acordados, coordenação da equipe própria, revisão e acompanhamento. A equipe não precisa ser exposta; o processo demonstra estrutura. Não prometer SLA, disponibilidade 24/7, número de funcionários ou prazo fixo sem definição comercial.
 

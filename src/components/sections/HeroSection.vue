@@ -25,7 +25,8 @@ defineProps({ content: { type: Object, required: true } })
 <style lang="less" scoped>
 .hero-section { max-width: 1536px; margin: auto; padding: 0 var(--page-gutter); }
 .hero-layout { display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: clamp(30px, 4vw, 64px); padding: 60px 0 48px; min-height: min(780px, calc(100svh - 150px)); }
-.hero-copy { min-width: 0; padding-bottom: 25px; }
+.hero-copy { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; padding-bottom: 25px; text-align: start; }
+.hero-copy > * { grid-column: 1; margin-inline: 0; padding-inline: 0; }
 .hero-eyebrow { margin: 0 0 26px; max-width: 36ch; font: 400 11px/1.8 var(--kit-font-accent); letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
 h1 { margin: 0; font: 600 clamp(40px, 4.25vw, 66px)/1.13 var(--kit-font-body); letter-spacing: -.045em; text-wrap: balance; }
 h1 > span { display: block; }

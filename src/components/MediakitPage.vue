@@ -2,7 +2,7 @@
   <div id="kit-top" class="design-kit" :data-kit-theme="theme">
     <a class="kit-skip" href="#kit-content">{{ copy.skip }}</a>
     <header class="kit-header kit-shell">
-      <a href="#kit-top" class="kit-wordmark" aria-label="Borderline.Dev">borderline<b>.</b>dev</a>
+      <a href="#kit-top" class="kit-wordmark" aria-label="borderline.dev.br">borderline<b>.</b><small>dev<b>.</b>br</small></a>
       <div class="kit-header-tools">
         <span class="kit-meta">{{ copy.edition }}</span>
         <nav class="kit-locales" :aria-label="copy.language">

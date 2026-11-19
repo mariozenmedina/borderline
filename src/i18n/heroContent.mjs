@@ -1,7 +1,7 @@
 const messages = {
   pt: {
     nav: {
-      label: 'Navegação principal', home: 'Borderline.Dev — início', skip: 'Ir para o conteúdo',
+      label: 'Navegação principal', home: 'borderline.dev.br — início', skip: 'Ir para o conteúdo',
       capabilities: 'O que fazemos', partnership: 'Como trabalhamos', contact: 'Vamos conversar',
       open: 'Abrir menu', close: 'Fechar menu', language: 'Selecionar idioma',
       light: 'Ativar tema claro', dark: 'Ativar tema escuro',
@@ -9,10 +9,10 @@ const messages = {
     hero: {
       eyebrow: 'Sua operação técnica white label',
       headline: 'Sua agência à frente.', emphasis: 'Nossa operação por trás',
-      description: 'Mário conduz as reuniões e as decisões técnicas como parte da sua agência. Nossa equipe de desenvolvimento e TI sustenta as entregas nos bastidores. Tudo sob a sua marca.',
+      description: 'Assumimos a frente técnica como parte da sua agência, das reuniões às decisões. Nossa equipe de desenvolvimento e TI sustenta as entregas nos bastidores. Tudo sob a sua marca.',
       primary: 'Explore os serviços', secondary: 'Vamos conversar',
       scene: {
-        label: 'A agência à frente dos serviços da Borderline.Dev',
+        label: 'A agência à frente dos serviços da borderline.dev.br',
         agencyEyebrow: 'Para o seu cliente', agency: 'Sua agência', agencyDetail: 'A identidade de cada entrega.',
         services: [
           { id: 'dev', name: 'Desenvolvimento', detail: 'Websites e aplicações.' },
@@ -27,7 +27,7 @@ const messages = {
   },
   en: {
     nav: {
-      label: 'Main navigation', home: 'Borderline.Dev — home', skip: 'Skip to content',
+      label: 'Main navigation', home: 'borderline.dev.br — home', skip: 'Skip to content',
       capabilities: 'What we do', partnership: 'How we work', contact: 'Let’s talk',
       open: 'Open menu', close: 'Close menu', language: 'Select language',
       light: 'Switch to light theme', dark: 'Switch to dark theme',
@@ -35,10 +35,10 @@ const messages = {
     hero: {
       eyebrow: 'Your white label technical operation',
       headline: 'Your agency out front.', emphasis: 'Our operation behind it',
-      description: 'Mário leads meetings and technical decisions as part of your agency. Our own development and IT team supports delivery behind the scenes. All under your brand.',
+      description: 'We lead the technical side as part of your agency, from meetings to decisions. Our own development and IT team supports delivery behind the scenes. All under your brand.',
       primary: 'Explore our services', secondary: 'Let’s talk',
       scene: {
-        label: 'The agency in front of Borderline.Dev services',
+        label: 'The agency in front of borderline.dev.br services',
         agencyEyebrow: 'For your client', agency: 'Your agency', agencyDetail: 'The identity of every delivery.',
         services: [
           { id: 'dev', name: 'Development', detail: 'Websites and applications.' },
