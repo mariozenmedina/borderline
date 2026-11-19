@@ -35,6 +35,12 @@ Marcos representam escopo, sem datas artificiais. A ordem de leitura da home nã
 
 As issues são a fonte do estado atual; esta tabela registra a organização inicial. Cada issue contém resultado, critérios de conclusão, dependências e referência ao plano. As decisões criativas e especificações detalhadas permanecem versionadas em `docs/v2/`.
 
+## Entrega em revisão
+
+[PR #16 — home e operação white label](https://github.com/mariozenmedina/borderline/pull/16): `feat/v2-01-home` → `v2`, em rascunho, associado à issue #4 e ao milestone V2.1. As duas branches estão publicadas. O PR também preserva os commits de documentação encontrados na `main` remota em `d320788`; a `main` remota não foi alterada por esta organização.
+
+As branches locais antigas do planejamento, primeiro hero e mediakit permanecem como referências históricas; seus commits são alcançáveis pelo histórico da home. Novas entregas partem da integração atualizada após conclusão da revisão vigente.
+
 ## Fluxo de trabalho
 
 1. Escolher uma issue cujas dependências permitam avançar. Usar `v2` e `status:planned` no backlog; mover para `status:in-progress` quando iniciar.
