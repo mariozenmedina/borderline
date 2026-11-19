@@ -4,7 +4,7 @@ import { circuitActivation, createCircuitLayout, sampleCircuitPath } from './cir
 export function createCircuitScene(canvas, { compact = false } = {}) {
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: !compact, powerPreference: 'low-power' })
   const scene = new THREE.Scene()
-  const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100)
+  const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 140)
   const layout = createCircuitLayout()
   const geometries = new Set(), materials = new Set()
   const geometry = value => (geometries.add(value), value)
@@ -15,7 +15,7 @@ export function createCircuitScene(canvas, { compact = false } = {}) {
   const red = material(new THREE.MeshStandardMaterial({ color: '#e50914', roughness: 0.6, metalness: 0.15 }))
   const tracks = material(new THREE.LineBasicMaterial({ transparent: true, opacity: 0.42 }))
   const gridMaterial = material(new THREE.LineBasicMaterial({ transparent: true, opacity: 0.12 }))
-  const board = new THREE.Mesh(geometry(new THREE.PlaneGeometry(60, 44)), surface)
+  const board = new THREE.Mesh(geometry(new THREE.PlaneGeometry(200, 200)), surface)
   board.rotation.x = -Math.PI / 2
   board.position.y = -0.08
   scene.add(board)
@@ -37,8 +37,8 @@ export function createCircuitScene(canvas, { compact = false } = {}) {
   }
   lineSegments(layout.traces.map(trace => trace.points), tracks)
   const grid = []
-  for (let x = -28; x <= 28; x += 1) grid.push([[x, -20], [x, 20]])
-  for (let z = -20; z <= 20; z += 1) grid.push([[-28, z], [28, z]])
+  for (let x = -80; x <= 80; x += 1) grid.push([[x, -80], [x, 80]])
+  for (let z = -80; z <= 80; z += 1) grid.push([[-80, z], [80, z]])
   lineSegments(grid, gridMaterial, -0.055)
 
   const box = geometry(new THREE.BoxGeometry(1, 1, 1))
@@ -112,16 +112,18 @@ export function createCircuitScene(canvas, { compact = false } = {}) {
       isCompact = coarse
       renderer.setPixelRatio(Math.min(globalThis.devicePixelRatio || 1, coarse ? 1 : 1.5))
       renderer.setSize(Math.max(1, width), Math.max(1, height), false)
-      camera.aspect = width / Math.max(1, height)
+      camera.aspect = Math.max(1, width) / Math.max(1, height)
+      // Like background-size: cover: preserve horizontal scale on wide canvases.
+      camera.fov = THREE.MathUtils.radToDeg(2 * Math.atan(Math.tan(THREE.MathUtils.degToRad(38 / 2)) * Math.min(1, 1.85 / camera.aspect)))
       camera.updateProjectionMatrix()
     },
     render({ pointerX = 0, pointerY = 0, opening = 0, time = 0, delta = 1 / 60 }) {
-      const ease = 1 - Math.exp(-Math.min(delta, 0.1) * 4)
+      const ease = 1 - Math.exp(-Math.min(delta, 0.1) * 6)
       smoothedX += (pointerX - smoothedX) * ease
       smoothedY += (pointerY - smoothedY) * ease
       smoothedOpening += (opening - smoothedOpening) * ease
-      const distance = isCompact ? 1.1 : 1
-      camera.position.set(10 + smoothedX * 1.1, (17 + smoothedY * 0.65) * distance, (22 + (isCompact ? smoothedOpening * 0.013 : smoothedY * 0.7)) * distance)
+      const distance = isCompact ? 1.1 : 0.9
+      camera.position.set(2.5 + (7.5 + smoothedX * 4) * distance, (17 + smoothedY * 2) * distance, (22 + (isCompact ? smoothedOpening * 0.013 : smoothedY * 2.4)) * distance)
       camera.lookAt(lookAt)
       for (let index = 0; index < connections.length; index++) {
         const activation = circuitActivation(smoothedOpening, index)

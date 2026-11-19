@@ -40,8 +40,8 @@ export function createCircuitLayout() {
   // Peripheral buses extend beyond the frame, giving the board a larger scale.
   for (let lane = 0; lane < 18; lane++) {
     const offset = lane * 0.25
-    traces.push({ service: -1, primary: false, points: [[-24, -13 + offset], [-11 - offset, -13 + offset], [-6 - offset, -8 + offset]] })
-    traces.push({ service: -1, primary: false, points: [[24, 13 - offset], [15 + offset, 13 - offset], [10 + offset, 8 - offset]] })
+    traces.push({ service: -1, primary: false, points: [[-80, -13 + offset], [-11 - offset, -13 + offset], [-6 - offset, -8 + offset]] })
+    traces.push({ service: -1, primary: false, points: [[80, 13 - offset], [15 + offset, 13 - offset], [10 + offset, 8 - offset]] })
   }
   return { core: CIRCUIT_CORE, nodes, traces, vias, components }
 }

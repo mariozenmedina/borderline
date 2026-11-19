@@ -171,8 +171,8 @@ onBeforeUnmount(() => {
 
 <style lang="less" scoped>
 .circuit-backdrop { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-.circuit-viewport { position: relative; height: 100%; overflow: hidden; mask-image: linear-gradient(transparent, #000 12%, #000 82%, transparent); }
-.circuit-viewport::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--surface) 2%, color-mix(in srgb, var(--surface) 94%, transparent) 22%, color-mix(in srgb, var(--surface) 78%, transparent) 40%, transparent 68%); }
+.circuit-viewport { position: relative; height: 100%; overflow: hidden; mask-image: linear-gradient(transparent, #000 4%, #000 94%, transparent); }
+.circuit-viewport::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in srgb, var(--surface) 85%, transparent), color-mix(in srgb, var(--surface) 90%, transparent) 22%, color-mix(in srgb, var(--surface) 65%, transparent) 40%, transparent 65%); }
 .circuit-fallback, canvas { position: absolute; width: 100%; height: 100%; inset: 0; }
 canvas { opacity: 0; }
 canvas.is-ready { opacity: 1; }

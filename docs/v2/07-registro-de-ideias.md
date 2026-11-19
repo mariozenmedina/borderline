@@ -206,6 +206,13 @@ Planejamento vivo iniciado em 15/11/2026. Registrar intenção, interpretação 
 - Renderização limitada a 30fps e DPR máximo de 1,5 (1 no mobile). Pausa fora da tela ou com aba oculta; desmontagem libera observers, eventos, frame, geometrias, materiais, instâncias e renderer. Não carrega assets da máscara da V1.
 - Build PT/EN e 17 testes de lógica aprovados, incluindo cinco de topologia, rotas, pulsos, ativação e projeção estática. Aparência, desempenho real e eventos WebGL continuam sob validação do operador, sem navegador pelo agente. O runtime compartilhado de #5 permanece futuro.
 
+## I-023 — Fundo em cover e mouse mais presente
+
+- **Origem (19/11/2026):** operador pediu que o 3D não pareça cortado, preencha mais o fundo como cover e reaja mais ao mouse.
+- **Implementado:** fundo acompanha toda a largura da seção, inclusive acima de 1536px; o conteúdo preserva a largura e os alinhamentos anteriores. Fade vertical reduzido às extremidades, proteção do texto mais localizada, chão e malha ampliados e barramentos prolongados além do enquadramento.
+- **Câmera:** aproximação de 10% no desktop, campo de visão ajustado à proporção para manter escala em telas largas, movimento lateral de 4 unidades e vertical/profundidade de 2/2,4 antes da escala de distância, com amortecimento mais responsivo. Mobile conserva o deslocamento por scroll e as alternativas estáticas.
+- **Validação:** build e testes de topologia; checagem matemática da cobertura do chão nos extremos de câmera e proporções de tela, sem navegador. Aparência e intensidade aguardam revisão do operador na issue #4 / PR #16.
+
 ## Como registrar novas contribuições
 
 Adicionar um identificador com origem, intenção, estado e impacto. Quando houver correção, atualizar a especificação ativa e registrar aqui o que deixou de valer. Distinguir pedido do operador, proposta do agente, decisão e adiamento.
