@@ -1,7 +1,8 @@
-<<<<<<< HEAD
-# Borderline.Dev
+# Borderline.dev.br
 
-Site bilíngue de desenvolvimento white label para agências, construído com Vue 3, Three.js, Vite e Less.
+Borderline.Dev is a bilingual personal services website for presenting high-end web development, interactive experiences, systems work, and infrastructure support for agency partners.
+
+The repository is public as a portfolio artifact. The site itself is a production-oriented Vue application with a Three.js visual layer, localized SEO metadata, and a static build pipeline.
 
 ## Planejamento da V2
 
@@ -11,44 +12,11 @@ O **mediakit foi aprovado** e aplicado à entrada na branch `feat/v2-01-home`: m
 
 Com o servidor local iniciado, abrir **`/`** ou **`/en/`** para revisar a home. O mediakit continua em `/?view=mediakit` e `/en/?view=mediakit`. Consulte a [entrega da home e o roteiro de revisão](docs/v2/entregas/01-home-mediakit.md) e a [referência do mediakit](docs/v2/entregas/00-mediakit.md). O primeiro hero rejeitado está preservado no histórico de `feat/v2-01-hero`.
 
-## Desenvolvimento local
-
-Usamos pnpm. Instale as dependências e inicie o servidor quando necessário:
-
-```powershell
-pnpm install
-pnpm dev
-```
-
-`pnpm serve` disponibiliza o servidor na rede local. Para gerar a versão de produção:
-
-```powershell
-pnpm build
-```
-
-O build gera `dist/index.html` em português e `dist/en/index.html` em inglês. O comando `pnpm lint` está disponível para análise estática quando aplicável.
-
-## Validação e contribuições
-
-- O agente nunca testa em navegador. O operador valida as mudanças e retorna os problemas encontrados.
-- Usar pnpm e Docker quando necessários; o site estático atual não exige Docker.
-- Todo commit deve usar a identidade `Mário Veronesi Medina <mazen.mario@gmail.com>`.
-- Preservar alterações locais que não pertençam à tarefa.
-- Consultar o [workflow da V2](docs/v2/05-roadmap-e-git.md) antes de iniciar uma entrega dessa versão.
-
-[contexto.txt](contexto.txt) contém a direção original da marca. Para a V2, as decisões atuais sobre público, conteúdo e interação estão em `docs/v2/`; os fundamentos visuais do contexto original continuam como referência.
-=======
-# Borderline.dev.br
-
-Borderline.Dev is a bilingual personal services website for presenting high-end web development, interactive experiences, systems work, and infrastructure support for agency partners.
-
-The repository is public as a portfolio artifact. The site itself is a production-oriented Vue application with a Three.js visual layer, localized SEO metadata, and a static build pipeline.
-
 ## Project Context
 
 This project represents a service provider website, not a reusable library or SaaS product. It is designed to explain the work, present the brand, and provide a professional contact path through LinkedIn.
 
-The current source shows a modern frontend implementation with:
+The V1 source preserved in this repository includes the following implementation. The V2 entry currently uses HTML/SVG/CSS; its Three.js demo runtime is planned separately:
 
 - a Vue 3 single-page app;
 - section-based page composition;
@@ -178,7 +146,7 @@ The available local quality checks are:
 - `pnpm run lint`;
 - `pnpm run build`.
 
-There is no automated unit test suite, end-to-end test suite, or CI workflow yet. For now, the strongest technical signals are linting, production build validation, and the modular structure of the scene system.
+The V2 includes eight Node logic tests and a GitHub Actions workflow for locked dependency installation, logic checks and the PT/EN production build. Browser validation is performed exclusively by the operator. Lint remains available on request; it is not part of this CI workflow.
 
 ## Security Notes
 
@@ -191,4 +159,13 @@ Portfolio-ready source for a personal services website. The project is suitable 
 For a technical overview, see [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 For hiring-focused context, see [docs/RECRUITER_NOTES.md](docs/RECRUITER_NOTES.md).
->>>>>>> origin/main
+
+## Validação e contribuições
+
+- O agente nunca testa em navegador. O operador valida as mudanças e retorna os problemas encontrados.
+- Usar pnpm e Docker quando necessários; o site estático atual não exige Docker.
+- Todo commit deve usar a identidade `Mário Veronesi Medina <mazen.mario@gmail.com>`.
+- Preservar alterações locais que não pertençam à tarefa.
+- Consultar o [workflow da V2](docs/v2/05-roadmap-e-git.md) antes de iniciar uma entrega dessa versão.
+
+[contexto.txt](contexto.txt) contém a direção original da marca. Para a V2, as decisões atuais sobre público, conteúdo e interação estão em `docs/v2/`; os fundamentos visuais do contexto original continuam como referência.
